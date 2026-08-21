@@ -16,10 +16,10 @@ export function Header() {
       <div className="container-page flex h-20 items-center justify-between gap-4">
         <Link href="/" className="flex items-center gap-2" aria-label={`${business.name} home`}>
           <Image
-            src="/images/brand/logo-source-lowres.png"
+            src="/images/brand/logo-header@4x.png"
             alt={business.name}
-            width={160}
-            height={71}
+            width={466}
+            height={192}
             className="h-12 w-auto"
             priority
           />

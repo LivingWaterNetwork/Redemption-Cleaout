@@ -1,6 +1,6 @@
 import Link from "next/link";
+import Image from "next/image";
 import { formatPhoneSmsHref, formatPhoneTelHref } from "@/content/business";
-import { PhotoPlaceholder } from "@/components/ui/PhotoPlaceholder";
 
 export function Hero() {
   return (
@@ -30,7 +30,16 @@ export function Hero() {
           </div>
         </div>
         <div className="hidden lg:block">
-          <PhotoPlaceholder label="Redemption crew photography coming soon" aspect="aspect-square" />
+          <div className="relative aspect-square overflow-hidden">
+            <Image
+              src="/images/photos/redemption-branded-trailer.jpg"
+              alt="A Redemption Cleanout Services branded trailer on site at a Michigan property cleanout."
+              fill
+              sizes="(min-width: 1024px) 50vw, 100vw"
+              className="object-cover"
+              priority
+            />
+          </div>
         </div>
       </div>
     </section>
