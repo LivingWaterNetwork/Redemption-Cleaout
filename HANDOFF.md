@@ -3,7 +3,7 @@
 Written for whoever picks this up next (human or AI). Read this first, then
 `README.md` for setup and `DESIGN_SYSTEM.md` for anything visual.
 
-Last updated: 2026-08-21 · Latest commit: `dfd7067`
+Last updated: 2026-08-21 · Latest commit: `a5ff374` + this photo pull
 
 ---
 
@@ -39,7 +39,7 @@ that lives in the LWN repo.
 | Production build | Passing |
 | Accessibility | **0 axe violations**, WCAG 2.2 AA, 14 routes × 390px and 1440px |
 | Horizontal overflow | None at 390 / 768 / 1024 / 1440 / 1920 |
-| Lighthouse | **Not run** — see §7 |
+| Lighthouse | Desktop **100/100/100/100** · Mobile **80** perf, 100 a11y/BP/SEO — see §7 |
 
 ### Stack
 
@@ -123,23 +123,34 @@ brand guide.
 - `public/images/brand/logo-master.png` — the real master logo, derived from a
   10264×4532 PNG pulled from the client's shared Drive folder. Favicon, app
   icons, Apple touch icon, and the OG card are all generated from it.
-- `public/images/photos/` — **5 authentic job photos**, cropped to a
-  consistent 3:2 editorial ratio at ~1600px.
+- `public/images/photos/` — **19 authentic job photos**, all cropped to a
+  consistent 3:2 editorial ratio at 1600×1067, EXIF stripped. 14 of these were
+  pulled from the client's Drive folder in the photo session documented in
+  `IMAGE_REQUIREMENTS.md`.
 
-### The gap
+### The gap — largely closed
 
-Five photos cover ~15 placements, so each appears 2–4 times. **This is the
-biggest remaining quality issue.** The client's shared Google Drive folder
-("Redemption Cleanouts", owned by `lauraterracciano95@gmail.com`) contains
-roughly **34 more photos and 12 videos** that were not retrieved — the Drive
-connector dropped mid-download. Re-enabling the Google Drive connector and
-pulling the rest would resolve nearly all repetition.
+Image repetition is **resolved**: 19 photos now cover 17 placements, each
+appearing once except one that appears on two different pages. Previously 5
+photos covered ~15 placements at 2–4× each. All 8 services carry a distinct
+photo; three had none at all.
 
-Also still missing: a **founder portrait of Dante** (both the homepage founder
-section and `/about` currently substitute work imagery with an honest caption),
-**matched same-angle before/after pairs** (needed to populate `projects.ts`
-and make the before/after section land), and a properly composed **branded
-vehicle** shot. Full detail and shot direction in `IMAGE_REQUIREMENTS.md`.
+Also closed by the pull: the **branded vehicle** shot (now the homepage hero),
+**crew in branded uniform**, **commercial interiors**, and **matched
+before/after pairs** — two genuine same-property pairs now exist, and the
+homepage before/after section shows one side by side instead of an "asset
+needed" panel.
+
+Still missing: a **founder portrait of Dante**. A candidate exists in Drive
+(a hard-hat/hi-vis profile) but the subject's identity is unconfirmed, so it
+was not used. Also wanted: a deliberately shot identical-angle pair, and Dante
+with clients or partners.
+
+Not retrieved: **5 HEICs** and **12 videos**. The Drive connector passes file
+content as base64 and fails above ~6 MB — every file ≤5.68 MB transferred,
+every file ≥6.52 MB failed, repeatably. Pull those five from Drive directly
+rather than through the connector. The videos (~250 MB) need a hosting
+decision first; they do not belong in git.
 
 One photo was rejected: a tight crop on a trailer's dirty fender. It was
 briefly used as the homepage hero and the client correctly called it out as
@@ -188,13 +199,54 @@ Full step-by-step with rollback in `DEPLOYMENT.md`.
 
 ## 7. Known gaps and honest caveats
 
-- **Lighthouse was never run.** There's no Chrome measurement environment in
-  the build sandbox, so there are no real Performance / LCP / INP / CLS
-  numbers. The architecture targets the goals (static prerendering, one small
-  IntersectionObserver, `next/image` everywhere with explicit `sizes`, no
-  animation library), but treat the targets as unverified until someone runs
-  Lighthouse against a Vercel preview URL.
-- **Image repetition** — see §4.
+- **Lighthouse has now been run** — locally, against a production build
+  (`npm run start`), not against Vercel. The earlier note that this sandbox
+  has no Chrome measurement environment was wrong: Chromium ships at
+  `/opt/pw-browsers/chromium-*/chrome-linux/chrome`, and Lighthouse runs
+  against it fine (command in §9).
+
+  | | Perf | A11y | Best Practices | SEO |
+  |---|---|---|---|---|
+  | Desktop | **100** | 100 | 100 | 100 |
+  | Mobile | **80** | 100 | 100 | 100 |
+
+  Desktop: FCP 0.3s, LCP 0.7s (the hero image), TBT 0ms, CLS 0.
+  Mobile: FCP 1.7s, LCP 3.9s, TBT 200ms, CLS **0**, Speed Index 5.1s.
+
+  **The mobile LCP element is the consent banner, not the hero.** Lighthouse
+  names `body > div.fixed > p.text-sm` — the "We use analytics…" paragraph.
+  `ConsentBanner` is a client component that renders `null` on the server and
+  only becomes visible after hydration and a `useEffect` localStorage read, so
+  under mobile emulation (4× CPU + slow 4G) it paints late, and because it is
+  full-bleed on mobile (`inset-x-0 bottom-0`, versus a `max-w-sm` card at
+  `sm:`) it is the largest contentful element in the viewport. LCP is
+  therefore measuring "time until the consent banner hydrates" rather than
+  when the page becomes useful — FCP is 1.7s and CLS is a clean 0.
+
+  Three things worth considering, none of them done yet:
+  1. Make the banner a narrow card on mobile too, as it already is at `sm:`.
+     That shrinks its painted area and likely hands LCP back to the hero. It
+     is a design change, so it needs a decision — but it is not metric-gaming.
+  2. The only real perf opportunities Lighthouse found are framework-level and
+     modest: legacy JS to modern browsers (~300ms), unused JS (~240ms),
+     render-blocking resources (~150ms).
+  3. Re-measure on a Vercel preview. These numbers come from a local server
+     with no CDN, no Brotli, and no edge cache, so hydration starts later than
+     it would in production; mobile LCP should improve there. The *structural*
+     point — that a post-hydration client component is the LCP element —
+     will not change on its own.
+
+  Note the motion system interacts with this: `Reveal` elements start at
+  opacity 0, and opacity-0 elements are not LCP candidates, which also
+  inflates Speed Index (5.1s on mobile). That is the cost of the reveal
+  choreography, and it is a deliberate design decision — not a bug.
+
+- **Image repetition** — resolved, see §4.
+- **`src/content/projects.ts` is still empty**, even though matched
+  before/after photography now exists. An entry needs city, property type,
+  challenge and outcome — which cannot be read off a photo without inventing
+  them — plus written per-property owner permission. The photos are staged and
+  the template is ready; supply the facts and the slider turns itself on.
 - **`view_service`, `view_project`, `click_google_reviews`, `download_guide`**
   are defined in the typed analytics helper but not all wired to fire, because
   the underlying content (project entries, a downloadable guide) doesn't exist
@@ -225,6 +277,15 @@ If you're working in a sandbox like the one this was built in:
 - **Full-page screenshots render from scroll 0**, so scroll-triggered reveals
   photograph as blank. `shot.mjs` emulates reduced motion to capture final
   states; pass `MOTION=on` to see the animated path instead.
+- **`waitUntil: "networkidle"` is flaky in this sandbox.** `axe-check.mjs` and
+  `shot.mjs` both use it, and it intermittently times out even though the route
+  serves in under 5ms via curl and no requests are pending after `load`. Which
+  route fails varies between runs. It is a tooling artifact, not a site bug —
+  re-run, or swap `networkidle` for `load`
+  (`sed 's/networkidle/load/' axe-check.mjs > axe-load.mjs`) to get a result.
+  Full-page screenshots at 390px additionally exceed Chromium's height limit on
+  the longer pages (the homepage is ~21,000px at phone width) and need a
+  `clip`, without `fullPage`.
 - **Node scripts must live in the project root** to resolve `@playwright/test`
    — running them from `/tmp` fails with `ERR_MODULE_NOT_FOUND`.
 
@@ -244,6 +305,12 @@ npx playwright test         # 14 e2e tests
 
 ./rebuild.sh                # clean rebuild + restart on :3000, verifies CSS
 node axe-check.mjs          # WCAG 2.2 AA sweep, needs a running server
+
+# Lighthouse — needs a running server (./rebuild.sh first)
+CHROME_PATH=/opt/pw-browsers/chromium-1194/chrome-linux/chrome \
+  npx lighthouse@12 http://127.0.0.1:3000/ --preset=desktop \
+  --chrome-flags="--headless=new --no-sandbox" --output=html \
+  --output-path=/tmp/lh.html          # drop --preset=desktop for mobile
 OUT=/tmp/shots WIDTHS=390,768,1024,1440,1920 ROUTES="home:/" node shot.mjs
 ```
 
@@ -253,11 +320,14 @@ OUT=/tmp/shots WIDTHS=390,768,1024,1440,1920 ROUTES="home:/" node shot.mjs
 
 ## 10. Suggested next steps, in order
 
-1. **Deploy to Vercel** to get a preview URL, then run Lighthouse against it
-   and fix whatever it finds.
-2. **Re-enable the Google Drive connector** and pull the remaining ~34 photos
-   and 12 videos; distribute them to kill the repetition, and populate
-   `src/content/projects.ts` with real before/after pairs.
+1. **Deploy to Vercel** to get a preview URL, then re-run Lighthouse against
+   it. Lighthouse has now been run locally (§7) — desktop is 100 across the
+   board, mobile perf is 80 with the consent banner as the LCP element. Decide
+   on the mobile-banner width question in §7 before or after the deploy.
+2. ~~Pull the remaining photos from Drive~~ — **done.** What remains from that
+   thread: (a) confirm who is in the founder-portrait candidate, (b) pull the
+   5 oversized HEICs directly from Drive, (c) decide where the 12 videos are
+   hosted, (d) get per-property permission so `projects.ts` can be filled.
 3. **Get the Jobber form URL** and verify an end-to-end submission from the
    live domain.
 4. **Walk `CONTENT_APPROVALS.md` with Dante** — especially the insurance

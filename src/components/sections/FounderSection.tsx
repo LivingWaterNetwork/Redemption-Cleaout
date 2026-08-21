@@ -20,8 +20,8 @@ export function FounderSection() {
             <figure>
               <div className="img-frame aspect-portrait w-full">
                 <Image
-                  src="/images/photos/garage-cleanout-in-progress.jpg"
-                  alt="Furniture and household items moved out of a garage during a Redemption cleanout."
+                  src="/images/photos/cleared-garage-bay-after.jpg"
+                  alt="A Redemption crew member finishing a cleared bay at the end of a cleanout."
                   fill
                   sizes="(min-width: 1024px) 40vw, 100vw"
                   className="object-cover"
