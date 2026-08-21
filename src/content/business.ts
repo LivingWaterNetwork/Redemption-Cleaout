@@ -1,0 +1,54 @@
+import type { BusinessInfo } from "@/types/content";
+
+/**
+ * Central business configuration. Do not hardcode business facts anywhere
+ * else in the app — import from here.
+ *
+ * ADDRESS SAFETY RULE: publicAddressEnabled must stay false until leadership
+ * confirms, in writing (see CONTENT_APPROVALS.md), that:
+ *   1. Redemption permanently operates at this address
+ *   2. Staff are present during published business hours
+ *   3. Customers can visit the location
+ *   4. Permanent signage is installed
+ *   5. The address complies with Google Business Profile rules
+ *
+ * Internal-only record (not rendered while publicAddressEnabled is false):
+ *   429 South Main Street, Rochester, MI 48307
+ */
+export const business: BusinessInfo = {
+  name: "Redemption Cleanout Services",
+  legalTagline: "Redeem Your Property. Reclaim Your Space.",
+  founderName: "Dante Terracciano",
+  phoneDisplay: "(248) 321-9609",
+  phoneHref: "+12483219609",
+  primaryDomain: "redemptioncleanoutservices.com",
+  instagramHandle: "@redemption_cleanoutservices",
+  instagramUrl: "https://www.instagram.com/redemption_cleanoutservices",
+  address: {
+    publicAddressEnabled: false,
+    street: "429 South Main Street",
+    city: "Rochester",
+    state: "MI",
+    zip: "48307",
+    publicAreaDescription: "Based in Rochester, Michigan",
+  },
+  serviceRegionSummary:
+    "Rochester, Rochester Hills, Oakland County, and approved surrounding Southeast Michigan communities",
+};
+
+export const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://redemptioncleanoutservices.com";
+
+export const jobberRequestFormUrl = process.env.NEXT_PUBLIC_JOBBER_REQUEST_FORM_URL ?? "";
+export const jobberEmbedUrl = process.env.NEXT_PUBLIC_JOBBER_EMBED_URL ?? "";
+export const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ?? "";
+export const googleReviewUrl = process.env.NEXT_PUBLIC_GOOGLE_REVIEW_URL ?? "";
+export const googleBusinessUrl = process.env.NEXT_PUBLIC_GOOGLE_BUSINESS_URL ?? "";
+
+export function formatPhoneTelHref(): string {
+  return `tel:${business.phoneHref}`;
+}
+
+export function formatPhoneSmsHref(): string {
+  return `sms:${business.phoneHref}`;
+}

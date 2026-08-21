@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-redemption-red: #c32c26;
+  --color-restoration-red-dark: #a91e23;
+  --color-heritage-black: #0b0d0e;
+  --color-clean-white: #ffffff;
+  --color-steel-gray: #605f5d;
+  --color-warm-concrete: #e5e1de;
+}
+
+@layer base {
+  * {
+    @apply border-warm-concrete;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  body {
+    @apply bg-clean-white text-heritage-black font-body antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display;
+  }
+
+  a,
+  button {
+    @apply outline-none;
+  }
+
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible,
+  [tabindex]:focus-visible {
+    outline: 3px solid var(--color-redemption-red);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+}
+
+@layer components {
+  .skip-link {
+    @apply sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded focus:bg-heritage-black focus:px-4 focus:py-2 focus:text-clean-white;
+  }
+
+  .container-page {
+    @apply mx-auto w-full max-w-content px-4 sm:px-6 lg:px-8;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-sm bg-redemption-red px-6 py-3 text-sm font-display font-semibold uppercase tracking-wide text-clean-white transition-colors hover:bg-restoration-red-dark min-h-[44px];
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-sm border-2 border-heritage-black bg-clean-white px-6 py-3 text-sm font-display font-semibold uppercase tracking-wide text-heritage-black transition-colors hover:bg-heritage-black hover:text-clean-white min-h-[44px];
+  }
+
+  .btn-ghost-on-dark {
+    @apply inline-flex items-center justify-center gap-2 rounded-sm border-2 border-clean-white bg-transparent px-6 py-3 text-sm font-display font-semibold uppercase tracking-wide text-clean-white transition-colors hover:bg-clean-white hover:text-heritage-black min-h-[44px];
+  }
+
+  .eyebrow {
+    @apply text-xs font-condensed font-bold uppercase tracking-[0.2em] text-redemption-red;
+  }
+}
