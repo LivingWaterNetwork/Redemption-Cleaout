@@ -120,7 +120,14 @@ See `DEPLOYMENT.md` for the full Vercel + GoDaddy DNS cutover process. In
 short: deploys automatically to Vercel on push to `main`; the domain stays
 registered at GoDaddy, only its DNS records point at Vercel.
 
+## Picking this up mid-project?
+
+Start with **`HANDOFF.md`** — current state, decisions that are load-bearing
+(and why), what's blocking launch, known gaps, and suggested next steps.
+
 ## Further documentation
+
+- `HANDOFF.md` — project state, decisions, blockers, next steps
 
 - `JOBBER_SETUP.md` — configuring the Jobber embed and recommended form fields
 - `ANALYTICS.md` — GA4 setup and the full typed event catalog
