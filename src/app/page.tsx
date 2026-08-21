@@ -3,7 +3,7 @@ import { Hero } from "@/components/sections/Hero";
 import { TrustStrip } from "@/components/ui/TrustStrip";
 import { SituationSelector } from "@/components/sections/SituationSelector";
 import { FlagshipServices } from "@/components/sections/FlagshipServices";
-import { ProjectGallery } from "@/components/sections/ProjectGallery";
+import { RecentWork } from "@/components/sections/RecentWork";
 import { WhyRedemption } from "@/components/sections/WhyRedemption";
 import { HowItWorksSection } from "@/components/sections/HowItWorksSection";
 import { ProfessionalPartnerSection } from "@/components/sections/ProfessionalPartnerSection";
@@ -37,7 +37,7 @@ export default function HomePage() {
       <TrustStrip />
       <SituationSelector />
       <FlagshipServices />
-      <ProjectGallery limit={4} />
+      <RecentWork />
       <WhyRedemption />
       <HowItWorksSection />
       <ProfessionalPartnerSection />

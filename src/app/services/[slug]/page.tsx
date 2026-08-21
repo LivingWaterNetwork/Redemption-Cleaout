@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { getServiceBySlug, services } from "@/content/services";
 import { PageHero } from "@/components/sections/PageHero";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { ProcessTimeline } from "@/components/ui/ProcessTimeline";
 import { FAQAccordion } from "@/components/ui/FAQAccordion";
 import { CallToAction } from "@/components/ui/CallToAction";
-import { ProjectGallery } from "@/components/sections/ProjectGallery";
 import { StructuredData } from "@/components/StructuredData";
 import { breadcrumbJsonLd, pageMetadata } from "@/lib/seo";
 import { faqPageJsonLd, serviceJsonLd } from "@/lib/structuredData";
@@ -65,6 +65,22 @@ export default async function ServiceDetailPage({
         ]}
       />
       <PageHero eyebrow="Service" title={service.heroHeadline} description={service.situation} />
+
+      {service.image && (
+        <figure className="container-page pt-12">
+          <div className="relative aspect-[3/2] w-full overflow-hidden">
+            <Image
+              src={service.image.src}
+              alt={service.image.alt}
+              fill
+              sizes="(min-width: 1280px) 1280px, 100vw"
+              className="object-cover"
+              priority
+            />
+          </div>
+          <figcaption className="mt-3 text-sm text-steel-gray">{service.image.caption}</figcaption>
+        </figure>
+      )}
 
       <section className="container-page grid gap-12 py-16 lg:grid-cols-[2fr_1fr]">
         <div>
@@ -144,8 +160,6 @@ export default async function ServiceDetailPage({
           </div>
         </div>
       </section>
-
-      <ProjectGallery limit={2} />
 
       {relatedServices.length > 0 && (
         <section className="container-page py-16">

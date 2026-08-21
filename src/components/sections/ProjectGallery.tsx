@@ -8,15 +8,15 @@ export function ProjectGallery({ limit }: { limit?: number }) {
 
   return (
     <section className="container-page py-16">
-      <p className="eyebrow">Project Gallery</p>
+      <p className="eyebrow">Before &amp; After</p>
       <h2 className="mt-1 font-display text-3xl font-bold text-heritage-black">
-        Before-and-after proof
+        Matched before-and-after pairs
       </h2>
       {visible.length === 0 ? (
         <div className="mt-8">
           <EmptyState
-            title="Project photography is being gathered"
-            description="Authentic before-and-after photos from completed Redemption projects will appear here once approved. We don't publish stock or staged imagery."
+            title="Before-and-after pairs are being documented"
+            description="Matched same-angle before and after photos from completed projects will appear here once client permissions are confirmed. We don't publish stock or staged imagery."
             action={
               <Link href="/request-walkthrough" className="btn-primary">
                 Request a Property Walkthrough

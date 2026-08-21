@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { primaryNav } from "@/content/navigation";
+import { primaryNav, secondaryNav } from "@/content/navigation";
 import { business, formatPhoneTelHref } from "@/content/business";
 import { trackEvent } from "@/lib/analytics";
 
@@ -26,7 +26,7 @@ export function Header() {
         </Link>
 
         <nav aria-label="Primary" className="hidden lg:block">
-          <ul className="flex items-center gap-6">
+          <ul className="flex items-center gap-5 xl:gap-6">
             {primaryNav.map((item) => (
               <li key={item.href} className="relative">
                 {item.children ? (
@@ -81,17 +81,17 @@ export function Header() {
           </ul>
         </nav>
 
-        <div className="hidden items-center gap-3 lg:flex">
+        <div className="hidden shrink-0 items-center gap-4 lg:flex">
           <a
             href={formatPhoneTelHref()}
-            className="text-sm font-semibold text-heritage-black hover:text-redemption-red"
+            className="whitespace-nowrap text-sm font-semibold text-heritage-black hover:text-redemption-red"
             onClick={() => trackEvent({ name: "click_call", params: { location: "header" } })}
           >
             {business.phoneDisplay}
           </a>
           <Link
             href="/request-walkthrough"
-            className="btn-primary"
+            className="btn-primary whitespace-nowrap !px-5"
             onClick={() =>
               trackEvent({ name: "click_request_walkthrough", params: { location: "header" } })
             }
@@ -145,6 +145,17 @@ export function Header() {
                     ))}
                   </ul>
                 )}
+              </li>
+            ))}
+            {secondaryNav.map((item) => (
+              <li key={item.href}>
+                <Link
+                  href={item.href}
+                  className="block py-3 text-base font-semibold text-heritage-black"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  {item.label}
+                </Link>
               </li>
             ))}
             <li className="mt-2">

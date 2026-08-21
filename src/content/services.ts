@@ -6,6 +6,11 @@ export const services: ServiceDefinition[] = [
     name: "Full-Property Cleanouts",
     shortName: "Full-Property Cleanouts",
     priority: 1,
+    image: {
+      src: "/images/photos/full-property-cleanout-removal.jpg",
+      alt: "Furniture, mattresses, and bagged household contents staged for removal alongside a home during a full-property cleanout.",
+      caption: "A full-property cleanout staged for removal — every room, top to bottom.",
+    },
     primaryKeyword: "full property cleanout",
     heroHeadline: "Full-Property Cleanouts",
     metaDescription:
@@ -69,6 +74,11 @@ export const services: ServiceDefinition[] = [
     name: "Estate and Inherited-Property Cleanouts",
     shortName: "Estate Cleanouts",
     priority: 2,
+    image: {
+      src: "/images/photos/estate-cleanout-driveway-staging.jpg",
+      alt: "Household furniture, shelving, and equipment sorted and staged on a driveway during an estate cleanout.",
+      caption: "Contents sorted and staged during an estate cleanout, so nothing leaves before it's reviewed.",
+    },
     primaryKeyword: "estate cleanout",
     heroHeadline: "Estate and Inherited-Property Cleanouts",
     metaDescription:
@@ -132,6 +142,11 @@ export const services: ServiceDefinition[] = [
     name: "Commercial Property Cleanouts",
     shortName: "Commercial Cleanouts",
     priority: 3,
+    image: {
+      src: "/images/photos/cleared-garage-bay-after.jpg",
+      alt: "A cleared commercial bay with the Redemption crew finishing a cleanout, floor swept and ready for turnover.",
+      caption: "A commercial bay cleared and swept, ready for the next tenant or phase of work.",
+    },
     primaryKeyword: "commercial property cleanout",
     heroHeadline: "Commercial Property Cleanouts",
     metaDescription:
@@ -251,6 +266,11 @@ export const services: ServiceDefinition[] = [
     name: "Hoarding-Related Cleanouts",
     shortName: "Hoarding-Related Cleanouts",
     priority: 5,
+    image: {
+      src: "/images/photos/severe-clutter-basement-before.jpg",
+      alt: "A basement filled with stored household goods and shelving before a severe-clutter cleanout.",
+      caption: "A severe-clutter basement before work begins — scoped in person, handled without judgment.",
+    },
     primaryKeyword: "hoarding cleanout",
     heroHeadline: "Hoarding-Related Cleanouts",
     metaDescription:
@@ -314,6 +334,11 @@ export const services: ServiceDefinition[] = [
     name: "Residential Junk Removal",
     shortName: "Residential Junk Removal",
     priority: 6,
+    image: {
+      src: "/images/photos/garage-cleanout-in-progress.jpg",
+      alt: "Furniture and household items moved out of a garage during a residential cleanout.",
+      caption: "A garage cleanout in progress — furniture and bulk items cleared in one visit.",
+    },
     primaryKeyword: "residential junk removal",
     heroHeadline: "Residential Junk Removal",
     metaDescription:

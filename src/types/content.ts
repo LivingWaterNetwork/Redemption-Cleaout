@@ -37,11 +37,20 @@ export type ProcessStep = {
   description: string;
 };
 
+export type ServiceImage = {
+  src: string;
+  alt: string;
+  /** Short caption shown under the image. Must describe real work only. */
+  caption: string;
+};
+
 export type ServiceDefinition = {
   slug: string;
   name: string;
   shortName: string;
   priority: number;
+  /** Authentic job photography. Omit when no approved photo exists yet. */
+  image?: ServiceImage;
   heroHeadline: string;
   metaDescription: string;
   situation: string;

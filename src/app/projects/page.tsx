@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { PageHero } from "@/components/sections/PageHero";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { ProjectGallery } from "@/components/sections/ProjectGallery";
+import { RecentWork } from "@/components/sections/RecentWork";
 import { CallToAction } from "@/components/ui/CallToAction";
 import { StructuredData } from "@/components/StructuredData";
 import { breadcrumbJsonLd, pageMetadata } from "@/lib/seo";
@@ -23,8 +24,9 @@ export default function ProjectsPage() {
         title="Real properties, real proof"
         description="We publish authentic before-and-after documentation only — no stock or staged imagery, and never without permission."
       />
+      <RecentWork />
       <ProjectGallery />
-      <CallToAction location="projects_cta" headline="Have a property that needs this kind of work?" variant="dark" />
+      <CallToAction location="projects_cta" headline="Have a property that needs this kind of work?" variant="light" />
     </>
   );
 }
