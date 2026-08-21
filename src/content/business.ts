@@ -1,4 +1,5 @@
 import type { BusinessInfo } from "@/types/content";
+import { resolveSiteUrl } from "@/lib/validation";
 
 /**
  * Central business configuration. Do not hardcode business facts anywhere
@@ -36,8 +37,7 @@ export const business: BusinessInfo = {
     "Rochester, Rochester Hills, Oakland County, and approved surrounding Southeast Michigan communities",
 };
 
-export const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://redemptioncleanoutservices.com";
+export const siteUrl = resolveSiteUrl(process.env.NEXT_PUBLIC_SITE_URL);
 
 export const jobberRequestFormUrl = process.env.NEXT_PUBLIC_JOBBER_REQUEST_FORM_URL ?? "";
 export const jobberEmbedUrl = process.env.NEXT_PUBLIC_JOBBER_EMBED_URL ?? "";

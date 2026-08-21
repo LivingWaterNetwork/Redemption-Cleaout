@@ -143,9 +143,9 @@ export const services: ServiceDefinition[] = [
     shortName: "Commercial Cleanouts",
     priority: 3,
     image: {
-      src: "/images/photos/cleared-garage-bay-after.jpg",
-      alt: "A cleared commercial bay with the Redemption crew finishing a cleanout, floor swept and ready for turnover.",
-      caption: "A commercial bay cleared and swept, ready for the next tenant or phase of work.",
+      src: "/images/photos/commercial-forklift-pallet-loading.jpg",
+      alt: "A forklift loading shrink-wrapped pallets of office equipment into a Redemption dump trailer during a commercial cleanout.",
+      caption: "Palletised commercial equipment loaded out — scaled to the site, not to a pickup truck.",
     },
     primaryKeyword: "commercial property cleanout",
     heroHeadline: "Commercial Property Cleanouts",
@@ -204,6 +204,11 @@ export const services: ServiceDefinition[] = [
     name: "Foreclosure and Distressed-Property Cleanouts",
     shortName: "Foreclosure Cleanouts",
     priority: 4,
+    image: {
+      src: "/images/photos/yard-debris-and-equipment-removal.jpg",
+      alt: "Derelict mowers, a rusted utility trailer, and bagged debris left behind in the yard of a vacated property.",
+      caption: "A distressed property cleared of everything the previous occupant left behind.",
+    },
     primaryKeyword: "foreclosure cleanout",
     heroHeadline: "Foreclosure and Distressed-Property Cleanouts",
     metaDescription:
@@ -267,9 +272,9 @@ export const services: ServiceDefinition[] = [
     shortName: "Hoarding-Related Cleanouts",
     priority: 5,
     image: {
-      src: "/images/photos/severe-clutter-basement-before.jpg",
-      alt: "A basement filled with stored household goods and shelving before a severe-clutter cleanout.",
-      caption: "A severe-clutter basement before work begins — scoped in person, handled without judgment.",
+      src: "/images/photos/severe-clutter-living-room-before.jpg",
+      alt: "A living room filled with accumulated household contents and debris before a severe-clutter cleanout.",
+      caption: "A severe-clutter room before work begins — scoped in person, handled without judgment.",
     },
     primaryKeyword: "hoarding cleanout",
     heroHeadline: "Hoarding-Related Cleanouts",
@@ -390,6 +395,11 @@ export const services: ServiceDefinition[] = [
     name: "Move-Out and Downsizing Cleanouts",
     shortName: "Move-Out Cleanouts",
     priority: 7,
+    image: {
+      src: "/images/photos/townhouse-patio-cleared-after.jpg",
+      alt: "A townhouse patio cleared and swept after a move-out cleanout, ready for the next occupant.",
+      caption: "A unit cleared and swept after a move-out — ready to hand back or list.",
+    },
     primaryKeyword: "move-out cleanout",
     heroHeadline: "Move-Out and Downsizing Cleanouts",
     metaDescription:
@@ -444,6 +454,11 @@ export const services: ServiceDefinition[] = [
     name: "Light Demolition and Site Preparation",
     shortName: "Light Demolition",
     priority: 8,
+    image: {
+      src: "/images/photos/light-demolition-deck-removal.jpg",
+      alt: "A Redemption crew member cutting apart a rotted deck frame with a reciprocating saw during a light demolition job.",
+      caption: "A rotted deck cut down and removed — light demolition, scoped to site conditions.",
+    },
     primaryKeyword: "light demolition",
     heroHeadline: "Light Demolition and Site Preparation",
     metaDescription:

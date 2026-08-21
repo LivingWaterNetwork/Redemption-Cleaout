@@ -31,8 +31,8 @@ export default function ProjectsPage() {
         description="Photographs from real Redemption projects across Southeast Michigan. We publish nothing staged, and nothing identifying without permission."
         variant="image"
         image={{
-          src: "/images/photos/full-property-cleanout-removal.jpg",
-          alt: "A full-property cleanout staged for removal alongside a Michigan home.",
+          src: "/images/photos/metal-recycling-load-dropoff.jpg",
+          alt: "A loaded Redemption trailer at a scrap-metal recycling facility during responsible disposal of cleanout material.",
         }}
       />
 

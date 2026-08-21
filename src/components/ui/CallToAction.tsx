@@ -77,7 +77,7 @@ export function CallToAction({
     <section className="relative isolate overflow-hidden bg-heritage-black py-section-lg text-clean-white on-dark">
       <div className="absolute inset-0 -z-10">
         <Image
-          src="/images/photos/garage-cleanout-in-progress.jpg"
+          src="/images/photos/branded-dump-trailer-curbside.jpg"
           alt=""
           aria-hidden="true"
           fill
