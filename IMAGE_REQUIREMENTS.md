@@ -2,18 +2,21 @@
 
 ## Current state
 
-- `public/images/brand/logo-source-lowres.png` — the real Redemption logo,
-  extracted from the brand guide's Canva brand-kit export. Source
-  resolution is only ~199×88px upscaled, so it will look soft above small
-  sizes. **This is a temporary placeholder, not a production asset.**
-- `public/images/og/default.png` — a generated 1200×630 Open Graph image
-  using this same low-res logo on a heritage-black background. Regenerate
-  once a master vector logo exists.
-- Every project photo, founder photo, and crew photo across the site is an
-  honest `PhotoPlaceholder` component (see
-  `src/components/ui/PhotoPlaceholder.tsx`) — a plain on-brand placeholder,
-  never a stock photo or fabricated image. Replace these with real
-  `<Image>` components once photography is approved.
+> **Note:** this section describes the *original* pre-photography state and is
+> kept for the logo and OG-card notes only. Everything about placeholders is
+> superseded by "Phase 3 update — Drive photo pull" further down this file,
+> which is the accurate current record. `PhotoPlaceholder` has since been
+> deleted, because no placement uses it any more.
+
+- `public/images/brand/logo-master.png` — the real Redemption logo. Still
+  raster, not vector. Favicon, app icons, Apple touch icon and the OG card are
+  all generated from it. **A master vector logo is still outstanding.**
+- `public/images/og/default.png` — a generated 1200×630 Open Graph image on a
+  heritage-black background. Its dimensions are declared in
+  `src/lib/seo.ts` (`OG_IMAGE_WIDTH` / `OG_IMAGE_HEIGHT`) — **update those
+  constants if this card is ever regenerated at a different size.**
+- Photography is now real throughout: 19 authentic job photos across 17
+  placements, no placeholder components remaining. See the Phase 3 section.
 
 ## Production assets still needed (per brand guide, Slide 25)
 
@@ -55,7 +58,8 @@ Request from Dante/leadership, in order of urgency:
   paths; `ProjectGallery` and `BeforeAfterComparison` will render them
   automatically once the array is non-empty.
 - `src/components/sections/Hero.tsx`, `FounderSection.tsx`,
-  `about/page.tsx` — replace the `PhotoPlaceholder` calls with `<Image>`.
+  `about/page.tsx` — these now use real `<Image>` components; the remaining
+  substitution is the founder portrait (see Phase 3).
 - Use descriptive filenames (e.g. `rochester-estate-cleanout-garage-after.jpg`)
   and always provide accurate, descriptive alt text — never a generic
   "image" alt.

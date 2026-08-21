@@ -28,7 +28,7 @@ in the codebase.
 
 | Event | Fires when | File |
 |---|---|---|
-| `click_call` | A call link/button is clicked | Header, UtilityBar, MobileActionBar, CallToAction |
+| `click_call` | A call link/button is clicked | Header, MobileActionBar, CallToAction, JobberRequestForm fallback |
 | `click_text` | A text link/button is clicked | MobileActionBar, CallToAction |
 | `click_request_walkthrough` | A "Request a Walkthrough" CTA is clicked | Header, MobileActionBar, CallToAction |
 | `jobber_form_view` | The Jobber embed renders (config present) | JobberRequestForm |

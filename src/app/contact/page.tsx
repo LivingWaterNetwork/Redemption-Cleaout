@@ -37,7 +37,7 @@ export default function ContactPage() {
             <div className="border-t border-heritage-black/12">
               <Reveal>
                 <div className="grid gap-2 border-b border-heritage-black/12 py-8 sm:grid-cols-[minmax(0,10rem)_1fr] sm:gap-8">
-                  <p className="eyebrow-plain text-steel-gray">Call</p>
+                  <h2 className="eyebrow-plain text-steel-gray">Call</h2>
                   <div>
                     <a
                       href={formatPhoneTelHref()}
@@ -54,7 +54,7 @@ export default function ContactPage() {
 
               <Reveal delay={80}>
                 <div className="grid gap-2 border-b border-heritage-black/12 py-8 sm:grid-cols-[minmax(0,10rem)_1fr] sm:gap-8">
-                  <p className="eyebrow-plain text-steel-gray">Text</p>
+                  <h2 className="eyebrow-plain text-steel-gray">Text</h2>
                   <div>
                     <a
                       href={formatPhoneSmsHref()}
@@ -71,7 +71,7 @@ export default function ContactPage() {
 
               <Reveal delay={160}>
                 <div className="grid gap-2 border-b border-heritage-black/12 py-8 sm:grid-cols-[minmax(0,10rem)_1fr] sm:gap-8">
-                  <p className="eyebrow-plain text-steel-gray">Online</p>
+                  <h2 className="eyebrow-plain text-steel-gray">Online</h2>
                   <div>
                     <Link
                       href="/request-walkthrough"
@@ -88,7 +88,7 @@ export default function ContactPage() {
 
               <Reveal delay={220}>
                 <div className="grid gap-2 py-8 sm:grid-cols-[minmax(0,10rem)_1fr] sm:gap-8">
-                  <p className="eyebrow-plain text-steel-gray">Instagram</p>
+                  <h2 className="eyebrow-plain text-steel-gray">Instagram</h2>
                   <div>
                     <a
                       href={business.instagramUrl}
@@ -105,7 +105,7 @@ export default function ContactPage() {
           <Reveal delay={140} className="lg:col-span-5">
             <div className="frame-double">
               <div className="bg-warm-concrete p-8">
-                <p className="eyebrow-plain text-steel-gray">Where we work</p>
+                <h2 className="eyebrow-plain text-steel-gray">Where we work</h2>
                 <p className="mt-4 font-display text-xl font-semibold text-heritage-black">
                   {business.address.publicAreaDescription}
                 </p>

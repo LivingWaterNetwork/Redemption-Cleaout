@@ -95,7 +95,16 @@ export type ServiceAreaDefinition = {
 
 export type ResourceDefinition = {
   slug: string;
+  /** Editorial headline. Rendered as the page H1 and in the /resources index. */
   title: string;
+  /**
+   * Shorter title for the <title> tag only. The root template appends
+   * " | Redemption Cleanout Services" (31 characters), so a full editorial
+   * headline pushes the tag well past the ~60 characters a SERP displays and
+   * the keyword gets truncated away. Set this to a front-loaded short form and
+   * leave `title` as the headline. Falls back to `title` when omitted.
+   */
+  seoTitle?: string;
   metaDescription: string;
   summary: string;
   publishedAt: string;

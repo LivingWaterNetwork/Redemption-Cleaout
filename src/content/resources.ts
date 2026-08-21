@@ -4,6 +4,7 @@ export const resources: ResourceDefinition[] = [
   {
     slug: "estate-cleanout-checklist",
     title: "Estate Cleanout Checklist: What to Handle, and in What Order",
+    seoTitle: "Estate Cleanout Checklist",
     metaDescription:
       "A practical checklist for families and executors handling an estate cleanout in Michigan — from securing the property to a final clearing.",
     summary:
@@ -46,6 +47,7 @@ export const resources: ResourceDefinition[] = [
   {
     slug: "preparing-for-a-property-cleanout",
     title: "Preparing for a Property Cleanout: What to Know Before the Walkthrough",
+    seoTitle: "Preparing for a Property Cleanout",
     metaDescription:
       "What to expect before, during, and after a property cleanout walkthrough — access, timelines, and how quotes are scoped.",
     summary:
@@ -80,6 +82,7 @@ export const resources: ResourceDefinition[] = [
   {
     slug: "how-property-cleanout-pricing-works",
     title: "How Property Cleanout Pricing Actually Works",
+    seoTitle: "How Property Cleanout Pricing Works",
     metaDescription:
       "The real factors that affect property cleanout pricing — volume, access, materials, and timeline — and why on-site quotes matter.",
     summary:

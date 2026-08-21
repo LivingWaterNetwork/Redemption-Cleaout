@@ -62,10 +62,11 @@ src/
                          ProjectGallery),
                          ui/ (primitives: Breadcrumbs, CallToAction,
                          FAQAccordion, ProcessTimeline, SectionHeader,
-                         ServiceCard, EmptyState, PhotoPlaceholder), plus
-                         JobberRequestForm, BeforeAfterComparison,
-                         Analytics, ConsentBanner, StructuredData,
-                         ErrorBoundary at the top level.
+                         EmptyState), plus JobberRequestForm,
+                         BeforeAfterComparison, Analytics, ConsentBanner,
+                         StructuredData at the top level. Error handling is
+                         the App Router's own error.tsx / global-error.tsx,
+                         not a component.
   content/               Typed content layer — business.ts, services.ts,
                          audiences.ts, serviceAreas.ts, faqs.ts,
                          testimonials.ts, projects.ts, resources.ts,

@@ -34,7 +34,7 @@ that lives in the LWN repo.
 |---|---|
 | Routes | 41 generated (8 services, 6 audiences, 2 service areas, 3 resources, plus static + legal) |
 | Typecheck / lint | Clean |
-| Unit tests | 24 passing (Vitest) |
+| Unit tests | 38 passing (Vitest) |
 | E2E tests | 14 passing (Playwright) |
 | Production build | Passing |
 | Accessibility | **0 axe violations**, WCAG 2.2 AA, 14 routes × 390px and 1440px |

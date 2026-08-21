@@ -65,6 +65,25 @@
 }
 
 @layer components {
+  /* ---- Consent banner visibility ---------------------------------------
+     The banner is server-rendered so it paints at FCP instead of waiting on
+     hydration, but it must stay invisible for visitors who already answered.
+     ConsentGate's pre-paint inline script adds `consent-pending` to <html>
+     when localStorage holds no answer, which is the only thing that reveals
+     it. Same pre-paint gate pattern as MotionGate, for the same reason: no
+     flash of content that should not have been shown.
+
+     Default-hidden is deliberate. With JS off the script never runs, the
+     banner never appears, and Analytics never loads either — so nothing is
+     tracked and there is nothing to consent to. */
+  .consent-banner {
+    display: none;
+  }
+
+  .consent-pending .consent-banner {
+    display: block;
+  }
+
   .skip-link {
     @apply sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[200] focus:bg-heritage-black focus:px-5 focus:py-3 focus:text-sm focus:font-semibold focus:text-clean-white;
   }

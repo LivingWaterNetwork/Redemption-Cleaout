@@ -23,7 +23,9 @@ export async function generateMetadata({
   const resource = getResourceBySlug(slug);
   if (!resource) return {};
   return pageMetadata({
-    title: resource.title,
+    // seoTitle keeps the <title> tag inside SERP width; the editorial headline
+    // in `title` still carries the page H1 and the /resources index.
+    title: resource.seoTitle ?? resource.title,
     description: resource.metaDescription,
     path: `/resources/${resource.slug}`,
   });

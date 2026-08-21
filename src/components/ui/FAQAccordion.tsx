@@ -4,9 +4,12 @@ import { useState } from "react";
 import type { ServiceFAQ } from "@/types/content";
 
 /**
- * Accessible accordion. The panel animates via a grid-template-rows
- * transition (which animates smoothly, unlike `height: auto`) and is kept out
- * of the accessibility tree and tab order while collapsed.
+ * Accessible accordion. The collapsed panel uses the `hidden` attribute, which
+ * keeps it out of both the accessibility tree and the tab order — the reason
+ * it does not animate open. An earlier revision animated a
+ * grid-template-rows transition, but that has to keep the panel in the layout
+ * to interpolate, which leaks collapsed answers to screen readers. Correctness
+ * won; only the plus/minus mark animates.
  */
 export function FAQAccordion({
   faqs,

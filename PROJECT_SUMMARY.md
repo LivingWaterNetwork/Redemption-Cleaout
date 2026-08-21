@@ -7,7 +7,8 @@ deployed site on **2026-08-21**. Where something could not be verified from code
 or from the live site, it is marked explicitly as **UNVERIFIED** rather than
 guessed.
 
-**Read the three flagged items in §0 before building the deck.** Three of the
+**Read the three flagged items in §0 before building the deck**, then §11 for the
+fixes applied after the first pass. Three of the
 briefing assumptions behind this request turned out not to match the repository,
 and one of them is a live production risk.
 
@@ -885,8 +886,11 @@ override rather than the template. All verified live.
 | `/terms` | Terms & Website-Use Notice \| Redemption Cleanout Services | 57 |
 | `/accessibility` | Accessibility Statement \| Redemption Cleanout Services | 54 |
 
-⚠️ Two resource-page titles exceed the ~60-character SERP display width and
-will truncate. Minor, informational pages — low priority, but a trivial fix.
+⚠️ **Fixed — see §11.2.** All three resource titles previously exceeded the
+~60-character SERP display width (90, 100 and 74 characters). They now render
+at **56, 64 and 66** via a separate `seoTitle` field, so the editorial H1 is
+unchanged and the keyword is front-loaded. 64 and 66 may still clip the brand
+suffix on narrow SERPs; that is the correct trade, since the keyword survives.
 
 ### 5.2 Meta descriptions — all unique, all hand-written
 
@@ -947,7 +951,7 @@ missing H1, no duplicate H1, no skipped levels observed.
 | `/resources/estate-cleanout-checklist` | 1 | 5 | 0 |
 | `/faq` | 1 | 6 | 11 |
 | `/request-walkthrough` | 1 | 1 | 5 |
-| `/contact` | 1 | 0 | 0 |
+| `/contact` | 1 | 5 | 0 | *(was 0 H2 — fixed, §11.2)*
 | `/privacy` | 1 | 4 | 0 |
 | `/terms` | 1 | 4 | 0 |
 | `/accessibility` | 1 | 0 | 0 |
@@ -964,9 +968,9 @@ for the line-reveal animation while remaining a single semantic H1:
 </h1>
 ```
 
-`/contact` and `/accessibility` have zero H2s — both are legitimately flat
-pages, though `/contact` could reasonably promote its "Call / Text / Online /
-Instagram" labels to H2s for structure. Minor.
+`/accessibility` has zero H2s, which is legitimate for a two-paragraph
+statement. `/contact` also had zero and now has **five** — its Call / Text /
+Online / Instagram / Where-we-work labels were promoted to real H2s (§11.2).
 
 ### 5.4 Canonical tag configuration
 
@@ -1009,9 +1013,10 @@ byte-for-byte:
 ```
 
 **Complete.** Present on all 34 pages, with per-page title and description.
-Minor gaps: no `og:image:width` / `og:image:height` / `og:image:alt`, and the OG
-image is a single shared 1200×630 card generated from the low-res master logo
-rather than per-page imagery. Both are polish items.
+`og:image:width`, `og:image:height` and `og:image:alt` were missing and have
+been **added — see §11.2**. The OG image remains a single shared 1200×630 card
+generated from the raster master logo rather than per-page imagery; that stays
+open, pending the vector logo.
 
 ### 5.6 Structured data (JSON-LD) — **already implemented, and thorough**
 
@@ -1299,9 +1304,9 @@ handled with an honest on-page state rather than filler:
 
 **Additional gaps I found that were not in the briefing:**
 
-4. `HANDOFF.md`'s status table still says "Unit tests 24 passing" — stale; the actual count at `0f6da52` is **31**.
-5. `IMAGE_REQUIREMENTS.md`'s "Current state" section is stale — it still describes `logo-source-lowres.png` and `PhotoPlaceholder` usage that the Phase 3 photo pull superseded. The Phase 3 section further down the same file is accurate.
-6. `src/components/layout/UtilityBar.tsx` is **dead code** — not mounted in the current layout.
+4. ~~`HANDOFF.md` says "Unit tests 24 passing"~~ — **fixed (§11.3)**; now reads 38, matching the suite after the follow-up tests.
+5. ~~`IMAGE_REQUIREMENTS.md`'s "Current state" section is stale~~ — **fixed (§11.3)**; it now points to the Phase 3 record and no longer describes deleted components.
+6. ~~`UtilityBar.tsx` is dead code~~ — **fixed (§11.3)**. A sweep found **four** unused components (`UtilityBar`, `PhotoPlaceholder`, `ServiceCard`, `ErrorBoundary`); all four are removed.
 7. Four typed analytics events are defined but never fired: `view_service`, `view_project`, `click_google_reviews` (fires only when a Google review URL is configured), `download_guide`. Documented as intentional in `ANALYTICS.md` — the underlying content does not exist yet.
 8. `jobber_form_submit` will **never** fire: Jobber exposes no client-side event to listen for, and firing on iframe `load` would be a lie. This is a documented, deliberate honesty decision. **It means form-conversion tracking is currently impossible** — worth flagging in the deck, because it affects what can be reported back to the client on lead volume.
 9. **The "13 vs. 12 years" discrepancy is unresolved**, and 13 appears in the hero, the founder story, and the `/about` meta description. See §3.5 item 10.
@@ -1527,6 +1532,168 @@ close, not an opinion.
 6. **Should I merge `claude/redemption-cleanout-services-51t9af` into `main`?** It removes the live build risk in §0.1. I have not done it — it is outside the scope of "write a summary," and it changes the default branch.
 7. **Is the apex-vs-www redirect direction intentional?** Today the apex `307`s to `www`, which is the reverse of what the canonical tags and `DEPLOYMENT.md` specify (§5.4).
 8. **Is anyone tracking that the site is currently `noindex`?** If organic traffic is part of the pricing story, §0.2 needs to be fixed before, not after, the deck.
+
+---
+
+## 11. Follow-up fixes applied after the first pass
+
+Everything in this section was implemented, verified, and merged after the
+initial audit above. Verified means measured or exercised in a browser, not
+"it compiles".
+
+**Final state: typecheck clean · lint clean · 38 unit tests passing · build
+passing · 41/41 routes.** Test count rose from 31 to 38 (7 new SEO tests).
+
+### 11.1 Error boundaries — the one real code defect found
+
+**Problem.** There was no `error.tsx` and no `global-error.tsx` anywhere in the
+App Router. An `ErrorBoundary` component existed but was never mounted. So any
+runtime error on any page dropped the visitor onto Next's unbranded default
+error screen — no logo, no phone number, no way forward. On a lead-generation
+site that is a lost lead with no recovery path.
+
+**Fix.** Added two boundaries and deleted the orphaned component:
+
+- **`src/app/error.tsx`** — branded recovery UI: "This page didn't load correctly",
+  the reassurance line "That's on us, not on you", a **Try again** button
+  (React's `reset()`), **Call (248) 321-9609**, **Text (248) 321-9609**, and a
+  Back-to-home link. Deliberately does not import Header or Footer: if the
+  failure came from a layout-adjacent component, re-rendering the chrome risks
+  throwing again.
+- **`src/app/global-error.tsx`** — last resort for a failure in the root layout
+  itself. Next replaces the whole document here, so it renders its own `<html>`
+  and `<body>` with inline styles and zero dependencies; brand hex values are
+  duplicated there on purpose, and that is the only place in the codebase where
+  that is acceptable.
+
+**Verified in a real browser**, by temporarily adding a route that throws and
+driving it with headless Chromium. All seven assertions passed: branded H1,
+eyebrow, reassurance copy, Try-again button, Call CTA with the real number,
+Text CTA with the real number, and the Back-to-home link. The header and footer
+chrome survived too, so the visitor keeps full navigation and the footer's
+conversion band. The throwing route was then removed and the build re-verified.
+
+One implementation note worth knowing: for a **server**-render error, the SSR
+HTML is Next's error shell and `error.tsx` paints on hydration. `curl` will not
+show it — only a browser will. That is why this was verified with a browser
+rather than a fetch.
+
+### 11.2 SEO and metadata
+
+- **Open Graph image dimensions** — `og:image:width` (1200), `og:image:height`
+  (630) and a descriptive `og:image:alt` now render on all 34 pages, plus the
+  matching Twitter card fields. Declaring dimensions lets a scraper reserve the
+  card before fetching the image, which is what stops a first-share preview
+  rendering as a bare title. Verified in the served HTML.
+- **Resource titles** — solved without degrading the copy. A new optional
+  `seoTitle` field on `ResourceDefinition` feeds the `<title>` tag only; `title`
+  still carries the editorial H1 and the `/resources` index. Verified live:
+  90 → **56**, 100 → **64**, 74 → **66** characters, with the H1 unchanged.
+- **`/contact` heading outline** — its Call / Text / Online / Instagram /
+  Where-we-work labels were styled `<p>` elements. Promoted to `<h2>`, taking
+  the page from **0 H2s to 5**. Verified in the served HTML.
+- **7 new unit tests** (`tests/unit/seo.test.ts`) lock all of this in: OG image
+  width/height/alt, absolute OG URL, Twitter card parity, canonical correctness,
+  and a title-length budget across resources, services and audiences — so a
+  future long headline fails a test instead of silently truncating in Google.
+
+### 11.3 Cleanup and stale documentation
+
+- **Four unused components deleted**, not one. A sweep across the whole
+  `src/components` tree found `UtilityBar`, `PhotoPlaceholder`, `ServiceCard`
+  and `ErrorBoundary` all unreferenced.
+- **`README.md`** component inventory corrected, and it now states that error
+  handling is the App Router's `error.tsx` / `global-error.tsx` rather than a
+  component.
+- **`ANALYTICS.md`** no longer lists `UtilityBar` as a `click_call` source; it
+  now names the JobberRequestForm fallback, which does fire it.
+- **`IMAGE_REQUIREMENTS.md`** "Current state" section marked as superseded, with
+  a pointer to the accurate Phase 3 record, and the references to deleted
+  components removed. It now also flags that the OG card's dimensions are
+  declared in `src/lib/seo.ts` and must be updated together if the card is
+  regenerated.
+- **`HANDOFF.md`** unit-test count corrected from 24 to 38.
+- **`FAQAccordion`** comment corrected: it claimed a `grid-template-rows`
+  animation the code does not implement. It uses the `hidden` attribute, which
+  is why it does not animate open — and that is the right call, since animating
+  it requires keeping the collapsed panel in the layout, which leaks unopened
+  answers to screen readers.
+
+### 11.4 Mobile LCP — partly fixed, and honestly reported
+
+This is the one item where the approved fix **did not achieve its stated goal**,
+so the numbers are reported with the reasoning rather than spun.
+
+**What was approved:** narrow the consent banner on mobile, on the theory that
+shrinking its painted area would hand LCP back to the hero image.
+
+**That theory was wrong, and measurement disproved it.** After narrowing, the
+banner was still the LCP element. The Lighthouse phase breakdown explains why:
+
+```
+TTFB 474ms   Load Delay 0ms   Load Time 0ms   Render Delay 3303ms
+```
+
+`Load Time: 0ms` means the LCP element is not an image at all. The hero image
+loads fine — 50KB, complete at 1012ms — but **is not counted as an LCP
+candidate**, so the banner is the *only* qualifying element in the mobile
+viewport. Its bounding box was measured at just 350×60px. Area was never the
+problem; the entire 3.3s was **render delay**.
+
+**What was then fixed properly.** The banner was a client component that
+rendered `null` on the server and appeared only after hydration plus a
+`localStorage` read. It is now server-rendered and revealed by CSS, using the
+same pre-paint inline-script gate the codebase already trusts for its motion
+system (new `ConsentGate`, mirroring `MotionGate`). It was also moved early in
+the document — it had been sitting at byte 109,038 of a 187KB HTML document.
+
+**Measured result across three mobile runs on the final build:**
+
+| | Before | After |
+|---|---|---|
+| Mobile performance | 80–93 (high variance) | **92–95** |
+| Mobile LCP | 3.8s | **2.9–3.3s** |
+| Mobile TBT | 200ms | **40–120ms** |
+| Mobile CLS | 0 | **0** |
+| Desktop performance | 97–98 | **100** |
+| Desktop LCP | 1.0–1.1s | **0.7s** |
+| Desktop LCP element | hero image | hero image (unchanged, correct) |
+| Render delay (mobile) | 3303ms | 2795ms |
+
+**What is still not fixed, stated plainly:** the consent banner remains the
+mobile LCP element, and mobile LCP is still around 3s — above the 2.5s
+"good" Core Web Vitals threshold. Moving it early in the document changed
+render delay by only ~60ms, so document position was not the cause either. My
+leading hypothesis is webfont swap re-triggering an LCP entry on that text
+node once Source Sans 3 loads, but **I did not verify that, and it should be
+treated as a hypothesis, not a finding.** Desktop is genuinely unaffected —
+it is a clean 100 with the hero image as LCP.
+
+**Two real wins came out of it regardless**, both independent of the metric:
+1. The banner no longer sits on top of `MobileActionBar`. Previously it covered
+   the Call / Text / Walkthrough buttons on mobile until dismissed — i.e. it
+   obscured the primary mobile conversion path. **Verified fixed.**
+2. The banner no longer depends on hydration to appear at all, which is simply
+   the more correct architecture.
+
+**Functionally verified end to end** in headless Chromium at 390×844, all
+passing: banner visible on first visit; `consent-pending` class set pre-paint;
+mobile action bar not covered; Accept hides it and writes `granted`; it stays
+hidden across a reload; it reappears when storage is cleared; Decline hides it
+and writes `denied`; no GA script loads when declined; and with **JavaScript
+disabled** the banner never appears while page content still renders — which is
+correct, because with JS off nothing is tracked and there is nothing to consent
+to.
+
+### 11.5 What §0 still says, and what changed
+
+| §0 item | Status now |
+|---|---|
+| §0.1 — the fix is not on `main` | **Resolved.** `main` now contains the build fix, the photo distribution, the Lighthouse record, this summary, and every fix in §11. |
+| §0.2 — the live site is `noindex` | **Still open.** Vercel setting, not code. Requires promoting the domain from Preview to Production. |
+| §5.4 — apex/www redirect is reversed | **Still open.** Vercel setting. Every canonical on all 34 pages points at a URL that redirects back to the page that declared it. |
+| §6.3 — Deployment Protection is off | **Still open.** Vercel setting. |
+| §6.4 — email deliverability unverified | **Still open.** Cannot be checked from a code session. |
 
 ---
 

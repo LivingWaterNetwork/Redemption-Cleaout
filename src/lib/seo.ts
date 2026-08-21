@@ -5,6 +5,17 @@ export function absoluteUrl(path: string): string {
   return `${siteUrl}${path.startsWith("/") ? path : `/${path}`}`;
 }
 
+/**
+ * Intrinsic size of `/images/og/default.png`. Declaring width and height lets
+ * a scraper reserve the card before it fetches the image, which is what stops
+ * a link preview rendering as a bare title on the first share. Update these
+ * if the OG card is regenerated at a different size (see IMAGE_REQUIREMENTS.md
+ * — it is due to be regenerated once a master vector logo exists).
+ */
+const OG_IMAGE_WIDTH = 1200;
+const OG_IMAGE_HEIGHT = 630;
+const OG_IMAGE_ALT = "Redemption Cleanout Services — property cleanouts in Rochester, Michigan";
+
 type PageMetadataInput = {
   title: string;
   description: string;
@@ -21,6 +32,13 @@ export function pageMetadata({
   ogImage = "/images/og/default.png",
 }: PageMetadataInput): Metadata {
   const url = absoluteUrl(path);
+  const image = {
+    url: absoluteUrl(ogImage),
+    width: OG_IMAGE_WIDTH,
+    height: OG_IMAGE_HEIGHT,
+    alt: OG_IMAGE_ALT,
+  };
+
   return {
     title,
     description,
@@ -31,7 +49,7 @@ export function pageMetadata({
       description,
       url,
       siteName: "Redemption Cleanout Services",
-      images: [{ url: absoluteUrl(ogImage) }],
+      images: [image],
       locale: "en_US",
       type: "website",
     },
@@ -39,7 +57,7 @@ export function pageMetadata({
       card: "summary_large_image",
       title,
       description,
-      images: [absoluteUrl(ogImage)],
+      images: [image],
     },
   };
 }
