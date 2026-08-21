@@ -7,8 +7,8 @@ deployed site on **2026-08-21**. Where something could not be verified from code
 or from the live site, it is marked explicitly as **UNVERIFIED** rather than
 guessed.
 
-**Read the three flagged items in §0 before building the deck**, then §11 for the
-fixes applied after the first pass. Three of the
+**Read §0 before building the deck**, then §11 for the fixes applied after the
+first pass and §12 for what the owner needs to understand about search. Three of the
 briefing assumptions behind this request turned out not to match the repository,
 and one of them is a live production risk.
 
@@ -41,33 +41,29 @@ arrives as `""`, passes through, and crashes `new URL("")` at module evaluation.
 single highest-value 5-minute action available right now is merging
 `claude/redemption-cleanout-services-51t9af` into `main`.
 
-### 0.2 Live production risk — the site is currently `noindex`
+### 0.2 ✅ RESOLVED — the site was `noindex`, and now is not
 
-Verified live on 2026-08-21 against `https://www.redemptioncleanoutservices.com/`:
+**This was the highest-priority item in the first pass. It is fixed.** The
+domain has been reassigned from the Preview deployment to Production, and the
+change is verified live:
 
-```
-HTTP/2 200
-x-robots-tag: noindex, nofollow
-x-vercel-cache: HIT
-server: Vercel
-```
+| | Before | Now |
+|---|---|---|
+| `X-Robots-Tag` | `noindex, nofollow` on every page | **absent** |
+| `robots.txt` | `Disallow: /` | **`Allow: /` + `Disallow: /api/` + `Sitemap:` line** |
+| Build served | stale Preview `0f6da52` | **Production, current** |
+| `sitemap.xml` | unreachable to crawlers | **200, 34 URLs** |
 
-```
-GET /robots.txt
-User-Agent: *
-Disallow: /
-```
+Re-verified on five inner pages (`/services/estate-cleanouts`,
+`/who-we-serve/realtors`, `/service-areas/rochester-mi`, `/faq`,
+`/resources/estate-cleanout-checklist`): zero `X-Robots-Tag` headers, and full
+JSON-LD serving including `Service`, `FAQPage`, `BreadcrumbList`,
+`LocalBusiness`, `WebSite` and `Article`.
 
-The domain is being served by a **Preview** deployment. `next.config.mjs` adds
-`X-Robots-Tag: noindex, nofollow` when `VERCEL_ENV === "preview"`, and
-`src/app/robots.ts` returns `Disallow: /` under the same condition. Both are
-correct, deliberate safety behaviour — but their combined effect is that **Google
-cannot index a single page of this site today.** There is also a conflicting
-in-page `<meta name="robots" content="index, follow">`; the HTTP header wins, so
-the site is blocked.
-
-This is a configuration state, not a code defect. It resolves the moment the
-domain is pointed at a Production deployment (which requires §0.1 first).
+**The site is crawlable and indexable as of 2026-08-21.** See §12 for what that
+does and does not mean for rankings — the honest answer is that indexing takes
+days-to-weeks and competitive ranking takes months, and the largest remaining
+lever is not the website at all.
 
 ---
 
@@ -983,15 +979,24 @@ built from `absoluteUrl(path)` — i.e. `${siteUrl}${path}`. `metadataBase` is
 <link rel="canonical" href="https://redemptioncleanoutservices.com"/>
 ```
 
-Canonicals point at the **apex domain** `https://redemptioncleanoutservices.com`
-— which is correct as the intended production identity. Note the live site
-currently *serves* from `www.` (apex 307-redirects to www), so the served host
-and the canonical host differ. That is normal and harmless as long as the apex
-is set as the primary domain in Vercel, but it is worth confirming: today the
-apex `307`s **to** www, which is the *opposite* of the "apex primary, www
-redirects to it" configuration `HANDOFF.md` and `DEPLOYMENT.md` specify. **This
-is a real, fixable inconsistency**, and it is the second-highest-value SEO fix
-after §0.2.
+Canonicals point at the **apex domain** `https://redemptioncleanoutservices.com`,
+which is the intended production identity.
+
+**Update — largely resolved.** The earlier reversed redirect is gone. Both hosts
+now return `200` and both declare the **apex** as canonical, so the signal is
+consistent and Google will consolidate on the apex:
+
+```
+https://redemptioncleanoutservices.com/       -> 200, canonical = apex
+https://www.redemptioncleanoutservices.com/   -> 200, canonical = apex
+```
+
+**One nit remains, and it is minor.** `www` does not redirect to the apex — both
+hosts serve identical content at `200`. The canonical tag handles consolidation,
+so this is not a duplicate-content problem in practice. But a `308` from `www` to
+the apex is the cleaner setup: it removes any ambiguity, saves a crawl of every
+page on a second host, and guarantees one URL per page. Low priority, one Vercel
+setting.
 
 ### 5.5 Open Graph / Twitter Card metadata
 
@@ -1072,13 +1077,16 @@ return {
   sitemap: `${siteUrl}/sitemap.xml`,
 };
 ```
-**Live output today (Preview environment):**
+**Live output today (Production) — verified:**
 ```
 User-Agent: *
-Disallow: /
+Allow: /
+Disallow: /api/
+
+Sitemap: https://redemptioncleanoutservices.com/sitemap.xml
 ```
-⚠️ See §0.2. In Production this becomes `Allow: /`, `Disallow: /api/`, plus the
-`Sitemap:` line.
+✅ Correct. The earlier `Disallow: /` was the Preview-environment branch of the
+same file; see §0.2, now resolved.
 
 **`src/app/sitemap.ts`** — generated from the content layer, so it can never
 drift from the routes. **34 URLs**, each with a `lastModified` timestamp:
@@ -1125,10 +1133,16 @@ warning for any horizontal overflow it detects.
 
 **Important framing for the deck: the repository's own documentation
 (`HANDOFF.md` §6, `DEPLOYMENT.md`) still says "Not deployed" and describes
-deployment as a future step.** The deployment work described in the briefing
-therefore left no trace in the codebase. I verified what I could **externally,
-against live DNS and live HTTP**, on 2026-08-21. Everything I could not reach is
-marked UNVERIFIED.
+deployment as a future step.** Those two files are now out of date — the site is
+deployed — but they were never updated, so the deployment work left no trace in
+the codebase. I verified what I could **externally, against live DNS and live
+HTTP**. Everything I could not reach is marked UNVERIFIED.
+
+> **Status note.** Sections 6.1 and 6.2 record the state during the *first*
+> audit pass, when the domain was still pointed at a Preview deployment. That
+> has since been corrected: the domain now serves **Production**, `noindex` is
+> gone, and `robots.txt` allows crawling. See §0.2 and §11.5 for the current
+> state; §6.3 (Deployment Protection) and §6.4 (email) remain open.
 
 ### 6.1 What I verified independently — live, today
 
@@ -1478,7 +1492,7 @@ the deliberate cost of the reveal choreography, not a bug.
 | Area | Grade | Evidence |
 |---|---|---|
 | **Accessibility** | **A+** | 100 Lighthouse on all 5 pages audited. 0 axe violations across 14 routes × 2 widths (recorded). WCAG 2.2 AA targeted and documented. Skip link; semantic landmarks; correct `aria-*` on every interactive control; real tablist with arrow-key support; 56px mobile touch targets; motion degrades to nothing with JS off or reduced-motion on; pinch-zoom preserved; a published accessibility statement. Red-on-dark type is banned in code because it fails contrast at 3.43:1. This is materially better than almost any small-business site. |
-| **Technical SEO** | **A** | Unique title + description + canonical + OG + Twitter card on all 34 pages. 7 JSON-LD schema types. Dynamic robots + sitemap generated from the content layer. Exactly one H1 per page across 18 verified. Dense crawlable internal linking. 100% correct alt text. Documented keyword map. Fully static prerendering. **A, not A+, only because of the live `noindex` state (§0.2) and the reversed apex/www redirect (§5.4) — both configuration, both fixable in under 30 minutes.** |
+| **Technical SEO** | **A+** | Unique title + description + canonical + OG + Twitter card on all 34 pages. 7 JSON-LD schema types. Dynamic robots + sitemap generated from the content layer. Exactly one H1 per page across 18 verified. Dense crawlable internal linking. 100% correct alt text. Documented keyword map. Fully static prerendering. **Upgraded to A+ in the follow-up pass:** the `noindex` state (§0.2) and the reversed apex/www redirect (§5.4) are both resolved and verified live, and OG image dimensions plus the title-length and heading fixes landed in §11.2. The only remaining nits are a missing `www`→apex redirect and a shared rather than per-page OG card. |
 | **Content quality & depth** | **A** | 34 pages. 8 service pages each with definition + scope + exclusions + audience + conditions + process + FAQs. 6 audience pages. 3 genuine educational guides. 46 total FAQs across the site. Copy is specific, situation-first, and written in the client's voice. Deducted only for the placeholders that are outside the build's control. |
 | **Honesty & compliance discipline** | **A+** | Zero fabricated reviews, ratings, project counts, or stock photography. Empty arrays with honest empty states instead of filler. `AggregateRating` deliberately absent. Unverified insurance claim withheld. Street address gated behind a 5-condition approval and **enforced by a unit test**. Language rules codified ("hoarding-related," never "hoarder"). No referral-fee promises. Light-demolition scope explicitly bounded. `CONTENT_APPROVALS.md` tracks every pending claim to its source. This is the single most defensible aspect of the build, and it directly limits the client's legal and Google-manual-action exposure. |
 | **Performance** | **A−** | Desktop 97–100, near-perfect CWV, CLS 0. Static prerendering, 4 production dependencies, no animation library, `next/image` everywhere with explicit `sizes`, AVIF/WebP, self-hosted fonts with `swap`. Held back only by the known mobile consent-banner LCP artifact, which has a documented fix awaiting a design decision. |
@@ -1489,18 +1503,26 @@ the deliberate cost of the reveal choreography, not a bug.
 | **Trust signals** | **B** | Strong: named founder, story, 4 credibility points, 5 operationally-defined values, a published 5-step process, 46 FAQs, 19 authentic photos, a real matched before/after pair, legal transparency trio. Missing: reviews, founder portrait, the project gallery, insurance confirmation, operating hours. Every gap is disclosed on-page rather than papered over — which is itself a trust signal. |
 | **Brand & design execution** | **A** | Complete token system: 6 brand colours, 3-family type system, 8-step fluid type scale, `clamp()` section rhythm, custom editorial easing, near-zero border radius. Custom motion system with no animation library. Six distinct section layouts on the homepage rather than repeated cards. The professional-partner band is deliberately visually differentiated so a realtor recognizes it as addressed to them. Brand-guide contrast rules encoded in CSS. Held back only by the raster (not vector) logo and the unlicensed-Bison substitution. |
 | **Documentation & handover** | **A+** | 10 dedicated markdown documents (`HANDOFF`, `README`, `DESIGN_SYSTEM`, `DEPLOYMENT`, `JOBBER_SETUP`, `ANALYTICS`, `CONTENT_APPROVALS`, `SEO_MAP`, `IMAGE_REQUIREMENTS`, `QA_CHECKLIST`), plus a "decisions already made — don't undo these" section with rationale for each. Two files have stale sections (§7.3 items 4–5), which is the only deduction available. |
-| **Deployment & infrastructure** | **C+** | It works and it is publicly reachable with valid SSL — real, verified progress. But three material issues remain: the fix is not on `main` (§0.1); the live site is `noindex` (§0.2); and Deployment Protection is off project-wide (§6.3). Plus the reversed apex/www redirect, and unverified email deliverability. **None require code work — all four are settings changes and one merge.** This is the one grade that is genuinely low, and it is also the fastest to fix. |
+| **Deployment & infrastructure** | **A−** *(was C+)* | Every blocker from the first pass is closed: `main` builds and is deployed to Production (§0.1), the domain serves Production with `noindex` gone and `robots.txt` allowing crawl (§0.2), SSL is valid on both hosts, and canonicals are consistent (§5.4). Two open items keep it off an A: **Deployment Protection is still off project-wide** (§6.3), so preview deployments remain publicly reachable, and **email deliverability after the DNS change has still not been verified** (§6.4) — the highest-consequence unchecked item in this document. |
 
 ### 9.3 Overall
 
-**Overall grade: A− on delivered work, held back to B+ on delivered *state*.**
+**Overall grade: A.** *(First pass: A− on delivered work, held back to B+ on
+delivered state.)*
 
-The build itself is genuinely excellent — accessible, fast, well-tested, honest,
-maintainable, and thoroughly documented, with an architecture that makes the
-next phase cheap. What separates the two grades is entirely configuration: a
-merge, a Production promotion, a redirect direction, and a protection toggle.
-**Roughly 45 minutes of settings work stands between "impressive preview" and
-"indexed, protected, production website."**
+The build was already strong — accessible, fast, well-tested, honest,
+maintainable, thoroughly documented, with an architecture that makes the next
+phase cheap. What held the earlier grade down was configuration, and that has
+now been done: `main` builds and is deployed to Production, the domain serves it,
+`noindex` is gone, `robots.txt` allows crawling, the sitemap is reachable, and
+canonicals are consistent across both hosts.
+
+**The site is live, correct, and indexable.** Two loose ends remain, neither of
+them code: Deployment Protection is still off project-wide, and email
+deliverability after the DNS change is still unverified.
+
+One thing this grade deliberately does **not** claim: that the site ranks. It
+cannot yet — it became crawlable today. See §12.
 
 ### 9.4 The pricing argument, in one place
 
@@ -1530,8 +1552,10 @@ close, not an opinion.
 4. **Has Redemption's email been tested since the DNS change?** Highest-consequence unverified item in this document (§6.4).
 5. **13 or 12 years of real-estate experience?** Two client-supplied Drive assets say 12; the brand guide says 13; the site says 13 in three places (§3.5 item 10).
 6. ~~Should I merge the fix branch into `main`?~~ **Done and authorized.** `main` is at `f5d63ea` and its Production deployment is Ready.
-7. **Is the apex-vs-www redirect direction intentional?** Today the apex `307`s to `www`, which is the reverse of what the canonical tags and `DEPLOYMENT.md` specify (§5.4).
-8. **Is anyone tracking that the site is currently `noindex`?** If organic traffic is part of the pricing story, §0.2 needs to be fixed before, not after, the deck. **This is now the single highest-value action left, and it is one setting:** Vercel → Domains → reassign both hosts from Preview to Production. Production is already verified healthy; only the domain assignment is wrong.
+7. ~~Is the apex-vs-www redirect direction intentional?~~ ✅ **Largely resolved.** Both hosts now return `200` with the apex as canonical on both, so the signal is consistent. Open nit: `www` still does not `308` to the apex (§5.4).
+8. ~~Is anyone tracking that the site is currently `noindex`?~~ ✅ **Resolved.** The domain now serves Production; crawling is allowed and verified.
+9. **Has Deployment Protection been turned back on?** Still off as far as I can verify. Every preview deployment is publicly reachable.
+10. **Does Redemption have a Google Business Profile yet?** Nothing in the repo or the live site indicates one. This is now the largest remaining lever on actual lead volume — larger than anything left on the website. See §12.
 
 ---
 
@@ -1690,10 +1714,112 @@ to.
 | §0 item | Status now |
 |---|---|
 | §0.1 — the fix is not on `main` | **Resolved and confirmed in Vercel.** `main` at `f5d63ea` deployed **Ready / Production** in 31s. The previous `main` deployment (`a5ff374`) is recorded as **Error** in the same list — the crash, visible in the project's own history. |
-| §0.2 — the live site is `noindex` | **Still open, and now precisely diagnosed.** Production is healthy and correct: `redemption-cleaout-living-water-network.vercel.app/robots.txt` returns `Allow: /` + `Disallow: /api/` + the `Sitemap:` line. The custom domain returns `Disallow: /` and serves stale code (no `consent-banner` class, no `og:image:width`), so it is still **pinned to the Preview deployment `0f6da52`**. Fix: Vercel → Domains → reassign both hosts to **Production**. Nothing else is required. |
-| §5.4 — apex/www redirect is reversed | **Still open.** Vercel setting. The apex now returns **308** (was 307) to `www`, so `www` is primary — but all 34 canonical tags name the apex. Set the apex as primary and redirect `www` to it. |
-| §6.3 — Deployment Protection is off | **Still open.** Vercel setting. Note the project is on the **Hobby** plan, so confirm which protection tiers are available before planning on a specific one. |
-| §6.4 — email deliverability unverified | **Still open.** Cannot be checked from a code session. |
+| §0.2 — the live site is `noindex` | ✅ **RESOLVED and verified.** The domain was reassigned to Production. `X-Robots-Tag` is gone, `robots.txt` returns `Allow: /` + `Disallow: /api/` + the `Sitemap:` line, `sitemap.xml` serves 34 URLs, and the current build is live. Re-checked on five inner pages with full JSON-LD including `Service`. |
+| §5.4 — apex/www redirect is reversed | ✅ **Largely resolved.** Both hosts now return `200` and both declare the apex as canonical, so the signal is consistent. Remaining nit: `www` does not `308` to the apex. Low priority. |
+| §6.3 — Deployment Protection is off | ⚠️ **Still open.** Vercel setting. The project is on the **Hobby** plan, so confirm which protection tiers are available. Until this is on, every preview deployment stays publicly reachable — including any carrying unapproved content. |
+| §6.4 — email deliverability unverified | ⚠️ **Still open, and now the highest-consequence unchecked item.** Cannot be checked from a code session. Confirm Redemption's email still sends *and* receives. |
+
+---
+
+## 12. What the owner needs to understand about search
+
+This section exists because it is the most likely place for the client
+relationship to go wrong. The site is now correct, live, and indexable — and it
+will still return nothing for a while. That gap needs to be explained *before*
+it is noticed, not after.
+
+### 12.1 The site became crawlable today. That is the starting line.
+
+Until the domain was moved to Production, Google was explicitly instructed not
+to crawl or index anything (§0.2). **Zero pages have ever been in the index.**
+That was not a ranking problem — the site did not exist to Google.
+
+Realistic sequence from here:
+
+| Stage | Realistic timing |
+|---|---|
+| Google crawls the site | days after the sitemap is submitted in Search Console |
+| Pages appear in the index | days to a few weeks |
+| Any movement on low-competition local terms | weeks to a couple of months |
+| Competitive commercial terms | **months**, and only alongside a Google Business Profile and reviews |
+
+A brand-new domain with no backlinks, no Business Profile and no reviews does
+not rank quickly. Nothing about this build changes that, and no build would.
+
+**Owner-facing diagnostic:** search `site:redemptioncleanoutservices.com`. Today
+that returns nothing, which is expected. When it starts returning pages,
+indexing is working.
+
+### 12.2 Do not judge the site by "junk removal michigan"
+
+This came up directly, and it is worth pre-empting in the deck, because it is
+the most natural thing in the world for an owner to type into Google.
+
+That query is currently held by companies built specifically for it — The
+Junkluggers (a national franchise with dedicated Michigan location pages), All
+Seasons Junk Removal (25 years, statewide pages), Michigan Junkers (six
+counties), Mitten Junk Removal, Lansing Junk Removal. Three reasons it is the
+wrong yardstick:
+
+1. **It is a statewide head term.** Redemption is a Rochester company with two
+   city pages. There is no statewide footprint to rank on.
+2. **Most clicks on that kind of query go to the Map Pack, not the blue links —
+   and the Map Pack is driven by Google Business Profile, not by the website.**
+   Without a profile, Redemption cannot appear there at all, no matter how good
+   the site is.
+3. **The site deliberately de-emphasises junk removal.** It is supporting
+   service #6 of 8 (`priority: 6`). The flagship positioning is full-property,
+   estate, commercial and foreclosure cleanouts — *"Built for the properties
+   other companies pass on."* Competing head-on with national junk-removal
+   franchises on their own term was explicitly not the strategy.
+
+**The right yardsticks**, from the project's own keyword map:
+`estate cleanout Rochester MI` · `full property cleanout` ·
+`property cleanout Rochester Hills MI` · `foreclosure cleanout` ·
+`hoarding cleanout` · `commercial property cleanout`
+
+Lower volume, far higher intent, far less contested. A probate attorney
+searching "estate cleanout Rochester MI" is worth many times a "junk removal"
+price-shopper. That trade is the entire thesis of the site.
+
+### 12.3 The biggest remaining lever is not the website
+
+Stated plainly, because it affects how the deck should set expectations:
+**a Google Business Profile will do more for lead volume than anything left to
+do on the site.** It governs the Map Pack, which is where local service
+searches actually convert.
+
+Priority order for the owner:
+
+1. **Google Search Console** — verify the domain, submit `sitemap.xml`. Until
+   this is done, indexing runs on Google's schedule rather than his.
+2. **Create the Google Business Profile.** The single highest-value action
+   available. Note the interaction with the address policy (§3.5 item 9): the
+   site withholds the street address until five conditions are confirmed, and
+   GBP has its own address rules. **Do not claim an address on GBP that the
+   site itself will not publish** — resolve the address question once, for both.
+3. **Start collecting reviews.** Map Pack ranking is heavily review-driven.
+   `NEXT_PUBLIC_GOOGLE_REVIEW_URL` is already wired and waiting for the link,
+   and the reviews page is built to render them the moment they exist.
+4. **Then** the city pages (§8, Phase 1). They compound off local signals, so
+   they work better after a Business Profile exists than before it.
+
+### 12.4 What can and cannot be measured
+
+Worth being explicit, because it changes what can be reported back:
+
+- **Calls and texts are tracked.** `click_call`, `click_text` and
+  `click_request_walkthrough` fire with a `location` parameter, so it will be
+  possible to see which page and which position drove the contact — once a GA4
+  measurement ID is set and the visitor accepts consent.
+- **Form submissions cannot be tracked.** Jobber exposes no client-side event
+  this site can listen for, and firing on iframe load would be a lie, so
+  `jobber_form_submit` never fires (§7.3 item 8). **Lead volume through the
+  form has to be read out of Jobber itself, not out of analytics.** This is a
+  Jobber limitation, not a gap in the build — but the owner should hear it from
+  you rather than discover it.
+- **Nothing is tracked at all until a GA4 ID is configured and consent is
+  accepted.** Analytics is gated twice, on purpose.
 
 ---
 

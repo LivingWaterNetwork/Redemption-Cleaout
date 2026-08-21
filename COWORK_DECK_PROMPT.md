@@ -28,8 +28,11 @@ HARD RULES — these matter more than the design
   present the range. Never collapse a range to its best number.
 - Where the summary marks something UNVERIFIED or as a hypothesis, either omit
   it or label it clearly. Never promote it to a fact.
-- Do not imply the site is live and indexed. It is not yet — see section 0.2 of
-  the summary. Handle this honestly in the "what's next" section.
+- The site IS now live, crawlable and indexable — section 0.2 of the summary is
+  resolved. But do NOT imply it ranks or gets traffic yet. It became crawlable
+  on the day the summary was written. Section 12 covers this precisely; follow
+  it. Getting this wrong is the fastest way to lose the owner's trust three
+  weeks from now when he checks Google and finds nothing.
 - No stock photography of cleanouts, junk removal, trucks, or crews. This is a
   company whose entire content policy is "no stock imagery" — using stock in the
   deck about that policy would be self-defeating. Use type, color, layout, and
@@ -94,10 +97,73 @@ STRUCTURE — roughly this, adjust if a better narrative emerges
    permissions, Jobber form URL, Google Business Profile, confirm insurance and
    hours, resolve 13 vs 12 years, sign off the founder story. Frame as "these
    unlock features already built and waiting," which is true.
-10. What's next. The remaining Vercel configuration, honestly stated, then the
-    recommended roadmap.
-11. Close. A single strong slide. The tagline "Redeem Your Property. Reclaim
+10. What's next, and what to expect from Google. This slide matters more than
+    any other for the relationship, so give it real space. Use section 12 of the
+    summary. Cover, in this order: the site became crawlable this week and that
+    is the starting line, not the finish; the realistic timeline table from 12.1;
+    why "junk removal michigan" is the wrong thing to test with and what the
+    right searches are (12.2); and that a Google Business Profile will do more
+    for his phone ringing than anything left to do on the website (12.3).
+11. What can and cannot be measured. Short, but include it — section 12.4. Calls
+    and texts are tracked; form submissions are not, because Jobber exposes no
+    event to listen for, so lead volume has to be read out of Jobber itself.
+    Better he hears this from us now than discovers it later.
+12. Close. A single strong slide. The tagline "Redeem Your Property. Reclaim
     Your Space." is his own and earns the last word.
+
+OWNER NOTES — these must land somewhere in the deck
+These are the things Dante needs to walk away knowing. Some are good news, some
+are decisions he owes us, some are expectations we need to set before reality
+sets them for us. Place each wherever it fits the narrative best, but do not
+drop any of them.
+
+Where he stands right now
+- The site is live at redemptioncleanoutservices.com, on both the apex and www,
+  with a valid SSL certificate. Google is now allowed to crawl it.
+- 34 pages, 41 routes, all statically pre-rendered. Desktop Lighthouse 97-100.
+  Accessibility 100 on every page tested, with zero accessibility violations
+  across 14 routes at two screen widths.
+- A production-breaking bug was found and fixed. Before that fix, every single
+  deploy failed. Nothing could have gone live at all.
+
+Expectations to set, plainly
+- Being crawlable is the starting line. Indexing takes days to weeks. Ranking on
+  competitive terms takes months. This is true of every new site.
+- He should not measure success by searching "junk removal michigan." Wrong term,
+  wrong strategy, and the site is deliberately not built to win it. Give him the
+  right searches to watch instead.
+- A Google Business Profile will do more for his phone ringing than anything left
+  to do on the website. Say it that directly. It is the honest answer.
+- Reviews drive the map results. The site is already built to display them the
+  moment they exist.
+
+Decisions only he can make — frame as unlocks, not blockers
+- 13 vs 12 years in real estate. The site says 13, per the brand guide. His own
+  brochure and flyer both say 12. We need one answer; it appears in three places
+  on the site and in this deck.
+- "Fully insured." His brochure claims it, the brand guide flags it unverified,
+  so it is published nowhere on the site. One confirmation from him and it can go
+  live — it is a genuine trust signal being held back.
+- The street address. Deliberately withheld until permanent operation, staffing,
+  visitability, signage and Google compliance are confirmed. This decision also
+  governs what the Google Business Profile can claim, so it should be settled
+  once, for both.
+- Operating hours, accepted and excluded materials, business email, and sign-off
+  on the founder story. Each is a section already built and waiting for content.
+- Written permission from property owners for the before/after photos. The
+  matched pairs already exist as photographs; the gallery and the slider are
+  built. Permission is the only thing standing between them and going live.
+- A founder portrait. Both the homepage and the About page currently substitute
+  a work photo with an honest caption.
+
+Two things not to let him misread
+- The empty reviews section, the empty project gallery and the "founder portrait
+  to come" caption are not unfinished work. They are a deliberate policy of
+  publishing nothing fabricated, enforced by automated tests. Explain this before
+  he encounters it, or it will read as incomplete.
+- The request form currently shows call and text instead of an online form,
+  because the Jobber connection is not set up yet. Not a defect — the form
+  refuses to pretend it works.
 
 DELIVERABLE
 A polished presentation. Prefer real slides over a scrolling document. Design
@@ -108,12 +174,21 @@ so whoever presents can explain where the figure came from.
 
 ---
 
-## Two notes before you send it
+## Notes before you send it
 
 1. **Attach `PROJECT_SUMMARY.md`.** Without it the prompt has no facts to work
    from and Cowork will invent plausible-sounding numbers — exactly what the
    hard rules are there to prevent.
 
 2. **Decide the 13-vs-12-years question first.** It appears in the deck's
-   founder material and on three places on the site. If it changes, the deck
+   founder material and in three places on the site. If it changes, the deck
    changes with it.
+
+3. **Do not let the deck claim rankings or traffic.** The site became crawlable
+   the day the summary was written. A deck that implies otherwise buys you three
+   good weeks and then a hard conversation.
+
+4. **Consider whether slide 9 and the "decisions only he can make" notes should
+   be one slide or two.** They overlap deliberately — the first is asset-shaped
+   ("send us the portrait"), the second is decision-shaped ("tell us 12 or 13").
+   Merging them is fine; dropping either is not.
