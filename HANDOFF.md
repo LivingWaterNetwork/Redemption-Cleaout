@@ -39,7 +39,7 @@ that lives in the LWN repo.
 | Production build | Passing |
 | Accessibility | **0 axe violations**, WCAG 2.2 AA, 14 routes × 390px and 1440px |
 | Horizontal overflow | None at 390 / 768 / 1024 / 1440 / 1920 |
-| Lighthouse | **Not run** — see §7 |
+| Lighthouse | Desktop **100/100/100/100** · Mobile **80** perf, 100 a11y/BP/SEO — see §7 |
 
 ### Stack
 
@@ -199,12 +199,48 @@ Full step-by-step with rollback in `DEPLOYMENT.md`.
 
 ## 7. Known gaps and honest caveats
 
-- **Lighthouse was never run.** There's no Chrome measurement environment in
-  the build sandbox, so there are no real Performance / LCP / INP / CLS
-  numbers. The architecture targets the goals (static prerendering, one small
-  IntersectionObserver, `next/image` everywhere with explicit `sizes`, no
-  animation library), but treat the targets as unverified until someone runs
-  Lighthouse against a Vercel preview URL.
+- **Lighthouse has now been run** — locally, against a production build
+  (`npm run start`), not against Vercel. The earlier note that this sandbox
+  has no Chrome measurement environment was wrong: Chromium ships at
+  `/opt/pw-browsers/chromium-*/chrome-linux/chrome`, and Lighthouse runs
+  against it fine (command in §9).
+
+  | | Perf | A11y | Best Practices | SEO |
+  |---|---|---|---|---|
+  | Desktop | **100** | 100 | 100 | 100 |
+  | Mobile | **80** | 100 | 100 | 100 |
+
+  Desktop: FCP 0.3s, LCP 0.7s (the hero image), TBT 0ms, CLS 0.
+  Mobile: FCP 1.7s, LCP 3.9s, TBT 200ms, CLS **0**, Speed Index 5.1s.
+
+  **The mobile LCP element is the consent banner, not the hero.** Lighthouse
+  names `body > div.fixed > p.text-sm` — the "We use analytics…" paragraph.
+  `ConsentBanner` is a client component that renders `null` on the server and
+  only becomes visible after hydration and a `useEffect` localStorage read, so
+  under mobile emulation (4× CPU + slow 4G) it paints late, and because it is
+  full-bleed on mobile (`inset-x-0 bottom-0`, versus a `max-w-sm` card at
+  `sm:`) it is the largest contentful element in the viewport. LCP is
+  therefore measuring "time until the consent banner hydrates" rather than
+  when the page becomes useful — FCP is 1.7s and CLS is a clean 0.
+
+  Three things worth considering, none of them done yet:
+  1. Make the banner a narrow card on mobile too, as it already is at `sm:`.
+     That shrinks its painted area and likely hands LCP back to the hero. It
+     is a design change, so it needs a decision — but it is not metric-gaming.
+  2. The only real perf opportunities Lighthouse found are framework-level and
+     modest: legacy JS to modern browsers (~300ms), unused JS (~240ms),
+     render-blocking resources (~150ms).
+  3. Re-measure on a Vercel preview. These numbers come from a local server
+     with no CDN, no Brotli, and no edge cache, so hydration starts later than
+     it would in production; mobile LCP should improve there. The *structural*
+     point — that a post-hydration client component is the LCP element —
+     will not change on its own.
+
+  Note the motion system interacts with this: `Reveal` elements start at
+  opacity 0, and opacity-0 elements are not LCP candidates, which also
+  inflates Speed Index (5.1s on mobile). That is the cost of the reveal
+  choreography, and it is a deliberate design decision — not a bug.
+
 - **Image repetition** — resolved, see §4.
 - **`src/content/projects.ts` is still empty**, even though matched
   before/after photography now exists. An entry needs city, property type,
@@ -260,6 +296,12 @@ npx playwright test         # 14 e2e tests
 
 ./rebuild.sh                # clean rebuild + restart on :3000, verifies CSS
 node axe-check.mjs          # WCAG 2.2 AA sweep, needs a running server
+
+# Lighthouse — needs a running server (./rebuild.sh first)
+CHROME_PATH=/opt/pw-browsers/chromium-1194/chrome-linux/chrome \
+  npx lighthouse@12 http://127.0.0.1:3000/ --preset=desktop \
+  --chrome-flags="--headless=new --no-sandbox" --output=html \
+  --output-path=/tmp/lh.html          # drop --preset=desktop for mobile
 OUT=/tmp/shots WIDTHS=390,768,1024,1440,1920 ROUTES="home:/" node shot.mjs
 ```
 
@@ -269,8 +311,10 @@ OUT=/tmp/shots WIDTHS=390,768,1024,1440,1920 ROUTES="home:/" node shot.mjs
 
 ## 10. Suggested next steps, in order
 
-1. **Deploy to Vercel** to get a preview URL, then run Lighthouse against it
-   and fix whatever it finds.
+1. **Deploy to Vercel** to get a preview URL, then re-run Lighthouse against
+   it. Lighthouse has now been run locally (§7) — desktop is 100 across the
+   board, mobile perf is 80 with the consent banner as the LCP element. Decide
+   on the mobile-banner width question in §7 before or after the deploy.
 2. ~~Pull the remaining photos from Drive~~ — **done.** What remains from that
    thread: (a) confirm who is in the founder-portrait candidate, (b) pull the
    5 oversized HEICs directly from Drive, (c) decide where the 12 videos are
