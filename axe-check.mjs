@@ -1,0 +1,56 @@
+import { chromium } from "@playwright/test";
+import { createRequire } from "node:module";
+
+const require = createRequire(import.meta.url);
+const axePath = require.resolve("axe-core/axe.min.js");
+
+const routes = [
+  "/",
+  "/services",
+  "/services/estate-cleanouts",
+  "/who-we-serve",
+  "/who-we-serve/realtors",
+  "/service-areas/rochester-mi",
+  "/request-walkthrough",
+  "/about",
+  "/projects",
+  "/reviews",
+  "/resources/estate-cleanout-checklist",
+  "/faq",
+  "/contact",
+  "/privacy",
+];
+
+const browser = await chromium.launch();
+let total = 0;
+
+for (const width of [390, 1440]) {
+  for (const route of routes) {
+    const page = await browser.newPage({
+      viewport: { width, height: width < 500 ? 844 : 1000 },
+      isMobile: width < 500,
+    });
+    await page.goto(`http://127.0.0.1:3000${route}`, { waitUntil: "networkidle" });
+    await page.addScriptTag({ path: axePath });
+    const results = await page.evaluate(async () =>
+      // WCAG 2.2 AA rule set.
+      // @ts-ignore - axe is injected above
+      await window.axe.run(document, {
+        runOnly: { type: "tag", values: ["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa"] },
+      }),
+    );
+    const violations = results.violations.filter((v) => v.impact !== "minor" || true);
+    if (violations.length) {
+      total += violations.length;
+      console.log(`\n${width}px ${route}`);
+      for (const v of violations) {
+        console.log(`  [${v.impact}] ${v.id}: ${v.help} (${v.nodes.length} node(s))`);
+        console.log(`     ${v.nodes[0]?.target?.join(" ")}`);
+      }
+    }
+    await page.close();
+  }
+}
+
+console.log(total === 0 ? "\nNo axe violations found." : `\nTotal violations: ${total}`);
+await browser.close();

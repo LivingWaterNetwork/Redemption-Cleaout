@@ -9,33 +9,23 @@
   --color-clean-white: #ffffff;
   --color-steel-gray: #605f5d;
   --color-warm-concrete: #e5e1de;
+
+  --ease-editorial: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-micro: 220ms;
+  --dur-standard: 460ms;
+  --dur-reveal: 760ms;
 }
 
 @layer base {
-  * {
-    @apply border-warm-concrete;
-  }
-
   html {
     scroll-behavior: smooth;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    html {
-      scroll-behavior: auto;
-    }
-    *,
-    *::before,
-    *::after {
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 0.01ms !important;
-      scroll-behavior: auto !important;
-    }
+    -webkit-text-size-adjust: 100%;
   }
 
   body {
     @apply bg-clean-white text-heritage-black font-body antialiased;
+    /* Guard against any child forcing a wider box than the viewport. */
+    overflow-x: hidden;
   }
 
   h1,
@@ -43,11 +33,11 @@
   h3,
   h4 {
     @apply font-display;
+    text-wrap: balance;
   }
 
-  a,
-  button {
-    @apply outline-none;
+  p {
+    text-wrap: pretty;
   }
 
   a:focus-visible,
@@ -55,35 +45,300 @@
   input:focus-visible,
   textarea:focus-visible,
   select:focus-visible,
+  summary:focus-visible,
   [tabindex]:focus-visible {
     outline: 3px solid var(--color-redemption-red);
-    outline-offset: 2px;
+    outline-offset: 3px;
     border-radius: 2px;
+  }
+
+  /* On dark panels the red ring is too low-contrast — use white there. */
+  .on-dark a:focus-visible,
+  .on-dark button:focus-visible {
+    outline-color: var(--color-clean-white);
+  }
+
+  ::selection {
+    background: var(--color-redemption-red);
+    color: var(--color-clean-white);
   }
 }
 
 @layer components {
   .skip-link {
-    @apply sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded focus:bg-heritage-black focus:px-4 focus:py-2 focus:text-clean-white;
+    @apply sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[200] focus:bg-heritage-black focus:px-5 focus:py-3 focus:text-sm focus:font-semibold focus:text-clean-white;
   }
 
   .container-page {
-    @apply mx-auto w-full max-w-content px-4 sm:px-6 lg:px-8;
+    @apply mx-auto w-full max-w-content px-gutter;
+  }
+
+  /* ---- Buttons ---------------------------------------------------------- */
+
+  .btn-base {
+    @apply inline-flex min-h-[52px] items-center justify-center gap-2 px-7 py-3.5 font-display text-sm font-semibold uppercase tracking-[0.08em] transition-all duration-micro ease-editorial;
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-sm bg-redemption-red px-6 py-3 text-sm font-display font-semibold uppercase tracking-wide text-clean-white transition-colors hover:bg-restoration-red-dark min-h-[44px];
+    @apply btn-base bg-redemption-red text-clean-white hover:bg-restoration-red-dark;
+  }
+
+  .btn-primary:hover .btn-arrow {
+    transform: translateX(4px);
   }
 
   .btn-secondary {
-    @apply inline-flex items-center justify-center gap-2 rounded-sm border-2 border-heritage-black bg-clean-white px-6 py-3 text-sm font-display font-semibold uppercase tracking-wide text-heritage-black transition-colors hover:bg-heritage-black hover:text-clean-white min-h-[44px];
+    @apply btn-base border border-heritage-black bg-transparent text-heritage-black hover:bg-heritage-black hover:text-clean-white;
   }
 
-  .btn-ghost-on-dark {
-    @apply inline-flex items-center justify-center gap-2 rounded-sm border-2 border-clean-white bg-transparent px-6 py-3 text-sm font-display font-semibold uppercase tracking-wide text-clean-white transition-colors hover:bg-clean-white hover:text-heritage-black min-h-[44px];
+  .btn-secondary:hover .btn-arrow {
+    transform: translateX(4px);
   }
 
+  .btn-on-dark {
+    @apply btn-base border border-clean-white/35 bg-transparent text-clean-white hover:border-clean-white hover:bg-clean-white hover:text-heritage-black;
+  }
+
+  .btn-on-dark:hover .btn-arrow {
+    transform: translateX(4px);
+  }
+
+  .btn-arrow {
+    @apply inline-block transition-transform duration-micro ease-editorial;
+  }
+
+  /* ---- Section labels (eyebrow) ---------------------------------------- */
+
+  /* Uses the darker red so the label clears 4.5:1 on both white and
+     warm concrete. Plain Redemption red only reaches 4.35:1 on concrete. */
   .eyebrow {
-    @apply text-xs font-condensed font-bold uppercase tracking-[0.2em] text-redemption-red;
+    @apply flex items-center gap-3 font-condensed text-label font-bold uppercase text-restoration-red-dark;
+  }
+
+  .eyebrow::before {
+    content: "";
+    @apply inline-block h-px w-8 shrink-0 bg-redemption-red;
+  }
+
+  /* On dark panels red text fails contrast and the brand guide forbids it
+     outright, so the label goes white and red is kept for the rule only. */
+  .on-dark .eyebrow {
+    @apply text-clean-white;
+  }
+
+  .eyebrow-plain {
+    @apply font-condensed text-label font-bold uppercase tracking-[0.18em] text-restoration-red-dark;
+  }
+
+  .on-dark .eyebrow-plain {
+    @apply text-clean-white/70;
+  }
+
+  /* ---- Rules & ornament ------------------------------------------------ */
+
+  .rule-thin {
+    @apply h-px w-full bg-heritage-black/12;
+  }
+
+  .rule-thin-on-dark {
+    @apply h-px w-full bg-clean-white/15;
+  }
+
+  /* Double-border frame, echoing the logo's vintage sign structure. */
+  .frame-double {
+    @apply relative border border-redemption-red p-1.5;
+  }
+
+  .frame-double > * {
+    @apply border border-heritage-black/10;
+  }
+
+  /* ---- Editorial link -------------------------------------------------- */
+
+  .link-editorial {
+    @apply relative inline-flex items-center gap-2 font-display text-sm font-semibold uppercase tracking-[0.08em] text-restoration-red-dark;
+  }
+
+  .link-editorial::after {
+    content: "";
+    @apply absolute -bottom-1 left-0 h-px w-full origin-left scale-x-0 bg-redemption-red transition-transform duration-micro ease-editorial;
+  }
+
+  .link-editorial:hover::after {
+    @apply scale-x-100;
+  }
+
+  .link-editorial:hover .btn-arrow {
+    transform: translateX(4px);
+  }
+
+  /* ---- Image treatment ------------------------------------------------- */
+
+  .img-frame {
+    @apply relative overflow-hidden bg-heritage-black;
+  }
+
+  .img-zoom {
+    @apply transition-transform duration-[900ms] ease-editorial;
+  }
+
+  .group:hover .img-zoom {
+    transform: scale(1.04);
+  }
+
+  /* Legibility scrim for text over photography. */
+  .img-scrim::after {
+    content: "";
+    @apply pointer-events-none absolute inset-0;
+    background: linear-gradient(
+      to top,
+      rgba(11, 13, 14, 0.92) 0%,
+      rgba(11, 13, 14, 0.55) 38%,
+      rgba(11, 13, 14, 0.15) 72%,
+      rgba(11, 13, 14, 0.05) 100%
+    );
+  }
+}
+
+@layer utilities {
+  .py-section {
+    padding-top: theme("spacing.section");
+    padding-bottom: theme("spacing.section");
+  }
+
+  .pt-section {
+    padding-top: theme("spacing.section");
+  }
+
+  .pb-section {
+    padding-bottom: theme("spacing.section");
+  }
+
+  /* Subtle industrial texture — a fine dot grid, not heavy grunge. */
+  .texture-concrete {
+    background-image: radial-gradient(rgba(255, 255, 255, 0.055) 1px, transparent 1px);
+    background-size: 22px 22px;
+  }
+
+  .texture-concrete-light {
+    background-image: radial-gradient(rgba(11, 13, 14, 0.05) 1px, transparent 1px);
+    background-size: 22px 22px;
+  }
+}
+
+/* =======================================================================
+   Motion system
+   -----------------------------------------------------------------------
+   Elements are hidden ONLY when `html.motion-ready` is present. That class
+   is set by a tiny inline script before first paint, and only when JS is
+   available and the visitor has not asked for reduced motion. So with JS
+   disabled, or reduced motion enabled, every element renders in its final
+   visible state and nothing is ever gated behind an animation.
+   ======================================================================= */
+
+.motion-ready [data-reveal] {
+  opacity: 0;
+  transform: translate3d(0, 22px, 0);
+  transition:
+    opacity var(--dur-reveal) var(--ease-editorial),
+    transform var(--dur-reveal) var(--ease-editorial);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+.motion-ready [data-reveal="mask"] {
+  opacity: 1;
+  transform: none;
+  clip-path: inset(0 0 100% 0);
+  transition: clip-path 900ms var(--ease-editorial);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.motion-ready [data-reveal="lines"] {
+  opacity: 1;
+  transform: none;
+}
+
+/* Line children are set to `block` by the component itself, so headlines
+   still break correctly when the motion layer is inactive. */
+.motion-ready [data-reveal="lines"] > * {
+  opacity: 0;
+  transform: translate3d(0, 0.4em, 0);
+  transition:
+    opacity var(--dur-reveal) var(--ease-editorial),
+    transform var(--dur-reveal) var(--ease-editorial);
+}
+
+.motion-ready [data-reveal].is-visible,
+.motion-ready [data-reveal="lines"].is-visible > * {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+.motion-ready [data-reveal="mask"].is-visible {
+  clip-path: inset(0 0 0 0);
+}
+
+/* Per-line stagger inside a headline. */
+.motion-ready [data-reveal="lines"] > *:nth-child(1) {
+  transition-delay: calc(var(--reveal-delay, 0ms) + 0ms);
+}
+.motion-ready [data-reveal="lines"] > *:nth-child(2) {
+  transition-delay: calc(var(--reveal-delay, 0ms) + 90ms);
+}
+.motion-ready [data-reveal="lines"] > *:nth-child(3) {
+  transition-delay: calc(var(--reveal-delay, 0ms) + 180ms);
+}
+
+/* Slow, bounded drift for a hero image — not continuous parallax. */
+.motion-ready .hero-media {
+  animation: hero-drift 24s var(--ease-editorial) forwards;
+}
+
+@keyframes hero-drift {
+  from {
+    transform: scale(1.08);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.scroll-cue span {
+  animation: scroll-cue 2.4s var(--ease-editorial) infinite;
+}
+
+@keyframes scroll-cue {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translateY(7px);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Never leave anything clipped or transparent under reduced motion. */
+  [data-reveal],
+  [data-reveal] > * {
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
   }
 }

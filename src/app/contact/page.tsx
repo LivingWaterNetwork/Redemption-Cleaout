@@ -3,51 +3,129 @@ import Link from "next/link";
 import { PageHero } from "@/components/sections/PageHero";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { StructuredData } from "@/components/StructuredData";
+import { Reveal } from "@/components/motion/Reveal";
 import { breadcrumbJsonLd, pageMetadata } from "@/lib/seo";
 import { business, formatPhoneSmsHref, formatPhoneTelHref } from "@/content/business";
 
 export const metadata: Metadata = pageMetadata({
   title: "Contact Us",
-  description: "Contact Redemption Cleanout Services in Rochester, Michigan — call, text, or request a walkthrough.",
+  description:
+    "Contact Redemption Cleanout Services in Rochester, Michigan — call, text, or request a property walkthrough.",
   path: "/contact",
 });
 
 export default function ContactPage() {
   return (
     <>
-      <StructuredData data={breadcrumbJsonLd([{ name: "Home", path: "/" }, { name: "Contact", path: "/contact" }])} />
+      <StructuredData
+        data={breadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "Contact", path: "/contact" },
+        ])}
+      />
       <Breadcrumbs items={[{ name: "Home", href: "/" }, { name: "Contact", href: "/contact" }]} />
-      <PageHero eyebrow="Contact" title="Get in touch" description={business.address.publicAreaDescription} />
 
-      <section className="container-page grid gap-8 py-16 sm:grid-cols-3">
-        <div className="border border-warm-concrete p-6 text-center">
-          <h2 className="font-display text-lg font-bold text-heritage-black">Call</h2>
-          <a href={formatPhoneTelHref()} className="mt-2 block font-semibold text-redemption-red">
-            {business.phoneDisplay}
-          </a>
-        </div>
-        <div className="border border-warm-concrete p-6 text-center">
-          <h2 className="font-display text-lg font-bold text-heritage-black">Text</h2>
-          <a href={formatPhoneSmsHref()} className="mt-2 block font-semibold text-redemption-red">
-            {business.phoneDisplay}
-          </a>
-        </div>
-        <div className="border border-warm-concrete p-6 text-center">
-          <h2 className="font-display text-lg font-bold text-heritage-black">Request Online</h2>
-          <Link href="/request-walkthrough" className="mt-2 block font-semibold text-redemption-red">
-            Request a Walkthrough
-          </Link>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="Contact"
+        title="Get in touch"
+        description="Call, text, or send the property details online. All three reach the same person."
+      />
 
-      <section className="container-page pb-16 text-sm text-steel-gray">
-        <p>
-          Follow along on Instagram at{" "}
-          <a href={business.instagramUrl} className="font-semibold text-redemption-red hover:underline">
-            {business.instagramHandle}
-          </a>
-          .
-        </p>
+      <section className="py-section">
+        <div className="container-page grid gap-x-14 gap-y-14 lg:grid-cols-12">
+          <div className="lg:col-span-7">
+            <div className="border-t border-heritage-black/12">
+              <Reveal>
+                <div className="grid gap-2 border-b border-heritage-black/12 py-8 sm:grid-cols-[minmax(0,10rem)_1fr] sm:gap-8">
+                  <p className="eyebrow-plain text-steel-gray">Call</p>
+                  <div>
+                    <a
+                      href={formatPhoneTelHref()}
+                      className="font-display text-3xl font-semibold text-heritage-black transition-colors duration-micro hover:text-redemption-red"
+                    >
+                      {business.phoneDisplay}
+                    </a>
+                    <p className="mt-2 text-sm text-steel-gray">
+                      Fastest way to reach us during working hours.
+                    </p>
+                  </div>
+                </div>
+              </Reveal>
+
+              <Reveal delay={80}>
+                <div className="grid gap-2 border-b border-heritage-black/12 py-8 sm:grid-cols-[minmax(0,10rem)_1fr] sm:gap-8">
+                  <p className="eyebrow-plain text-steel-gray">Text</p>
+                  <div>
+                    <a
+                      href={formatPhoneSmsHref()}
+                      className="font-display text-3xl font-semibold text-heritage-black transition-colors duration-micro hover:text-redemption-red"
+                    >
+                      {business.phoneDisplay}
+                    </a>
+                    <p className="mt-2 text-sm text-steel-gray">
+                      Good for sending photos or a quick question.
+                    </p>
+                  </div>
+                </div>
+              </Reveal>
+
+              <Reveal delay={160}>
+                <div className="grid gap-2 border-b border-heritage-black/12 py-8 sm:grid-cols-[minmax(0,10rem)_1fr] sm:gap-8">
+                  <p className="eyebrow-plain text-steel-gray">Online</p>
+                  <div>
+                    <Link
+                      href="/request-walkthrough"
+                      className="font-display text-3xl font-semibold text-heritage-black transition-colors duration-micro hover:text-redemption-red"
+                    >
+                      Request a walkthrough
+                    </Link>
+                    <p className="mt-2 text-sm text-steel-gray">
+                      Send the property details and we&apos;ll follow up to schedule.
+                    </p>
+                  </div>
+                </div>
+              </Reveal>
+
+              <Reveal delay={220}>
+                <div className="grid gap-2 py-8 sm:grid-cols-[minmax(0,10rem)_1fr] sm:gap-8">
+                  <p className="eyebrow-plain text-steel-gray">Instagram</p>
+                  <div>
+                    <a
+                      href={business.instagramUrl}
+                      className="font-display text-xl font-semibold text-heritage-black transition-colors duration-micro hover:text-redemption-red"
+                    >
+                      {business.instagramHandle}
+                    </a>
+                  </div>
+                </div>
+              </Reveal>
+            </div>
+          </div>
+
+          <Reveal delay={140} className="lg:col-span-5">
+            <div className="frame-double">
+              <div className="bg-warm-concrete p-8">
+                <p className="eyebrow-plain text-steel-gray">Where we work</p>
+                <p className="mt-4 font-display text-xl font-semibold text-heritage-black">
+                  {business.address.publicAreaDescription}
+                </p>
+                <p className="mt-4 text-body-base text-steel-gray">
+                  We serve {business.serviceRegionSummary}.
+                </p>
+                <p className="mt-5 text-sm text-steel-gray">
+                  Redemption works on-site at your property rather than from a walk-in
+                  location, so walkthroughs are scheduled at the property itself.
+                </p>
+                <Link href="/service-areas" className="link-editorial mt-7">
+                  See service areas
+                  <span aria-hidden="true" className="btn-arrow">
+                    &rarr;
+                  </span>
+                </Link>
+              </div>
+            </div>
+          </Reveal>
+        </div>
       </section>
     </>
   );

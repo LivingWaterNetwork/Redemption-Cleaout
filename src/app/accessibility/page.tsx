@@ -18,8 +18,8 @@ export default function AccessibilityPage() {
         data={breadcrumbJsonLd([{ name: "Home", path: "/" }, { name: "Accessibility", path: "/accessibility" }])}
       />
       <Breadcrumbs items={[{ name: "Home", href: "/" }, { name: "Accessibility", href: "/accessibility" }]} />
-      <PageHero eyebrow="Legal" title="Accessibility Statement" />
-      <article className="container-page max-w-3xl space-y-6 py-16 text-steel-gray">
+      <PageHero eyebrow="Legal" title="Accessibility Statement" variant="light" />
+      <article className="container-page max-w-measure-lg space-y-6 py-section text-body-base text-steel-gray">
         <p>
           {business.name} is committed to making this website usable by as many people
           as possible, including people using assistive technology. We aim to meet

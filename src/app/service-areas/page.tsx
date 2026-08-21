@@ -4,6 +4,7 @@ import { PageHero } from "@/components/sections/PageHero";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { CallToAction } from "@/components/ui/CallToAction";
 import { StructuredData } from "@/components/StructuredData";
+import { Reveal } from "@/components/motion/Reveal";
 import { breadcrumbJsonLd, pageMetadata } from "@/lib/seo";
 import { approvedServiceAreas } from "@/content/serviceAreas";
 import { business } from "@/content/business";
@@ -19,39 +20,75 @@ export default function ServiceAreasPage() {
   return (
     <>
       <StructuredData
-        data={breadcrumbJsonLd([{ name: "Home", path: "/" }, { name: "Service Areas", path: "/service-areas" }])}
+        data={breadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "Service Areas", path: "/service-areas" },
+        ])}
       />
-      <Breadcrumbs items={[{ name: "Home", href: "/" }, { name: "Service Areas", href: "/service-areas" }]} />
+      <Breadcrumbs
+        items={[{ name: "Home", href: "/" }, { name: "Service Areas", href: "/service-areas" }]}
+      />
+
       <PageHero
         eyebrow="Service Areas"
         title={`Serving ${business.serviceRegionSummary}`}
-        description="We publish detailed pages only for areas with real, useful local content — not a page for every nearby zip code."
+        description="We publish detailed pages only for areas where we have real local context to share — not a page for every nearby zip code."
       />
-      <section className="container-page py-16">
-        <div className="grid gap-6 sm:grid-cols-2">
-          {approvedServiceAreas.map((area) => (
-            <Link
-              key={area.slug}
-              href={`/service-areas/${area.slug}`}
-              className="group border border-warm-concrete p-6 hover:border-redemption-red"
-            >
-              <h2 className="font-display text-xl font-semibold text-heritage-black group-hover:text-redemption-red">
-                {area.cityName}, {area.stateAbbr}
-              </h2>
-              <p className="mt-2 text-sm text-steel-gray">{area.localIntroduction}</p>
-            </Link>
-          ))}
+
+      <section className="py-section">
+        <div className="container-page">
+          <div className="grid gap-px border-t border-heritage-black/12 sm:grid-cols-2">
+            {approvedServiceAreas.map((area, index) => (
+              <Reveal key={area.slug} delay={index * 90}>
+                <Link
+                  href={`/service-areas/${area.slug}`}
+                  className="group flex h-full flex-col justify-between border-b border-heritage-black/12 py-10 sm:pr-10"
+                >
+                  <div>
+                    <h2 className="font-display text-section font-bold text-heritage-black transition-colors duration-micro group-hover:text-redemption-red">
+                      {area.cityName}
+                    </h2>
+                    <p className="mt-1 font-condensed text-sm font-bold uppercase tracking-[0.16em] text-steel-gray">
+                      {area.stateAbbr}
+                    </p>
+                    <p className="mt-6 max-w-measure text-body-base text-steel-gray">
+                      {area.localIntroduction}
+                    </p>
+                  </div>
+                  <span className="link-editorial mt-8">
+                    {area.cityName} cleanouts
+                    <span aria-hidden="true" className="btn-arrow">
+                      &rarr;
+                    </span>
+                  </span>
+                </Link>
+              </Reveal>
+            ))}
+          </div>
+
+          <Reveal>
+            <div className="mt-14 max-w-measure-lg border-l-2 border-redemption-red pl-6">
+              <p className="text-body-base text-steel-gray">
+                Don&apos;t see your city? We may still serve it as part of our Oakland County
+                and Southeast Michigan coverage.{" "}
+                <Link
+                  href="/request-walkthrough"
+                  className="font-semibold text-heritage-black underline decoration-redemption-red decoration-2 underline-offset-4"
+                >
+                  Request a walkthrough
+                </Link>{" "}
+                with your address and we&apos;ll confirm.
+              </p>
+            </div>
+          </Reveal>
         </div>
-        <p className="mt-8 text-sm text-steel-gray">
-          Don&apos;t see your city listed? We may still serve your area as part of our
-          Oakland County and Southeast Michigan coverage —{" "}
-          <Link href="/request-walkthrough" className="font-semibold text-redemption-red hover:underline">
-            request a walkthrough
-          </Link>{" "}
-          and we&apos;ll confirm.
-        </p>
       </section>
-      <CallToAction location="service_areas_overview_cta" headline="Request a Property Walkthrough" variant="dark" />
+
+      <CallToAction
+        location="service_areas_overview_cta"
+        headline="Tell us where the property is"
+        supportingText="Send the address and property details and we'll confirm coverage and scheduling."
+      />
     </>
   );
 }

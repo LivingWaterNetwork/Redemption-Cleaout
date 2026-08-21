@@ -2,8 +2,9 @@ import { test, expect } from "@playwright/test";
 
 test("request-walkthrough page shows an honest Jobber fallback when unconfigured", async ({ page }) => {
   await page.goto("/request-walkthrough");
-  await expect(page.getByRole("heading", { name: "Request a Property Walkthrough" })).toBeVisible();
-  await expect(page.getByText(/isn't configured yet/i)).toBeVisible();
+  await expect(page.getByRole("heading", { level: 1 })).toContainText(/request a property walkthrough/i);
+  // Honest unavailable state, not a form that looks functional.
+  await expect(page.getByText(/online form being connected/i)).toBeVisible();
   const phoneLinks = page.locator('a[href="tel:+12483219609"]');
   await expect(phoneLinks.first()).toBeVisible();
 });

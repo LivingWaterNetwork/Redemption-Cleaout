@@ -8,9 +8,12 @@ import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { ProcessTimeline } from "@/components/ui/ProcessTimeline";
 import { FAQAccordion } from "@/components/ui/FAQAccordion";
 import { CallToAction } from "@/components/ui/CallToAction";
+import { SectionHeader } from "@/components/ui/SectionHeader";
 import { StructuredData } from "@/components/StructuredData";
+import { Reveal } from "@/components/motion/Reveal";
 import { breadcrumbJsonLd, pageMetadata } from "@/lib/seo";
 import { faqPageJsonLd, serviceJsonLd } from "@/lib/structuredData";
+import { business, formatPhoneSmsHref, formatPhoneTelHref } from "@/content/business";
 
 export function generateStaticParams() {
   return services.map((service) => ({ slug: service.slug }));
@@ -41,7 +44,7 @@ export default async function ServiceDetailPage({
   if (!service) notFound();
 
   const relatedServices = service.relatedServiceSlugs
-    .map((slug) => getServiceBySlug(slug))
+    .map((related) => getServiceBySlug(related))
     .filter((s): s is NonNullable<typeof s> => Boolean(s));
 
   return (
@@ -64,131 +67,215 @@ export default async function ServiceDetailPage({
           { name: service.shortName, href: `/services/${service.slug}` },
         ]}
       />
-      <PageHero eyebrow="Service" title={service.heroHeadline} description={service.situation} />
 
-      {service.image && (
-        <figure className="container-page pt-12">
-          <div className="relative aspect-[3/2] w-full overflow-hidden">
-            <Image
-              src={service.image.src}
-              alt={service.image.alt}
-              fill
-              sizes="(min-width: 1280px) 1280px, 100vw"
-              className="object-cover"
-              priority
-            />
-          </div>
-          <figcaption className="mt-3 text-sm text-steel-gray">{service.image.caption}</figcaption>
-        </figure>
-      )}
-
-      <section className="container-page grid gap-12 py-16 lg:grid-cols-[2fr_1fr]">
-        <div>
-          <h2 className="font-display text-2xl font-bold text-heritage-black">What This Service Is</h2>
-          <p className="mt-3 text-steel-gray">{service.definition}</p>
-
-          <h2 className="mt-10 font-display text-2xl font-bold text-heritage-black">What Redemption Handles</h2>
-          <ul className="mt-3 space-y-2">
-            {service.weHandle.map((item) => (
-              <li key={item} className="flex items-start gap-2 text-steel-gray">
-                <span aria-hidden="true" className="mt-1 text-redemption-red">
-                  ✓
-                </span>
-                {item}
-              </li>
-            ))}
-          </ul>
-
-          {service.mayRequireSpecialist.length > 0 && (
-            <>
-              <h2 className="mt-10 font-display text-2xl font-bold text-heritage-black">
-                What May Require Another Specialist
-              </h2>
-              <p className="mt-2 text-sm text-steel-gray">
-                Some conditions fall outside standard cleanout scope and require a separately
-                licensed specialist:
-              </p>
-              <ul className="mt-3 space-y-2">
-                {service.mayRequireSpecialist.map((item) => (
-                  <li key={item} className="flex items-start gap-2 text-steel-gray">
-                    <span aria-hidden="true" className="mt-1 text-steel-gray">
-                      –
-                    </span>
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </>
-          )}
-
-          <h2 className="mt-10 font-display text-2xl font-bold text-heritage-black">Common Project Conditions</h2>
-          <ul className="mt-3 space-y-2">
-            {service.commonConditions.map((item) => (
-              <li key={item} className="flex items-start gap-2 text-steel-gray">
-                <span aria-hidden="true" className="mt-1 text-redemption-red">
-                  •
-                </span>
-                {item}
-              </li>
-            ))}
-          </ul>
+      <PageHero
+        eyebrow="Service"
+        title={service.heroHeadline}
+        description={service.situation}
+        variant={service.image ? "image" : "dark"}
+        image={service.image ? { src: service.image.src, alt: service.image.alt } : undefined}
+      >
+        <div className="flex flex-col gap-3 sm:flex-row">
+          <Link href="/request-walkthrough" className="btn-primary">
+            Request a Property Walkthrough
+            <span aria-hidden="true" className="btn-arrow">
+              &rarr;
+            </span>
+          </Link>
+          <a href={formatPhoneTelHref()} className="btn-on-dark">
+            Call {business.phoneDisplay}
+          </a>
         </div>
+      </PageHero>
 
-        <aside className="border border-warm-concrete p-6">
-          <h2 className="font-display text-lg font-bold text-heritage-black">Who This Is For</h2>
-          <ul className="mt-3 space-y-2 text-sm text-steel-gray">
-            {service.whoItsFor.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-          <div className="mt-6 flex flex-col gap-3">
-            <Link href="/request-walkthrough" className="btn-primary">
-              Request a Property Walkthrough
-            </Link>
-            <a href="tel:+12483219609" className="btn-secondary">
-              Call or Text (248) 321-9609
-            </a>
+      {/* Definition + scope */}
+      <section className="py-section">
+        <div className="container-page grid gap-x-14 gap-y-12 lg:grid-cols-12">
+          <div className="lg:col-span-7">
+            <Reveal>
+              <p className="eyebrow">What this service is</p>
+            </Reveal>
+            <Reveal delay={80}>
+              <p className="mt-6 max-w-measure-lg text-body-lg text-heritage-black">
+                {service.definition}
+              </p>
+            </Reveal>
+
+            <Reveal delay={140}>
+              <h2 className="mt-14 text-section font-bold text-heritage-black">
+                What Redemption handles
+              </h2>
+            </Reveal>
+            <ul className="mt-7 border-t border-heritage-black/12">
+              {service.weHandle.map((item, index) => (
+                <Reveal
+                  key={item}
+                  as="li"
+                  delay={index * 60}
+                  className="flex gap-4 border-b border-heritage-black/12 py-4 text-body-base text-steel-gray"
+                >
+                  <span aria-hidden="true" className="mt-1 shrink-0 text-redemption-red">
+                    ✓
+                  </span>
+                  <span>{item}</span>
+                </Reveal>
+              ))}
+            </ul>
+
+            {service.mayRequireSpecialist.length > 0 && (
+              <Reveal>
+                <div className="mt-14 border-l-2 border-steel-gray/40 pl-6">
+                  <h2 className="font-display text-xl font-semibold text-heritage-black">
+                    What may require another specialist
+                  </h2>
+                  <p className="mt-3 max-w-measure text-sm text-steel-gray">
+                    Some conditions fall outside standard cleanout scope and need a separately
+                    licensed specialist. We&apos;ll tell you plainly if we find one.
+                  </p>
+                  <ul className="mt-4 space-y-2">
+                    {service.mayRequireSpecialist.map((item) => (
+                      <li key={item} className="flex gap-3 text-sm text-steel-gray">
+                        <span aria-hidden="true" className="text-steel-gray/60">
+                          &mdash;
+                        </span>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </Reveal>
+            )}
           </div>
-        </aside>
+
+          {/* Sidebar */}
+          <div className="lg:col-span-5">
+            <Reveal delay={100}>
+              <div className="frame-double sticky top-32">
+                <div className="bg-warm-concrete p-8">
+                  <p className="eyebrow-plain text-steel-gray">Who this is for</p>
+                  <ul className="mt-5 space-y-3">
+                    {service.whoItsFor.map((item) => (
+                      <li key={item} className="text-body-base text-heritage-black">
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+
+                  <div className="mt-8 border-t border-heritage-black/12 pt-7">
+                    <p className="eyebrow-plain text-steel-gray">Common conditions</p>
+                    <ul className="mt-4 space-y-2.5">
+                      {service.commonConditions.map((item) => (
+                        <li key={item} className="flex gap-2.5 text-sm text-steel-gray">
+                          <span aria-hidden="true" className="mt-1 shrink-0 text-redemption-red">
+                            •
+                          </span>
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="mt-8 flex flex-col gap-3 border-t border-heritage-black/12 pt-7">
+                    <Link href="/request-walkthrough" className="btn-primary w-full">
+                      Request a Walkthrough
+                      <span aria-hidden="true" className="btn-arrow">
+                        &rarr;
+                      </span>
+                    </Link>
+                    <div className="grid grid-cols-2 gap-3">
+                      <a href={formatPhoneTelHref()} className="btn-secondary !px-3">
+                        Call
+                      </a>
+                      <a href={formatPhoneSmsHref()} className="btn-secondary !px-3">
+                        Text
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Reveal>
+          </div>
+        </div>
       </section>
 
-      <section className="bg-warm-concrete/30 py-16">
+      {/* Process */}
+      <section className="border-y border-heritage-black/10 bg-warm-concrete py-section">
         <div className="container-page">
-          <h2 className="font-display text-2xl font-bold text-heritage-black">Process</h2>
-          <div className="mt-8">
+          <SectionHeader label="Process" title="How this project runs" />
+          <div className="mt-14">
             <ProcessTimeline steps={service.process} />
           </div>
         </div>
       </section>
 
-      {relatedServices.length > 0 && (
-        <section className="container-page py-16">
-          <h2 className="font-display text-2xl font-bold text-heritage-black">Related Services</h2>
-          <div className="mt-6 flex flex-wrap gap-4">
-            {relatedServices.map((related) => (
-              <Link
-                key={related.slug}
-                href={`/services/${related.slug}`}
-                className="border border-warm-concrete px-5 py-3 font-semibold text-heritage-black hover:border-redemption-red hover:text-redemption-red"
-              >
-                {related.shortName}
-              </Link>
-            ))}
+      {/* Proof image */}
+      {service.image && (
+        <section className="py-section">
+          <div className="container-page">
+            <Reveal variant="mask">
+              <figure>
+                <div className="img-frame aspect-panel w-full">
+                  <Image
+                    src={service.image.src}
+                    alt={service.image.alt}
+                    fill
+                    sizes="(min-width: 1440px) 1440px, 100vw"
+                    className="object-cover"
+                  />
+                </div>
+                <figcaption className="mt-4 max-w-measure-lg text-sm text-steel-gray">
+                  {service.image.caption}
+                </figcaption>
+              </figure>
+            </Reveal>
           </div>
         </section>
       )}
 
-      <section className="container-page py-16">
-        <h2 className="font-display text-2xl font-bold text-heritage-black">Frequently Asked Questions</h2>
-        <div className="mt-6">
-          <FAQAccordion faqs={service.faqs} idPrefix={`service-${service.slug}`} />
+      {/* FAQs */}
+      <section className="pb-section">
+        <div className="container-page grid gap-x-14 gap-y-10 lg:grid-cols-12">
+          <div className="lg:col-span-4">
+            <Reveal>
+              <p className="eyebrow">Questions</p>
+            </Reveal>
+            <Reveal delay={80}>
+              <h2 className="mt-5 text-section font-bold text-heritage-black">
+                About this service
+              </h2>
+            </Reveal>
+          </div>
+          <Reveal delay={120} className="lg:col-span-8">
+            <FAQAccordion faqs={service.faqs} idPrefix={`service-${service.slug}`} />
+          </Reveal>
         </div>
       </section>
 
+      {/* Related */}
+      {relatedServices.length > 0 && (
+        <section className="border-t border-heritage-black/10 pb-section pt-14">
+          <div className="container-page">
+            <p className="eyebrow-plain text-steel-gray">Related services</p>
+            <ul className="mt-6 flex flex-wrap gap-x-8 gap-y-4">
+              {relatedServices.map((related) => (
+                <li key={related.slug}>
+                  <Link
+                    href={`/services/${related.slug}`}
+                    className="font-display text-lg font-semibold text-heritage-black underline decoration-heritage-black/20 underline-offset-[6px] transition-colors duration-micro hover:text-redemption-red hover:decoration-redemption-red"
+                  >
+                    {related.shortName}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      )}
+
       <CallToAction
         location={`service_${service.slug}_cta`}
-        headline={`Ready to talk through your ${service.shortName.toLowerCase()}?`}
-        variant="red"
+        headline={`Ready to scope your ${service.shortName.toLowerCase()}?`}
+        supportingText="Tell us about the property and we'll schedule an on-site walkthrough. You'll get a clear scope and a price that holds before anything is booked."
       />
     </>
   );

@@ -16,9 +16,9 @@ export default function TermsPage() {
     <>
       <StructuredData data={breadcrumbJsonLd([{ name: "Home", path: "/" }, { name: "Terms", path: "/terms" }])} />
       <Breadcrumbs items={[{ name: "Home", href: "/" }, { name: "Terms", href: "/terms" }]} />
-      <PageHero eyebrow="Legal" title="Terms & Website-Use Notice" />
-      <article className="container-page max-w-3xl space-y-6 py-16 text-steel-gray">
-        <h2 className="font-display text-xl font-bold text-heritage-black">Use of This Website</h2>
+      <PageHero eyebrow="Legal" title="Terms & Website-Use Notice" variant="light" />
+      <article className="container-page max-w-measure-lg space-y-6 py-section text-body-base text-steel-gray">
+        <h2 className="mt-10 font-display text-xl font-semibold text-heritage-black">Use of This Website</h2>
         <p>
           This website is provided for informational purposes to describe the services
           offered by {business.name}. Information on this site, including service
@@ -26,21 +26,21 @@ export default function TermsPage() {
           and pricing are confirmed through an on-site walkthrough, not this website.
         </p>
 
-        <h2 className="font-display text-xl font-bold text-heritage-black">No Automated Quotes</h2>
+        <h2 className="mt-10 font-display text-xl font-semibold text-heritage-black">No Automated Quotes</h2>
         <p>
           Nothing on this website constitutes a binding quote or automated pricing.
           Full-property, commercial, and larger cleanouts require an on-site
           walkthrough before a scope or price is confirmed.
         </p>
 
-        <h2 className="font-display text-xl font-bold text-heritage-black">Third-Party Request Form</h2>
+        <h2 className="mt-10 font-display text-xl font-semibold text-heritage-black">Third-Party Request Form</h2>
         <p>
           Property walkthrough requests are processed through Jobber, a third-party
           service. Submitting a request through this site does not guarantee
           scheduling or availability.
         </p>
 
-        <h2 className="font-display text-xl font-bold text-heritage-black">Changes</h2>
+        <h2 className="mt-10 font-display text-xl font-semibold text-heritage-black">Changes</h2>
         <p>These terms may be updated from time to time without prior notice.</p>
       </article>
     </>

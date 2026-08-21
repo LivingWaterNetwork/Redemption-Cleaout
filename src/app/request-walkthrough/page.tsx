@@ -3,6 +3,7 @@ import { PageHero } from "@/components/sections/PageHero";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { JobberRequestForm } from "@/components/JobberRequestForm";
 import { StructuredData } from "@/components/StructuredData";
+import { Reveal } from "@/components/motion/Reveal";
 import { breadcrumbJsonLd, pageMetadata } from "@/lib/seo";
 import { business, formatPhoneSmsHref, formatPhoneTelHref } from "@/content/business";
 
@@ -12,6 +13,31 @@ export const metadata: Metadata = pageMetadata({
     "Request a property walkthrough with Redemption Cleanout Services in Rochester, Michigan — or call or text (248) 321-9609 directly.",
   path: "/request-walkthrough",
 });
+
+const steps = [
+  {
+    title: "You send the property details",
+    body: "Address, property type, and roughly what needs to be cleared. Two minutes is enough — we'll ask the rest.",
+  },
+  {
+    title: "We reach out to confirm",
+    body: "A real person follows up to confirm details and find a walkthrough time that works around your schedule.",
+  },
+  {
+    title: "We walk the property",
+    body: "On-site, in person. This is how the scope and price come back accurate instead of changing on job day.",
+  },
+  {
+    title: "You get a clear scope and price",
+    body: "In writing, before anything is booked. If part of the job needs a licensed specialist, we say so up front.",
+  },
+];
+
+const reassurances = [
+  "No obligation, and no pressure to book on the spot.",
+  "Sensitive situations handled privately and without judgment.",
+  "Out-of-state? We can coordinate entirely by phone, text, and photos.",
+];
 
 export default function RequestWalkthroughPage() {
   return (
@@ -23,41 +49,99 @@ export default function RequestWalkthroughPage() {
         ])}
       />
       <Breadcrumbs
-        items={[{ name: "Home", href: "/" }, { name: "Request a Walkthrough", href: "/request-walkthrough" }]}
+        items={[
+          { name: "Home", href: "/" },
+          { name: "Request a Walkthrough", href: "/request-walkthrough" },
+        ]}
       />
+
       <PageHero
         eyebrow="Get Started"
-        title="Request a Property Walkthrough"
-        description="Full-property, estate, commercial, and larger jobs are quoted on-site for accuracy. Submit the request below, or call or text us directly — either way, here's what happens next."
+        title="Request a property walkthrough"
+        description="Full-property, estate, commercial, and larger jobs are quoted on-site for accuracy. Send the details below, or call or text — either reaches the same person."
       />
 
-      <section className="container-page grid gap-12 py-16 lg:grid-cols-[1fr_320px]">
-        <div>
-          <h2 className="font-display text-xl font-bold text-heritage-black">What Happens Next</h2>
-          <ol className="mt-4 space-y-3 text-steel-gray">
-            <li>1. We review your request and reach out to confirm details.</li>
-            <li>2. We schedule an on-site walkthrough at a time that works for you.</li>
-            <li>3. You get a clear scope, timeline, and price before anything is booked.</li>
-          </ol>
-          <div className="mt-8">
-            <JobberRequestForm />
+      <section className="py-section">
+        <div className="container-page grid gap-x-14 gap-y-14 lg:grid-cols-12">
+          {/* Form column */}
+          <div className="lg:col-span-7">
+            <Reveal>
+              <h2 className="text-section font-bold text-heritage-black">Send the details</h2>
+            </Reveal>
+            <Reveal delay={80}>
+              <p className="mt-5 max-w-measure-lg text-body-base text-steel-gray">
+                Your information goes directly to our scheduling system. We don&apos;t store
+                it on this website.
+              </p>
+            </Reveal>
+            <Reveal delay={140} className="mt-9">
+              <JobberRequestForm />
+            </Reveal>
+          </div>
+
+          {/* Expectations column */}
+          <div className="lg:col-span-5">
+            <Reveal delay={100}>
+              <div className="border-t-2 border-redemption-red pt-7">
+                <p className="eyebrow-plain text-steel-gray">What happens next</p>
+                <ol className="mt-7">
+                  {steps.map((step, index) => (
+                    <li
+                      key={step.title}
+                      className="flex gap-5 border-b border-heritage-black/12 py-5 last:border-b-0"
+                    >
+                      <span
+                        aria-hidden="true"
+                        className="font-condensed text-sm font-bold tabular-nums text-redemption-red"
+                      >
+                        {String(index + 1).padStart(2, "0")}
+                      </span>
+                      <div>
+                        <h3 className="font-display text-base font-semibold text-heritage-black">
+                          {step.title}
+                        </h3>
+                        <p className="mt-1.5 text-sm leading-relaxed text-steel-gray">
+                          {step.body}
+                        </p>
+                      </div>
+                    </li>
+                  ))}
+                </ol>
+              </div>
+            </Reveal>
+
+            <Reveal delay={180}>
+              <ul className="mt-10 space-y-3">
+                {reassurances.map((item) => (
+                  <li key={item} className="flex gap-3 text-sm text-steel-gray">
+                    <span aria-hidden="true" className="mt-0.5 shrink-0 text-redemption-red">
+                      ✓
+                    </span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </Reveal>
+
+            <Reveal delay={240}>
+              <div className="mt-10 bg-heritage-black p-8 text-clean-white on-dark">
+                <p className="eyebrow-plain">Prefer to talk first?</p>
+                <p className="mt-3 text-body-base text-clean-white/80">
+                  Call or text {business.founderName.split(" ")[0]} directly. Most questions get
+                  answered in one conversation.
+                </p>
+                <div className="mt-6 flex flex-col gap-3">
+                  <a href={formatPhoneTelHref()} className="btn-primary w-full">
+                    Call {business.phoneDisplay}
+                  </a>
+                  <a href={formatPhoneSmsHref()} className="btn-on-dark w-full">
+                    Text {business.phoneDisplay}
+                  </a>
+                </div>
+              </div>
+            </Reveal>
           </div>
         </div>
-
-        <aside className="border border-warm-concrete p-6">
-          <h2 className="font-display text-lg font-bold text-heritage-black">Prefer to talk first?</h2>
-          <p className="mt-2 text-sm text-steel-gray">
-            Call or text {business.founderName.split(" ")[0]} directly.
-          </p>
-          <div className="mt-4 flex flex-col gap-3">
-            <a href={formatPhoneTelHref()} className="btn-primary">
-              Call {business.phoneDisplay}
-            </a>
-            <a href={formatPhoneSmsHref()} className="btn-secondary">
-              Text Us
-            </a>
-          </div>
-        </aside>
       </section>
     </>
   );

@@ -1,41 +1,99 @@
+"use client";
+
 import { testimonials } from "@/content/testimonials";
 import { googleReviewUrl } from "@/content/business";
-import { EmptyState } from "@/components/ui/EmptyState";
+import { SectionHeader } from "@/components/ui/SectionHeader";
+import { Reveal } from "@/components/motion/Reveal";
+import { trackEvent } from "@/lib/analytics";
 
+/**
+ * Reviews. Verified first-party content only: no invented quotes, no star
+ * ratings, no aggregate figure, and no AggregateRating schema anywhere. When
+ * nothing is configured this renders an honest state instead of filler.
+ */
 export function ReviewSection() {
+  const [featured, ...rest] = testimonials;
+
   return (
-    <section className="bg-warm-concrete/30 py-16">
+    <section className="border-y border-heritage-black/10 bg-warm-concrete py-section">
       <div className="container-page">
-        <p className="eyebrow">Reviews</p>
-        <h2 className="mt-1 font-display text-3xl font-bold text-heritage-black">
-          What clients and partners say
-        </h2>
-        {testimonials.length === 0 ? (
-          <div className="mt-8">
-            <EmptyState
-              title="Authentic reviews are being gathered"
-              description="We only publish real reviews from real clients — nothing invented. Check back soon, or view Redemption's Google Business Profile directly."
-              action={
-                googleReviewUrl ? (
-                  <a href={googleReviewUrl} target="_blank" rel="noopener noreferrer" className="btn-primary">
-                    View Google Reviews
-                  </a>
-                ) : undefined
-              }
-            />
-          </div>
-        ) : (
-          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {testimonials.map((testimonial) => (
-              <blockquote key={testimonial.id} className="border border-warm-concrete bg-clean-white p-6">
-                <p className="text-steel-gray">&ldquo;{testimonial.quote}&rdquo;</p>
-                <footer className="mt-4 text-sm font-semibold text-heritage-black">
-                  {testimonial.authorLabel}
-                  {testimonial.role && <span className="text-steel-gray"> &middot; {testimonial.role}</span>}
+        <SectionHeader
+          label="Reviews"
+          title="What clients and partners say"
+          intro={
+            featured
+              ? undefined
+              : "We publish real reviews from real clients — nothing invented, and no rating we can't substantiate."
+          }
+        />
+
+        {featured ? (
+          <div className="mt-14 grid gap-x-14 gap-y-10 lg:grid-cols-12">
+            <Reveal className="lg:col-span-7">
+              <blockquote className="border-l-2 border-redemption-red pl-7">
+                <p className="font-display text-subhead font-medium leading-snug text-heritage-black">
+                  &ldquo;{featured.quote}&rdquo;
+                </p>
+                <footer className="mt-6 font-condensed text-sm font-bold uppercase tracking-wide text-steel-gray">
+                  {featured.authorLabel}
+                  {featured.role && <span> &middot; {featured.role}</span>}
+                  {featured.city && <span> &middot; {featured.city}</span>}
                 </footer>
               </blockquote>
-            ))}
+            </Reveal>
+
+            {rest.length > 0 && (
+              <div className="lg:col-span-5">
+                {rest.slice(0, 3).map((testimonial, index) => (
+                  <Reveal
+                    key={testimonial.id}
+                    delay={index * 90}
+                    className="border-t border-heritage-black/12 py-6 first:border-t-0 first:pt-0"
+                  >
+                    <blockquote>
+                      <p className="text-body-base text-steel-gray">
+                        &ldquo;{testimonial.quote}&rdquo;
+                      </p>
+                      <footer className="mt-3 font-condensed text-xs font-bold uppercase tracking-wide text-heritage-black">
+                        {testimonial.authorLabel}
+                        {testimonial.role && <span> &middot; {testimonial.role}</span>}
+                      </footer>
+                    </blockquote>
+                  </Reveal>
+                ))}
+              </div>
+            )}
           </div>
+        ) : (
+          <Reveal className="mt-12">
+            <div className="frame-double max-w-2xl">
+              <div className="bg-clean-white p-8">
+                <p className="eyebrow-plain text-steel-gray">Being gathered</p>
+                <h3 className="mt-3 font-display text-xl font-semibold text-heritage-black">
+                  Authentic reviews are on the way
+                </h3>
+                <p className="mt-4 text-body-base text-steel-gray">
+                  Redemption has been built on referral relationships rather than online
+                  reviews. As clients and partners leave them, they&apos;ll appear here
+                  word-for-word.
+                </p>
+                {googleReviewUrl && (
+                  <a
+                    href={googleReviewUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-primary mt-7"
+                    onClick={() => trackEvent({ name: "click_google_reviews" })}
+                  >
+                    View Google Reviews
+                    <span aria-hidden="true" className="btn-arrow">
+                      &rarr;
+                    </span>
+                  </a>
+                )}
+              </div>
+            </div>
+          </Reveal>
         )}
       </div>
     </section>

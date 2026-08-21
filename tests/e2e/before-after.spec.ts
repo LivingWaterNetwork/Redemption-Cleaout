@@ -2,7 +2,7 @@ import { test, expect } from "@playwright/test";
 
 test("projects page shows an honest empty state when no photography exists yet", async ({ page }) => {
   await page.goto("/projects");
-  await expect(page.getByText(/project photography is being gathered/i)).toBeVisible();
+  await expect(page.getByText(/before-and-after pairs are being documented/i)).toBeVisible();
 });
 
 test("reduced motion is respected on the homepage", async ({ page }) => {

@@ -4,6 +4,8 @@ Run before declaring any release complete.
 
 ## Automated
 
+- [ ] `node axe-check.mjs` reports no violations (WCAG 2.2 AA, 14 routes × 2 breakpoints)
+- [ ] `node shot.mjs` reports no horizontal overflow at 390/768/1024/1440/1920
 - [ ] `npm run typecheck` passes
 - [ ] `npm run lint` passes
 - [ ] `npm run test` (Vitest unit tests) passes

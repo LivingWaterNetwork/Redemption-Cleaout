@@ -35,6 +35,9 @@ Runs at http://localhost:3000.
 | `npm run typecheck` | TypeScript, no emit |
 | `npm run test` | Vitest unit tests |
 | `npm run e2e` | Playwright end-to-end tests (builds + starts the app first) |
+| `node axe-check.mjs` | WCAG 2.2 AA sweep over 14 routes at 390px and 1440px (needs a running server) |
+| `node shot.mjs` | Full-page screenshots at each breakpoint; flags horizontal overflow |
+| `./rebuild.sh` | Clean rebuild and restart on :3000 for local review |
 | `npm run format` | Prettier |
 
 ## Project structure
@@ -45,12 +48,21 @@ src/
                          metadata + JSON-LD, then compose section
                          components from components/sections and
                          components/ui.
-  components/            layout/ (Header, Footer, UtilityBar,
-                         MobileActionBar, SkipLink), sections/ (page-
-                         specific composition), ui/ (reusable primitives:
-                         Breadcrumbs, CallToAction, FAQAccordion,
-                         ServiceCard, ProcessTimeline, TrustStrip,
-                         EmptyState, PhotoPlaceholder), plus
+  components/            layout/ (Header — transparent over the hero and
+                         solid on scroll, with the utility strip and mobile
+                         panel; Footer; MobileActionBar; SkipLink),
+                         motion/ (MotionGate + Reveal — the single motion
+                         implementation, see DESIGN_SYSTEM.md),
+                         sections/ (page composition: Hero, TrustBand,
+                         SituationSelector, FlagshipServices,
+                         BeforeAfterSection, WhyRedemption,
+                         HowItWorksSection, ProfessionalPartnerSection,
+                         FounderSection, RecentWork, ReviewSection,
+                         ServiceAreaSection, FAQPreview, PageHero,
+                         ProjectGallery),
+                         ui/ (primitives: Breadcrumbs, CallToAction,
+                         FAQAccordion, ProcessTimeline, SectionHeader,
+                         ServiceCard, EmptyState, PhotoPlaceholder), plus
                          JobberRequestForm, BeforeAfterComparison,
                          Analytics, ConsentBanner, StructuredData,
                          ErrorBoundary at the top level.
@@ -117,3 +129,4 @@ registered at GoDaddy, only its DNS records point at Vercel.
 - `IMAGE_REQUIREMENTS.md` — logo/photography assets still needed, and where they plug in
 - `ENVIRONMENT_VARIABLES.md` — full env var reference
 - `QA_CHECKLIST.md` — pre-release checklist
+- `DESIGN_SYSTEM.md` — design tokens, component classes, and the motion system

@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { oswald, ptSansNarrow, sourceSans } from "@/lib/fonts";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { UtilityBar } from "@/components/layout/UtilityBar";
 import { MobileActionBar } from "@/components/layout/MobileActionBar";
 import { SkipLink } from "@/components/layout/SkipLink";
+import { MotionGate } from "@/components/motion/MotionGate";
 import { Analytics } from "@/components/Analytics";
 import { ConsentBanner } from "@/components/ConsentBanner";
 import { StructuredData } from "@/components/StructuredData";
@@ -27,13 +27,18 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${oswald.variable} ${ptSansNarrow.variable} ${sourceSans.variable}`}>
+    <html
+      lang="en"
+      className={`${oswald.variable} ${ptSansNarrow.variable} ${sourceSans.variable}`}
+    >
+      <head>
+        <MotionGate />
+      </head>
       <body>
         <StructuredData data={[organizationJsonLd(), websiteJsonLd()]} />
         <SkipLink />
-        <UtilityBar />
         <Header />
-        <main id="main-content" className="pb-16 sm:pb-0">
+        <main id="main-content" className="pb-[76px] sm:pb-0">
           {children}
         </main>
         <Footer />

@@ -1,50 +1,96 @@
 import Link from "next/link";
 import Image from "next/image";
 import { services } from "@/content/services";
+import { SectionHeader } from "@/components/ui/SectionHeader";
+import { Reveal } from "@/components/motion/Reveal";
 
 /**
- * Real job photography pulled from the service content layer, so the
- * homepage never shows an image that isn't already approved for a service
- * page. Renders nothing if no service has an image yet.
+ * Documented work, drawn from the service content layer so an image never
+ * appears here before it is approved for a service page. Varied tile sizes
+ * keep it reading as documentation rather than a uniform photo grid.
  */
 export function RecentWork() {
-  const withImages = services.filter((s) => s.image).slice(0, 3);
+  const withImages = services.filter((s) => s.image);
   if (withImages.length === 0) return null;
 
+  // Three tiles keep the composition tight and avoid re-showing every image
+  // already used by the flagship service rows above.
+  const [lead, ...rest] = withImages.slice(0, 3);
+
   return (
-    <section className="bg-heritage-black py-16 text-clean-white">
+    <section className="py-section">
       <div className="container-page">
-        <div className="flex flex-wrap items-end justify-between gap-4">
-          <div>
-            <p className="eyebrow">The Work</p>
-            <h2 className="mt-1 font-display text-3xl font-bold">
-              Real properties, real scope
-            </h2>
+        <SectionHeader
+          label="The Work"
+          title="Real properties, real scope"
+          intro="Photographs from completed Redemption projects across Southeast Michigan. Nothing staged, and nothing published without permission."
+          action={
+            <Link href="/projects" className="link-editorial">
+              All projects
+              <span aria-hidden="true" className="btn-arrow">
+                &rarr;
+              </span>
+            </Link>
+          }
+        />
+
+        <div className="mt-14 grid gap-8 lg:grid-cols-12">
+          {/* Lead tile, deliberately larger */}
+          {lead && (
+            <Reveal variant="mask" className="lg:col-span-7">
+              <Link href={`/services/${lead.slug}`} className="group block">
+                <div className="img-frame aspect-panel w-full">
+                  <Image
+                    src={lead.image!.src}
+                    alt={lead.image!.alt}
+                    fill
+                    sizes="(min-width: 1024px) 56vw, 100vw"
+                    className="img-zoom object-cover"
+                  />
+                </div>
+                <h3 className="mt-5 font-display text-xl font-semibold text-heritage-black transition-colors duration-micro group-hover:text-redemption-red">
+                  {lead.shortName}
+                </h3>
+                <p className="mt-2 max-w-measure-lg text-body-base text-steel-gray">
+                  {lead.image!.caption}
+                </p>
+              </Link>
+            </Reveal>
+          )}
+
+          {/* Supporting tiles */}
+          <div className="grid gap-8 sm:grid-cols-2 lg:col-span-5 lg:grid-cols-1 lg:content-between">
+            {rest.map((service, index) => (
+              <Reveal key={service.slug} delay={120 + index * 100}>
+                <Link href={`/services/${service.slug}`} className="group block">
+                  <div className="img-frame aspect-editorial w-full">
+                    <Image
+                      src={service.image!.src}
+                      alt={service.image!.alt}
+                      fill
+                      sizes="(min-width: 1024px) 38vw, (min-width: 640px) 50vw, 100vw"
+                      className="img-zoom object-cover"
+                    />
+                  </div>
+                  <h3 className="mt-4 font-display text-lg font-semibold text-heritage-black transition-colors duration-micro group-hover:text-redemption-red">
+                    {service.shortName}
+                  </h3>
+                  <p className="mt-1.5 text-sm leading-relaxed text-steel-gray">
+                    {service.image!.caption}
+                  </p>
+                </Link>
+              </Reveal>
+            ))}
           </div>
-          <Link href="/projects" className="font-semibold text-redemption-red hover:underline">
-            See more work &rarr;
-          </Link>
         </div>
 
-        <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {withImages.map((service) => (
-            <Link key={service.slug} href={`/services/${service.slug}`} className="group block">
-              <div className="relative aspect-[3/2] w-full overflow-hidden">
-                <Image
-                  src={service.image!.src}
-                  alt={service.image!.alt}
-                  fill
-                  sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                  className="object-cover transition-transform duration-300 group-hover:scale-[1.03] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
-                />
-              </div>
-              <h3 className="mt-3 font-display text-lg font-semibold group-hover:text-redemption-red">
-                {service.shortName}
-              </h3>
-              <p className="mt-1 text-sm text-clean-white/70">{service.image!.caption}</p>
-            </Link>
-          ))}
-        </div>
+        {/* Honest note on the limits of the current photo library. */}
+        <Reveal>
+          <p className="mt-12 max-w-measure-lg border-t border-heritage-black/12 pt-6 text-sm text-steel-gray">
+            More project documentation — including matched before-and-after pairs — is being
+            gathered and will be published here as client permissions are confirmed.
+          </p>
+        </Reveal>
       </div>
     </section>
   );

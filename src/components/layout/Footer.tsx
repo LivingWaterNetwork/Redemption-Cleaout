@@ -1,73 +1,223 @@
 import Link from "next/link";
-import { business, formatPhoneTelHref } from "@/content/business";
-import { footerNav, legalNav } from "@/content/navigation";
+import Image from "next/image";
+import { business, formatPhoneSmsHref, formatPhoneTelHref } from "@/content/business";
+import { legalNav, secondaryNav } from "@/content/navigation";
+import { services } from "@/content/services";
+import { audiences } from "@/content/audiences";
 import { approvedServiceAreas } from "@/content/serviceAreas";
 
+/**
+ * Substantial footer: brand block with positioning statement, full service
+ * and audience indexes for crawlable internal linking, service areas,
+ * contact, and legal. Honors publicAddressEnabled — never renders the street
+ * address while it is false.
+ */
 export function Footer() {
+  const year = new Date().getFullYear();
+
   return (
-    <footer className="border-t border-warm-concrete bg-heritage-black text-clean-white">
-      <div className="container-page grid gap-10 py-12 sm:grid-cols-2 lg:grid-cols-4">
-        <div>
-          <p className="font-display text-lg font-bold">{business.name}</p>
-          <p className="mt-2 text-sm text-clean-white/70">{business.legalTagline}</p>
-          <p className="mt-4 text-sm text-clean-white/70">{business.address.publicAreaDescription}</p>
-          <a href={formatPhoneTelHref()} className="mt-1 block text-sm font-semibold hover:text-redemption-red">
-            {business.phoneDisplay}
-          </a>
-          <a
-            href={business.instagramUrl}
-            className="mt-2 inline-block text-sm text-clean-white/70 hover:text-redemption-red"
-          >
-            {business.instagramHandle}
-          </a>
+    <footer className="border-t-4 border-redemption-red bg-heritage-black text-clean-white on-dark">
+      {/* Conversion band */}
+      <div className="border-b border-clean-white/12">
+        <div className="container-page flex flex-col items-start justify-between gap-6 py-10 lg:flex-row lg:items-center">
+          <p className="max-w-measure-lg font-display text-2xl font-semibold">
+            Ready to clear a property and move forward?
+          </p>
+          <div className="flex shrink-0 flex-col gap-3 sm:flex-row">
+            <Link href="/request-walkthrough" className="btn-primary">
+              Request a Walkthrough
+              <span aria-hidden="true" className="btn-arrow">
+                &rarr;
+              </span>
+            </Link>
+            <a href={formatPhoneTelHref()} className="btn-on-dark">
+              Call {business.phoneDisplay}
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div className="container-page grid gap-x-10 gap-y-12 py-16 lg:grid-cols-12">
+        {/* Brand */}
+        <div className="lg:col-span-4">
+          <Image
+            src="/images/brand/logo-header@4x.png"
+            alt={business.name}
+            width={466}
+            height={192}
+            className="h-16 w-auto"
+          />
+          {/* White, not red: the brand guide forbids red type on dark
+              backgrounds, and it fails contrast there. */}
+          <p className="mt-6 max-w-measure border-l-2 border-redemption-red pl-4 font-condensed text-base uppercase tracking-wide text-clean-white">
+            {business.legalTagline}
+          </p>
+          <p className="mt-5 max-w-measure text-sm leading-relaxed text-clean-white/65">
+            Rochester&apos;s real-estate-informed partner for complete property cleanouts
+            and difficult property transitions.
+          </p>
+
+          <dl className="mt-8 space-y-3 text-sm">
+            <div>
+              <dt className="eyebrow-plain">Location</dt>
+              <dd className="mt-1 text-clean-white/80">
+                {business.address.publicAreaDescription}
+              </dd>
+            </div>
+            <div>
+              <dt className="eyebrow-plain">Call or text</dt>
+              <dd className="mt-1">
+                <a
+                  href={formatPhoneTelHref()}
+                  className="font-display text-lg font-semibold transition-colors duration-micro hover:text-redemption-red"
+                >
+                  {business.phoneDisplay}
+                </a>
+              </dd>
+            </div>
+            <div>
+              <dt className="eyebrow-plain">Instagram</dt>
+              <dd className="mt-1">
+                <a
+                  href={business.instagramUrl}
+                  className="text-clean-white/80 transition-colors duration-micro hover:text-redemption-red"
+                >
+                  {business.instagramHandle}
+                </a>
+              </dd>
+            </div>
+          </dl>
         </div>
 
-        <div>
-          <p className="eyebrow">Explore</p>
-          <ul className="mt-3 space-y-2 text-sm text-clean-white/80">
-            {footerNav.map((item) => (
-              <li key={item.href}>
-                <Link href={item.href} className="hover:text-redemption-red">
-                  {item.label}
+        {/* Services */}
+        <nav aria-label="Services" className="lg:col-span-3">
+          <p className="eyebrow-plain">Services</p>
+          <ul className="mt-5 space-y-2.5 text-sm">
+            {services.map((service) => (
+              <li key={service.slug}>
+                <Link
+                  href={`/services/${service.slug}`}
+                  className="text-clean-white/70 transition-colors duration-micro hover:text-redemption-red"
+                >
+                  {service.shortName}
                 </Link>
               </li>
             ))}
           </ul>
-        </div>
+        </nav>
 
-        <div>
-          <p className="eyebrow">Service Areas</p>
-          <ul className="mt-3 space-y-2 text-sm text-clean-white/80">
-            {approvedServiceAreas.map((area) => (
-              <li key={area.slug}>
-                <Link href={`/service-areas/${area.slug}`} className="hover:text-redemption-red">
-                  {area.cityName}, {area.stateAbbr}
+        {/* Who we serve */}
+        <nav aria-label="Who we serve" className="lg:col-span-3">
+          <p className="eyebrow-plain">Who We Serve</p>
+          <ul className="mt-5 space-y-2.5 text-sm">
+            {audiences.map((audience) => (
+              <li key={audience.slug}>
+                <Link
+                  href={`/who-we-serve/${audience.slug}`}
+                  className="text-clean-white/70 transition-colors duration-micro hover:text-redemption-red"
+                >
+                  {audience.shortName}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+        {/* Areas + more */}
+        <div className="lg:col-span-2">
+          <nav aria-label="Service areas">
+            <p className="eyebrow-plain">Service Areas</p>
+            <ul className="mt-5 space-y-2.5 text-sm">
+              {approvedServiceAreas.map((area) => (
+                <li key={area.slug}>
+                  <Link
+                    href={`/service-areas/${area.slug}`}
+                    className="text-clean-white/70 transition-colors duration-micro hover:text-redemption-red"
+                  >
+                    {area.cityName}
+                  </Link>
+                </li>
+              ))}
+              <li>
+                <Link
+                  href="/service-areas"
+                  className="text-clean-white/70 transition-colors duration-micro hover:text-redemption-red"
+                >
+                  All areas
+                </Link>
+              </li>
+            </ul>
+          </nav>
+
+          <nav aria-label="More" className="mt-9">
+            <p className="eyebrow-plain">More</p>
+            <ul className="mt-5 space-y-2.5 text-sm">
+              <li>
+                <Link
+                  href="/how-it-works"
+                  className="text-clean-white/70 transition-colors duration-micro hover:text-redemption-red"
+                >
+                  How It Works
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/about"
+                  className="text-clean-white/70 transition-colors duration-micro hover:text-redemption-red"
+                >
+                  About
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/projects"
+                  className="text-clean-white/70 transition-colors duration-micro hover:text-redemption-red"
+                >
+                  Projects
+                </Link>
+              </li>
+              {secondaryNav.map((item) => (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    className="text-clean-white/70 transition-colors duration-micro hover:text-redemption-red"
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </div>
+      </div>
+
+      {/* Legal */}
+      <div className="border-t border-clean-white/12">
+        <div className="container-page flex flex-col gap-4 py-7 text-xs text-clean-white/50 sm:flex-row sm:items-center sm:justify-between">
+          <p>
+            © {year} {business.name}. All rights reserved.
+          </p>
+          <ul className="flex flex-wrap gap-x-6 gap-y-2">
+            {legalNav.map((item) => (
+              <li key={item.href}>
+                <Link
+                  href={item.href}
+                  className="transition-colors duration-micro hover:text-clean-white"
+                >
+                  {item.label}
                 </Link>
               </li>
             ))}
             <li>
-              <Link href="/service-areas" className="hover:text-redemption-red">
-                All service areas
-              </Link>
+              <a
+                href={formatPhoneSmsHref()}
+                className="transition-colors duration-micro hover:text-clean-white"
+              >
+                Text us
+              </a>
             </li>
           </ul>
         </div>
-
-        <div>
-          <p className="eyebrow">Legal</p>
-          <ul className="mt-3 space-y-2 text-sm text-clean-white/80">
-            {legalNav.map((item) => (
-              <li key={item.href}>
-                <Link href={item.href} className="hover:text-redemption-red">
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-      <div className="container-page border-t border-clean-white/10 py-6 text-xs text-clean-white/60">
-        © {new Date().getFullYear()} {business.name}. All rights reserved.
       </div>
     </footer>
   );

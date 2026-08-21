@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
 import { Hero } from "@/components/sections/Hero";
-import { TrustStrip } from "@/components/ui/TrustStrip";
+import { TrustBand } from "@/components/sections/TrustBand";
 import { SituationSelector } from "@/components/sections/SituationSelector";
 import { FlagshipServices } from "@/components/sections/FlagshipServices";
-import { RecentWork } from "@/components/sections/RecentWork";
+import { BeforeAfterSection } from "@/components/sections/BeforeAfterSection";
 import { WhyRedemption } from "@/components/sections/WhyRedemption";
 import { HowItWorksSection } from "@/components/sections/HowItWorksSection";
 import { ProfessionalPartnerSection } from "@/components/sections/ProfessionalPartnerSection";
 import { FounderSection } from "@/components/sections/FounderSection";
+import { RecentWork } from "@/components/sections/RecentWork";
 import { ReviewSection } from "@/components/sections/ReviewSection";
 import { ServiceAreaSection } from "@/components/sections/ServiceAreaSection";
 import { FAQPreview } from "@/components/sections/FAQPreview";
@@ -34,22 +35,22 @@ export default function HomePage() {
         )}
       />
       <Hero />
-      <TrustStrip />
+      <TrustBand />
       <SituationSelector />
       <FlagshipServices />
-      <RecentWork />
+      <BeforeAfterSection />
       <WhyRedemption />
       <HowItWorksSection />
       <ProfessionalPartnerSection />
       <FounderSection />
+      <RecentWork />
       <ReviewSection />
       <ServiceAreaSection />
       <FAQPreview />
       <CallToAction
         location="homepage_final_cta"
-        headline="Ready to reclaim your space?"
-        supportingText="Request a property walkthrough and get a clear next step — or call or text Dante directly."
-        variant="red"
+        headline="Reclaim the property. Then move forward."
+        supportingText="Tell us about the property and we'll schedule an on-site walkthrough. You'll get a clear scope, a real timeline, and a price that holds — before anything is booked."
       />
     </>
   );

@@ -25,7 +25,7 @@ test("footer links to service areas", async ({ page }) => {
   await page.goto("/");
   await page
     .getByRole("contentinfo")
-    .getByRole("link", { name: "Rochester, MI" })
+    .getByRole("link", { name: "Rochester", exact: true })
     .click();
   await expect(page).toHaveURL(/\/service-areas\/rochester-mi/);
 });

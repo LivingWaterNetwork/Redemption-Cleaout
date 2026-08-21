@@ -1,23 +1,52 @@
 import Link from "next/link";
 import { howItWorksSteps } from "@/content/process";
 import { ProcessTimeline } from "@/components/ui/ProcessTimeline";
+import { SectionHeader } from "@/components/ui/SectionHeader";
+import { Reveal } from "@/components/motion/Reveal";
+import { business, formatPhoneTelHref } from "@/content/business";
 
 export function HowItWorksSection() {
   return (
-    <section className="container-page py-16">
-      <div className="flex flex-wrap items-end justify-between gap-4">
-        <div>
-          <p className="eyebrow">How It Works</p>
-          <h2 className="mt-1 font-display text-3xl font-bold text-heritage-black">
-            From first call to a cleared property
-          </h2>
+    <section className="border-y border-heritage-black/10 bg-warm-concrete py-section">
+      <div className="container-page">
+        <SectionHeader
+          label="How It Works"
+          title="From first call to a cleared property"
+          intro="On-site quoting is required for accuracy — photos alone misrepresent scope. Here is exactly what happens at each step."
+          action={
+            <Link href="/how-it-works" className="link-editorial">
+              Full process
+              <span aria-hidden="true" className="btn-arrow">
+                &rarr;
+              </span>
+            </Link>
+          }
+        />
+
+        <div className="mt-16">
+          <ProcessTimeline steps={howItWorksSteps} />
         </div>
-        <Link href="/how-it-works" className="font-semibold text-redemption-red hover:underline">
-          See the full process &rarr;
-        </Link>
-      </div>
-      <div className="mt-8">
-        <ProcessTimeline steps={howItWorksSteps} />
+
+        {/* Jobber path, integrated into the process rather than bolted on */}
+        <Reveal>
+          <div className="mt-16 flex flex-col items-start justify-between gap-6 border-t border-heritage-black/12 pt-10 md:flex-row md:items-center">
+            <p className="max-w-measure-lg text-body-base text-steel-gray">
+              Step one takes about two minutes. Send the property details and we&apos;ll follow
+              up to schedule the walkthrough.
+            </p>
+            <div className="flex shrink-0 flex-col gap-3 sm:flex-row">
+              <Link href="/request-walkthrough" className="btn-primary">
+                Request a Walkthrough
+                <span aria-hidden="true" className="btn-arrow">
+                  &rarr;
+                </span>
+              </Link>
+              <a href={formatPhoneTelHref()} className="btn-secondary">
+                Call {business.phoneDisplay}
+              </a>
+            </div>
+          </div>
+        </Reveal>
       </div>
     </section>
   );

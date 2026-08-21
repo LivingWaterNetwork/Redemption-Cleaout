@@ -17,9 +17,17 @@ export default function ReviewsPage() {
     <>
       <StructuredData data={breadcrumbJsonLd([{ name: "Home", path: "/" }, { name: "Reviews", path: "/reviews" }])} />
       <Breadcrumbs items={[{ name: "Home", href: "/" }, { name: "Reviews", href: "/reviews" }]} />
-      <PageHero eyebrow="Reviews" title="What clients and partners say" />
+      <PageHero
+        eyebrow="Reviews"
+        title="What clients and partners say"
+        description="Redemption has grown on referral relationships rather than review volume. We publish only what real clients actually wrote."
+      />
       <ReviewSection />
-      <CallToAction location="reviews_cta" headline="Request a Property Walkthrough" variant="dark" />
+      <CallToAction
+        location="reviews_cta"
+        headline="Judge us by the walkthrough"
+        supportingText="You'll know within one conversation whether this is the right fit. No pressure to book."
+      />
     </>
   );
 }
