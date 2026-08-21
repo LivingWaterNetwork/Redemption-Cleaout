@@ -92,8 +92,8 @@ domain is pointed at a Production deployment (which requires §0.1 first).
 | Runtime deps in production path | **4 only** — `next`, `react`, `react-dom`, `zod` |
 | Database / CMS / auth | **None.** No animation library. |
 | Hosting | Vercel (verified live: `server: Vercel`, `x-vercel-id: iad1::…`) |
-| Vercel project name | **UNVERIFIED** — not recorded anywhere in the repo, and Vercel project metadata is not readable from this session |
-| Vercel team | Stated in briefing as **Living Water Network**; **UNVERIFIED from code** |
+| Vercel project name | **`redemption-cleaout`** (confirmed from the Vercel dashboard; note the same "Cleaout" misspelling as the repo) |
+| Vercel team | **Living Water Network**, on the **Hobby** plan (confirmed from the Vercel dashboard) |
 | Business | Redemption Cleanout Services, Rochester, Michigan |
 | Founder | Dante Terracciano |
 | CRM / system of record | Jobber |
@@ -1184,8 +1184,8 @@ from `main`.** The homepage `<h1>` reads exactly "Clear the Property." /
 | Briefing claim | Status |
 |---|---|
 | Vercel project connected to GitHub | ✅ Consistent with everything observed; **the specific connection mechanism (GitHub App vs. manual) is UNVERIFIED** |
-| Vercel project name | ❌ **UNVERIFIED** — not in the repo; Vercel metadata not readable here |
-| Vercel team = Living Water Network | ❌ **UNVERIFIED** from code or live headers |
+| Vercel project name | ✅ **Confirmed: `redemption-cleaout`** |
+| Vercel team = Living Water Network | ✅ **Confirmed**, Hobby plan |
 | Branch `claude/redemption-cleanout-services-51t9af`, commit `0f6da52` | ✅ **Verified** — branch and commit both exist on the remote; `0f6da52` is its HEAD |
 | That commit builds successfully | ✅ **Verified independently** — clean `npm ci` + `npm run build` reproduced: 41/41 pages, TypeScript clean |
 | That commit is publicly reachable | ✅ **Verified** — 200, no auth |
@@ -1524,14 +1524,14 @@ merge, a Production promotion, a redirect direction, and a protection toggle.
 Answer these before the deck is finalized. Each one is a factual gap I could not
 close, not an opinion.
 
-1. **What is the exact Vercel project name?** Not recorded anywhere in the repo, and Vercel project metadata is not readable from this session.
-2. **Confirm the Vercel team is "Living Water Network."** Unverified from code or live headers.
+1. ~~What is the exact Vercel project name?~~ **Answered: `redemption-cleaout`**, team **Living Water Network**, **Hobby** plan.
+2. ~~Confirm the Vercel team.~~ **Answered — confirmed from the dashboard.**
 3. **Were the six blank environment variables actually deleted from Vercel**, or merely superseded by the `resolveSiteUrl()` fix? The code tolerates both now, but the deck's "zero required env vars" claim reads better if the stale keys are actually gone.
 4. **Has Redemption's email been tested since the DNS change?** Highest-consequence unverified item in this document (§6.4).
 5. **13 or 12 years of real-estate experience?** Two client-supplied Drive assets say 12; the brand guide says 13; the site says 13 in three places (§3.5 item 10).
-6. **Should I merge `claude/redemption-cleanout-services-51t9af` into `main`?** It removes the live build risk in §0.1. I have not done it — it is outside the scope of "write a summary," and it changes the default branch.
+6. ~~Should I merge the fix branch into `main`?~~ **Done and authorized.** `main` is at `f5d63ea` and its Production deployment is Ready.
 7. **Is the apex-vs-www redirect direction intentional?** Today the apex `307`s to `www`, which is the reverse of what the canonical tags and `DEPLOYMENT.md` specify (§5.4).
-8. **Is anyone tracking that the site is currently `noindex`?** If organic traffic is part of the pricing story, §0.2 needs to be fixed before, not after, the deck.
+8. **Is anyone tracking that the site is currently `noindex`?** If organic traffic is part of the pricing story, §0.2 needs to be fixed before, not after, the deck. **This is now the single highest-value action left, and it is one setting:** Vercel → Domains → reassign both hosts from Preview to Production. Production is already verified healthy; only the domain assignment is wrong.
 
 ---
 
@@ -1689,10 +1689,10 @@ to.
 
 | §0 item | Status now |
 |---|---|
-| §0.1 — the fix is not on `main` | **Resolved.** `main` now contains the build fix, the photo distribution, the Lighthouse record, this summary, and every fix in §11. |
-| §0.2 — the live site is `noindex` | **Still open.** Vercel setting, not code. Requires promoting the domain from Preview to Production. |
-| §5.4 — apex/www redirect is reversed | **Still open.** Vercel setting. Every canonical on all 34 pages points at a URL that redirects back to the page that declared it. |
-| §6.3 — Deployment Protection is off | **Still open.** Vercel setting. |
+| §0.1 — the fix is not on `main` | **Resolved and confirmed in Vercel.** `main` at `f5d63ea` deployed **Ready / Production** in 31s. The previous `main` deployment (`a5ff374`) is recorded as **Error** in the same list — the crash, visible in the project's own history. |
+| §0.2 — the live site is `noindex` | **Still open, and now precisely diagnosed.** Production is healthy and correct: `redemption-cleaout-living-water-network.vercel.app/robots.txt` returns `Allow: /` + `Disallow: /api/` + the `Sitemap:` line. The custom domain returns `Disallow: /` and serves stale code (no `consent-banner` class, no `og:image:width`), so it is still **pinned to the Preview deployment `0f6da52`**. Fix: Vercel → Domains → reassign both hosts to **Production**. Nothing else is required. |
+| §5.4 — apex/www redirect is reversed | **Still open.** Vercel setting. The apex now returns **308** (was 307) to `www`, so `www` is primary — but all 34 canonical tags name the apex. Set the apex as primary and redirect `www` to it. |
+| §6.3 — Deployment Protection is off | **Still open.** Vercel setting. Note the project is on the **Hobby** plan, so confirm which protection tiers are available before planning on a specific one. |
 | §6.4 — email deliverability unverified | **Still open.** Cannot be checked from a code session. |
 
 ---
