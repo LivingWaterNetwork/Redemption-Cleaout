@@ -15,7 +15,7 @@ export function Hero() {
       <div className="absolute inset-0 -z-10">
         <div className="hero-media absolute inset-0">
           <Image
-            src="/images/photos/full-property-cleanout-removal.jpg"
+            src="/images/photos/branded-truck-and-dump-trailer-residential-drive.jpg"
             alt=""
             aria-hidden="true"
             fill

@@ -56,8 +56,8 @@ export default function AboutPage() {
         description="A house buried in clutter, damage, or neglect can be restored to order. A person facing grief, overwhelm, or a hard transition deserves a dependable guide through it."
         variant="image"
         image={{
-          src: "/images/photos/cleared-garage-bay-after.jpg",
-          alt: "A cleared and swept space at the end of a Redemption cleanout.",
+          src: "/images/photos/branded-truck-dump-trailer-driveway.jpg",
+          alt: "The Redemption truck and dump trailer staged in a residential driveway at the start of a cleanout.",
         }}
       />
 
@@ -68,8 +68,8 @@ export default function AboutPage() {
             <figure>
               <div className="img-frame aspect-portrait w-full">
                 <Image
-                  src="/images/photos/garage-cleanout-in-progress.jpg"
-                  alt="Furniture and household items cleared from a garage during a Redemption cleanout."
+                  src="/images/photos/townhouse-patio-cleared-after.jpg"
+                  alt="A cleared and swept patio at the end of a Redemption cleanout."
                   fill
                   sizes="(min-width: 1024px) 40vw, 100vw"
                   className="object-cover"

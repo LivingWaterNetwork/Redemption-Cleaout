@@ -58,8 +58,8 @@ export function WhyRedemption() {
           <Reveal variant="mask" delay={200} className="lg:col-span-5">
             <div className="img-frame aspect-portrait w-full">
               <Image
-                src="/images/photos/cleared-garage-bay-after.jpg"
-                alt="A commercial bay cleared and swept at the end of a Redemption cleanout."
+                src="/images/photos/crew-branded-shirts-yard-clearing.jpg"
+                alt="Two Redemption crew members in branded shirts clearing overgrowth from a backyard pergola."
                 fill
                 sizes="(min-width: 1024px) 40vw, 100vw"
                 className="object-cover"

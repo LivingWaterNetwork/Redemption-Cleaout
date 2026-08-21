@@ -21,13 +21,21 @@ and update the linked content file when a decision is made.
 - [ ] **Operating hours** — not yet defined anywhere on the site.
 - [ ] **"Fully insured" status** — the original brochure claims "Fully
       Insured"; the brand guide flags this as unverified. Not published
-      anywhere on this site until confirmed.
+      anywhere on this site until confirmed. (Re-confirmed during the photo
+      pull: the brochure in Drive does read "Fully insured - Local" under
+      "OUR COMMITMENT TO YOU". Still unverified, still unpublished.)
 - [ ] **Any licensing claims.**
 - [ ] **Free estimate / free walkthrough policy** wording.
 - [ ] **Same-day or next-day availability** claims.
 - [ ] **13 vs. 12 years of real-estate experience** — the brochure says 12,
       the founder transcript says 13. This site uses 13 throughout,
       per the brand guide's correction — confirm before wider use.
+      **New evidence (photo pull):** two client-supplied assets in the Drive
+      folder both say **12** — the brochure (`IMG_6796`, "12 YEARS IN
+      REALESTATE SALES") and a marketing flyer (`92b605d0-….PNG`, "12 years
+      real estate expertise"). The only source for 13 is the brand guide's
+      correction. Worth re-confirming directly with Dante; the weight of the
+      client's own material currently favours 12.
 
 ## Service scope
 
@@ -72,9 +80,27 @@ and update the linked content file when a decision is made.
       intentionally empty. No fabricated reviews exist anywhere on this site.
 - [ ] **Social URLs** — only Instagram (`@redemption_cleanoutservices`) is
       published, per the brief. Confirm if others should be added.
-- [ ] **Final photography permissions** — `src/content/projects.ts` is
-      intentionally empty; the homepage, /projects, and every service page
-      use an honest placeholder instead of stock or fabricated imagery.
+- [ ] **Final photography permissions** — now the single blocker on
+      `src/content/projects.ts`. 19 authentic job photos are published across
+      the site, and two matched before/after pairs exist as assets. Each pair
+      needs **written permission from that property's owner** before it is
+      published as a named project, plus the verified city, property type,
+      challenge and outcome (these must come from Dante — they cannot be read
+      off a photograph without inventing them).
+- [ ] **Donation-partner photography** — two strong frames in Drive show a
+      **Grace Centers of Hope** thrift-store truck being loaded with donated
+      items. They are genuine and support the donation story, but publishing
+      them puts a third party's branding on the site and implies a
+      relationship. **Not used anywhere pending approval** from both Dante and
+      Grace Centers of Hope.
+- [ ] **Founder-portrait candidate** — `IMG_0421` in Drive shows a person in a
+      hard hat and hi-vis in a truck cab. It would fill the top remaining
+      asset gap, but the subject is unidentified. **Not used.** Confirm
+      whether this is Dante before publishing it as a founder portrait.
+- [ ] **Do not use the Drive marketing flyer as photography** —
+      `92b605d0-….PNG` is a designed flyer whose before/after images appear to
+      be stock or AI-generated. It must never be used as project imagery; it
+      would breach the no-fabricated-content rule.
 
 ## Production assets still needed (per brand guide, Slide 25 & 38)
 

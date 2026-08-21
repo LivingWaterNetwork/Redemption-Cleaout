@@ -3,7 +3,7 @@
 Written for whoever picks this up next (human or AI). Read this first, then
 `README.md` for setup and `DESIGN_SYSTEM.md` for anything visual.
 
-Last updated: 2026-08-21 · Latest commit: `dfd7067`
+Last updated: 2026-08-21 · Latest commit: `a5ff374` + this photo pull
 
 ---
 
@@ -123,23 +123,34 @@ brand guide.
 - `public/images/brand/logo-master.png` — the real master logo, derived from a
   10264×4532 PNG pulled from the client's shared Drive folder. Favicon, app
   icons, Apple touch icon, and the OG card are all generated from it.
-- `public/images/photos/` — **5 authentic job photos**, cropped to a
-  consistent 3:2 editorial ratio at ~1600px.
+- `public/images/photos/` — **19 authentic job photos**, all cropped to a
+  consistent 3:2 editorial ratio at 1600×1067, EXIF stripped. 14 of these were
+  pulled from the client's Drive folder in the photo session documented in
+  `IMAGE_REQUIREMENTS.md`.
 
-### The gap
+### The gap — largely closed
 
-Five photos cover ~15 placements, so each appears 2–4 times. **This is the
-biggest remaining quality issue.** The client's shared Google Drive folder
-("Redemption Cleanouts", owned by `lauraterracciano95@gmail.com`) contains
-roughly **34 more photos and 12 videos** that were not retrieved — the Drive
-connector dropped mid-download. Re-enabling the Google Drive connector and
-pulling the rest would resolve nearly all repetition.
+Image repetition is **resolved**: 19 photos now cover 17 placements, each
+appearing once except one that appears on two different pages. Previously 5
+photos covered ~15 placements at 2–4× each. All 8 services carry a distinct
+photo; three had none at all.
 
-Also still missing: a **founder portrait of Dante** (both the homepage founder
-section and `/about` currently substitute work imagery with an honest caption),
-**matched same-angle before/after pairs** (needed to populate `projects.ts`
-and make the before/after section land), and a properly composed **branded
-vehicle** shot. Full detail and shot direction in `IMAGE_REQUIREMENTS.md`.
+Also closed by the pull: the **branded vehicle** shot (now the homepage hero),
+**crew in branded uniform**, **commercial interiors**, and **matched
+before/after pairs** — two genuine same-property pairs now exist, and the
+homepage before/after section shows one side by side instead of an "asset
+needed" panel.
+
+Still missing: a **founder portrait of Dante**. A candidate exists in Drive
+(a hard-hat/hi-vis profile) but the subject's identity is unconfirmed, so it
+was not used. Also wanted: a deliberately shot identical-angle pair, and Dante
+with clients or partners.
+
+Not retrieved: **5 HEICs** and **12 videos**. The Drive connector passes file
+content as base64 and fails above ~6 MB — every file ≤5.68 MB transferred,
+every file ≥6.52 MB failed, repeatably. Pull those five from Drive directly
+rather than through the connector. The videos (~250 MB) need a hosting
+decision first; they do not belong in git.
 
 One photo was rejected: a tight crop on a trailer's dirty fender. It was
 briefly used as the homepage hero and the client correctly called it out as
@@ -194,7 +205,12 @@ Full step-by-step with rollback in `DEPLOYMENT.md`.
   IntersectionObserver, `next/image` everywhere with explicit `sizes`, no
   animation library), but treat the targets as unverified until someone runs
   Lighthouse against a Vercel preview URL.
-- **Image repetition** — see §4.
+- **Image repetition** — resolved, see §4.
+- **`src/content/projects.ts` is still empty**, even though matched
+  before/after photography now exists. An entry needs city, property type,
+  challenge and outcome — which cannot be read off a photo without inventing
+  them — plus written per-property owner permission. The photos are staged and
+  the template is ready; supply the facts and the slider turns itself on.
 - **`view_service`, `view_project`, `click_google_reviews`, `download_guide`**
   are defined in the typed analytics helper but not all wired to fire, because
   the underlying content (project entries, a downloadable guide) doesn't exist
@@ -255,9 +271,10 @@ OUT=/tmp/shots WIDTHS=390,768,1024,1440,1920 ROUTES="home:/" node shot.mjs
 
 1. **Deploy to Vercel** to get a preview URL, then run Lighthouse against it
    and fix whatever it finds.
-2. **Re-enable the Google Drive connector** and pull the remaining ~34 photos
-   and 12 videos; distribute them to kill the repetition, and populate
-   `src/content/projects.ts` with real before/after pairs.
+2. ~~Pull the remaining photos from Drive~~ — **done.** What remains from that
+   thread: (a) confirm who is in the founder-portrait candidate, (b) pull the
+   5 oversized HEICs directly from Drive, (c) decide where the 12 videos are
+   hosted, (d) get per-property permission so `projects.ts` can be filled.
 3. **Get the Jobber form URL** and verify an end-to-end submission from the
    live domain.
 4. **Walk `CONTENT_APPROVALS.md` with Dante** — especially the insurance
