@@ -277,6 +277,15 @@ If you're working in a sandbox like the one this was built in:
 - **Full-page screenshots render from scroll 0**, so scroll-triggered reveals
   photograph as blank. `shot.mjs` emulates reduced motion to capture final
   states; pass `MOTION=on` to see the animated path instead.
+- **`waitUntil: "networkidle"` is flaky in this sandbox.** `axe-check.mjs` and
+  `shot.mjs` both use it, and it intermittently times out even though the route
+  serves in under 5ms via curl and no requests are pending after `load`. Which
+  route fails varies between runs. It is a tooling artifact, not a site bug —
+  re-run, or swap `networkidle` for `load`
+  (`sed 's/networkidle/load/' axe-check.mjs > axe-load.mjs`) to get a result.
+  Full-page screenshots at 390px additionally exceed Chromium's height limit on
+  the longer pages (the homepage is ~21,000px at phone width) and need a
+  `clip`, without `fullPage`.
 - **Node scripts must live in the project root** to resolve `@playwright/test`
    — running them from `/tmp` fails with `ERR_MODULE_NOT_FOUND`.
 
