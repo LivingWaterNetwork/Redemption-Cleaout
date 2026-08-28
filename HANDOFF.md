@@ -3,7 +3,7 @@
 Written for whoever picks this up next (human or AI). Read this first, then
 `README.md` for setup and `DESIGN_SYSTEM.md` for anything visual.
 
-Last updated: 2026-08-21 · Latest commit: `a5ff374` + this photo pull
+Last updated: 2026-08-21 · Branch `claude/redemption-cleanout-services-51t9af` · Head `0f6da52`
 
 ---
 
@@ -14,11 +14,14 @@ cleanout, estate cleanout, and commercial cleanout company in Rochester,
 Michigan. Founder: Dante Terracciano.
 
 - **Repo:** https://github.com/LivingWaterNetwork/Redemption-Cleaout
-  (branch `main` — everything is pushed, working tree clean)
+- **Working branch: `claude/redemption-cleanout-services-51t9af`, head `0f6da52`.**
+  Everything is pushed and the tree is clean. **Do all work on this branch.**
+  It is 3 commits ahead of `main`, and `main` does NOT contain the photo
+  library, the Lighthouse notes, or the build fix. No PR has been opened yet.
 - **Target domain:** `redemptioncleanoutservices.com`, registered at GoDaddy
-- **Hosting:** Vercel (not yet connected — see §6)
+- **Hosting:** Vercel — project exists, preview not finished (see §6)
 - **CRM / system of record:** Jobber
-- **Status:** Feature-complete and tested. **Not deployed.** Blocked only on
+- **Status:** Feature-complete and tested. **Not deployed.** Blocked on
   third-party configuration and content approvals, not on code.
 
 **Important:** this is a *different business* from `livingwaternetwork/lwn-website`,
@@ -34,7 +37,7 @@ that lives in the LWN repo.
 |---|---|
 | Routes | 41 generated (8 services, 6 audiences, 2 service areas, 3 resources, plus static + legal) |
 | Typecheck / lint | Clean |
-| Unit tests | 24 passing (Vitest) |
+| Unit tests | 31 passing (Vitest) |
 | E2E tests | 14 passing (Playwright) |
 | Production build | Passing |
 | Accessibility | **0 axe violations**, WCAG 2.2 AA, 14 routes × 390px and 1440px |
@@ -175,23 +178,63 @@ All configuration and approvals — no code work. Full list in
 | 13 vs. 12 years real estate | Site uses 13 per the brand guide's correction; confirm. |
 | Accepted / excluded materials | FAQ currently says this is pending. |
 | Business email | Not published; phone/text only. |
+| A preview URL for the client | Dante has not clicked through the real site yet. Nearest thing today is the static review page in §11. Finish the Vercel preview (§6) to replace it. |
 
 ---
 
-## 6. Deploying (not done yet)
+## 6. Deploying — where this actually got to
 
-The domain stays at GoDaddy. Only DNS records change — no transfer.
+### Already done
 
-1. vercel.com/new → import `LivingWaterNetwork/Redemption-Cleaout` → Deploy.
-   Next.js auto-detects; no build config needed.
-2. Add env vars from `ENVIRONMENT_VARIABLES.md` in Vercel → Settings.
-3. Add both `redemptioncleanoutservices.com` and `www.` in Vercel → Domains.
-4. **Before touching GoDaddy DNS, export the existing zone.** Then change only
+A Vercel project **`redemption-cleaout`** exists under the **Living Water
+Network** team, on the **Hobby** plan, imported from the GitHub repo. Its
+Production Branch is `main` and should stay that way for now.
+
+### What went wrong, so it isn't repeated
+
+The first build failed on every route with
+`TypeError: Invalid URL ... code: 'ERR_INVALID_URL', input: ''` at
+`layout.tsx:16` (`metadataBase: new URL(siteUrl)`).
+
+Cause: **`NEXT_PUBLIC_SITE_URL` existed in the Vercel project with an empty
+value.** Vercel's import screen offers to pre-fill env keys it detects from
+`.env.example`, and accepting that creates blank keys. `business.ts` used
+`??`, which only falls back on `undefined`, so `""` went straight into
+`new URL()`.
+
+Fixed in `0f6da52` (`resolveSiteUrl()` in `src/lib/validation.ts`, plus
+`tests/unit/resolveSiteUrl.test.ts`). Verified building unset, blank, garbage,
+and with a real URL. **Note the same latent bug is on `main`** — it only
+resolves there when this branch merges.
+
+### To finish the preview
+
+1. Vercel → project `redemption-cleaout` → Settings → Environment Variables →
+   **delete every variable.** There should be zero. Blank is not the same as
+   absent in Vercel's UI, even though the app now tolerates both.
+2. Deployments tab → create a deployment from branch
+   `claude/redemption-cleanout-services-51t9af`. Do **not** merge to `main` or
+   open a PR just to force a build.
+3. Confirm the deployed commit is `0f6da52` or later, and that
+   `/`, `/services/estate-cleanouts`, `/about`, `/projects` render with photos.
+4. Check Settings → Deployment Protection. On Hobby, previews are public — the
+   client should be able to open the URL with no Vercel account. Verify in a
+   private window.
+
+Preview deploys get `X-Robots-Tag: noindex, nofollow` automatically, because
+`next.config.mjs` keys off `VERCEL_ENV === "preview"`. No env var needed.
+
+### The production cutover — still untouched
+
+The domain stays at GoDaddy; only DNS records change, no transfer.
+
+1. Add env vars from `ENVIRONMENT_VARIABLES.md` in Vercel → Settings.
+2. Add both `redemptioncleanoutservices.com` and `www.` in Vercel → Domains.
+3. **Before touching GoDaddy DNS, export the existing zone.** Then change only
    the apex `@` and the `www` CNAME. Leave every MX / SPF / DKIM / DMARC /
    verification record alone or Redemption's email breaks.
-5. Set apex as primary, `www` redirecting to it. `NEXT_PUBLIC_SITE_URL` is
-   already the apex.
-6. Test email after propagation. Then submit the sitemap in Search Console.
+4. Set apex as primary, `www` redirecting to it.
+5. Test email after propagation. Then submit the sitemap in Search Console.
 
 Full step-by-step with rollback in `DEPLOYMENT.md`.
 
@@ -320,23 +363,51 @@ OUT=/tmp/shots WIDTHS=390,768,1024,1440,1920 ROUTES="home:/" node shot.mjs
 
 ## 10. Suggested next steps, in order
 
-1. **Deploy to Vercel** to get a preview URL, then re-run Lighthouse against
-   it. Lighthouse has now been run locally (§7) — desktop is 100 across the
-   board, mobile perf is 80 with the consent banner as the LCP element. Decide
-   on the mobile-banner width question in §7 before or after the deploy.
-2. ~~Pull the remaining photos from Drive~~ — **done.** What remains from that
-   thread: (a) confirm who is in the founder-portrait candidate, (b) pull the
-   5 oversized HEICs directly from Drive, (c) decide where the 12 videos are
-   hosted, (d) get per-property permission so `projects.ts` can be filled.
-3. **Get the Jobber form URL** and verify an end-to-end submission from the
-   live domain.
-4. **Walk `CONTENT_APPROVALS.md` with Dante** — especially the insurance
-   claim, the founder story, and operating hours.
-5. **Then** the GoDaddy DNS cutover, per `DEPLOYMENT.md`.
+1. **Finish the Vercel preview** — §6. This is the immediate blocker: the
+   client cannot click through the site yet. The build fix is already pushed;
+   what remains is deleting the blank env vars and deploying the branch.
+2. **Re-run Lighthouse against the preview URL** and compare with the local
+   numbers in §7. Expect mobile LCP to improve; the structural finding (the
+   consent banner is the LCP element) will not change on its own. Decide the
+   mobile-banner-width question in §7.
+3. **Get answers to the 13 client questions** — §11. Several are one-word
+   answers that unblock published copy (hours, insurance, 12-vs-13 years).
+4. **Get the Jobber form URL** and verify an end-to-end submission.
+5. **Photo follow-ups** — confirm who is in the founder-portrait candidate,
+   pull the 5 oversized HEICs directly from Drive, decide where the 12 videos
+   live, and get per-property permission so `projects.ts` can be filled (§4).
+6. **Then** the GoDaddy DNS cutover, per `DEPLOYMENT.md`.
 
 ---
 
-## 11. Documentation index
+## 11. Open questions for the client
+
+A static, page-by-page review of the whole site was published for Dante as a
+private Claude artifact:
+
+**https://claude.ai/code/artifact/7a631d35-c268-4d4e-a5e9-a88ed0244c6a**
+
+It is screenshots, not a live site — links don't click. Replace it with the
+real preview URL once §6 is finished. It carries these 13 questions, which are
+the same items tracked in `CONTENT_APPROVALS.md`:
+
+1. 13 years in real estate, or 12? (Brochure and flyer both say 12; site says 13.)
+2. Fully insured? Unpublished anywhere until confirmed.
+3. Operating hours?
+4. Publish a business email, or phone/text only?
+5. Make the Main Street address public? Only if permanently staffed and visitable.
+6. Founder-story wording — approve or edit.
+7. Is the hard-hat photo in Drive actually Dante? Would close the portrait gap.
+8. Accepted vs. excluded materials.
+9. Jobber form link.
+10. Google review link + Business Profile link.
+11. Which other cities get their own page.
+12. Written permission from the before/after property owners.
+13. OK to publish the two Grace Centers of Hope donation photos?
+
+---
+
+## 12. Documentation index
 
 | File | Contents |
 |---|---|
