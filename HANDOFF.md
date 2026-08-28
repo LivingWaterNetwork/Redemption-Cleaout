@@ -3,7 +3,13 @@
 Written for whoever picks this up next (human or AI). Read this first, then
 `README.md` for setup and `DESIGN_SYSTEM.md` for anything visual.
 
-Last updated: 2026-08-21 · Latest commit: `a5ff374` + this photo pull
+Last updated: 2026-08-28 · Branch `claude/redemption-cleanout-vercel-preview-3fy9b1` (= `main`)
+
+> **Read §6 first if you were told the site is not deployed.** It is.
+> `redemptioncleanoutservices.com` has served live from Vercel since
+> 2026-08-21, and `main` — not the older services branch — is the current
+> code. Earlier copies of this file said otherwise; they were written before
+> the cutover and the merges that followed never updated them.
 
 ---
 
@@ -14,12 +20,21 @@ cleanout, estate cleanout, and commercial cleanout company in Rochester,
 Michigan. Founder: Dante Terracciano.
 
 - **Repo:** https://github.com/LivingWaterNetwork/Redemption-Cleaout
-  (branch `main` — everything is pushed, working tree clean)
-- **Target domain:** `redemptioncleanoutservices.com`, registered at GoDaddy
-- **Hosting:** Vercel (not yet connected — see §6)
+- **Branch to work from: `main`.** It carries everything — the photo library,
+  the Lighthouse notes, the `resolveSiteUrl` build fix, the error boundaries
+  and the SEO heading fixes — and it is what Vercel deploys to Production.
+  The older `claude/redemption-cleanout-services-51t9af` is **9 commits
+  behind `main`** and adds nothing but a stale copy of this file. Do not
+  branch from it and do not deploy it: doing so would ship a site *older*
+  than what is already live.
+- **Live site:** **https://redemptioncleanoutservices.com** — deployed,
+  public, and indexable. `www.` resolves as well.
+- **Domain:** registered at GoDaddy; DNS points at Vercel (no transfer).
+- **Hosting:** Vercel, project `redemption-cleaout`, Living Water Network
+  team, Hobby plan. Production Branch is `main`. See §6.
 - **CRM / system of record:** Jobber
-- **Status:** Feature-complete and tested. **Not deployed.** Blocked only on
-  third-party configuration and content approvals, not on code.
+- **Status:** Feature-complete, tested, and **deployed**. What remains is
+  third-party configuration and content approvals — no code work. See §5.
 
 **Important:** this is a *different business* from `livingwaternetwork/lwn-website`,
 which is a nonprofit site that happens to share the GitHub account. Don't mix
@@ -159,39 +174,97 @@ focus instead.
 
 ---
 
-## 5. What's blocking launch
+## 5. What's still open
 
-All configuration and approvals — no code work. Full list in
-`CONTENT_APPROVALS.md`; these are the ones that actually gate going live:
+The site is live, so nothing below blocks *launch* any more — these are the
+items that keep it from being fully useful. All configuration and approvals,
+no code work. Full list in `CONTENT_APPROVALS.md`:
 
 | Blocker | Why it matters |
 |---|---|
-| `NEXT_PUBLIC_JOBBER_EMBED_URL` + `..._REQUEST_FORM_URL` | The main conversion path. Until set, `/request-walkthrough` shows call/text only. See `JOBBER_SETUP.md`. |
+| `NEXT_PUBLIC_JOBBER_EMBED_URL` + `..._REQUEST_FORM_URL` | The main conversion path. **Verified unset in Production on 2026-08-28** — `/request-walkthrough` is live but serving the honest call/text fallback, so every lead today arrives by phone. Highest-value item on this list now that the site is public. See `JOBBER_SETUP.md`. |
 | `NEXT_PUBLIC_GOOGLE_REVIEW_URL` / `..._BUSINESS_URL` | The reviews page can't invite reviews without them. |
-| `NEXT_PUBLIC_GA_MEASUREMENT_ID` | No analytics until set (and consent accepted). |
+| `NEXT_PUBLIC_GA_MEASUREMENT_ID` | **Verified unset in Production on 2026-08-28** — no `googletagmanager` script on the live homepage, so the launch is currently unmeasured. |
 | "Fully insured" claim | The brochure claims it; the brand guide flags it unverified. **Not published anywhere on the site** until confirmed. |
 | Operating hours | Not published anywhere yet. |
 | Founder-story wording | Draft, pending Dante's sign-off. |
 | 13 vs. 12 years real estate | Site uses 13 per the brand guide's correction; confirm. |
 | Accepted / excluded materials | FAQ currently says this is pending. |
 | Business email | Not published; phone/text only. |
+| ~~A preview URL for the client~~ | **Resolved, and better than planned.** Send Dante the live site — https://redemptioncleanoutservices.com — rather than a preview URL. The static screenshot artifact in §11 is superseded. |
 
 ---
 
-## 6. Deploying (not done yet)
+## 6. Deploying — done; here is the verified live state
 
-The domain stays at GoDaddy. Only DNS records change — no transfer.
+**The site is deployed to Production and has been since 2026-08-21.** The
+preview step this section used to describe was overtaken by the real cutover
+and is no longer work anyone needs to do.
 
-1. vercel.com/new → import `LivingWaterNetwork/Redemption-Cleaout` → Deploy.
-   Next.js auto-detects; no build config needed.
-2. Add env vars from `ENVIRONMENT_VARIABLES.md` in Vercel → Settings.
-3. Add both `redemptioncleanoutservices.com` and `www.` in Vercel → Domains.
-4. **Before touching GoDaddy DNS, export the existing zone.** Then change only
-   the apex `@` and the `www` CNAME. Leave every MX / SPF / DKIM / DMARC /
-   verification record alone or Redemption's email breaks.
-5. Set apex as primary, `www` redirecting to it. `NEXT_PUBLIC_SITE_URL` is
-   already the apex.
-6. Test email after propagation. Then submit the sitemap in Search Console.
+### Verified live on 2026-08-28
+
+Checked directly against the public domain, not inferred from notes:
+
+| Check | Result |
+|---|---|
+| `https://redemptioncleanoutservices.com/` | `HTTP/2 200`, `server: Vercel`, `x-vercel-cache: HIT` |
+| `https://www.redemptioncleanoutservices.com/` | `HTTP/2 200` — the `www.` alias resolves |
+| `X-Robots-Tag` | **Absent.** The site is indexable; the old `noindex` was the Preview-environment branch of `next.config.mjs` |
+| `/robots.txt` | `Allow: /`, `Disallow: /api/`, plus the `Sitemap:` line |
+| `/sitemap.xml` | `200`, **34 URLs** |
+| Deployed code | Current with `main` — `/contact` serves the `<h2 class="eyebrow-plain">` headings introduced in `a14539a`, not the older `<p>` |
+| `NEXT_PUBLIC_JOBBER_*` | **Unset** — `/request-walkthrough` renders the honest call/text fallback, no `<iframe>` |
+| `NEXT_PUBLIC_GA_MEASUREMENT_ID` | **Unset** — no `googletagmanager` script on the homepage |
+
+A Vercel project **`redemption-cleaout`** hosts it, under the **Living Water
+Network** team on the **Hobby** plan, imported from the GitHub repo. Its
+Production Branch is `main` and should stay that way.
+
+### What went wrong, so it isn't repeated
+
+The first build failed on every route with
+`TypeError: Invalid URL ... code: 'ERR_INVALID_URL', input: ''` at
+`layout.tsx:16` (`metadataBase: new URL(siteUrl)`).
+
+Cause: **`NEXT_PUBLIC_SITE_URL` existed in the Vercel project with an empty
+value.** Vercel's import screen offers to pre-fill env keys it detects from
+`.env.example`, and accepting that creates blank keys. `business.ts` used
+`??`, which only falls back on `undefined`, so `""` went straight into
+`new URL()`.
+
+Fixed in `0f6da52` (`resolveSiteUrl()` in `src/lib/validation.ts`, plus
+`tests/unit/resolveSiteUrl.test.ts`), and that fix is **now on `main`** and
+therefore in Production. Re-verified on 2026-08-28: `NEXT_PUBLIC_SITE_URL=""
+npm run build` completes and prerenders all 41 routes.
+
+The takeaway survives the fix: in Vercel, a **declared-but-blank** env var is
+not the same as an absent one. Vercel's import screen offers to pre-fill keys
+it detects from `.env.example`, and accepting that creates blank keys. The app
+tolerates them now, but don't create them.
+
+### Adding the remaining env vars
+
+The three unset groups in §5 are added the same way, and none of them require
+a code change:
+
+1. Vercel → project `redemption-cleaout` → Settings → Environment Variables.
+2. Add the key with a **real value** for the Production environment (values
+   and meanings in `ENVIRONMENT_VARIABLES.md`). Never save a key blank.
+3. Redeploy — env vars are baked in at build time for `NEXT_PUBLIC_*`, so an
+   existing deployment will not pick them up. Deployments → ⋯ → Redeploy.
+4. Verify on the live URL: the Jobber `<iframe>` appears on
+   `/request-walkthrough`, and a `googletagmanager` script appears on the
+   homepage once consent is accepted.
+
+### Still to do on the hosting side
+
+- **Search Console** — submit `https://redemptioncleanoutservices.com/sitemap.xml`.
+  The sitemap serves 34 URLs and the site is indexable, but nothing has been
+  submitted, so discovery is passive.
+- **Keep the GoDaddy zone export** taken before the cutover. Only the apex `@`
+  and the `www` CNAME were changed; every MX / SPF / DKIM / DMARC record was
+  left alone. If Redemption's email ever misbehaves, that export is the
+  rollback.
 
 Full step-by-step with rollback in `DEPLOYMENT.md`.
 
@@ -299,7 +372,7 @@ npm run dev                 # localhost:3000
 
 npm run typecheck
 npm run lint
-npm run test                # Vitest, 24 tests
+npm run test                # Vitest, 38 tests
 npm run build
 npx playwright test         # 14 e2e tests
 
@@ -320,23 +393,56 @@ OUT=/tmp/shots WIDTHS=390,768,1024,1440,1920 ROUTES="home:/" node shot.mjs
 
 ## 10. Suggested next steps, in order
 
-1. **Deploy to Vercel** to get a preview URL, then re-run Lighthouse against
-   it. Lighthouse has now been run locally (§7) — desktop is 100 across the
-   board, mobile perf is 80 with the consent banner as the LCP element. Decide
-   on the mobile-banner width question in §7 before or after the deploy.
-2. ~~Pull the remaining photos from Drive~~ — **done.** What remains from that
-   thread: (a) confirm who is in the founder-portrait candidate, (b) pull the
-   5 oversized HEICs directly from Drive, (c) decide where the 12 videos are
-   hosted, (d) get per-property permission so `projects.ts` can be filled.
-3. **Get the Jobber form URL** and verify an end-to-end submission from the
-   live domain.
-4. **Walk `CONTENT_APPROVALS.md` with Dante** — especially the insurance
-   claim, the founder story, and operating hours.
-5. **Then** the GoDaddy DNS cutover, per `DEPLOYMENT.md`.
+Deployment is done (§6). The order below reflects that.
+
+1. **Get the Jobber form URL, set it in Vercel, and redeploy** — §6. The site
+   is live and taking traffic with no working form on it, so this is now the
+   most expensive gap on the list. Verify an end-to-end submission afterward.
+2. **Set `NEXT_PUBLIC_GA_MEASUREMENT_ID` and redeploy.** Every day the live
+   site runs unmeasured is traffic data that cannot be recovered later.
+3. **Submit the sitemap in Search Console** — the site is indexable and the
+   sitemap serves 34 URLs, but nothing has been submitted.
+4. **Get answers to the 13 client questions** — §11. Several are one-word
+   answers that unblock published copy (hours, insurance, 12-vs-13 years).
+5. **Re-run Lighthouse against the live URL** and compare with the local
+   numbers in §7. Expect mobile LCP to improve on real CDN + Brotli; the
+   structural finding (the consent banner is the LCP element) will not change
+   on its own. Decide the mobile-banner-width question in §7.
+6. **Photo follow-ups** — confirm who is in the founder-portrait candidate,
+   pull the 5 oversized HEICs directly from Drive, decide where the 12 videos
+   live, and get per-property permission so `projects.ts` can be filled (§4).
 
 ---
 
-## 11. Documentation index
+## 11. Open questions for the client
+
+**Send Dante the live site — https://redemptioncleanoutservices.com.** A
+static, page-by-page screenshot review was published for him earlier as a
+private Claude artifact:
+
+**https://claude.ai/code/artifact/7a631d35-c268-4d4e-a5e9-a88ed0244c6a**
+
+That artifact is superseded — its links don't click and it predates the live
+deploy. Keep it only for the 13 questions it carries, which are the same items
+tracked in `CONTENT_APPROVALS.md`:
+
+1. 13 years in real estate, or 12? (Brochure and flyer both say 12; site says 13.)
+2. Fully insured? Unpublished anywhere until confirmed.
+3. Operating hours?
+4. Publish a business email, or phone/text only?
+5. Make the Main Street address public? Only if permanently staffed and visitable.
+6. Founder-story wording — approve or edit.
+7. Is the hard-hat photo in Drive actually Dante? Would close the portrait gap.
+8. Accepted vs. excluded materials.
+9. Jobber form link.
+10. Google review link + Business Profile link.
+11. Which other cities get their own page.
+12. Written permission from the before/after property owners.
+13. OK to publish the two Grace Centers of Hope donation photos?
+
+---
+
+## 12. Documentation index
 
 | File | Contents |
 |---|---|
