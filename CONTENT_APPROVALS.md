@@ -106,11 +106,16 @@ and update the linked content file when a decision is made.
       gallery as built. If a photo is ever labelled with an address, owner, or
       client name, that specific caption needs the owner's written permission
       first.
-- [ ] **New photography from the client** — including the recent larger
-      demolition job. Add each file to `public/images/photos` and an entry to
-      `src/content/gallery.ts` with real alt text; that is the only step
-      needed to publish it. The demolition page currently leads with the deck
-      photo and should lead with the larger job once those images arrive.
+- [ ] **The demolition job photos are in Drive but not on the site.** The
+      client uploaded them to `Photo/Video / Demolition 1` on 2026-08-31: 8
+      before frames (2026-08-21) and 5 after frames (2026-08-27). They are
+      HEIC, which browsers cannot display, and they cannot be pulled through
+      the Drive tooling available to this session — the files are 2–5 MB each
+      and the API returns them base64-encoded as text. **Someone with Drive
+      access has to download that folder and run `tools/import-photos.py`**
+      (see `IMAGE_REQUIREMENTS.md`); after that, publishing is a paste into
+      `src/content/gallery.ts`. Until then the demolition page leads with the
+      deck photo, which undersells the work the page now describes.
 - [ ] **Donation-partner photography** — two strong frames in Drive show a
       **Grace Centers of Hope** thrift-store truck being loaded with donated
       items. They are genuine and support the donation story, but publishing

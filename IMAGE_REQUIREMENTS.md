@@ -98,6 +98,43 @@ JPEG q84, with EXIF stripped.
 | `estate-cleanout-driveway-staging.jpg` | Gallery |
 | `garage-cleanout-in-progress.jpg` | Gallery |
 
+## Converting the owner's photos
+
+Photos come off an iPhone as HEIC, which **no browser can display**, at 3–7 MB
+each. They cannot go into `public/images/photos` as-is. `tools/import-photos.py`
+does the conversion:
+
+```bash
+pip install pillow pillow-heif
+python3 tools/import-photos.py ~/Downloads/"Demolition 1" --prefix demolition-teardown
+```
+
+It writes progressive JPEGs capped at 2400px on the long edge into
+`public/images/photos` and prints ready-to-paste `gallery.ts` entries with the
+alt text left as TODO — somebody has to look at each photo and describe it.
+
+It also **strips EXIF**, which matters: iPhones embed GPS coordinates in every
+photo, and publishing those would publish the customer's address.
+
+## Waiting in Google Drive
+
+`Redemption Cleanouts / Photo/Video / Demolition 1` (shared by the client
+2026-08-31) holds the recent larger demolition job as a genuine matched set:
+
+- **Before** — 8 photos, shot 2026-08-21: `IMG_7067`, `7068`, `7071`, `7072`,
+  `7074`, `7077`, `7080`, `7082`
+- **After** — 5 photos, shot 2026-08-27: `IMG_7121`, `7123`, `7124`, `7125`,
+  `7126`
+
+These are the photos the demolition page should lead with. They are also the
+site's first real before/after pair for demolition.
+
+The parent `Photo/Video` folder holds roughly 40 unique stills (many are stored
+twice as `IMG_xxxx` and `IMG_xxxx 2`), of which 19 are published. The remainder
+has not been reviewed frame by frame — some are phone screenshots, and the two
+Grace Centers of Hope frames are held pending approval (`CONTENT_APPROVALS.md`).
+There are also 7 unique `.MOV` clips; no video is used anywhere on the site.
+
 ## Adding new photos
 
 `src/content/gallery.ts` is the single source of truth for job photography.
