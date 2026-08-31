@@ -8,19 +8,19 @@ export const salineMi: CityDefinition = {
   localAreas: [
     "downtown Saline on Michigan Avenue",
     "Curtiss Park",
-    "the Saline–Ann Arbor Road corridor",
+    "the Ann Arbor–Saline Road corridor",
     "the Monroe Street and Maple Road neighbourhoods",
-    "the light-industrial and manufacturing area on the north edge of town",
+    "the light-industrial and manufacturing area at the edge of town",
     "the farmland of Saline and Lodi townships around the city",
   ],
   housingContext:
-    "Saline reads as a small town that grew outward in rings. Nineteenth-century houses and brick storefronts sit around the Michigan Avenue crossroads, mid-century ranches fill the streets just beyond, and 1990s and 2000s subdivisions of two-storey colonials ring the edges. Step past the city limits and it is farmhouses on acreage with pole barns, silos and machine sheds behind them.",
+    "Saline reads as a small town that grew outward in rings. Nineteenth-century houses and brick storefronts sit around the Michigan Avenue crossroads, mid-century ranches fill the streets just beyond, and 1990s and 2000s subdivisions of two-storey colonials ring the edges. Step past the city limits and it is farmhouses on acreage with pole barns and machine sheds behind them.",
   workContext:
-    "Most calls here are unhurried and family-driven: a long-time owner moving to something smaller, or an estate being emptied so the house can go on the market in good order. Those houses have full basements, attached two-car garages and a shed, and often forty years of storage in all three. The surrounding acreage brings a different job entirely — pole barns, old machine sheds, collapsing outbuildings and concrete pads to take down, plus decades of equipment and scrap cleared off a property before it changes hands.",
+    "In town the work runs to downsizing and estate clearing — an owner of many years moving to something smaller, or a house being emptied so it can go on the market in good order. Those houses have full basements, attached two-car garages and a shed, and often forty years of storage in all three. The surrounding acreage brings a different job entirely — pole barns, old machine sheds, collapsing outbuildings and concrete pads to take down, plus decades of equipment and scrap cleared off a property before it changes hands.",
   localConsiderations: [
     "Farm properties outside the city put the real work in the outbuildings rather than the house, and a pole barn or machine shed can hold more than the whole dwelling",
     "Long unpaved farm drives soften after rain, which affects how close a truck and trailer can get to the building being cleared",
-    "Subdivision homes on the edges of town have deep attached garages and full basements, so the volume is usually well above what the main floor suggests",
+    "The colonials in the newer rings around the city carry an unfinished bonus room over the garage, reached by a stair too narrow for the bedroom furniture and boxed goods that end up stored there",
     "Older houses near the Michigan Avenue crossroads sit close to the street on shallow lots, with dirt-floor cellars and low stairs rather than modern basements",
   ],
   faqs: [

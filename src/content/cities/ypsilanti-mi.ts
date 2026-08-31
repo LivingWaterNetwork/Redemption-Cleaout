@@ -12,12 +12,11 @@ export const ypsilantiMi: CityDefinition = {
     "downtown Michigan Avenue",
     "College Heights",
     "the Cross Street corridor",
-    "Ypsilanti Township along Ecorse and Michigan Avenue",
   ],
   housingContext:
-    "Ypsilanti's core is old and dense: tall frame Victorians and Queen Annes on the east side, worker cottages and two-storey doubles, brick storefronts with flats above along Michigan Avenue and Cross Street. Out past the city line the township turns to plain postwar bungalows and ranches, small subdivisions and mobile home parks, with detached garages and gravel drives far more common than attached ones.",
+    "Ypsilanti's core is old and dense: tall frame Victorians and Queen Annes on the Historic East Side, worker cottages and two-storey doubles on the streets around Normal Park, brick storefronts with flats above along Michigan Avenue and Cross Street. Detached garages off rear drives are far more common than attached ones, and postwar bungalows and ranches fill the newer blocks toward the city edge.",
   workContext:
-    "The mix here leans heavily to investor and rental work. Houses bought cheap, gutted and turned over generate steady interior demolition — plaster and lath, old kitchens, layers of flooring, and partition walls put in when a single-family house was split into units. Rental turnover runs on both the student calendar near Eastern Michigan and ordinary month-to-month churn in the township. Alongside that: estate clearing in houses held by one family since the Willow Run years, and bank-owned properties needing everything out before they can be listed.",
+    "Investor purchases that are gutted and re-let generate interior demolition — plaster and lath, old kitchens, layers of flooring, and partition walls put in when a single-family house was split into units. Rental turnover near Eastern Michigan runs on the lease calendar, and several units in one building can change hands at once. Alongside that: estate clearing in houses one family has held for generations, and bank-owned properties needing everything out before they can be listed.",
   localConsiderations: [
     "Many east-side and Depot Town houses were divided into upper and lower flats, so a single address can be two full cleanouts with separate entrances and separate stairs",
     "Detached garages set back off an alley or a shared rear drive mean the crew often works from behind the house rather than the street",
@@ -34,12 +33,12 @@ export const ypsilantiMi: CityDefinition = {
     {
       question: "Do you tear down a collapsing detached garage on a small city lot?",
       answer:
-        "Yes. Garages, sheds, decks and back porches are standard demolition work, and we handle the concrete pad too if you want the slab gone. Tight lots and rear-alley access are normal here; we confirm the approach on site before quoting.",
+        "Yes. Garages, sheds, decks and back porches are standard demolition work, and we handle the concrete pad too if you want the slab gone. Tight lots and rear-alley access are no obstacle; we confirm the approach on site before quoting.",
     },
     {
       question: "I own a rental near EMU and the tenants left everything behind. How fast can you get there?",
       answer:
-        "Send photos and we will give you an estimate over the phone the same day in most cases. The final quote comes when we walk the unit. Turnover weeks around the end of a lease fill quickly, so the earlier you call, the more choice of date you have.",
+        "Send photos and we will give you an estimate over the phone. The final quote comes when we walk the unit. Turnover weeks around the end of a lease fill quickly, so the earlier you call, the more choice of date you have.",
     },
   ],
   metaDescription:
