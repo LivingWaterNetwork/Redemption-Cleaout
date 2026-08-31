@@ -21,7 +21,7 @@ export const rochesterMi: CityDefinition = {
     "Older homes near downtown often have steep, narrow cellar stairs and a hatch-style attic, so bulky items come out in pieces rather than whole",
     "Side drives on the older blocks are single-width and end at a detached garage, which usually means carrying the length of the lot",
     "Storefront work on and around Main Street is easier loaded early or late, before the street parking fills",
-    "Gut-outs in pre-war houses produce plaster, lath and old flooring — a heavier, denser load than a modern remodel of the same size",
+    "Knob-and-tube-era attic wiring, a coal-chute bay off the cellar and cast-iron radiators are all still in these houses, and each one changes what has to come out and how it gets back up the cellar stairs",
   ],
   faqs: [
     {

@@ -21,7 +21,6 @@ export const rochesterHillsMi: CityDefinition = {
   localConsiderations: [
     "Walk-out basements often let the crew load straight from the lower level into the back yard instead of hauling everything up a staircase",
     "Rolling lots and soft turf limit where a loaded trailer can sit, so the staging spot gets picked at the walkthrough, not on the day",
-    "Long cul-de-sac drives and subdivision association rules affect where a truck can park and how long it stays",
     "Properties on the older road frontage may carry a pole barn or second outbuilding that doubles the demolition scope",
     "Deck teardowns here usually mean footings and posts set into a slope rather than a flat pad",
   ],
@@ -32,7 +31,7 @@ export const rochesterHillsMi: CityDefinition = {
         "Yes. Decks off walk-out basements are common here and they come out framing, decking, posts and footings. Tell us whether you want the ground left graded flat or the area ready for a replacement build — it changes what we do after the structure is down.",
     },
     {
-      question: "We are clearing my parents’ house before it goes on the market. Do you sort what stays?",
+      question: "We are clearing my parents' house before it goes on the market. Do you sort what stays?",
       answer:
         "We work from what you mark. Set aside or tag anything staying and the crew clears the rest — basement, garage, attic and yard included. Most pre-listing jobs here are one visit if the walkthrough has sized it correctly.",
     },
