@@ -16,11 +16,11 @@ export const cantonMi: CityDefinition = {
   housingContext:
     "Canton is subdivision country: brick-and-siding colonials from the 1980s through the 2000s, three-bedroom two-and-a-half-bath plans on curving streets, deep basements, two- and three-car attached garages, decks and above-ground pools out back. The west side of the township still has farmhouses on acreage with pole barns and outbuildings, and Cherry Hill Village is deliberately older in style and tighter in layout.",
   workContext:
-    "The first wave of Canton subdivisions is now turning over, so a lot of the work is pre-listing clearing for owners moving to something smaller after the children have gone — big basements, three-car garages, storage over the garage, and a shed. Corporate relocations produce their own version: a whole house emptied to a moving date, with whatever the movers would not take left behind. Out west, farm property clearing is a different job entirely — pole barns full of equipment, and demolition of barns, outbuildings and concrete slabs.",
+    "Canton is a township rather than a city, and the split runs right through the work. East of Canton Center it is subdivision: first-wave houses turning over, cleared to a closing or a moving date, with whatever the movers would not take. West toward Ridge Road it is working acreage — pole barns full of equipment, and demolition of barns, outbuildings and the concrete they sit on. The two ends need different equipment and a different day, and a property that looks suburban on the map can turn out to have a barn behind it.",
   localConsiderations: [
     "Basements here are large and often only half finished, so the unfinished side has become long-term storage that no one has opened since the move-in",
     "Three-car garages with overhead storage are common, and that overhead space is usually the last thing anyone thinks to mention before the walkthrough",
-    "Wide subdivision drives take a truck and trailer easily, but many streets are on tight cul-de-sacs where turning a loaded trailer needs planning",
+    "Canton is a township, not a city, so a teardown out here answers to the township rather than to a city hall — worth knowing before assuming what applied on a job in Livonia or Westland applies here",
     "Properties on acreage toward the west of the township bring pole barns, equipment and outbuilding demolition into the same job — a very different scope to a subdivision cleanout",
     "Decks, above-ground pools and screened porches from the 1990s are reaching the end of their life and often come out at the same time as the clearing",
   ],
@@ -44,5 +44,5 @@ export const cantonMi: CityDefinition = {
   metaDescription:
     "Property cleanouts and demolition in Canton, Michigan — subdivision and pre-listing clearing, basement and garage cleanouts, pole barn and deck teardowns.",
   primaryKeyword: "property cleanout Canton MI",
-  nearbySlugs: ["westland-mi", "livonia-mi", "ypsilanti-mi", "novi-mi"],
+  nearbySlugs: ["westland-mi", "livonia-mi", "ypsilanti-mi", "redford-mi"],
 };

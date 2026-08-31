@@ -17,7 +17,7 @@ export const detroitMi: CityDefinition = {
   housingContext:
     "Most of Detroit was built before the war and it shows in the work: brick bungalows with a dormered half-storey, wood-frame two-family flats, and four-squares on narrow lots with a rear alley and a detached garage. Grander stock survives in Boston-Edison, Indian Village and Palmer Woods. Newer infill now sits alongside all of it, block by block.",
   workContext:
-    "Two kinds of call dominate here. One is family: a parent’s bungalow of fifty years cleared for probate or a sale, with a Michigan basement, a floored attic and a garage nobody has opened in a decade. The other is investment — REO and long-vacant houses bought to rehab, which need everything stripped before trades can start: plaster and lath, old kitchens, water-damaged flooring, and whatever scrappers left behind. Demolition work skews to failed detached garages, rear sheds, porches and full interior gut-outs.",
+    "Two kinds of call dominate here. One is family: a parent's bungalow of fifty years cleared for probate or a sale, with a Michigan basement, a floored attic and a garage nobody has opened in a decade. The other is investment — REO and long-vacant houses bought to rehab, which need everything stripped before trades can start: plaster and lath, old kitchens, water-damaged flooring, and stripped fixtures or opened walls where copper and mechanicals were pulled. Demolition work skews to failed detached garages, rear sheds, porches and full interior gut-outs.",
   localConsiderations: [
     "Most older neighbourhoods are alley-loaded, so the crew often loads from the rear rather than the street — but alley condition varies block to block and we check it on the walkthrough",
     "Michigan basements are common: low headroom, stone walls and a steep straight stair, so the contents come out by hand rather than down a ramp",
@@ -39,7 +39,7 @@ export const detroitMi: CityDefinition = {
     {
       question: "I inherited a Detroit house and I live out of state. How do I get a price?",
       answer:
-        "Send photos and we will give you an estimate over the phone, so you know the range before you travel. The final quote is given in person after we walk the property — for a house that has been closed up a while, that walkthrough usually changes what we find.",
+        "Send photos and we will give you an estimate over the phone, so you know the range before you travel. The final quote is given in person after we walk the property — on a house that has been closed up a while, what is behind the door is rarely what the photos showed.",
     },
   ],
   metaDescription:

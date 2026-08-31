@@ -8,7 +8,7 @@ export const dearbornMi: CityDefinition = {
   localAreas: [
     "East Dearborn and the Warren Avenue business district",
     "West Dearborn and Michigan Avenue",
-    "Springwells",
+    "Springwells Park",
     "Aviation Sub",
     "The Fairlane area",
     "Neighbourhoods around Greenfield Village",
@@ -16,18 +16,18 @@ export const dearbornMi: CityDefinition = {
   housingContext:
     "East Dearborn is dense 1920s work: brick bungalows and small two-storeys close together on narrow lots, alleys behind, detached garages off the alley. West Dearborn runs to larger colonials, Tudors and postwar ranches on wider streets with attached garages and driveways. Michigan Avenue and Warren Avenue carry the storefront and small-office stock between them.",
   workContext:
-    "Family homes here tend to stay in the family a long time, so cleanouts often follow a death or a move to be nearer relatives, and the house holds decades of furniture plus a basement and attic that were never thinned out. Houses are frequently multigenerational, which means more of everything. Rental turnover in the east side flats and small two-storeys is steady. On the commercial side, Warren and Michigan Avenue storefronts change hands often enough to keep a run of small retail and office clearing — shelving, counters, coolers and fit-out left by the last tenant.",
+    "Family homes here tend to stay in the family a long time, so cleanouts often follow a death or a move to be nearer relatives, and a house held that long has a full basement and a floored attic that were never once thinned out. Rental turnover in the east side flats and small two-storeys is steady. On the commercial side, Warren and Michigan Avenue storefronts change hands often enough to keep a run of small retail and office clearing — shelving, counters, coolers and fit-out left by the last tenant, sometimes with a let flat above the shop that has to be emptied on the same visit.",
   localConsiderations: [
-    "East Dearborn is alley-loaded with narrow side drives, so the crew usually works from the rear and hand-carries further than in a subdivision",
-    "Lots sit close together and there is rarely room to park a trailer at the kerb without blocking a neighbour, so staging is planned at the walkthrough",
+    "The side drives between East Dearborn houses are barely a car wide and run the depth of the lot, so a trailer cannot follow the crew in and the carry is the full length of the drive",
+    "The Warren Avenue side streets have no kerb frontage a trailer can legally take without standing across a drive, so where the truck sits is settled at the walkthrough",
     "Older brick bungalows have a finished or semi-finished attic reached by a steep stair, which slows the carry-out more than the volume up there suggests",
     "Storefront clearing along Warren Avenue often has to happen outside trading hours, with loading from the rear service side rather than the pavement",
   ],
   faqs: [
     {
-      question: "Do you clear out a Dearborn house where the garage sits off the back alley?",
+      question: "There is a flat above my shop on Warren Avenue and both need emptying. Is that one job?",
       answer:
-        "Yes. Alley-loaded garages are normal in East Dearborn and we work from the back when that is the shorter route. We check the alley on the walkthrough — if it is blocked or too soft for a loaded trailer, we bring everything around the side instead and allow for the extra carry.",
+        "One job. The shop fit-out and the flat above it come out together — the difference is that everything upstairs comes down an internal stair that usually opens onto the street rather than the service side, so the two halves get sequenced rather than worked at once. Tell us at the walkthrough whether the stair is shared with a neighbouring unit.",
     },
     {
       question: "We are emptying a family home in Dearborn and want to keep some things. Can you sort as you go?",
@@ -37,7 +37,7 @@ export const dearbornMi: CityDefinition = {
     {
       question: "Can you empty a small shop on Michigan Avenue between tenants?",
       answer:
-        "Commercial cleanouts are half of what we do. Shelving, counters, display units, appliances and leftover stock all come out, and we can strip a fit-out back to a bare shell if the landlord wants it that way. Tell us the building’s access and hours when we walk it.",
+        "Yes — storefront and small-office clearing is regular work for us. Shelving, counters, display units, appliances and leftover stock all come out, and we can strip a fit-out back to a bare shell if the landlord wants it that way. Tell us the building's access and hours when we walk it.",
     },
   ],
   metaDescription:

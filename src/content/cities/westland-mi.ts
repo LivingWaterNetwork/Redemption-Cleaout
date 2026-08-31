@@ -9,14 +9,14 @@ export const westlandMi: CityDefinition = {
     "Norwayne",
     "Ford Road retail corridor",
     "Wayne Road and Warren Road",
-    "Cherry Hill",
+    "Cherry Hill Road corridor",
     "Nankin Mills and the Hines Park edge",
     "Merriman Road",
   ],
   housingContext:
-    "Westland is mostly modest postwar housing: small brick ranches and bungalows on tight lots, a lot of them originally built for autoworkers. Norwayne is the extreme case — rows of very small wartime-era units on slabs and short blocks. Set against that are large apartment and townhouse complexes along the main roads, and the strip retail that runs the length of Ford Road.",
+    "Westland is mostly modest postwar housing: small brick ranches and bungalows on tight lots. Norwayne is the oldest of it — compact units built as wartime defence-worker housing, on slabs and short blocks. Set against that are large apartment and townhouse complexes along the main roads, and the strip retail that runs the length of Ford Road.",
   workContext:
-    "Rental turnover drives more of the work here than anywhere else in this part of Wayne County. Landlords and property managers call between tenants for a full clear and a reset — furniture left behind, appliances, garage contents, sometimes a unit that has been badly neglected. Estate and downsizing jobs come from the original owners of the small ranches finally leaving. Demolition tends to be small and structural at the edges: rotted decks, above-ground pool surrounds, sagging sheds and one-car detached garages that were never worth repairing.",
+    "Rental stock is a bigger share of the housing here than in the neighbouring cities, so turnover work comes with it. Landlords and property managers call between tenants for a full clear and a reset — furniture left behind, appliances, garage contents, and units that need a full clear before any repair work starts. Estate and downsizing jobs come from the original owners of the small ranches finally leaving. Demolition tends to be small and structural at the edges: rotted decks, above-ground pool surrounds, sagging sheds and one-car detached garages that were never worth repairing.",
   localConsiderations: [
     "Houses are small but the accumulation is not, so the volume is often out of proportion to the square footage — a compact ranch can still fill several trailer loads",
     "In Norwayne and similar pockets there is no basement to work with, so everything that a bigger house would store below ground is in the rooms, the attic hatch or a backyard shed",
@@ -37,7 +37,7 @@ export const westlandMi: CityDefinition = {
     {
       question: "Can you pull out an old deck and a collapsing shed in the same visit as the cleanout?",
       answer:
-        "Yes. Decks, sheds, pool surrounds and small detached garages are standard demolition work for us, and combining them with a cleanout saves a second mobilisation. Point them out at the walkthrough so the quote covers both.",
+        "Yes. Decks, sheds, pool surrounds and small detached garages are standard demolition work, and they can be scheduled into the same visit as the clearing. Point them out at the walkthrough so the quote covers both.",
     },
   ],
   metaDescription:
