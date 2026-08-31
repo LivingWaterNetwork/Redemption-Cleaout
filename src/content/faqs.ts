@@ -38,6 +38,12 @@ export const faqs: FAQEntry[] = [
       "Accepted and excluded materials are confirmed operationally and will be listed here once finalized — see CONTENT_APPROVALS.md. In general, regulated hazardous materials fall outside standard cleanout scope.",
   },
   {
+    category: "Getting Started",
+    question: "Are you licensed and insured?",
+    answer:
+      "Yes. Redemption carries the licensing and insurance required for the cleanout and demolition work it takes on in Michigan. If your project needs proof of coverage before work starts, ask at the walkthrough.",
+  },
+  {
     category: "What We Handle",
     question: "Do you do demolition?",
     answer:

@@ -45,7 +45,22 @@ and update the linked content file when a decision is made.
       the city lists on each page are illustrative, not exhaustive.
 - [ ] **Accepted materials.**
 - [ ] **Excluded materials / hazardous-material limits.**
-- [ ] **Demolition scope and licensing** — HIGH PRIORITY. The client asked for
+- [~] **Demolition scope and licensing** — PARTIALLY CONFIRMED 2026-08-31: the
+      owner states Redemption holds all licensing and insurance required where
+      it operates. The site now says "licensed and insured" on the demolition
+      page and in the FAQ, phrased generally because that is exactly what was
+      confirmed — no licence number, class, or carrier is claimed anywhere.
+      **Two things still to check before launch:**
+      1. Michigan requires a residential builder or maintenance-and-alteration
+         licence for much of this work, and licence holders are generally
+         expected to show the number in advertising. Confirm with LARA (or the
+         client's own licensing contact) whether the number must appear on the
+         site, and add it to `business.ts` if so.
+      2. Whether a certificate of insurance should be downloadable or simply
+         offered on request. The FAQ currently offers it on request.
+      The original scope questions below still stand.
+
+      ORIGINAL NOTE — The client asked for
       demolition to be promoted from "light demolition" to a full service
       ("currently taking on larger projects"), so `src/content/services.ts`
       now advertises interior gut-outs, garages, decks, sheds, pole barns,

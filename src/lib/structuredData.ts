@@ -94,6 +94,32 @@ export function serviceJsonLd(service: ServiceDefinition) {
   };
 }
 
+/**
+ * Service schema for a city page, with areaServed narrowed to that city. The
+ * site-wide county list is the wrong signal here — the point of a city page is
+ * that it is about one place.
+ */
+export function cityServiceJsonLd(cityName: string, path: string) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    serviceType: "Property Cleanouts and Demolition",
+    name: `Property Cleanouts and Demolition in ${cityName}, MI`,
+    provider: {
+      "@type": "LocalBusiness",
+      name: business.name,
+      telephone: business.phoneDisplay,
+      url: siteUrl,
+    },
+    areaServed: {
+      "@type": "City",
+      name: cityName,
+      containedInPlace: { "@type": "State", name: "Michigan" },
+    },
+    url: absoluteUrl(path),
+  };
+}
+
 export function faqPageJsonLd(faqs: ServiceFAQ[]) {
   return {
     "@context": "https://schema.org",

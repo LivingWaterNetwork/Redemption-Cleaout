@@ -211,7 +211,7 @@ export const services: ServiceDefinition[] = [
     situation:
       "Something on the property has to come down — an interior that needs gutting before renovation, a failing garage or deck, an outbuilding, or a structure at the end of its life.",
     definition:
-      "Redemption takes demolition work from interior gut-outs through full structure teardowns, and hauls the debris out with the same crew. Because we run cleanouts too, a property that needs to be emptied and then torn down is one job with one point of contact — not two contractors scheduling around each other.",
+      "Redemption takes demolition work from interior gut-outs through full structure teardowns, licensed and insured, and hauls the debris out with the same crew. Because we run cleanouts too, a property that needs to be emptied and then torn down is one job with one point of contact — not two contractors scheduling around each other.",
     weHandle: [
       "Interior gut-outs and tear-outs — walls, fixtures, cabinetry, flooring, ceilings",
       "Garages, carports, and detached outbuildings",
@@ -281,6 +281,11 @@ export const services: ServiceDefinition[] = [
         question: "Can you clear the property and then demolish it?",
         answer:
           "Yes, and it's one of the most common reasons people call. Running the cleanout and the demolition through one company means one scope, one schedule, and no gap between the two.",
+      },
+      {
+        question: "Are you licensed and insured?",
+        answer:
+          "Yes. Redemption carries the licensing and insurance required for the demolition and cleanout work it takes on in Michigan. Ask at the walkthrough and we'll confirm the details for your specific project.",
       },
       {
         question: "What about permits, utilities, and asbestos?",

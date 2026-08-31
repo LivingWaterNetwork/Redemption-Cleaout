@@ -54,8 +54,11 @@ const legacyRedirects = [
   // Light demolition became the demolition pillar.
   ["/services/light-demolition", "/services/demolition"],
   // City pages replaced by county coverage.
-  ["/service-areas/rochester-mi", "/service-areas/oakland-county-mi"],
-  ["/service-areas/rochester-hills-mi", "/service-areas/oakland-county-mi"],
+  ["/service-areas/rochester-mi", "/service-areas/oakland-county-mi/rochester-mi"],
+  [
+    "/service-areas/rochester-hills-mi",
+    "/service-areas/oakland-county-mi/rochester-hills-mi",
+  ],
   // Audience pages folded into the cleanouts pillar.
   ["/who-we-serve", "/services/full-property-cleanouts"],
   ["/who-we-serve/homeowners-and-families", "/services/full-property-cleanouts"],

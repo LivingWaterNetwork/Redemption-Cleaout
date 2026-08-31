@@ -19,6 +19,7 @@ Detroit and the seven county names) are woven into copy naturally, not stuffed.
 | `/service-areas/livingston-county-mi` | property cleanout Livingston County MI |
 | `/service-areas/washtenaw-county-mi` | property cleanout Washtenaw County MI |
 | `/service-areas/monroe-county-mi` | property cleanout Monroe County MI |
+| `/service-areas/<county>/<city>` | property cleanout + that city, e.g. "property cleanout Troy MI" |
 | `/projects` | cleanout before and after photos (previous work) |
 | `/how-it-works` | how property cleanout pricing and quoting works |
 | `/resources/estate-cleanout-checklist` | estate cleanout checklist (informational) |
@@ -76,12 +77,34 @@ first three stop resolving.
 - **No aggregate rating / review schema anywhere** — no authentic first-party
   rating data exists yet (see `CONTENT_APPROVALS.md`).
 
+## City pages
+
+City landing pages live at `/service-areas/<county-slug>/<city-slug>`, nested
+under their county so the hierarchy and breadcrumbs match the geography. One
+file per city in `src/content/cities/`, aggregated by
+`tools/build-city-index.mjs`.
+
+They are the main local-search surface: "cleanout company in Sterling Heights"
+is how this work is actually searched for. They are deliberately **not** in the
+navigation — the menu stays at five items; the pages are reached from their
+county page, from each other via `nearbySlugs`, and from search.
+
+**The standard, which is not negotiable.** A set of near-identical pages with
+the city name swapped is a doorway-page pattern; Google demotes it and it drags
+the rest of the domain down. Every city page has to carry local specifics a
+resident would recognise — housing stock, real neighbourhoods and corridors,
+and how the built environment changes the physical work. The test: swap in a
+different city's name and the text should read obviously wrong.
+
+Never state, on a city page, an ordinance, permit rule or fee, a named disposal
+site or charity, a job Redemption has done there, or any statistic. See
+`CONTENT_APPROVALS.md`.
+
 ## Deliberately NOT built
 
-- City-level pages. Coverage is published at county level; each county page
-  names its cities in a list, which captures city queries without seven dozen
-  near-duplicate pages. Adding a city page would need a genuinely unique local
-  introduction and property context — not a template with the name swapped.
+- A page for every municipality in seven counties. Coverage is published at
+  county level, with city pages only where there is enough genuine local
+  substance to justify one.
 - A separate page per cleanout type. Those are anchored sections on the
   cleanouts pillar; re-splitting them means updating `legacyRedirects`,
   `navigation.ts`, and the sitemap together.

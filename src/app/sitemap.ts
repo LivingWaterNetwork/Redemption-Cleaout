@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { siteUrl } from "@/content/business";
 import { services } from "@/content/services";
 import { approvedServiceAreas } from "@/content/serviceAreas";
+import { cities } from "@/content/cities";
 import { resources } from "@/content/resources";
 
 const staticRoutes = [
@@ -34,6 +35,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }
   for (const area of approvedServiceAreas) {
     entries.push({ url: `${siteUrl}/service-areas/${area.slug}`, lastModified: now });
+  }
+  for (const city of cities) {
+    entries.push({
+      url: `${siteUrl}/service-areas/${city.countySlug}/${city.slug}`,
+      lastModified: now,
+    });
   }
   for (const resource of resources) {
     entries.push({ url: `${siteUrl}/resources/${resource.slug}`, lastModified: now });

@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { approvedServiceAreas, getServiceAreaBySlug } from "@/content/serviceAreas";
 import { getServiceBySlug } from "@/content/services";
+import { getCitiesByCounty } from "@/content/cities";
 import { PageHero } from "@/components/sections/PageHero";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { FAQAccordion } from "@/components/ui/FAQAccordion";
@@ -39,6 +40,8 @@ export default async function ServiceAreaDetailPage({
   const { slug } = await params;
   const area = getServiceAreaBySlug(slug);
   if (!area) notFound();
+
+  const cities = getCitiesByCounty(area.slug);
 
   const relevantServices = area.relevantServiceSlugs
     .map((related) => getServiceBySlug(related))
@@ -148,16 +151,43 @@ export default async function ServiceAreaDetailPage({
               Where we work in {area.countyName} County
             </h2>
           </Reveal>
-          <Reveal delay={120}>
-            <ul className="mt-10 grid gap-x-8 gap-y-3 border-t border-heritage-black/12 pt-8 sm:grid-cols-2 lg:grid-cols-3">
-              {area.cities.map((city) => (
-                <li key={city} className="flex items-baseline gap-3 text-body-base text-steel-gray">
-                  <span aria-hidden="true" className="text-redemption-red">
-                    &#8212;
-                  </span>
-                  {city}
-                </li>
-              ))}
+          {cities.length > 0 && (
+            <Reveal delay={110}>
+              <ul className="mt-10 grid gap-x-8 gap-y-4 border-t border-heritage-black/12 pt-8 sm:grid-cols-2 lg:grid-cols-3">
+                {cities.map((city) => (
+                  <li key={city.slug}>
+                    <Link
+                      href={`/service-areas/${area.slug}/${city.slug}`}
+                      className="group flex items-baseline gap-3"
+                    >
+                      <span aria-hidden="true" className="text-redemption-red">
+                        &#8212;
+                      </span>
+                      <span className="font-display text-lg font-semibold text-heritage-black underline decoration-heritage-black/20 underline-offset-[6px] transition-colors duration-micro group-hover:text-redemption-red group-hover:decoration-redemption-red">
+                        {city.cityName}
+                      </span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </Reveal>
+          )}
+
+          <Reveal delay={130}>
+            <ul className="mt-8 grid gap-x-8 gap-y-3 border-t border-heritage-black/12 pt-8 sm:grid-cols-2 lg:grid-cols-3">
+              {area.cities
+                .filter((name) => !cities.some((c) => c.cityName === name))
+                .map((city) => (
+                  <li
+                    key={city}
+                    className="flex items-baseline gap-3 text-body-base text-steel-gray"
+                  >
+                    <span aria-hidden="true" className="text-redemption-red">
+                      &#8212;
+                    </span>
+                    {city}
+                  </li>
+                ))}
             </ul>
           </Reveal>
           <Reveal delay={160}>

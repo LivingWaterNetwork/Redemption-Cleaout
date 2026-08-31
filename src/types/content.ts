@@ -112,6 +112,42 @@ export type ServiceAreaDefinition = {
   approved: boolean;
 };
 
+/**
+ * A city landing page, nested under its county.
+ *
+ * These exist to be found in local search — "cleanout company in Sterling
+ * Heights" is how this work is looked for. That only works if each page is
+ * genuinely about its city. A page assembled by swapping a name into a
+ * template is a doorway page, which Google demotes and which would drag the
+ * rest of the site down with it.
+ *
+ * The bar for adding one: real local specifics a resident would recognise, and
+ * nothing invented. Never state an ordinance, permit fee, disposal facility,
+ * partnership, or a job Redemption has done in that city unless it has been
+ * confirmed — see CONTENT_APPROVALS.md.
+ */
+export type CityDefinition = {
+  /** e.g. "troy-mi" */
+  slug: string;
+  cityName: string;
+  /** Slug of the parent county in serviceAreas.ts, e.g. "oakland-county-mi". */
+  countySlug: string;
+  stateAbbr: string;
+  /** Neighbourhoods, districts, corridors or landmarks a local would know. */
+  localAreas: string[];
+  /** What the built environment is actually like. Roughly 40-70 words. */
+  housingContext: string;
+  /** What cleanout and demolition work here typically involves. 60-100 words. */
+  workContext: string;
+  /** 3-5 specifics that genuinely differ here. Not generic selling points. */
+  localConsiderations: string[];
+  faqs: ServiceFAQ[];
+  metaDescription: string;
+  primaryKeyword: string;
+  /** Slugs of nearby cities we also serve, for internal linking. */
+  nearbySlugs: string[];
+};
+
 export type ResourceDefinition = {
   slug: string;
   /** Editorial headline. Rendered as the page H1 and in the /resources index. */
