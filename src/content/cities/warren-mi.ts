@@ -15,26 +15,26 @@ export const warrenMi: CityDefinition = {
     "Twelve Mile and Ryan",
   ],
   housingContext:
-    "Warren was built fast for autoworkers after the war, and it still looks it: mile after mile of small brick ranches and bungalows on a tight street grid, twenty-eight to forty feet of frontage, single-width drives and a detached garage at the back of the lot. Basements under nearly all of it. The Mound and Groesbeck corridors break the pattern with shops, suppliers and plant property.",
+    "Warren was built fast for autoworkers after the war, and it still looks it: mile after mile of small brick ranches and bungalows on a tight street grid, narrow lots with single-width drives and a detached garage at the back. Basements under nearly all of it. The Mound and Groesbeck corridors break the pattern with shops, suppliers and plant property.",
   workContext:
-    "The houses are small, so the volume is never on the main floor — it is in the basement, the detached garage and whatever has been stacked along the side of the yard. A lot of Warren calls come from families settling an original owner’s estate, and from landlords turning a unit between tenants on a short window. Demolition here leans toward the 1950s single-car garage that has finally given up, the concrete under it, and gut-outs in houses bought to flip. Along Mound and Groesbeck there is shop and warehouse clearing too — racking, benches, pallets, leftover stock.",
+    "The houses are small, so the volume is never on the main floor — it is in the basement, the detached garage and whatever has been stacked along the side of the yard. Much of this stock is still in original-owner hands, so estate clears and landlord turnovers on a short window both belong to the same street. Demolition here leans toward the single-car garage that has finally given up, the concrete under it, and gut-outs in houses bought to flip. Along Mound and Groesbeck there is shop and warehouse clearing too — racking, benches, pallets, leftover stock.",
   localConsiderations: [
     "Detached garages sit at the back of narrow lots, so the crew usually carries the length of the drive rather than backing a truck to the door",
     "Single-width drives and cars parked on both sides of the street mean truck placement has to be sorted before the crew arrives, not during",
     "Rental turnovers here run on tight windows — often the unit needs to be empty in days, not weeks",
-    "Small houses with full basements: the finished square footage understates the job almost every time",
+    "A brick ranch with no usable attic gives nobody anywhere to stage: contents come up the basement stairs and out the front door, and the sorting has to happen at the truck rather than in the yard",
     "Garage teardowns frequently come with the slab and apron underneath, which is a separate load and a different piece of equipment",
   ],
   faqs: [
     {
       question: "Can you tear down an old detached garage in Warren and take the slab too?",
       answer:
-        "Yes. Garage teardowns are one of the most common demolition jobs we do, and the concrete slab and apron can come out in the same visit. Tell us at the walkthrough whether you want the pad gone or left in place — it changes the equipment and the load count.",
+        "Yes. A detached garage teardown is standard demolition work, and the concrete slab and apron can come out in the same visit. Tell us at the walkthrough whether you want the pad gone or left in place — it changes the equipment and the load count.",
     },
     {
       question: "I have a rental on the east side of Warren that needs emptying before the next tenant. How fast can you be out?",
       answer:
-        "Send photos and we will get you an estimate over the phone the same day. Turnovers are routine work and we schedule them around your date. The final quote is set in person once we have walked the unit, including the basement and garage.",
+        "Send photos and we will get you an estimate over the phone, then book to the date you need the unit empty. The final quote is set in person once we have walked the unit, including the basement and the garage at the back.",
     },
     {
       question: "Do you clear out shops and small warehouses along Mound or Groesbeck?",

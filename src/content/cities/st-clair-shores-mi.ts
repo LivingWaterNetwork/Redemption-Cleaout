@@ -21,7 +21,7 @@ export const stClairShoresMi: CityDefinition = {
     "On canal lots the truck stays on the street side, so anything behind the house is carried the full depth of the property to reach it",
     "Detached garages on narrow west-of-Jefferson lots leave no room to swing a trailer — the crew works off the drive and carries",
     "Waterfront properties often hold marine and boating items that need sorting rather than blind loading, and a few of them are handled separately from general debris",
-    "Condo buildings along Jefferson usually control lift access and loading times, which is confirmed with management before the date",
+    "Anything sitting on the seawall edge — deck sections, steps down to the well, dock boards and rail — has to be broken down where it stands and carried back to the land side, since there is nowhere to drop a whole section",
     "Basements are the standard in the older bungalows and are frequently damp, so contents down there come out heavier than they look",
   ],
   faqs: [
@@ -36,9 +36,9 @@ export const stClairShoresMi: CityDefinition = {
         "Most of it, yes. General marine gear, trailers, hardware and scrap go out with the rest of the garage. Anything holding fuel or fluids gets separated and, in a few cases, has to be dealt with outside a standard cleanout — we will flag exactly what falls into that when we walk it.",
     },
     {
-      question: "I need a condo off Jefferson emptied before it goes on the market. How does that work?",
+      question: "The deck on the water side is rotten and there is old dock hardware still bolted to the seawall. Can that come out?",
       answer:
-        "Send photos and we will get you an estimate over the phone. Then we walk the unit, confirm lift access and loading times with the building, and give you the final quote in person before anything is moved.",
+        "Yes — deck framing, railings, the steps down to the well, and cleats, posts and rail sections fixed to the seawall all come out as demolition, and the debris leaves with us. It comes apart where it stands and gets carried up to the truck on the street. Anything you want to keep — a hoist, a ladder, sound decking — just gets marked before we start.",
     },
   ],
   metaDescription:
