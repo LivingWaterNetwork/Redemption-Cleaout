@@ -18,7 +18,7 @@ import { resolveSiteUrl } from "@/lib/validation";
  */
 export const business: BusinessInfo = {
   name: "Redemption Cleanout Services",
-  legalTagline: "Redeem Your Property. Reclaim Your Space.",
+  legalTagline: "Redeem Your Property. Redeem Your Space.",
   founderName: "Dante Terracciano",
   phoneDisplay: "(248) 321-9609",
   phoneHref: "+12483219609",
@@ -31,10 +31,10 @@ export const business: BusinessInfo = {
     city: "Rochester",
     state: "MI",
     zip: "48307",
-    publicAreaDescription: "Based in Rochester, Michigan",
+    publicAreaDescription: "Serves Metro Detroit",
   },
   serviceRegionSummary:
-    "Rochester, Rochester Hills, Oakland County, and approved surrounding Southeast Michigan communities",
+    "Macomb, Oakland, St. Clair, Wayne, Monroe, Washtenaw, and Livingston counties",
 };
 
 export const siteUrl = resolveSiteUrl(process.env.NEXT_PUBLIC_SITE_URL);

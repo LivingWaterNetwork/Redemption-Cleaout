@@ -107,7 +107,7 @@ export function Header() {
               transparent ? "text-clean-white/70" : "text-steel-gray"
             }`}
           >
-            Estates &middot; Foreclosures &middot; Commercial &middot; Severe Clutter
+            Cleanouts &middot; Demolition &middot; Estates &middot; Foreclosures &middot; Commercial
           </p>
         </div>
       </div>
@@ -236,7 +236,7 @@ export function Header() {
               trackEvent({ name: "click_request_walkthrough", params: { location: "header" } })
             }
           >
-            Request a Walkthrough
+            Get a Free Estimate
             <span aria-hidden="true" className="btn-arrow">
               &rarr;
             </span>
@@ -326,7 +326,7 @@ export function Header() {
 
           <li className="flex flex-col gap-3 pt-6">
             <Link href="/request-walkthrough" className="btn-primary w-full">
-              Request a Walkthrough
+              Get a Free Estimate
               <span aria-hidden="true" className="btn-arrow">
                 &rarr;
               </span>

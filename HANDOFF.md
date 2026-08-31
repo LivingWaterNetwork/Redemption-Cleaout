@@ -3,7 +3,181 @@
 Written for whoever picks this up next (human or AI). Read this first, then
 `README.md` for setup and `DESIGN_SYSTEM.md` for anything visual.
 
-Last updated: 2026-08-21 · Latest commit: `a5ff374` + this photo pull
+Last updated: 2026-08-31 · restructured to two services, full Metro Detroit
+coverage, and 27 city landing pages (see §0).
+
+---
+
+## 0. Read this first — state as of 2026-08-31
+
+Branch: `claude/home-page-redesign-oo7i5p`, pushed, working tree clean.
+Nothing is deployed. The public site is still untouched.
+
+**Everything below §0 that describes eight service pages, a "Who We Serve"
+tree, or two Rochester city pages is superseded.** So are the equivalent parts
+of `PROJECT_SUMMARY.md`.
+
+### What changed, in one pass
+
+- **Two services**, not eight: `/services/full-property-cleanouts` and
+  `/services/demolition`. Estate, foreclosure, commercial, hoarding-related,
+  move-out and junk removal are anchored `<h3>` sections inside the cleanouts
+  page (`categories` in `src/content/services.ts`).
+- **Demolition is a full service**, no longer "light demolition", and the page
+  says licensed and insured — phrased generally, because that is exactly what
+  the owner confirmed. No licence number, class or insurer appears anywhere.
+- **Coverage is all of Metro Detroit**: seven county pages, plus **27 city
+  pages** at `/service-areas/<county>/<city>`.
+- **`/who-we-serve` and its six children are deleted.** Audience content folded
+  into the cleanouts page.
+- **`/projects` is "Previous Work"** — a flat gallery of all 32 photos with a
+  lightbox, no per-project pages.
+- **Home page cut from 13 sections to 8.**
+- **Quoting changed**: a ballpark estimate from photos over the phone, the
+  final quote given on site in person. `src/content/process.ts` is the
+  canonical wording; keep every other mention consistent with it.
+- **Every retired URL 301s.** Map in `SEO_MAP.md`, redirects in
+  `next.config.mjs` as `legacyRedirects`, covered by an e2e test. Do not
+  remove them.
+
+### Where to look
+
+| For | Read |
+|---|---|
+| URL map, keywords, redirects, schema | `SEO_MAP.md` |
+| What still needs the client's sign-off | `CONTENT_APPROVALS.md` |
+| Adding photos, and how Drive binaries get pulled | `IMAGE_REQUIREMENTS.md` |
+| Getting them ranking locally (not code) | `LOCAL_SEO_PLAYBOOK.md` |
+
+### Commands that matter
+
+```bash
+npm run build && npm run lint && npm test   # must all pass before pushing
+node tools/check-city-pages.mjs             # quality gate for city pages
+node tools/build-city-index.mjs             # after adding a city file
+node axe-check.mjs                          # accessibility, needs the site running
+```
+
+Sandbox notes for whoever picks this up: LibreOffice needs
+`libreoffice-impress` installed before it will convert a `.pptx`, and the
+bundled Chromium is at a different build than the pinned Playwright expects, so
+scripts need `executablePath: "/opt/pw-browsers/chromium-1194/chrome-linux/chrome"`.
+
+### ⚠ The city pages are NOT publishable yet
+
+They are written and committed, and 26 of the 27 have outstanding problems:
+**21 fabrications and 26 doorway-pattern findings**, listed per county with a
+fix for each in **`CITY_PAGE_FIXES.md`**. That file is the first job for
+whoever picks this up.
+
+Do not launch with them as they stand. Either fix them (one agent per county,
+each given only its own section of that file) or remove the unfixed ones from
+`src/content/cities/` and re-run `node tools/build-city-index.mjs` — a page
+that is absent costs nothing, and a fabricated one costs credibility.
+
+`tools/check-city-pages.mjs` passed all 27 before that review. It is a floor,
+not sign-off; `CITY_PAGE_FIXES.md` explains exactly what it cannot see.
+
+### The one rule about city pages
+
+`src/content/cities/` is the biggest local-search asset here and the easiest
+thing to ruin. A set of pages with the city name swapped into a template is a
+doorway-page pattern — Google demotes it and it drags down the pages that
+already rank, so **a generic city page is worse than no city page**.
+
+`tools/check-city-pages.mjs` enforces the mechanical half: no unverifiable
+claims (ordinances, permit fees, named disposal sites or charities, statistics,
+prices, distances, claimed jobs), no puffery, nothing contradicting the fixed
+facts, no broken nearby links, six-word phrase overlap between any two pages
+under 18%, and no local consideration repeated verbatim. All 27 pass. Run it
+after touching anything in that folder. It cannot judge whether the writing is
+any good — that still needs a human read.
+
+### Still outstanding
+
+1. **Demolition scope specifics.** Licensing is confirmed in general terms. Two
+   open questions in `CONTENT_APPROVALS.md`: whether Michigan requires the
+   licence number in advertising (add it to `business.ts` if so), and whether a
+   certificate of insurance should be downloadable. The page claims work up to
+   full structure teardowns on the owner's word — the published photos show a
+   commercial interior gut-out, not a teardown, so do not let copy imply
+   otherwise.
+2. **About page and mission.** Untouched by request; the client is rewriting it
+   and sending crew photos.
+3. **Google Business Profile.** The single biggest lever on local ranking and
+   the blocker on reviews. `LOCAL_SEO_PLAYBOOK.md` Priority 1.
+4. **Jobber has no photo-upload field**, so the request page tells people to
+   text photos. That is a Jobber setting, not a code change.
+5. **City page fixes** — see the warning above and `CITY_PAGE_FIXES.md`. This is
+   the largest outstanding item and it blocks launching the city pages.
+6. **Audit findings from the 2026-08-31 agent run**, produced and not yet
+   applied. Full text in the workflow transcript at
+   `~/.claude/projects/-home-user-Redemption-Cleaout/<session>/subagents/workflows/wf_f02c49c0-83a/journal.jsonl`
+   (read it with `jq`, it is large). Verify each before acting — they are
+   claims, not instructions. The ones that looked strongest on a first read:
+   - Every county and city `<title>` overruns the SERP limit, because the root
+     layout appends a 31-character brand suffix. `src/lib/seo.ts` would need to
+     accept `{ absolute }` titles. The `seoTitle` field on `ResourceDefinition`
+     already solves this for resources and was never applied to the geo pages.
+   - The home `<title>` renders a double pipe, since the string already
+     contains one and the template adds another.
+   - County pages emit no `Service` schema, while service and city pages do.
+   - The `LocalBusiness` node has no `@id`, so the copies emitted on every page
+     and inside each `provider` read as separate entities rather than one; it
+     also lacks `image`, which Google lists as required.
+   - The home page `<h1>` is the slogan, which carries no keyword and no
+     geography. **The client explicitly asked for that slogan as the headline**,
+     so do not simply overwrite it — the compromise is a keyword-bearing `<h2>`
+     directly beneath it. Raise it with the client rather than deciding alone.
+
+---
+
+## 0b. The 2026-08-31 restructure — detail
+
+The client reviewed the site and asked for it to be simpler and to stop being
+tied to Rochester. The changes below are done; the sections further down this
+document that describe eight service pages, a "Who We Serve" tree, or two
+Rochester city pages are **superseded** by this section, as are the equivalent
+parts of `PROJECT_SUMMARY.md`.
+
+**Structure**
+
+- **Two services**, not eight: `/services/full-property-cleanouts` and
+  `/services/demolition`. Estate, foreclosure, commercial, hoarding-related,
+  move-out, and junk removal are now anchored `<h3>` sections inside the
+  cleanouts page (`categories` in `src/content/services.ts`).
+- **Demolition is a full service**, no longer "light demolition" — through
+  full structure teardowns. **The scope claims need the owner's confirmation**;
+  see the demolition entry in `CONTENT_APPROVALS.md`, which lists exactly what
+  to ask.
+- **Seven county pages** replace the two city pages: Oakland, Macomb, Wayne,
+  St. Clair, Livingston, Washtenaw, Monroe. Each names its real communities.
+- **`/who-we-serve` and its six children are gone.** Audience content folded
+  into the cleanouts page.
+- **`/projects` is now a flat gallery** of every photo with a lightbox, no
+  per-project pages. Adding photos = adding entries to
+  `src/content/gallery.ts`; nothing else. See `IMAGE_REQUIREMENTS.md`.
+- **Home page cut from 13 sections to 8.** Removed: the trust strip, the
+  "What brings you here today" picker, the before/after block, the
+  professional-partner block, the founder blurb, and the FAQ preview.
+
+**Every retired URL 301s** — the map is in `SEO_MAP.md` and the redirects live
+in `next.config.mjs` as `legacyRedirects`. Do not delete them.
+
+**Quoting changed.** Estimates are now given from photos over the phone, with
+the final quote given on site in person. Anything that previously said "we
+don't quote from photos" has been rewritten. `src/content/process.ts` is the
+canonical wording — keep every other mention consistent with it.
+
+**Still outstanding for the client:**
+
+1. Demolition scope, licensing, and permit handling (`CONTENT_APPROVALS.md`).
+2. New photos, including the recent larger demolition job.
+3. The rewritten About page and mission statement, plus crew photos. `/about`
+   is untouched and still carries the old founder copy.
+4. Jobber has no photo-upload field. The request page tells people to text
+   photos to the business number instead. Adding a file-upload field in Jobber
+   would be an improvement — it is a Jobber setting, not a code change.
 
 ---
 

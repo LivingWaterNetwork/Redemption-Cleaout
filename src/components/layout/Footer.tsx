@@ -3,7 +3,6 @@ import Image from "next/image";
 import { business, formatPhoneSmsHref, formatPhoneTelHref } from "@/content/business";
 import { legalNav, secondaryNav } from "@/content/navigation";
 import { services } from "@/content/services";
-import { audiences } from "@/content/audiences";
 import { approvedServiceAreas } from "@/content/serviceAreas";
 
 /**
@@ -25,7 +24,7 @@ export function Footer() {
           </p>
           <div className="flex shrink-0 flex-col gap-3 sm:flex-row">
             <Link href="/request-walkthrough" className="btn-primary">
-              Request a Walkthrough
+              Get a Free Estimate
               <span aria-hidden="true" className="btn-arrow">
                 &rarr;
               </span>
@@ -53,15 +52,15 @@ export function Footer() {
             {business.legalTagline}
           </p>
           <p className="mt-5 max-w-measure text-sm leading-relaxed text-clean-white/65">
-            Rochester&apos;s real-estate-informed partner for complete property cleanouts
-            and difficult property transitions.
+            Full property cleanouts and demolition throughout Metro Detroit — real-estate
+            informed, and built for the properties other companies pass on.
           </p>
 
           <dl className="mt-8 space-y-3 text-sm">
             <div>
-              <dt className="eyebrow-plain">Location</dt>
+              <dt className="eyebrow-plain">Service area</dt>
               <dd className="mt-1 text-clean-white/80">
-                {business.address.publicAreaDescription}
+                All of Metro Detroit — {business.serviceRegionSummary}
               </dd>
             </div>
             <div>
@@ -106,25 +105,8 @@ export function Footer() {
           </ul>
         </nav>
 
-        {/* Who we serve */}
-        <nav aria-label="Who we serve" className="lg:col-span-3">
-          <p className="eyebrow-plain">Who We Serve</p>
-          <ul className="mt-5 space-y-2.5 text-sm">
-            {audiences.map((audience) => (
-              <li key={audience.slug}>
-                <Link
-                  href={`/who-we-serve/${audience.slug}`}
-                  className="text-clean-white/70 transition-colors duration-micro hover:text-redemption-red"
-                >
-                  {audience.shortName}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
-
         {/* Areas + more */}
-        <div className="lg:col-span-2">
+        <div className="lg:col-span-5">
           <nav aria-label="Service areas">
             <p className="eyebrow-plain">Service Areas</p>
             <ul className="mt-5 space-y-2.5 text-sm">
@@ -134,7 +116,7 @@ export function Footer() {
                     href={`/service-areas/${area.slug}`}
                     className="text-clean-white/70 transition-colors duration-micro hover:text-redemption-red"
                   >
-                    {area.cityName}
+                    {area.countyName} County
                   </Link>
                 </li>
               ))}
@@ -173,7 +155,7 @@ export function Footer() {
                   href="/projects"
                   className="text-clean-white/70 transition-colors duration-micro hover:text-redemption-red"
                 >
-                  Projects
+                  Previous Work
                 </Link>
               </li>
               {secondaryNav.map((item) => (

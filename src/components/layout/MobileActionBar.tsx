@@ -55,7 +55,7 @@ export function MobileActionBar() {
           }
         >
           <span aria-hidden="true">📋</span>
-          Walkthrough
+          Estimate
         </Link>
       </div>
       <span className="sr-only">Phone: {business.phoneDisplay}</span>

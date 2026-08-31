@@ -12,7 +12,7 @@ import { business } from "@/content/business";
 export const metadata: Metadata = pageMetadata({
   title: "About Redemption & Our Founder",
   description:
-    "The story behind Redemption Cleanout Services and founder Dante Terracciano — 13 years of real-estate experience, a family background in home building, and a purpose-driven approach to property cleanouts in Rochester, Michigan.",
+    "The story behind Redemption Cleanout Services and founder Dante Terracciano — 13 years of real-estate experience, a family background in home building, and a purpose-driven approach to property cleanouts and demolition across Metro Detroit.",
   path: "/about",
 });
 
@@ -76,7 +76,7 @@ export default function AboutPage() {
                 />
               </div>
               <figcaption className="mt-3 text-xs text-steel-gray">
-                A Redemption cleanout in Southeast Michigan. Founder portrait to come.
+                A Redemption cleanout in Metro Detroit. Founder and crew portraits to come.
               </figcaption>
             </figure>
           </Reveal>
@@ -161,7 +161,7 @@ export default function AboutPage() {
       <CallToAction
         location="about_cta"
         headline="Talk with Dante"
-        primaryLabel="Request a Property Walkthrough"
+        primaryLabel="Get a Free Estimate"
         supportingText="Call or text and you'll reach the person accountable for the work, not a call center."
       />
     </>

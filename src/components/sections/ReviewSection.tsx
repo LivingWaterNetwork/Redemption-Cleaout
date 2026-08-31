@@ -1,7 +1,7 @@
 "use client";
 
 import { testimonials } from "@/content/testimonials";
-import { googleReviewUrl } from "@/content/business";
+import { googleBusinessUrl, googleReviewUrl } from "@/content/business";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Reveal } from "@/components/motion/Reveal";
 import { trackEvent } from "@/lib/analytics";
@@ -70,22 +70,39 @@ export function ReviewSection() {
               <div className="bg-clean-white p-8">
                 <p className="eyebrow-plain text-steel-gray">Being gathered</p>
                 <h3 className="mt-3 font-display text-xl font-semibold text-heritage-black">
-                  Authentic reviews are on the way
+                  Reviews are on the way
                 </h3>
                 <p className="mt-4 text-body-base text-steel-gray">
-                  Redemption has been built on referral relationships rather than online
-                  reviews. As clients and partners leave them, they&apos;ll appear here
-                  word-for-word.
+                  Redemption has grown on referrals rather than review volume — past clients
+                  have offered to write one as soon as the Google listing is live. As they
+                  land, they&apos;ll appear here word-for-word. Nothing on this page is
+                  written by us.
                 </p>
+                {/* The review link is a write link from the Google Business Profile, so
+                    this is the collection path, not a "read our reviews" link. */}
                 {googleReviewUrl && (
                   <a
                     href={googleReviewUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="btn-primary mt-7"
+                    onClick={() => trackEvent({ name: "click_leave_review" })}
+                  >
+                    Leave a Google Review
+                    <span aria-hidden="true" className="btn-arrow">
+                      &rarr;
+                    </span>
+                  </a>
+                )}
+                {googleBusinessUrl && (
+                  <a
+                    href={googleBusinessUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="link-editorial mt-6 block"
                     onClick={() => trackEvent({ name: "click_google_reviews" })}
                   >
-                    View Google Reviews
+                    See the Google listing
                     <span aria-hidden="true" className="btn-arrow">
                       &rarr;
                     </span>

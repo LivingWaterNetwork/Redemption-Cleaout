@@ -44,6 +44,20 @@ export type ServiceImage = {
   caption: string;
 };
 
+/**
+ * A named category inside a pillar service page. `id` doubles as the section
+ * anchor and deliberately matches the slug of the standalone service page it
+ * replaced, so the 301s in next.config.mjs can deep-link straight to it and
+ * the retired URL's ranking signal lands on the equivalent content.
+ */
+export type ServiceCategory = {
+  id: string;
+  name: string;
+  /** One-line plain-language definition. Rendered under the category H3. */
+  summary: string;
+  points: string[];
+};
+
 export type ServiceDefinition = {
   slug: string;
   name: string;
@@ -59,6 +73,8 @@ export type ServiceDefinition = {
   mayRequireSpecialist: string[];
   whoItsFor: string[];
   commonConditions: string[];
+  /** Sub-categories rendered as anchored sections on the pillar page. */
+  categories?: ServiceCategory[];
   process: ProcessStep[];
   relatedServiceSlugs: string[];
   faqs: ServiceFAQ[];
@@ -82,8 +98,11 @@ export type AudienceDefinition = {
 
 export type ServiceAreaDefinition = {
   slug: string;
-  cityName: string;
+  /** County name without the word "County" — e.g. "Oakland". */
+  countyName: string;
   stateAbbr: string;
+  /** Cities and communities covered. Drives the on-page list and local SEO. */
+  cities: string[];
   heroHeadline: string;
   metaDescription: string;
   localIntroduction: string;
@@ -91,6 +110,42 @@ export type ServiceAreaDefinition = {
   relevantServiceSlugs: string[];
   faqs: ServiceFAQ[];
   approved: boolean;
+};
+
+/**
+ * A city landing page, nested under its county.
+ *
+ * These exist to be found in local search — "cleanout company in Sterling
+ * Heights" is how this work is looked for. That only works if each page is
+ * genuinely about its city. A page assembled by swapping a name into a
+ * template is a doorway page, which Google demotes and which would drag the
+ * rest of the site down with it.
+ *
+ * The bar for adding one: real local specifics a resident would recognise, and
+ * nothing invented. Never state an ordinance, permit fee, disposal facility,
+ * partnership, or a job Redemption has done in that city unless it has been
+ * confirmed — see CONTENT_APPROVALS.md.
+ */
+export type CityDefinition = {
+  /** e.g. "troy-mi" */
+  slug: string;
+  cityName: string;
+  /** Slug of the parent county in serviceAreas.ts, e.g. "oakland-county-mi". */
+  countySlug: string;
+  stateAbbr: string;
+  /** Neighbourhoods, districts, corridors or landmarks a local would know. */
+  localAreas: string[];
+  /** What the built environment is actually like. Roughly 40-70 words. */
+  housingContext: string;
+  /** What cleanout and demolition work here typically involves. 60-100 words. */
+  workContext: string;
+  /** 3-5 specifics that genuinely differ here. Not generic selling points. */
+  localConsiderations: string[];
+  faqs: ServiceFAQ[];
+  metaDescription: string;
+  primaryKeyword: string;
+  /** Slugs of nearby cities we also serve, for internal linking. */
+  nearbySlugs: string[];
 };
 
 export type ResourceDefinition = {
@@ -109,6 +164,15 @@ export type ResourceDefinition = {
   summary: string;
   publishedAt: string;
   sections: { heading: string; body: string[] }[];
+};
+
+export type GalleryPhoto = {
+  src: string;
+  /** Required. Describes what the photo actually shows, not keywords. */
+  alt: string;
+  /** Short line shown under the photo in the gallery. */
+  caption: string;
+  category: "cleanout" | "demolition" | "crew";
 };
 
 export type FAQEntry = ServiceFAQ & {

@@ -45,28 +45,29 @@ export function Hero() {
           <div className="lg:col-span-9 xl:col-span-8">
             <Reveal>
               <p className="eyebrow">
-                {business.address.publicAreaDescription} &middot; Full-Property Cleanouts
+                {business.address.publicAreaDescription} &middot; Full Property Cleanouts &amp;
+                Demolition
               </p>
             </Reveal>
 
             <Reveal variant="lines" delay={140} as="h1" className="mt-7 text-hero font-bold">
-              <span className="block">Clear the Property.</span>
-              <span className="block text-clean-white/95">Reclaim What Comes Next.</span>
+              <span className="block">Redeem Your Property.</span>
+              <span className="block text-clean-white/95">Redeem Your Space.</span>
             </Reveal>
 
             <Reveal delay={420}>
               <p className="mt-8 max-w-measure-lg text-body-lg text-clean-white/80">
-                Complete residential and commercial cleanouts for estates, inherited homes,
-                distressed properties, severe clutter, and time-sensitive real-estate
-                transitions throughout Rochester and surrounding Southeast Michigan
-                communities.
+                Full property cleanouts and demolition across all of Metro Detroit — estates,
+                foreclosures, commercial spaces, severe clutter, interior gut-outs, and full
+                structure teardowns. Estimates start from photos over the phone; the final
+                quote is given on site, in person.
               </p>
             </Reveal>
 
             <Reveal delay={540}>
               <div className="mt-11 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                 <Link href="/request-walkthrough" className="btn-primary">
-                  Request a Property Walkthrough
+                  Get a Free Estimate
                   <span aria-hidden="true" className="btn-arrow">
                     &rarr;
                   </span>
@@ -91,15 +92,15 @@ export function Hero() {
                     </dd>
                   </div>
                   <div>
-                    <dt className="eyebrow-plain">Scope</dt>
+                    <dt className="eyebrow-plain">Coverage</dt>
                     <dd className="mt-1.5 font-condensed text-base font-bold">
-                      Residential &amp; commercial
+                      All 7 Metro Detroit counties
                     </dd>
                   </div>
                   <div>
                     <dt className="eyebrow-plain">Quoting</dt>
                     <dd className="mt-1.5 font-condensed text-base font-bold">
-                      On-site, not from photos
+                      Photo estimate, on-site final
                     </dd>
                   </div>
                 </dl>

@@ -1,15 +1,18 @@
 import { describe, expect, it } from "vitest";
 import { services, getServiceBySlug } from "@/content/services";
-import { audiences } from "@/content/audiences";
 import { serviceAreas, approvedServiceAreas } from "@/content/serviceAreas";
 import { testimonials } from "@/content/testimonials";
-import { projects } from "@/content/projects";
+import { galleryPhotos } from "@/content/gallery";
 
 describe("services content", () => {
-  it("defines all 8 required services with unique slugs", () => {
-    expect(services).toHaveLength(8);
-    const slugs = new Set(services.map((s) => s.slug));
-    expect(slugs.size).toBe(8);
+  it("defines exactly the two pillar services", () => {
+    expect(services.map((s) => s.slug)).toEqual(["full-property-cleanouts", "demolition"]);
+  });
+
+  it("keeps every cleanout category anchor unique, since redirects target them", () => {
+    const ids = services.flatMap((s) => (s.categories ?? []).map((c) => c.id));
+    expect(ids.length).toBeGreaterThan(0);
+    expect(new Set(ids).size).toBe(ids.length);
   });
 
   it("resolves every relatedServiceSlug to a real service", () => {
@@ -27,23 +30,28 @@ describe("services content", () => {
   });
 });
 
-describe("audiences content", () => {
-  it("defines all 6 required audiences with unique slugs", () => {
-    expect(audiences).toHaveLength(6);
-    const slugs = new Set(audiences.map((a) => a.slug));
-    expect(slugs.size).toBe(6);
-  });
-});
-
 describe("service areas content", () => {
   it("only routes approved service areas", () => {
     expect(approvedServiceAreas.length).toBeLessThanOrEqual(serviceAreas.length);
     expect(approvedServiceAreas.every((a) => a.approved)).toBe(true);
   });
 
-  it("limits initial launch to Rochester and Rochester Hills", () => {
-    const slugs = approvedServiceAreas.map((a) => a.slug);
-    expect(slugs).toEqual(["rochester-mi", "rochester-hills-mi"]);
+  it("covers all seven Metro Detroit counties", () => {
+    expect(approvedServiceAreas.map((a) => a.countyName).sort()).toEqual([
+      "Livingston",
+      "Macomb",
+      "Monroe",
+      "Oakland",
+      "St. Clair",
+      "Washtenaw",
+      "Wayne",
+    ]);
+  });
+
+  it("names real communities on every county page", () => {
+    for (const area of serviceAreas) {
+      expect(area.cities.length, `${area.slug} lists no cities`).toBeGreaterThanOrEqual(5);
+    }
   });
 });
 
@@ -52,7 +60,15 @@ describe("placeholder policy", () => {
     expect(testimonials).toEqual([]);
   });
 
-  it("keeps projects empty until authentic photography is supplied", () => {
-    expect(projects).toEqual([]);
+  it("requires real alt text on every gallery photograph", () => {
+    for (const photo of galleryPhotos) {
+      expect(photo.alt.length, `${photo.src} has no usable alt text`).toBeGreaterThan(20);
+      expect(photo.caption.length).toBeGreaterThan(0);
+    }
+  });
+
+  it("never lists the same photograph twice", () => {
+    const sources = galleryPhotos.map((p) => p.src);
+    expect(new Set(sources).size).toBe(sources.length);
   });
 });

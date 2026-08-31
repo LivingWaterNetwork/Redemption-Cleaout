@@ -15,12 +15,12 @@ test("mobile menu opens and closes and stays keyboard operable", async ({ page }
   await expect(nav).not.toBeVisible();
 });
 
-test("mobile action bar exposes call, text, and walkthrough actions", async ({ page }) => {
+test("mobile action bar exposes call, text, and estimate actions", async ({ page }) => {
   await page.goto("/");
   const callLink = page.getByRole("link", { name: "Call", exact: true });
   await expect(callLink).toHaveAttribute("href", "tel:+12483219609");
   const textLink = page.getByRole("link", { name: "Text", exact: true });
   await expect(textLink).toHaveAttribute("href", "sms:+12483219609");
-  const walkthroughLink = page.getByRole("link", { name: "Walkthrough", exact: true });
-  await expect(walkthroughLink).toHaveAttribute("href", "/request-walkthrough");
+  const estimateLink = page.getByRole("link", { name: "Estimate", exact: true });
+  await expect(estimateLink).toHaveAttribute("href", "/request-walkthrough");
 });

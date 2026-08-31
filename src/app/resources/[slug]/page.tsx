@@ -130,7 +130,7 @@ export default async function ResourceDetailPage({
                     person.
                   </p>
                   <Link href="/request-walkthrough" className="btn-primary mt-6 w-full">
-                    Request a Walkthrough
+                    Get a Free Estimate
                     <span aria-hidden="true" className="btn-arrow">
                       &rarr;
                     </span>

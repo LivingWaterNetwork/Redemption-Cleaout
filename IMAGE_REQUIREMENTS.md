@@ -88,25 +88,79 @@ JPEG q84, with EXIF stripped.
 | `cleared-garage-bay-after.jpg` | Founder section |
 | `garage-cleanout-crew-sorting-before.jpg` | Before/after — before |
 | `garage-cleanout-cleared-bay-after.jpg` | Before/after — after |
-| `commercial-forklift-pallet-loading.jpg` | Commercial service |
-| `light-demolition-deck-removal.jpg` | Light Demolition service |
-| `townhouse-patio-cleared-after.jpg` | Move-Out service, `/about` figure |
-| `yard-debris-and-equipment-removal.jpg` | Foreclosure service |
-| `severe-clutter-living-room-before.jpg` | Hoarding-related service |
+| `commercial-forklift-pallet-loading.jpg` | Gallery |
+| `light-demolition-deck-removal.jpg` | Demolition service |
+| `townhouse-patio-cleared-after.jpg` | Gallery, `/about` figure |
+| `yard-debris-and-equipment-removal.jpg` | Gallery |
+| `severe-clutter-living-room-before.jpg` | Gallery |
 | `metal-recycling-load-dropoff.jpg` | `/projects` hero |
-| `full-property-cleanout-removal.jpg` | Full-Property service |
-| `estate-cleanout-driveway-staging.jpg` | Estate service |
-| `garage-cleanout-in-progress.jpg` | Residential Junk Removal service |
+| `full-property-cleanout-removal.jpg` | Full Property Cleanouts service |
+| `estate-cleanout-driveway-staging.jpg` | Gallery |
+| `garage-cleanout-in-progress.jpg` | Gallery |
 
-**Repetition is resolved.** Every image now appears once, except
-`townhouse-patio-cleared-after.jpg`, which appears on two different pages.
-All 8 services carry a distinct photo (three had none at all before), which
-also diversifies `RecentWork`, since it reads from the service content layer.
+## Converting the owner's photos
 
-Retained but unreferenced, as deliberate spares:
-`severe-clutter-basement-before.jpg` (alternate severe-clutter frame),
-`townhouse-contents-staged-before.jpg` (the before half of the townhouse
-pair — see below), `pole-barn-cleared-interior.jpg` (alternate cleared space).
+Photos come off an iPhone as HEIC, which **no browser can display**, at 3–7 MB
+each. They cannot go into `public/images/photos` as-is. `tools/import-photos.py`
+does the conversion:
+
+```bash
+pip install pillow pillow-heif
+python3 tools/import-photos.py ~/Downloads/"Demolition 1" --prefix demolition-teardown
+```
+
+It writes progressive JPEGs capped at 1600px on the long edge (matching the
+existing library) into
+`public/images/photos` and prints ready-to-paste `gallery.ts` entries with the
+alt text left as TODO — somebody has to look at each photo and describe it.
+
+It also **strips EXIF**, which matters: iPhones embed GPS coordinates in every
+photo, and publishing those would publish the customer's address.
+
+## The August 2026 commercial gut-out (published)
+
+All 13 frames from `Redemption Cleanouts / Photo/Video / Demolition 1` are on
+the site, named `demolition-teardown-before-01..08` and
+`demolition-teardown-after-01..05`, in that order in `gallery.ts`.
+
+- **Before** (shot 2026-08-21, from `IMG_7067/7068/7071/7072/7074/7077/7080/7082`)
+  — an intact commercial office suite: corridor, private offices, washroom,
+  suspended tile ceilings, carpet.
+- **After** (shot 2026-08-27, from `IMG_7121/7123/7124/7125/7126`) — the same
+  building stripped to bare block walls, exposed ductwork and concrete slab.
+
+`demolition-teardown-after-01.jpg` is the demolition page's lead image.
+
+**How they were pulled**, since it is not obvious: the Drive MCP tool returns
+file bytes as base64 in the tool result, which is far too large for a
+multi-megabyte photo. The harness spills any oversized tool result to a file
+under the session's `tool-results/` directory, so the recovery is
+`jq -r '.content' <that file> | base64 -d > out.heic` — the bytes never pass
+through the conversation. Same trick works for any future Drive binary.
+
+The parent `Photo/Video` folder holds roughly 40 unique stills (many are stored
+twice as `IMG_xxxx` and `IMG_xxxx 2`), of which 19 are published (plus the 13
+gut-out frames above, which came from the `Demolition 1` subfolder). The remainder
+has not been reviewed frame by frame — some are phone screenshots, and the two
+Grace Centers of Hope frames are held pending approval (`CONTENT_APPROVALS.md`).
+There are also 7 unique `.MOV` clips; no video is used anywhere on the site.
+
+## Adding new photos
+
+`src/content/gallery.ts` is the single source of truth for job photography.
+Every one of the 19 files above appears on `/projects`, and the first six also
+appear in the home-page "Previous Work" strip. To publish a new photo:
+
+1. Drop the file in `public/images/photos` (naming and size rules above).
+2. Add an entry to `src/content/gallery.ts` — `src`, real `alt` text,
+   a short `caption`, and a `category`.
+3. Position it where you want it to appear; newest work reads best near the top.
+
+That is the whole process — no page edits, no route changes. A unit test fails
+if a photo is listed twice or has alt text under 20 characters.
+
+The two service pages each pull one image from `src/content/services.ts`
+separately; those are the only photos referenced outside the gallery.
 
 ## Gaps closed by this pull
 

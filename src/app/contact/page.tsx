@@ -10,7 +10,7 @@ import { business, formatPhoneSmsHref, formatPhoneTelHref } from "@/content/busi
 export const metadata: Metadata = pageMetadata({
   title: "Contact Us",
   description:
-    "Contact Redemption Cleanout Services in Rochester, Michigan — call, text, or request a property walkthrough.",
+    "Contact Redemption Cleanout Services — call or text (248) 321-9609 for a cleanout or demolition estimate anywhere in Metro Detroit.",
   path: "/contact",
 });
 
@@ -77,7 +77,7 @@ export default function ContactPage() {
                       href="/request-walkthrough"
                       className="font-display text-3xl font-semibold text-heritage-black transition-colors duration-micro hover:text-redemption-red"
                     >
-                      Request a walkthrough
+                      Get a free estimate
                     </Link>
                     <p className="mt-2 text-sm text-steel-gray">
                       Send the property details and we&apos;ll follow up to schedule.

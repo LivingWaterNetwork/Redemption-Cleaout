@@ -39,13 +39,45 @@ and update the linked content file when a decision is made.
 
 ## Service scope
 
-- [ ] **Exact service area** beyond Rochester and Rochester Hills (the only
-      two location pages currently published — see `src/content/serviceAreas.ts`).
+- [x] **Exact service area** — confirmed by the client as all of Metro
+      Detroit: Macomb, Oakland, St. Clair, Wayne, Monroe, Washtenaw, and
+      Livingston counties. One page per county in `src/content/serviceAreas.ts`;
+      the city lists on each page are illustrative, not exhaustive.
 - [ ] **Accepted materials.**
 - [ ] **Excluded materials / hazardous-material limits.**
-- [ ] **Light demolition limits** — copy already states scope is "subject to
-      site conditions and approval" and excludes structural demolition and
-      asbestos abatement; confirm this is sufficient or needs more limits.
+- [~] **Demolition scope and licensing** — PARTIALLY CONFIRMED 2026-08-31: the
+      owner states Redemption holds all licensing and insurance required where
+      it operates. The site now says "licensed and insured" on the demolition
+      page and in the FAQ, phrased generally because that is exactly what was
+      confirmed — no licence number, class, or carrier is claimed anywhere.
+      **Two things still to check before launch:**
+      1. Michigan requires a residential builder or maintenance-and-alteration
+         licence for much of this work, and licence holders are generally
+         expected to show the number in advertising. Confirm with LARA (or the
+         client's own licensing contact) whether the number must appear on the
+         site, and add it to `business.ts` if so.
+      2. Whether a certificate of insurance should be downloadable or simply
+         offered on request. The FAQ currently offers it on request.
+      The original scope questions below still stand.
+
+      ORIGINAL NOTE — The client asked for
+      demolition to be promoted from "light demolition" to a full service
+      ("currently taking on larger projects"), so `src/content/services.ts`
+      now advertises interior gut-outs, garages, decks, sheds, pole barns,
+      concrete removal, and **full structure teardowns**. Written
+      conservatively pending confirmation of:
+      - Which of those Redemption actually performs, and any size ceiling.
+      - Whether Redemption holds a Michigan residential builder / maintenance
+        and alteration contractor licence, and whether any demolition claim
+        needs a licence number displayed.
+      - Permits: the copy says only that a permit requirement is flagged at
+        the walkthrough and "who is pulling it" is confirmed before
+        scheduling. It does **not** claim Redemption pulls permits. Confirm
+        whether it should.
+      - Insurance limits for structural work, if the site should state them.
+      The carve-outs kept in `mayRequireSpecialist` — licensed asbestos/lead
+      abatement first, utility disconnects by the provider, engineered shoring
+      by a structural engineer — should not be removed without legal review.
 - [ ] **Donation and recycling practices** — copy currently says items are
       sorted "where practical"; confirm specifics if a firmer claim is wanted.
 
@@ -60,9 +92,10 @@ and update the linked content file when a decision is made.
       background) — confirm exact framing.
 - [ ] **Mission, vision, purpose, and values language** (brand guide slides
       7–8) — not yet used verbatim anywhere on this site; draft only.
-- [ ] **Final tagline/headline selections** — this site uses the brochure's
-      existing tagline ("Redeem Your Property. Reclaim Your Space.") as
-      primary, per brief instruction. Other headline options from the brand
+- [x] **Final tagline/headline selections** — the client set the main slogan
+      as "Redeem Your Property. Redeem Your Space." It is the home-page H1 and
+      `business.legalTagline`. (It replaces the brochure's "…Reclaim Your
+      Space.") Other headline options from the brand
       guide (Slide 16) were not used and remain options only.
 - [ ] **Team size** — not published anywhere on this site.
 - [ ] **Response-time promise** — not published as a specific commitment
@@ -77,16 +110,44 @@ and update the linked content file when a decision is made.
 - [ ] **Official business email** — no business email is published anywhere
       on this site; only phone/text.
 - [ ] **Authentic testimonials** — `src/content/testimonials.ts` is
-      intentionally empty. No fabricated reviews exist anywhere on this site.
+      intentionally empty and no fabricated reviews exist anywhere on this
+      site. Confirmed 2026-08-31: past clients have agreed to leave Google
+      reviews once the Business Profile is live, so the blocker is the GBP,
+      not the clients. `/reviews` now carries a "Leave a Google Review" button
+      that appears the moment `NEXT_PUBLIC_GOOGLE_REVIEW_URL` is set — use the
+      **write-a-review** short link, not the listing URL. Adding a written
+      testimonial to the site is one entry in `testimonials.ts`; the page
+      switches out of its empty state automatically.
 - [ ] **Social URLs** — only Instagram (`@redemption_cleanoutservices`) is
       published, per the brief. Confirm if others should be added.
-- [ ] **Final photography permissions** — now the single blocker on
-      `src/content/projects.ts`. 19 authentic job photos are published across
-      the site, and two matched before/after pairs exist as assets. Each pair
-      needs **written permission from that property's owner** before it is
-      published as a named project, plus the verified city, property type,
-      challenge and outcome (these must come from Dante — they cannot be read
-      off a photograph without inventing them).
+- [x] **Property-owner permission for job photography — GRANTED.** Confirmed
+      2026-08-31: permission is held from every client whose property appears.
+      This clears the last gate on publishing job photos, including captions
+      naming a city or property type if the owner later supplies those facts
+      (they must come from Dante — they cannot be read off a photograph).
+      It does **not** extend to the Grace Centers of Hope frames below: that
+      approval has to come from Grace Centers, not from a property owner.
+- [x] **Project photography** — the client asked for a plain gallery of every
+      photo with no per-project pages, and confirmed more photos are coming.
+      All 19 job photos are now published on `/projects` from
+      `src/content/gallery.ts`. Nothing is captioned with a city, owner, or
+      identifying detail, so no per-property permission gate applies to the
+      gallery as built. If a photo is ever labelled with an address, owner, or
+      client name, that specific caption needs the owner's written permission
+      first.
+- [x] **The demolition job photos — PUBLISHED.** All 13 frames from
+      `Photo/Video / Demolition 1` are on the site: 8 before (shot 2026-08-21)
+      and 5 after (2026-08-27), converted from HEIC and added to
+      `src/content/gallery.ts`. `demolition-teardown-after-01.jpg` is now the
+      demolition page's lead image, replacing the deck photo.
+      What they actually show, which matters for how the page is written: a
+      fully partitioned **commercial office suite** — corridor, private
+      offices, washroom, suspended ceilings, carpet — taken back to bare block
+      walls and concrete slab. It is a large interior gut-out, not a structure
+      teardown. Any copy implying these photos show a teardown would be wrong.
+      Checked for GPS: these particular files carry **no** GPS EXIF, so nothing
+      was exposed. `tools/import-photos.py` strips EXIF regardless, which is
+      the safeguard for future photos that do carry it.
 - [ ] **Donation-partner photography** — two strong frames in Drive show a
       **Grace Centers of Hope** thrift-store truck being loaded with donated
       items. They are genuine and support the donation story, but publishing

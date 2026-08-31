@@ -30,7 +30,7 @@ export function CallToAction({
   headline,
   supportingText,
   primaryHref = "/request-walkthrough",
-  primaryLabel = "Request a Property Walkthrough",
+  primaryLabel = "Get a Free Estimate",
   showCallText = true,
   location,
   variant = "feature",

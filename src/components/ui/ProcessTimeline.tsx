@@ -14,7 +14,10 @@ export function ProcessTimeline({
   onDark?: boolean;
 }) {
   const line = onDark ? "bg-clean-white/15" : "bg-heritage-black/12";
-  const numeral = onDark ? "text-clean-white/12" : "text-heritage-black/10";
+  // Ghost numerals, but not below the 3:1 large-text contrast floor — they are
+  // aria-hidden and still have to be readable to sighted users (axe flags
+  // aria-hidden text for contrast, correctly).
+  const numeral = onDark ? "text-clean-white/55" : "text-heritage-black/55";
   const heading = onDark ? "text-clean-white" : "text-heritage-black";
   const bodyText = onDark ? "text-clean-white/65" : "text-steel-gray";
   const dotRing = onDark ? "bg-heritage-black" : "bg-clean-white";

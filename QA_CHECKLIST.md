@@ -40,7 +40,6 @@ Check at minimum: 320px, 375px, 390px, 430px, 768px, 1024px, 1280px,
       correct number
 - [ ] Jobber embed loads when `NEXT_PUBLIC_JOBBER_EMBED_URL` is set
 - [ ] Jobber fallback (honest, not fake) renders when it is unset
-- [ ] "Discuss a Referral Partnership" reaches `/who-we-serve`
 
 ## Manual — accessibility
 

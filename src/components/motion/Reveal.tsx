@@ -12,6 +12,8 @@ type RevealProps = {
   delay?: number;
   as?: ElementType;
   className?: string;
+  /** Anchor target, e.g. for a section deep-linked from a redirect. */
+  id?: string;
 };
 
 /**
@@ -26,6 +28,7 @@ export function Reveal({
   delay = 0,
   as: Tag = "div",
   className,
+  id,
 }: RevealProps) {
   const ref = useRef<HTMLElement | null>(null);
 
@@ -56,6 +59,7 @@ export function Reveal({
   return (
     <Tag
       ref={ref}
+      id={id}
       data-reveal={variant}
       style={delay ? ({ "--reveal-delay": `${delay}ms` } as React.CSSProperties) : undefined}
       className={className}

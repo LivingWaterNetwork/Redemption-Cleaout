@@ -8,28 +8,28 @@ import { breadcrumbJsonLd, pageMetadata } from "@/lib/seo";
 import { business, formatPhoneSmsHref, formatPhoneTelHref } from "@/content/business";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Request a Property Walkthrough",
+  title: "Get a Free Estimate",
   description:
-    "Request a property walkthrough with Redemption Cleanout Services in Rochester, Michigan — or call or text (248) 321-9609 directly.",
+    "Get a free cleanout or demolition estimate from Redemption Cleanout Services — send photos for a ballpark over the phone, or call or text (248) 321-9609 directly. All of Metro Detroit.",
   path: "/request-walkthrough",
 });
 
 const steps = [
   {
     title: "You send the property details",
-    body: "Address, property type, and roughly what needs to be cleared. Two minutes is enough — we'll ask the rest.",
+    body: "Address, property type, and roughly what needs to be cleared or taken down. Two minutes is enough — we'll ask the rest.",
   },
   {
-    title: "We reach out to confirm",
-    body: "A real person follows up to confirm details and find a walkthrough time that works around your schedule.",
+    title: "You text us photos",
+    body: `Send photos to ${business.phoneDisplay} — rooms, the garage, the basement, or the structure coming down. The more we can see, the tighter the estimate.`,
   },
   {
-    title: "We walk the property",
-    body: "On-site, in person. This is how the scope and price come back accurate instead of changing on job day.",
+    title: "You get a ballpark estimate by phone",
+    body: "Usually the same day. No cost, no obligation, and enough to decide whether to go ahead.",
   },
   {
-    title: "You get a clear scope and price",
-    body: "In writing, before anything is booked. If part of the job needs a licensed specialist, we say so up front.",
+    title: "We walk the property and give the final quote",
+    body: "On site, in person, in writing — before anything is booked. If part of the job needs a licensed specialist, we say so up front.",
   },
 ];
 
@@ -45,20 +45,20 @@ export default function RequestWalkthroughPage() {
       <StructuredData
         data={breadcrumbJsonLd([
           { name: "Home", path: "/" },
-          { name: "Request a Walkthrough", path: "/request-walkthrough" },
+          { name: "Get a Free Estimate", path: "/request-walkthrough" },
         ])}
       />
       <Breadcrumbs
         items={[
           { name: "Home", href: "/" },
-          { name: "Request a Walkthrough", href: "/request-walkthrough" },
+          { name: "Get a Free Estimate", href: "/request-walkthrough" },
         ]}
       />
 
       <PageHero
         eyebrow="Get Started"
-        title="Request a property walkthrough"
-        description="Full-property, estate, commercial, and larger jobs are quoted on-site for accuracy. Send the details below, or call or text — either reaches the same person."
+        title="Get a free estimate"
+        description="Send the property details below, then text us photos — we'll come back with a ballpark estimate over the phone. The final quote is given on site. Calls and texts reach the same person."
       />
 
       <section className="py-section">
@@ -71,7 +71,14 @@ export default function RequestWalkthroughPage() {
             <Reveal delay={80}>
               <p className="mt-5 max-w-measure-lg text-body-base text-steel-gray">
                 Your information goes directly to our scheduling system. We don&apos;t store
-                it on this website.
+                it on this website. Photos are easiest by text or email — send them to{" "}
+                <a
+                  href={formatPhoneSmsHref()}
+                  className="font-semibold text-heritage-black underline decoration-redemption-red decoration-2 underline-offset-4"
+                >
+                  {business.phoneDisplay}
+                </a>{" "}
+                once you&apos;ve sent the form.
               </p>
             </Reveal>
             <Reveal delay={140} className="mt-9">

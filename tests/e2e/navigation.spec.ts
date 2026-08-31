@@ -2,8 +2,8 @@ import { test, expect } from "@playwright/test";
 
 test("homepage loads with primary hero and CTA", async ({ page }) => {
   await page.goto("/");
-  await expect(page.getByRole("heading", { name: /Clear the Property/i })).toBeVisible();
-  await expect(page.getByRole("link", { name: "Request a Property Walkthrough" }).first()).toBeVisible();
+  await expect(page.getByRole("heading", { level: 1 })).toContainText(/redeem your property/i);
+  await expect(page.getByRole("link", { name: "Get a Free Estimate" }).first()).toBeVisible();
 });
 
 test("desktop nav links to a service detail page", async ({ page }) => {
@@ -25,7 +25,7 @@ test("footer links to service areas", async ({ page }) => {
   await page.goto("/");
   await page
     .getByRole("contentinfo")
-    .getByRole("link", { name: "Rochester", exact: true })
+    .getByRole("link", { name: "Oakland County", exact: true })
     .click();
-  await expect(page).toHaveURL(/\/service-areas\/rochester-mi/);
+  await expect(page).toHaveURL(/\/service-areas\/oakland-county-mi/);
 });
