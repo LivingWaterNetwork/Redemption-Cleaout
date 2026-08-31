@@ -14,7 +14,7 @@ export const southfieldMi: CityDefinition = {
     "Nine Mile and Greenfield",
   ],
   housingContext:
-    "Southfield holds two very different building stocks side by side. The neighbourhoods are mostly wide, flat lots with 1950s and 1960s brick ranches and colonials, attached garages and full basements. Along Northwestern Highway and around Town Center it is office towers, mid-rise buildings and medical suites, with high-rise and garden-style condominiums and apartment complexes filling the ground between.",
+    "Southfield holds two very different building stocks side by side. The neighborhoods are mostly wide, flat lots with 1950s and 1960s brick ranches and colonials, attached garages and full basements. Along Northwestern Highway and around Town Center it is office towers, mid-rise buildings and medical suites, with high-rise and garden-style condominiums and apartment complexes filling the ground between.",
   workContext:
     "Commercial clearing is a bigger share of the work here than in most suburbs. Offices consolidate or move and the suite has to be emptied to bare floor — desks, cubicle panels, conference furniture, filing, server room leftovers — usually inside a lease-end window. On the residential side, brick ranches held since the sixties come up for estate and downsizing clearouts, and rental and REO turnover keeps a steady flow of units needing to be emptied. Demolition shows up on both sides: suites taken back to bare shell, and dated kitchens and baths stripped before a resale.",
   localConsiderations: [

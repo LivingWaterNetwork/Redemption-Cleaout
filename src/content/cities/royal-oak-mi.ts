@@ -21,7 +21,7 @@ export const royalOakMi: CityDefinition = {
     "Where a block has an alley, the crew usually works from the back, which keeps the street frontage clear",
     "Streets are narrow and parked solid in the evenings, so truck placement is settled during the walkthrough rather than on arrival",
     "Lots are small enough that there is often nowhere on the property to stage a trailer, which changes how a job is sequenced",
-    "Walk-up flats and upper units downtown mean stair carries with no lift, and that is a labour question more than a volume one",
+    "Walk-up flats and upper units downtown mean stair carries with no lift, and that is a labor question more than a volume one",
     "Bungalow gut-outs produce plaster and lath, which is far heavier per room than modern drywall",
   ],
   faqs: [

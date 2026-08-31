@@ -21,7 +21,7 @@ export const howellMi: CityDefinition = {
     "The county courthouse sets the clock on downtown estate work — a probate date, not a realtor's listing date, decides when the house has to be empty",
     "Old cellars downtown have low headroom and steep, tight stairs, so everything comes up by hand — slower than a walkout basement of the same size",
     "Some downtown blocks are served from a rear alley, so the crew may load from behind the house rather than the street, and access gets confirmed at the walkthrough",
-    "The storefront blocks on the square have narrow fronts, upstairs offices and no rear dock, so a tenant turnover empties down one stair to the kerb",
+    "The storefront blocks on the square have narrow fronts, upstairs offices and no rear dock, so a tenant turnover empties down one stair to the curb",
     "Farm cleanouts often involve buildings nobody has opened in years, so every structure gets walked before the quote and none of it is guessed at from the yard",
   ],
   faqs: [

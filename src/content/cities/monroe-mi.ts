@@ -33,7 +33,7 @@ export const monroeMi: CityDefinition = {
     {
       question: "Our basement took water. Will you still take the contents out?",
       answer:
-        "That is normal work here. Wet cardboard, soaked furniture and rusted-through storage all come out as part of a full property cleanout. If there is standing water or visible mould growth beyond surface damp, we will tell you plainly what needs a remediation specialist before we go in.",
+        "That is normal work here. Wet cardboard, soaked furniture and rusted-through storage all come out as part of a full property cleanout. If there is standing water or visible mold growth beyond surface damp, we will tell you plainly what needs a remediation specialist before we go in.",
     },
     {
       question: "We want the old garage behind the house taken down. Is that separate from the cleanout?",

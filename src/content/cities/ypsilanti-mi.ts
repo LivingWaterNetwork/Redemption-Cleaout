@@ -14,7 +14,7 @@ export const ypsilantiMi: CityDefinition = {
     "the Cross Street corridor",
   ],
   housingContext:
-    "Ypsilanti's core is old and dense: tall frame Victorians and Queen Annes on the Historic East Side, worker cottages and two-storey doubles on the streets around Normal Park, brick storefronts with flats above along Michigan Avenue and Cross Street. Detached garages off rear drives are far more common than attached ones, and postwar bungalows and ranches fill the newer blocks toward the city edge.",
+    "Ypsilanti's core is old and dense: tall frame Victorians and Queen Annes on the Historic East Side, worker cottages and two-story doubles on the streets around Normal Park, brick storefronts with flats above along Michigan Avenue and Cross Street. Detached garages off rear drives are far more common than attached ones, and postwar bungalows and ranches fill the newer blocks toward the city edge.",
   workContext:
     "Investor purchases that are gutted and re-let generate interior demolition — plaster and lath, old kitchens, layers of flooring, and partition walls put in when a single-family house was split into units. Rental turnover near Eastern Michigan runs on the lease calendar, and several units in one building can change hands at once. Alongside that: estate clearing in houses one family has held for generations, and bank-owned properties needing everything out before they can be listed.",
   localConsiderations: [

@@ -12,9 +12,9 @@ import { webPageJsonLd } from "@/lib/structuredData";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Property Cleanouts & Demolition | Metro Detroit",
+  title: "Fast, Reliable Cleanouts & Demolition | Metro Detroit",
   description:
-    "Full property cleanouts and demolition across Metro Detroit — Macomb, Oakland, St. Clair, Wayne, Monroe, Washtenaw, and Livingston counties. Estimates from photos, final quote on site.",
+    "Fast, reliable full property cleanouts and demolition across Metro Detroit — Macomb, Oakland, St. Clair, Wayne, Monroe, Washtenaw, and Livingston counties. Cleared in one visit by one crew. Estimates from photos, final quote on site.",
   path: "/",
 });
 
@@ -32,7 +32,7 @@ export default function HomePage() {
         data={webPageJsonLd(
           "Redemption Cleanout Services",
           "/",
-          "Full property cleanouts and demolition throughout Metro Detroit.",
+          "Fast, reliable full property cleanouts and demolition throughout Metro Detroit.",
         )}
       />
       <Hero />

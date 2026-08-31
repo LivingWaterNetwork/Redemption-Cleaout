@@ -9,12 +9,12 @@ export const salineMi: CityDefinition = {
     "downtown Saline on Michigan Avenue",
     "Curtiss Park",
     "the Ann Arbor–Saline Road corridor",
-    "the Monroe Street and Maple Road neighbourhoods",
+    "the Monroe Street and Maple Road neighborhoods",
     "the light-industrial and manufacturing area at the edge of town",
     "the farmland of Saline and Lodi townships around the city",
   ],
   housingContext:
-    "Saline reads as a small town that grew outward in rings. Nineteenth-century houses and brick storefronts sit around the Michigan Avenue crossroads, mid-century ranches fill the streets just beyond, and 1990s and 2000s subdivisions of two-storey colonials ring the edges. Step past the city limits and it is farmhouses on acreage with pole barns and machine sheds behind them.",
+    "Saline reads as a small town that grew outward in rings. Nineteenth-century houses and brick storefronts sit around the Michigan Avenue crossroads, mid-century ranches fill the streets just beyond, and 1990s and 2000s subdivisions of two-story colonials ring the edges. Step past the city limits and it is farmhouses on acreage with pole barns and machine sheds behind them.",
   workContext:
     "In town the work runs to downsizing and estate clearing — an owner of many years moving to something smaller, or a house being emptied so it can go on the market in good order. Those houses have full basements, attached two-car garages and a shed, and often forty years of storage in all three. The surrounding acreage brings a different job entirely — pole barns, old machine sheds, collapsing outbuildings and concrete pads to take down, plus decades of equipment and scrap cleared off a property before it changes hands.",
   localConsiderations: [

@@ -14,7 +14,7 @@ export const temperanceMi: CityDefinition = {
     "Samaria Road",
   ],
   housingContext:
-    "Temperance has no downtown and no city hall — it is a mail address across a stretch of Bedford Township. Housing runs to ranches, split-levels and quad-levels on wide lots, mixed with older farmhouses that kept their acreage. Attached garages are standard and detached shops common. The older farm parcels and the properties off the paved section lines are still on well and septic, with no kerb and no alley.",
+    "Temperance has no downtown and no city hall — it is a mail address across a stretch of Bedford Township. Housing runs to ranches, split-levels and quad-levels on wide lots, mixed with older farmhouses that kept their acreage. Attached garages are standard and detached shops common. The older farm parcels and the properties off the paved section lines are still on well and septic, with no curb and no alley.",
   workContext:
     "Because Temperance is a postal name rather than a municipality, a job gets described by road and section line instead of by neighbourhood. Space shapes what comes out of it: a house, a garage and a shop or barn behind, holding tools, vehicle parts, lumber and farm leftovers nobody had to throw away. Owners and heirs are frequently across the Ohio line in Toledo, or in an adjoining Bedford Township community such as Lambertville, and want scoping handled with few trips. Demolition leans to outbuildings, pool decks and old slabs.",
   localConsiderations: [
@@ -31,14 +31,14 @@ export const temperanceMi: CityDefinition = {
         "That gets settled at the walkthrough. Show us where the drain field, the tank lids and the well head sit, and we pick the approach route around them — a tracked machine spreads weight better on soft ground, a wheeled one keeps to the drive. If there is no route that clears the field, the structure comes down from the side that does reach and the debris gets carried out.",
     },
     {
-      question: "There is no kerb on our road, just a shoulder and a ditch. Where does everything go while you work?",
+      question: "There is no curb on our road, just a shoulder and a ditch. Where does everything go while you work?",
       answer:
         "On your own ground and then onto the truck. We stage on the drive or the yard rather than the shoulder, and nothing is left sitting out at the road between working days. If the drive is soft we will say so before we start and work out where the trailer can stand.",
     },
     {
       question: "I live in Ohio and the house is my parents'. How do we get started?",
       answer:
-        "Send photos or a short video and we will give you a working estimate over the phone. The final quote comes in person after a walkthrough, and if you cannot be there we can arrange access with a neighbour, an agent or a lockbox and keep you updated by phone.",
+        "Send photos or a short video and we will give you a working estimate over the phone. The final quote comes in person after a walkthrough, and if you cannot be there we can arrange access with a neighbor, an agent or a lockbox and keep you updated by phone.",
     },
   ],
   metaDescription:

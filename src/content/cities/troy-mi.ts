@@ -10,7 +10,7 @@ export const troyMi: CityDefinition = {
     "Somerset",
     "Troy Historic Village area",
     "Northfield Hills",
-    "Wattles and Livernois neighbourhoods",
+    "Wattles and Livernois neighborhoods",
     "Long Lake and Rochester Road",
   ],
   housingContext:

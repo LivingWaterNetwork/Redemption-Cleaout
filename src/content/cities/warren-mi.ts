@@ -11,7 +11,7 @@ export const warrenMi: CityDefinition = {
     "Groesbeck Highway",
     "GM Technical Center area",
     "Warren City Center and Civic Center",
-    "the Eight Mile and Nine Mile neighbourhoods",
+    "the Eight Mile and Nine Mile neighborhoods",
     "Twelve Mile and Ryan",
   ],
   housingContext:

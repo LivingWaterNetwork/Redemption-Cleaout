@@ -14,7 +14,7 @@ export const rochesterMi: CityDefinition = {
     "the blocks west of Rochester Road",
   ],
   housingContext:
-    "Rochester is an old town centre rather than a subdivision suburb. The streets around downtown hold early-1900s frame houses, four-squares and small brick homes on narrow lots, many with a detached garage reached by a side drive. Midcentury infill fills the gaps, and newer townhouses and condominiums sit within a few blocks of Main Street.",
+    "Rochester is an old town center rather than a subdivision suburb. The streets around downtown hold early-1900s frame houses, four-squares and small brick homes on narrow lots, many with a detached garage reached by a side drive. Midcentury infill fills the gaps, and newer townhouses and condominiums sit within a few blocks of Main Street.",
   workContext:
     "Most residential calls here involve houses that have been in one family a long time — an attic, a cellar and a back garage that have not been emptied since the 1970s. Because the older stock sells quickly, pre-listing clearing is common, and buyers who renovate afterwards bring interior gut-outs behind them. Plaster and lath comes out heavier than drywall and fills a trailer faster. Downtown adds storefront and small-office turnover along Main Street, where fixtures, shelving and back-of-house clutter come out between tenants.",
   localConsiderations: [
@@ -30,7 +30,7 @@ export const rochesterMi: CityDefinition = {
         "Yes, and in older Rochester houses that is usually where most of the job is. A full property cleanout covers attic, cellar, garage and yard, not just the living space. Point them out at the walkthrough so the crew and truck are sized right.",
     },
     {
-      question: "Can you take down an old detached garage without damaging the neighbouring lot?",
+      question: "Can you take down an old detached garage without damaging the neighboring lot?",
       answer:
         "That is the normal situation on the older streets, where garages sit close to the line. We look at the setback and the approach at the walkthrough and plan the drop and the haul path from there. The concrete pad can go in the same visit or stay, whichever you want.",
     },

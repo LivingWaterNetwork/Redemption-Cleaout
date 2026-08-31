@@ -16,10 +16,10 @@ export const shelbyTownshipMi: CityDefinition = {
   housingContext:
     "Shelby Township sits at the north-west edge of Macomb County's built-up area, where subdivision gives way to acreage. Much of it is large colonials with three-car garages, walkout or daylight basements and deep lots — but between the subdivisions there are still older farmhouses, parcels of an acre and more, gravel drives and pole barns that were never part of any development.",
   workContext:
-    "Two very different jobs share the same township. In the subdivisions it is downsizing: a large family house where the basement, the three-car garage and the attic have been absorbing everything for twenty-five years, cleared before a listing or a move to something smaller. On the acreage it is the outbuildings — a pole barn with tractors, lumber, tyres and thirty years of stored equipment, or a barn and shed that need taking down entirely. Demolition here runs bigger than in the county's older cities: pole barns, detached garages, gravel and concrete pads, decks and full structure teardowns.",
+    "Two very different jobs share the same township. In the subdivisions it is downsizing: a large family house where the basement, the three-car garage and the attic have been absorbing everything for twenty-five years, cleared before a listing or a move to something smaller. On the acreage it is the outbuildings — a pole barn with tractors, lumber, tires and thirty years of stored equipment, or a barn and shed that need taking down entirely. Demolition here runs bigger than in the county's older cities: pole barns, detached garages, gravel and concrete pads, decks and full structure teardowns.",
   localConsiderations: [
     "Long private and gravel drives set the limit on what can get near the building, so the approach is checked before the equipment is chosen",
-    "Pole barns and outbuildings often hold heavier material than the house does — equipment, fuel cans, lumber, scrap and tyres",
+    "Pole barns and outbuildings often hold heavier material than the house does — equipment, fuel cans, lumber, scrap and tires",
     "Walkout and daylight basements can be an advantage: contents sometimes go out at grade rather than up a flight of stairs",
     "Deep lots leave ground to stage and sort on beside the barn instead of loading straight to the truck, which changes the order a big clear is worked in",
     "Structure teardowns on acreage need the site left in a defined condition — filled, graded or bare — which is agreed at the walkthrough",

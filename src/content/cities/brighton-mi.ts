@@ -14,11 +14,11 @@ export const brightonMi: CityDefinition = {
     "Challis Road",
   ],
   housingContext:
-    "Brighton splits three ways. The old village grid around Main Street and the Mill Pond is narrow-lot frame houses with stone cellars and little in the way of a garage. Around Brighton Lake and Woodland Lake sit former summer cottages, most winterised and added onto since. Along Old US-23 and Grand River the frontage turns commercial — small shops, service bays and offices — with acreage behind it.",
+    "Brighton splits three ways. The old village grid around Main Street and the Mill Pond is narrow-lot frame houses with stone cellars and little in the way of a garage. Around Brighton Lake and Woodland Lake sit former summer cottages, most winterized and added onto since. Along Old US-23 and Grand River the frontage turns commercial — small shops, service bays and offices — with acreage behind it.",
   workContext:
-    "A cottage that was winterised and then lived in year-round holds two lifetimes of storage: seasonal gear in the crawl space, boats and motors under the deck, canvas and dock sections stacked along the shore. Because those lots fall away from the road, none of it wheels out — it is carried up. The village grid is a different job again: tight rooms, steep cellar stairs and no side yard to stage on. Old US-23 and Grand River carry small shops and offices, so tenant turnovers belong in the mix here alongside houses.",
+    "A cottage that was winterized and then lived in year-round holds two lifetimes of storage: seasonal gear in the crawl space, boats and motors under the deck, canvas and dock sections stacked along the shore. Because those lots fall away from the road, none of it wheels out — it is carried up. The village grid is a different job again: tight rooms, steep cellar stairs and no side yard to stage on. Old US-23 and Grand River carry small shops and offices, so tenant turnovers belong in the mix here alongside houses.",
   localConsiderations: [
-    "A cottage that was winterised and kept year-round stores decades of seasonal gear in crawl spaces and under decks — boats, motors, canvas, patio furniture — none of it visible from the rooms",
+    "A cottage that was winterized and kept year-round stores decades of seasonal gear in crawl spaces and under decks — boats, motors, canvas, patio furniture — none of it visible from the rooms",
     "Lake lots often fall steeply from the road, so material is carried up to the truck instead of wheeled out on a level drive",
     "Docks, hoists, boathouses and shoreline decks are what there is to take down on many of these lots, and they come apart in pieces carried up the same slope rather than dropped straight into a truck",
     "Frontage along Old US-23 and Grand River is small shops, service bays and offices, so a tenant turnover between leases is as much a job here as a house is",

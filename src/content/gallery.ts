@@ -41,7 +41,7 @@ export const galleryPhotos: GalleryPhoto[] = [
   },
   {
     src: "/images/photos/demolition-teardown-before-01.jpg",
-    alt: "A carpeted commercial office with painted wall panelling and a suspended tile ceiling, before demolition.",
+    alt: "A carpeted commercial office with painted wall paneling and a suspended tile ceiling, before demolition.",
     caption: "One of the private offices, before.",
     category: "demolition",
   },
@@ -53,8 +53,8 @@ export const galleryPhotos: GalleryPhoto[] = [
   },
   {
     src: "/images/photos/demolition-teardown-before-07.jpg",
-    alt: "A private office with painted panelling, a wall vent and carpet, before the interior was stripped.",
-    caption: "Painted panelling and carpet throughout.",
+    alt: "A private office with painted paneling, a wall vent and carpet, before the interior was stripped.",
+    caption: "Painted paneling and carpet throughout.",
     category: "demolition",
   },
   {

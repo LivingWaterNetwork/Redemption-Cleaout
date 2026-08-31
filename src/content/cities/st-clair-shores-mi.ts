@@ -7,7 +7,7 @@ export const stClairShoresMi: CityDefinition = {
   stateAbbr: "MI",
   localAreas: [
     "the Nautical Mile on Jefferson Avenue",
-    "the canal neighbourhoods east of Jefferson",
+    "the canal neighborhoods east of Jefferson",
     "Lakeshore Drive",
     "Harper Avenue",
     "Mack Avenue",

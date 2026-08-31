@@ -7,17 +7,17 @@ import { Reveal } from "@/components/motion/Reveal";
  */
 const lead = {
   title: "Real-estate understanding",
-  body: "Dante's experience means the team understands closings, listing preparation, distressed properties, investor timelines, and professional communication. A cleanout is rarely the point — the property has somewhere to be next, and the schedule is usually already set.",
+  body: "Dante's experience means the team understands closings, listing preparation, distressed properties, investor timelines, and professional communication. A cleanout is rarely the point — the property has somewhere to be next, and the schedule is usually already set. That is why the work is built to be fast and reliable: a closing date does not move because a basement took longer than someone guessed.",
 };
 
 const supporting = [
   {
-    title: "Capable execution",
-    body: "Redemption is structured for complete-property projects — not merely isolated pickups.",
+    title: "Fast, reliable property cleanouts",
+    body: "Redemption is structured for complete-property projects rather than isolated pickups, so a full house, garage, basement and yard are scoped to be cleared in one visit by one crew instead of spread across return trips. You get a date at the walkthrough, and the crew works to it.",
   },
   {
     title: "Clear communication",
-    body: "Clients and professional partners know what happens next, what is included, and who is accountable.",
+    body: "Clients and professional partners know what happens next, what is included, and who is accountable. No chasing anyone for an answer.",
   },
   {
     title: "Respect for people and property",
@@ -56,10 +56,10 @@ export function WhyRedemption() {
 
           {/* Proof image */}
           <Reveal variant="mask" delay={200} className="lg:col-span-5">
-            <div className="img-frame aspect-portrait w-full">
+            <div className="img-frame aspect-editorial w-full">
               <Image
-                src="/images/photos/crew-branded-shirts-yard-clearing.jpg"
-                alt="Two Redemption crew members in branded shirts clearing overgrowth from a backyard pergola."
+                src="/images/photos/branded-truck-dump-trailer-driveway.jpg"
+                alt="Redemption's branded truck and dump trailer backed up to an open garage on a residential driveway."
                 fill
                 sizes="(min-width: 1024px) 40vw, 100vw"
                 className="object-cover"

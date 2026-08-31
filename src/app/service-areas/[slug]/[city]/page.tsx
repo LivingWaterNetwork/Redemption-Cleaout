@@ -13,6 +13,15 @@ import { Reveal } from "@/components/motion/Reveal";
 import { breadcrumbJsonLd, pageMetadata } from "@/lib/seo";
 import { faqPageJsonLd, cityServiceJsonLd } from "@/lib/structuredData";
 
+/**
+ * localAreas are written lowercase ("the Woodward Avenue corridor") so they read
+ * correctly mid-sentence elsewhere. Here the joined list opens a sentence, so the
+ * first letter is lifted — without touching the rest, which carries proper nouns.
+ */
+function sentenceCase(text: string): string {
+  return text.charAt(0).toUpperCase() + text.slice(1);
+}
+
 export function generateStaticParams() {
   return cities.map((city) => ({ slug: city.countySlug, city: city.slug }));
 }
@@ -113,8 +122,8 @@ export default async function CityPage({
                 <div className="mt-12">
                   <p className="eyebrow-plain text-steel-gray">Areas we cover</p>
                   <p className="mt-4 max-w-measure-lg text-body-base text-steel-gray">
-                    {city.localAreas.join(" &middot; ")} &mdash; and everywhere else in{" "}
-                    {city.cityName}.
+                    {sentenceCase(city.localAreas.join(" · "))} &mdash; and everywhere else
+                    in {city.cityName}.
                   </p>
                 </div>
               </Reveal>

@@ -11,23 +11,23 @@ export const dearbornMi: CityDefinition = {
     "Springwells Park",
     "Aviation Sub",
     "The Fairlane area",
-    "Neighbourhoods around Greenfield Village",
+    "Neighborhoods around Greenfield Village",
   ],
   housingContext:
-    "East Dearborn is dense 1920s work: brick bungalows and small two-storeys close together on narrow lots, alleys behind, detached garages off the alley. West Dearborn runs to larger colonials, Tudors and postwar ranches on wider streets with attached garages and driveways. Michigan Avenue and Warren Avenue carry the storefront and small-office stock between them.",
+    "East Dearborn is dense 1920s work: brick bungalows and small two-stories close together on narrow lots, alleys behind, detached garages off the alley. West Dearborn runs to larger colonials, Tudors and postwar ranches on wider streets with attached garages and driveways. Michigan Avenue and Warren Avenue carry the storefront and small-office stock between them.",
   workContext:
-    "Family homes here tend to stay in the family a long time, so cleanouts often follow a death or a move to be nearer relatives, and a house held that long has a full basement and a floored attic that were never once thinned out. Rental turnover in the east side flats and small two-storeys is steady. On the commercial side, Warren and Michigan Avenue storefronts change hands often enough to keep a run of small retail and office clearing — shelving, counters, coolers and fit-out left by the last tenant, sometimes with a let flat above the shop that has to be emptied on the same visit.",
+    "Family homes here tend to stay in the family a long time, so cleanouts often follow a death or a move to be nearer relatives, and a house held that long has a full basement and a floored attic that were never once thinned out. Rental turnover in the east side flats and small two-stories is steady. On the commercial side, Warren and Michigan Avenue storefronts change hands often enough to keep a run of small retail and office clearing — shelving, counters, coolers and built-ins left by the last tenant, sometimes with a rented apartment above the shop that has to be emptied on the same visit.",
   localConsiderations: [
     "The side drives between East Dearborn houses are barely a car wide and run the depth of the lot, so a trailer cannot follow the crew in and the carry is the full length of the drive",
-    "The Warren Avenue side streets have no kerb frontage a trailer can legally take without standing across a drive, so where the truck sits is settled at the walkthrough",
+    "The Warren Avenue side streets have no curb frontage a trailer can legally take without standing across a drive, so where the truck sits is settled at the walkthrough",
     "Older brick bungalows have a finished or semi-finished attic reached by a steep stair, which slows the carry-out more than the volume up there suggests",
-    "Storefront clearing along Warren Avenue often has to happen outside trading hours, with loading from the rear service side rather than the pavement",
+    "Storefront clearing along Warren Avenue often has to happen outside business hours, with loading from the rear service side rather than the sidewalk",
   ],
   faqs: [
     {
-      question: "There is a flat above my shop on Warren Avenue and both need emptying. Is that one job?",
+      question: "There is an apartment above my shop on Warren Avenue and both need emptying. Is that one job?",
       answer:
-        "One job. The shop fit-out and the flat above it come out together — the difference is that everything upstairs comes down an internal stair that usually opens onto the street rather than the service side, so the two halves get sequenced rather than worked at once. Tell us at the walkthrough whether the stair is shared with a neighbouring unit.",
+        "One job. The store fixtures and the apartment above come out together — the difference is that everything upstairs comes down an interior stair that usually opens onto the street rather than the service side, so the two halves get sequenced rather than worked at once. Tell us at the walkthrough whether that stair is shared with a neighboring unit.",
     },
     {
       question: "We are emptying a family home in Dearborn and want to keep some things. Can you sort as you go?",
