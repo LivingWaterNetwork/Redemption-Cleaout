@@ -63,6 +63,21 @@ Sandbox notes for whoever picks this up: LibreOffice needs
 bundled Chromium is at a different build than the pinned Playwright expects, so
 scripts need `executablePath: "/opt/pw-browsers/chromium-1194/chrome-linux/chrome"`.
 
+### ⚠ The city pages are NOT publishable yet
+
+They are written and committed, and 26 of the 27 have outstanding problems:
+**21 fabrications and 26 doorway-pattern findings**, listed per county with a
+fix for each in **`CITY_PAGE_FIXES.md`**. That file is the first job for
+whoever picks this up.
+
+Do not launch with them as they stand. Either fix them (one agent per county,
+each given only its own section of that file) or remove the unfixed ones from
+`src/content/cities/` and re-run `node tools/build-city-index.mjs` — a page
+that is absent costs nothing, and a fabricated one costs credibility.
+
+`tools/check-city-pages.mjs` passed all 27 before that review. It is a floor,
+not sign-off; `CITY_PAGE_FIXES.md` explains exactly what it cannot see.
+
 ### The one rule about city pages
 
 `src/content/cities/` is the biggest local-search asset here and the easiest
@@ -93,12 +108,27 @@ any good — that still needs a human read.
    the blocker on reviews. `LOCAL_SEO_PLAYBOOK.md` Priority 1.
 4. **Jobber has no photo-upload field**, so the request page tells people to
    text photos. That is a Jobber setting, not a code change.
-5. **Audit findings from the 2026-08-31 agent run** — technical SEO, conversion
-   and copy-consistency audits were produced but not yet applied. They are in
-   the workflow transcript under
-   `.claude/projects/.../subagents/workflows/wf_f02c49c0-83a/`. Worth reading
-   before the next round of changes; treat them as suggestions to verify, not
-   instructions.
+5. **City page fixes** — see the warning above and `CITY_PAGE_FIXES.md`. This is
+   the largest outstanding item and it blocks launching the city pages.
+6. **Audit findings from the 2026-08-31 agent run**, produced and not yet
+   applied. Full text in the workflow transcript at
+   `~/.claude/projects/-home-user-Redemption-Cleaout/<session>/subagents/workflows/wf_f02c49c0-83a/journal.jsonl`
+   (read it with `jq`, it is large). Verify each before acting — they are
+   claims, not instructions. The ones that looked strongest on a first read:
+   - Every county and city `<title>` overruns the SERP limit, because the root
+     layout appends a 31-character brand suffix. `src/lib/seo.ts` would need to
+     accept `{ absolute }` titles. The `seoTitle` field on `ResourceDefinition`
+     already solves this for resources and was never applied to the geo pages.
+   - The home `<title>` renders a double pipe, since the string already
+     contains one and the template adds another.
+   - County pages emit no `Service` schema, while service and city pages do.
+   - The `LocalBusiness` node has no `@id`, so the copies emitted on every page
+     and inside each `provider` read as separate entities rather than one; it
+     also lacks `image`, which Google lists as required.
+   - The home page `<h1>` is the slogan, which carries no keyword and no
+     geography. **The client explicitly asked for that slogan as the headline**,
+     so do not simply overwrite it — the compromise is a keyword-bearing `<h2>`
+     directly beneath it. Raise it with the client rather than deciding alone.
 
 ---
 
