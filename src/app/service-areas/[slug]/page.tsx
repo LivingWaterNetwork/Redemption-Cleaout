@@ -11,7 +11,6 @@ import { StructuredData } from "@/components/StructuredData";
 import { Reveal } from "@/components/motion/Reveal";
 import { breadcrumbJsonLd, pageMetadata } from "@/lib/seo";
 import { faqPageJsonLd } from "@/lib/structuredData";
-import { business } from "@/content/business";
 
 export function generateStaticParams() {
   return approvedServiceAreas.map((area) => ({ slug: area.slug }));
@@ -26,7 +25,7 @@ export async function generateMetadata({
   const area = getServiceAreaBySlug(slug);
   if (!area) return {};
   return pageMetadata({
-    title: `${area.cityName}, ${area.stateAbbr} Property Cleanouts`,
+    title: `${area.countyName} County Cleanouts & Demolition`,
     description: area.metaDescription,
     path: `/service-areas/${area.slug}`,
   });
@@ -52,7 +51,7 @@ export default async function ServiceAreaDetailPage({
           breadcrumbJsonLd([
             { name: "Home", path: "/" },
             { name: "Service Areas", path: "/service-areas" },
-            { name: area.cityName, path: `/service-areas/${area.slug}` },
+            { name: `${area.countyName} County`, path: `/service-areas/${area.slug}` },
           ]),
           faqPageJsonLd(area.faqs),
         ]}
@@ -61,7 +60,7 @@ export default async function ServiceAreaDetailPage({
         items={[
           { name: "Home", href: "/" },
           { name: "Service Areas", href: "/service-areas" },
-          { name: area.cityName, href: `/service-areas/${area.slug}` },
+          { name: `${area.countyName} County`, href: `/service-areas/${area.slug}` },
         ]}
       />
 
@@ -86,12 +85,12 @@ export default async function ServiceAreaDetailPage({
               <div className="bg-warm-concrete p-7">
                 <p className="eyebrow-plain text-steel-gray">Coverage</p>
                 <p className="mt-4 text-body-base text-heritage-black">
-                  {business.address.publicAreaDescription}. We serve {area.cityName} as part of
-                  our regular coverage area.
+                  {area.countyName} County is part of our full Metro Detroit coverage —
+                  Macomb, Oakland, St. Clair, Wayne, Monroe, Washtenaw, and Livingston.
                 </p>
                 <p className="mt-4 text-sm text-steel-gray">
-                  We don&apos;t operate a public office in {area.cityName} — work is scoped at
-                  your property during an on-site walkthrough.
+                  We don&apos;t operate a public office in {area.countyName} County. Estimates
+                  start from photos over the phone, and the final quote is given on site.
                 </p>
               </div>
             </div>
@@ -108,7 +107,7 @@ export default async function ServiceAreaDetailPage({
             </Reveal>
             <Reveal delay={80}>
               <h2 className="mt-5 text-section font-bold text-heritage-black">
-                In {area.cityName}
+                In {area.countyName} County
               </h2>
             </Reveal>
             <div className="mt-12 grid gap-px border-t border-heritage-black/12 sm:grid-cols-2">
@@ -138,6 +137,39 @@ export default async function ServiceAreaDetailPage({
         </section>
       )}
 
+      {/* Cities and communities covered — the local-search surface for this county */}
+      <section className="py-section">
+        <div className="container-page">
+          <Reveal>
+            <p className="eyebrow">Communities</p>
+          </Reveal>
+          <Reveal delay={80}>
+            <h2 className="mt-5 text-section font-bold text-heritage-black">
+              Where we work in {area.countyName} County
+            </h2>
+          </Reveal>
+          <Reveal delay={120}>
+            <ul className="mt-10 grid gap-x-8 gap-y-3 border-t border-heritage-black/12 pt-8 sm:grid-cols-2 lg:grid-cols-3">
+              {area.cities.map((city) => (
+                <li key={city} className="flex items-baseline gap-3 text-body-base text-steel-gray">
+                  <span aria-hidden="true" className="text-redemption-red">
+                    &#8212;
+                  </span>
+                  {city}
+                </li>
+              ))}
+            </ul>
+          </Reveal>
+          <Reveal delay={160}>
+            <p className="mt-8 max-w-measure-lg text-body-base text-steel-gray">
+              This list isn&apos;t exhaustive — we cover {area.countyName} County in full,
+              including the surrounding townships. If your address isn&apos;t named here, send
+              it over and we&apos;ll confirm.
+            </p>
+          </Reveal>
+        </div>
+      </section>
+
       {/* FAQs */}
       <section className="py-section">
         <div className="container-page grid gap-x-14 gap-y-10 lg:grid-cols-12">
@@ -147,7 +179,7 @@ export default async function ServiceAreaDetailPage({
             </Reveal>
             <Reveal delay={80}>
               <h2 className="mt-5 text-section font-bold text-heritage-black">
-                {area.cityName} cleanouts
+                {area.countyName} County cleanouts
               </h2>
             </Reveal>
           </div>
@@ -159,8 +191,8 @@ export default async function ServiceAreaDetailPage({
 
       <CallToAction
         location={`area_${area.slug}_cta`}
-        headline={`Request a walkthrough in ${area.cityName}`}
-        supportingText="Send the property details and we'll confirm scheduling for your address."
+        headline={`Get a quote in ${area.countyName} County`}
+        supportingText="Send photos for a ballpark estimate over the phone, then we'll come out and give you the final quote on site."
       />
     </>
   );

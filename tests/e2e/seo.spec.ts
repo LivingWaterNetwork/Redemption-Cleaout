@@ -5,7 +5,7 @@ test("sitemap.xml is reachable and includes core routes", async ({ request }) =>
   expect(response.ok()).toBeTruthy();
   const body = await response.text();
   expect(body).toContain("/services/full-property-cleanouts");
-  expect(body).toContain("/service-areas/rochester-mi");
+  expect(body).toContain("/service-areas/oakland-county-mi");
 });
 
 test("robots.txt is reachable and points to the sitemap", async ({ request }) => {

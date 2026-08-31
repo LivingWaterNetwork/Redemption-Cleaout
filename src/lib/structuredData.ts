@@ -1,6 +1,23 @@
 import { business, siteUrl } from "@/content/business";
+import { serviceAreas } from "@/content/serviceAreas";
 import { absoluteUrl } from "@/lib/seo";
 import type { ServiceDefinition, ServiceFAQ } from "@/types/content";
+
+/**
+ * Counties as AdministrativeArea nodes rather than one prose string. Google
+ * reads the structured form for local coverage; the prose summary is still
+ * used in visible copy.
+ */
+function areaServedNodes() {
+  return serviceAreas.map((area) => ({
+    "@type": "AdministrativeArea",
+    name: `${area.countyName} County`,
+    containedInPlace: {
+      "@type": "State",
+      name: "Michigan",
+    },
+  }));
+}
 
 /**
  * LocalBusiness JSON-LD. Per the address safety rule, the street address is
@@ -15,7 +32,8 @@ export function organizationJsonLd() {
     url: siteUrl,
     telephone: business.phoneDisplay,
     slogan: business.legalTagline,
-    areaServed: business.serviceRegionSummary,
+    description: `Full property cleanouts and demolition throughout Metro Detroit — ${business.serviceRegionSummary}.`,
+    areaServed: areaServedNodes(),
     sameAs: [business.instagramUrl],
   };
 
@@ -71,7 +89,7 @@ export function serviceJsonLd(service: ServiceDefinition) {
       name: business.name,
       telephone: business.phoneDisplay,
     },
-    areaServed: business.serviceRegionSummary,
+    areaServed: areaServedNodes(),
     url: absoluteUrl(`/services/${service.slug}`),
   };
 }

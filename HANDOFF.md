@@ -3,7 +3,57 @@
 Written for whoever picks this up next (human or AI). Read this first, then
 `README.md` for setup and `DESIGN_SYSTEM.md` for anything visual.
 
-Last updated: 2026-08-21 · Latest commit: `a5ff374` + this photo pull
+Last updated: 2026-08-31 · restructured to two services and full Metro Detroit
+coverage (see §0).
+
+---
+
+## 0. The 2026-08-31 restructure — read before anything else
+
+The client reviewed the site and asked for it to be simpler and to stop being
+tied to Rochester. The changes below are done; the sections further down this
+document that describe eight service pages, a "Who We Serve" tree, or two
+Rochester city pages are **superseded** by this section, as are the equivalent
+parts of `PROJECT_SUMMARY.md`.
+
+**Structure**
+
+- **Two services**, not eight: `/services/full-property-cleanouts` and
+  `/services/demolition`. Estate, foreclosure, commercial, hoarding-related,
+  move-out, and junk removal are now anchored `<h3>` sections inside the
+  cleanouts page (`categories` in `src/content/services.ts`).
+- **Demolition is a full service**, no longer "light demolition" — through
+  full structure teardowns. **The scope claims need the owner's confirmation**;
+  see the demolition entry in `CONTENT_APPROVALS.md`, which lists exactly what
+  to ask.
+- **Seven county pages** replace the two city pages: Oakland, Macomb, Wayne,
+  St. Clair, Livingston, Washtenaw, Monroe. Each names its real communities.
+- **`/who-we-serve` and its six children are gone.** Audience content folded
+  into the cleanouts page.
+- **`/projects` is now a flat gallery** of every photo with a lightbox, no
+  per-project pages. Adding photos = adding entries to
+  `src/content/gallery.ts`; nothing else. See `IMAGE_REQUIREMENTS.md`.
+- **Home page cut from 13 sections to 8.** Removed: the trust strip, the
+  "What brings you here today" picker, the before/after block, the
+  professional-partner block, the founder blurb, and the FAQ preview.
+
+**Every retired URL 301s** — the map is in `SEO_MAP.md` and the redirects live
+in `next.config.mjs` as `legacyRedirects`. Do not delete them.
+
+**Quoting changed.** Estimates are now given from photos over the phone, with
+the final quote given on site in person. Anything that previously said "we
+don't quote from photos" has been rewritten. `src/content/process.ts` is the
+canonical wording — keep every other mention consistent with it.
+
+**Still outstanding for the client:**
+
+1. Demolition scope, licensing, and permit handling (`CONTENT_APPROVALS.md`).
+2. New photos, including the recent larger demolition job.
+3. The rewritten About page and mission statement, plus crew photos. `/about`
+   is untouched and still carries the old founder copy.
+4. Jobber has no photo-upload field. The request page tells people to text
+   photos to the business number instead. Adding a file-upload field in Jobber
+   would be an improvement — it is a Jobber setting, not a code change.
 
 ---
 

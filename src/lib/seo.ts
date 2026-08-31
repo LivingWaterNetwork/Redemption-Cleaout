@@ -14,7 +14,8 @@ export function absoluteUrl(path: string): string {
  */
 const OG_IMAGE_WIDTH = 1200;
 const OG_IMAGE_HEIGHT = 630;
-const OG_IMAGE_ALT = "Redemption Cleanout Services — property cleanouts in Rochester, Michigan";
+const OG_IMAGE_ALT =
+  "Redemption Cleanout Services — property cleanouts and demolition across Metro Detroit";
 
 type PageMetadataInput = {
   title: string;

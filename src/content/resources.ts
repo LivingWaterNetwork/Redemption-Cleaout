@@ -30,7 +30,7 @@ export const resources: ResourceDefinition[] = [
       {
         heading: "The cleanout itself",
         body: [
-          "An on-site walkthrough gives an accurate scope and timeline — photos alone tend to underestimate the work.",
+          "Photos get you a ballpark estimate over the phone; the on-site walkthrough is what turns that into a final quote and a real timeline.",
           "Confirm access details in advance: keys, stairs, parking, and whether anyone needs to be present.",
           "Ask what happens to items being removed — donation and recycling versus disposal — if that matters to your family.",
         ],
@@ -55,10 +55,10 @@ export const resources: ResourceDefinition[] = [
     publishedAt: "2026-01-01",
     sections: [
       {
-        heading: "Why an on-site walkthrough matters",
+        heading: "How quoting works: photos first, then on site",
         body: [
-          "Photos and phone descriptions rarely capture a property's full scope — hidden storage, stairs, and access constraints all affect the real timeline.",
-          "An on-site walkthrough is how accurate pricing and scheduling happen for full-property, estate, foreclosure, and commercial jobs.",
+          "Send photos and you'll get a ballpark estimate over the phone, usually the same day — enough to decide whether to go ahead, at no cost or obligation.",
+          "Photos can't show hidden storage, stair and doorway widths, or where a truck can actually park, and those are what move a price. The on-site walkthrough is where the final quote is given.",
         ],
       },
       {
@@ -99,16 +99,16 @@ export const resources: ResourceDefinition[] = [
         ],
       },
       {
-        heading: "Why we don't quote from photos alone",
+        heading: "Why the photo estimate is a range and the on-site quote is a number",
         body: [
-          "Photos compress depth and hide what's behind a door or under a staircase — the two biggest reasons phone-based estimates run inaccurate on job day.",
-          "An on-site walkthrough lets us give you one number that holds, instead of a range that changes once the crew arrives.",
+          "Photos compress depth and hide what's behind a door or under a staircase, so a photo-based figure is honest as a range and misleading as a final price.",
+          "Walking the property lets us give you one number that holds, instead of a figure that changes once the crew arrives.",
         ],
       },
       {
         heading: "What's not included in this guide",
         body: [
-          "Specific rates and pricing tiers are confirmed operationally and are not published here — every property is different enough that a general price list would be misleading. Request a walkthrough for an accurate, property-specific quote.",
+          "Specific rates and pricing tiers are confirmed operationally and are not published here — every property is different enough that a general price list would be misleading. Send photos for a ballpark estimate, and we'll give you the final quote at the property.",
         ],
       },
     ],

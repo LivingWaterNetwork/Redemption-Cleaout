@@ -1,14 +1,12 @@
 import type { MetadataRoute } from "next";
 import { siteUrl } from "@/content/business";
 import { services } from "@/content/services";
-import { audiences } from "@/content/audiences";
 import { approvedServiceAreas } from "@/content/serviceAreas";
 import { resources } from "@/content/resources";
 
 const staticRoutes = [
   "",
   "/services",
-  "/who-we-serve",
   "/service-areas",
   "/how-it-works",
   "/about",
@@ -33,9 +31,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   for (const service of services) {
     entries.push({ url: `${siteUrl}/services/${service.slug}`, lastModified: now });
-  }
-  for (const audience of audiences) {
-    entries.push({ url: `${siteUrl}/who-we-serve/${audience.slug}`, lastModified: now });
   }
   for (const area of approvedServiceAreas) {
     entries.push({ url: `${siteUrl}/service-areas/${area.slug}`, lastModified: now });

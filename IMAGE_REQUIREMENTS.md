@@ -88,25 +88,32 @@ JPEG q84, with EXIF stripped.
 | `cleared-garage-bay-after.jpg` | Founder section |
 | `garage-cleanout-crew-sorting-before.jpg` | Before/after — before |
 | `garage-cleanout-cleared-bay-after.jpg` | Before/after — after |
-| `commercial-forklift-pallet-loading.jpg` | Commercial service |
-| `light-demolition-deck-removal.jpg` | Light Demolition service |
-| `townhouse-patio-cleared-after.jpg` | Move-Out service, `/about` figure |
-| `yard-debris-and-equipment-removal.jpg` | Foreclosure service |
-| `severe-clutter-living-room-before.jpg` | Hoarding-related service |
+| `commercial-forklift-pallet-loading.jpg` | Gallery |
+| `light-demolition-deck-removal.jpg` | Demolition service |
+| `townhouse-patio-cleared-after.jpg` | Gallery, `/about` figure |
+| `yard-debris-and-equipment-removal.jpg` | Gallery |
+| `severe-clutter-living-room-before.jpg` | Gallery |
 | `metal-recycling-load-dropoff.jpg` | `/projects` hero |
-| `full-property-cleanout-removal.jpg` | Full-Property service |
-| `estate-cleanout-driveway-staging.jpg` | Estate service |
-| `garage-cleanout-in-progress.jpg` | Residential Junk Removal service |
+| `full-property-cleanout-removal.jpg` | Full Property Cleanouts service |
+| `estate-cleanout-driveway-staging.jpg` | Gallery |
+| `garage-cleanout-in-progress.jpg` | Gallery |
 
-**Repetition is resolved.** Every image now appears once, except
-`townhouse-patio-cleared-after.jpg`, which appears on two different pages.
-All 8 services carry a distinct photo (three had none at all before), which
-also diversifies `RecentWork`, since it reads from the service content layer.
+## Adding new photos
 
-Retained but unreferenced, as deliberate spares:
-`severe-clutter-basement-before.jpg` (alternate severe-clutter frame),
-`townhouse-contents-staged-before.jpg` (the before half of the townhouse
-pair — see below), `pole-barn-cleared-interior.jpg` (alternate cleared space).
+`src/content/gallery.ts` is the single source of truth for job photography.
+Every one of the 19 files above appears on `/projects`, and the first six also
+appear in the home-page "Previous Work" strip. To publish a new photo:
+
+1. Drop the file in `public/images/photos` (naming and size rules above).
+2. Add an entry to `src/content/gallery.ts` — `src`, real `alt` text,
+   a short `caption`, and a `category`.
+3. Position it where you want it to appear; newest work reads best near the top.
+
+That is the whole process — no page edits, no route changes. A unit test fails
+if a photo is listed twice or has alt text under 20 characters.
+
+The two service pages each pull one image from `src/content/services.ts`
+separately; those are the only photos referenced outside the gallery.
 
 ## Gaps closed by this pull
 

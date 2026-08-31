@@ -1,28 +1,27 @@
 import type { NavLink } from "@/types/content";
 import { services } from "@/content/services";
-import { audiences } from "@/content/audiences";
 
+/**
+ * Kept deliberately short. Every entry here is a decision the visitor has to
+ * make before they can call, so the bar holds the five destinations that
+ * actually convert; everything else lives in the footer and the mobile menu.
+ */
 export const primaryNav: NavLink[] = [
   {
     label: "Services",
     href: "/services",
     children: services.map((s) => ({ label: s.shortName, href: `/services/${s.slug}` })),
   },
-  {
-    label: "Who We Serve",
-    href: "/who-we-serve",
-    children: audiences.map((a) => ({ label: a.shortName, href: `/who-we-serve/${a.slug}` })),
-  },
   { label: "Service Areas", href: "/service-areas" },
+  { label: "Previous Work", href: "/projects" },
   { label: "How It Works", href: "/how-it-works" },
-  { label: "Projects", href: "/projects" },
   { label: "About", href: "/about" },
 ];
 
 /**
  * Secondary destinations. Reachable from the mobile menu and the footer on
  * every page, but kept out of the desktop bar so the primary nav and the
- * walkthrough CTA never crowd or wrap at common desktop widths.
+ * estimate CTA never crowd or wrap at common desktop widths.
  */
 export const secondaryNav: NavLink[] = [
   { label: "Reviews", href: "/reviews" },
@@ -32,12 +31,12 @@ export const secondaryNav: NavLink[] = [
 ];
 
 export const footerNav: NavLink[] = [
-  { label: "Services", href: "/services" },
-  { label: "Who We Serve", href: "/who-we-serve" },
+  { label: "Full Property Cleanouts", href: "/services/full-property-cleanouts" },
+  { label: "Demolition", href: "/services/demolition" },
   { label: "Service Areas", href: "/service-areas" },
   { label: "How It Works", href: "/how-it-works" },
+  { label: "Previous Work", href: "/projects" },
   { label: "About", href: "/about" },
-  { label: "Projects", href: "/projects" },
   { label: "Reviews", href: "/reviews" },
   { label: "Resources", href: "/resources" },
   { label: "FAQ", href: "/faq" },

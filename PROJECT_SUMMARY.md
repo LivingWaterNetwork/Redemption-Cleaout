@@ -12,6 +12,12 @@ first pass and §12 for what the owner needs to understand about search. Three o
 briefing assumptions behind this request turned out not to match the repository,
 and one of them is a live production risk.
 
+> **Superseded in part (2026-08-31).** The site was restructured after this
+> summary was written: eight service pages became two, `/who-we-serve` was
+> removed, and the two Rochester city pages became seven county pages. Any
+> section below that describes the old information architecture is historical.
+> `HANDOFF.md` §0 and `SEO_MAP.md` describe the current structure.
+
 ---
 
 ## 0. Corrections to the briefing assumptions — read first

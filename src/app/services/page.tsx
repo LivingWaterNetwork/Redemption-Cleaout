@@ -7,12 +7,12 @@ import { CallToAction } from "@/components/ui/CallToAction";
 import { StructuredData } from "@/components/StructuredData";
 import { Reveal } from "@/components/motion/Reveal";
 import { breadcrumbJsonLd, pageMetadata } from "@/lib/seo";
-import { flagshipServices, supportingServices } from "@/content/services";
+import { services } from "@/content/services";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Property Cleanout Services",
+  title: "Cleanout & Demolition Services",
   description:
-    "Full-property cleanouts, estate and inherited-property cleanouts, commercial cleanouts, foreclosure cleanouts, hoarding-related cleanouts, junk removal, move-out cleanouts, and light demolition in Rochester, Michigan.",
+    "Full property cleanouts and demolition throughout Metro Detroit — estate, foreclosure, commercial, hoarding, and move-out clearing, interior gut-outs, and structure teardowns.",
   path: "/services",
 });
 
@@ -29,116 +29,83 @@ export default function ServicesPage() {
 
       <PageHero
         eyebrow="Services"
-        title="Full-property cleanouts, and everything around them"
-        description="Redemption leads with complete-property work: estates, commercial spaces, foreclosures, and severe-clutter situations. We also handle the smaller jobs that come with them."
+        title="Cleanouts and demolition"
+        description="Two services, both handled end to end, anywhere in Metro Detroit. If a property needs to be emptied and then torn down, that's one job with one crew — not two contractors scheduling around each other."
       />
 
-      {/* Flagship — numbered editorial rows */}
       <section className="py-section">
         <div className="container-page">
-          <Reveal>
-            <p className="eyebrow">Flagship services</p>
-          </Reveal>
-
-          <div className="mt-12 border-t border-heritage-black/12">
-            {flagshipServices.map((service, index) => (
-              <Reveal key={service.slug} delay={index * 70}>
-                <article className="group grid items-start gap-x-10 gap-y-6 border-b border-heritage-black/12 py-10 lg:grid-cols-12">
-                  <div className="flex items-baseline gap-5 lg:col-span-5">
-                    <span
-                      aria-hidden="true"
-                      className="font-display text-3xl font-bold leading-none tabular-nums text-heritage-black/45"
-                    >
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
-                    <h2 className="font-display text-2xl font-semibold text-heritage-black">
-                      <Link
-                        href={`/services/${service.slug}`}
-                        className="transition-colors duration-micro hover:text-redemption-red"
-                      >
-                        {service.shortName}
-                      </Link>
-                    </h2>
-                  </div>
-
-                  <div className="lg:col-span-4">
-                    <p className="max-w-measure text-body-base text-steel-gray">
-                      {service.situation}
-                    </p>
-                    <Link href={`/services/${service.slug}`} className="link-editorial mt-5">
-                      Learn more
-                      <span aria-hidden="true" className="btn-arrow">
-                        &rarr;
-                      </span>
-                    </Link>
-                  </div>
-
-                  {service.image && (
-                    <div className="lg:col-span-3">
-                      <div className="img-frame aspect-editorial w-full">
+          <div className="grid gap-12 lg:grid-cols-2">
+            {services.map((service, index) => (
+              <Reveal key={service.slug} delay={index * 90}>
+                <article className="flex h-full flex-col">
+                  <Link
+                    href={`/services/${service.slug}`}
+                    tabIndex={-1}
+                    aria-hidden="true"
+                    className="block"
+                  >
+                    <div className="img-frame aspect-editorial w-full">
+                      {service.image && (
                         <Image
                           src={service.image.src}
                           alt=""
                           fill
-                          sizes="(min-width: 1024px) 24vw, 100vw"
+                          sizes="(min-width: 1024px) 48vw, 100vw"
                           className="img-zoom object-cover"
                         />
-                      </div>
+                      )}
                     </div>
-                  )}
+                  </Link>
+
+                  <h2 className="mt-7 font-display text-section font-bold text-heritage-black">
+                    <Link
+                      href={`/services/${service.slug}`}
+                      className="transition-colors duration-micro hover:text-redemption-red"
+                    >
+                      {service.name}
+                    </Link>
+                  </h2>
+
+                  <p className="mt-4 max-w-measure text-body-lg text-steel-gray">
+                    {service.situation}
+                  </p>
+
+                  <ul className="mt-7 grid gap-2 border-t border-heritage-black/12 pt-6">
+                    {(service.categories
+                      ? service.categories.map((category) => category.name)
+                      : service.weHandle.slice(0, 6)
+                    ).map((item) => (
+                      <li key={item} className="flex gap-2.5 text-body-base text-steel-gray">
+                        <span aria-hidden="true" className="mt-0.5 text-redemption-red">
+                          &#8212;
+                        </span>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <Link href={`/services/${service.slug}`} className="link-editorial mt-8">
+                    {service.shortName}
+                    <span aria-hidden="true" className="btn-arrow">
+                      &rarr;
+                    </span>
+                  </Link>
                 </article>
               </Reveal>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* Supporting */}
-      <section className="border-y border-heritage-black/10 bg-warm-concrete py-section">
-        <div className="container-page">
-          <Reveal>
-            <p className="eyebrow">Supporting services</p>
-          </Reveal>
-          <Reveal delay={80}>
-            <h2 className="mt-5 text-section font-bold text-heritage-black">
-              Smaller jobs, same standard
-            </h2>
-          </Reveal>
-
-          <div className="mt-12 grid gap-px border-t border-heritage-black/12 sm:grid-cols-2">
-            {supportingServices.map((service, index) => (
-              <Reveal key={service.slug} delay={index * 80}>
-                <Link
-                  href={`/services/${service.slug}`}
-                  className="group flex h-full flex-col border-b border-heritage-black/12 py-8 sm:pr-10"
-                >
-                  <h3 className="font-display text-xl font-semibold text-heritage-black transition-colors duration-micro group-hover:text-redemption-red">
-                    {service.shortName}
-                  </h3>
-                  <p className="mt-3 max-w-measure text-body-base text-steel-gray">
-                    {service.situation}
-                  </p>
-                  <span className="link-editorial mt-6">
-                    Learn more
-                    <span aria-hidden="true" className="btn-arrow">
-                      &rarr;
-                    </span>
-                  </span>
-                </Link>
-              </Reveal>
-            ))}
-          </div>
 
           <Reveal>
-            <p className="mt-12 max-w-measure-lg text-body-base text-steel-gray">
-              Not sure which fits your situation?{" "}
+            <p className="mt-16 max-w-measure-lg border-t border-heritage-black/12 pt-8 text-body-base text-steel-gray">
+              Not sure which one you need? Send photos and we&apos;ll tell you.{" "}
               <Link
                 href="/how-it-works"
                 className="font-semibold text-heritage-black underline decoration-redemption-red decoration-2 underline-offset-4"
               >
                 See how the process works
-              </Link>{" "}
-              — or request a walkthrough and we&apos;ll scope it with you.
+              </Link>
+              .
             </p>
           </Reveal>
         </div>
@@ -146,8 +113,8 @@ export default function ServicesPage() {
 
       <CallToAction
         location="services_overview_cta"
-        headline="Every property is scoped in person"
-        supportingText="Photos alone misrepresent scope. An on-site walkthrough is how you get a number that holds."
+        headline="Estimate from photos. Final quote on site."
+        supportingText="Send photos for a ballpark estimate over the phone. We'll come out and give you the final quote in person."
       />
     </>
   );

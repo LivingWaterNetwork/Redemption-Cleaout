@@ -2,7 +2,6 @@ import { describe, expect, it } from "vitest";
 import { pageMetadata } from "@/lib/seo";
 import { resources } from "@/content/resources";
 import { services } from "@/content/services";
-import { audiences } from "@/content/audiences";
 
 /**
  * The title template appended by the root layout. Counted here rather than
@@ -73,8 +72,8 @@ describe("title length budget", () => {
     }
   });
 
-  it("keeps service and audience titles within budget without needing an override", () => {
-    for (const entry of [...services, ...audiences]) {
+  it("keeps service titles within budget without needing an override", () => {
+    for (const entry of services) {
       const effective = entry.name + TITLE_SUFFIX;
       expect(
         effective.length,

@@ -16,11 +16,11 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Redemption Cleanout Services | Rochester, MI Property Cleanouts",
+    default: "Redemption Cleanout Services | Metro Detroit Cleanouts & Demolition",
     template: "%s | Redemption Cleanout Services",
   },
   description:
-    "Complete residential and commercial property cleanouts for estates, inherited homes, distressed properties, severe clutter, and time-sensitive real-estate transitions in Rochester, Michigan.",
+    "Full property cleanouts and demolition across Metro Detroit — Macomb, Oakland, St. Clair, Wayne, Monroe, Washtenaw, and Livingston counties. Estimates from photos, final quote on site.",
   icons: {
     icon: "/favicon.ico",
   },

@@ -10,9 +10,9 @@ import { approvedServiceAreas } from "@/content/serviceAreas";
 import { business } from "@/content/business";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Service Areas",
+  title: "Service Areas — All of Metro Detroit",
   description:
-    "Redemption Cleanout Services serves Rochester, Rochester Hills, Oakland County, and approved surrounding Southeast Michigan communities.",
+    "Redemption Cleanout Services covers all of Metro Detroit: Macomb, Oakland, St. Clair, Wayne, Monroe, Washtenaw, and Livingston counties.",
   path: "/service-areas",
 });
 
@@ -31,8 +31,8 @@ export default function ServiceAreasPage() {
 
       <PageHero
         eyebrow="Service Areas"
-        title={`Serving ${business.serviceRegionSummary}`}
-        description="We publish detailed pages only for areas where we have real local context to share — not a page for every nearby zip code."
+        title="All of Metro Detroit"
+        description={`Redemption works across all seven Metro Detroit counties — ${business.serviceRegionSummary}. Pick your county for the communities we cover and what the work usually looks like there.`}
       />
 
       <section className="py-section">
@@ -46,17 +46,17 @@ export default function ServiceAreasPage() {
                 >
                   <div>
                     <h2 className="font-display text-section font-bold text-heritage-black transition-colors duration-micro group-hover:text-redemption-red">
-                      {area.cityName}
+                      {area.countyName} County
                     </h2>
                     <p className="mt-1 font-condensed text-sm font-bold uppercase tracking-[0.16em] text-steel-gray">
-                      {area.stateAbbr}
+                      {area.cities.slice(0, 4).join(" · ")}
                     </p>
                     <p className="mt-6 max-w-measure text-body-base text-steel-gray">
                       {area.localIntroduction}
                     </p>
                   </div>
                   <span className="link-editorial mt-8">
-                    {area.cityName} cleanouts
+                    {area.countyName} County
                     <span aria-hidden="true" className="btn-arrow">
                       &rarr;
                     </span>
@@ -69,15 +69,15 @@ export default function ServiceAreasPage() {
           <Reveal>
             <div className="mt-14 max-w-measure-lg border-l-2 border-redemption-red pl-6">
               <p className="text-body-base text-steel-gray">
-                Don&apos;t see your city? We may still serve it as part of our Oakland County
-                and Southeast Michigan coverage.{" "}
+                Don&apos;t see your city? The lists on each county page aren&apos;t
+                exhaustive — we cover all seven counties in full, townships included.{" "}
                 <Link
                   href="/request-walkthrough"
                   className="font-semibold text-heritage-black underline decoration-redemption-red decoration-2 underline-offset-4"
                 >
-                  Request a walkthrough
+                  Send us the address
                 </Link>{" "}
-                with your address and we&apos;ll confirm.
+                and we&apos;ll confirm coverage.
               </p>
             </div>
           </Reveal>
@@ -87,7 +87,7 @@ export default function ServiceAreasPage() {
       <CallToAction
         location="service_areas_overview_cta"
         headline="Tell us where the property is"
-        supportingText="Send the address and property details and we'll confirm coverage and scheduling."
+        supportingText="Send photos for a ballpark estimate over the phone. We'll come out and give you the final quote on site."
       />
     </>
   );

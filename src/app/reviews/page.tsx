@@ -8,7 +8,8 @@ import { breadcrumbJsonLd, pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
   title: "Reviews",
-  description: "Authentic reviews for Redemption Cleanout Services in Rochester, Michigan.",
+  description:
+    "Authentic reviews for Redemption Cleanout Services — property cleanouts and demolition across Metro Detroit.",
   path: "/reviews",
 });
 

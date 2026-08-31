@@ -1,8 +1,23 @@
 import { test, expect } from "@playwright/test";
 
-test("projects page shows an honest empty state when no photography exists yet", async ({ page }) => {
+test("projects page renders the full photo gallery", async ({ page }) => {
   await page.goto("/projects");
-  await expect(page.getByText(/before-and-after pairs are being documented/i)).toBeVisible();
+  await expect(page.getByRole("heading", { level: 1, name: /previous work/i })).toBeVisible();
+
+  const tiles = page.getByRole("button").filter({ hasNot: page.locator("nav") });
+  expect(await page.locator("main img").count()).toBeGreaterThan(10);
+  expect(await tiles.count()).toBeGreaterThan(0);
+});
+
+test("gallery lightbox opens and closes with the keyboard", async ({ page }) => {
+  await page.goto("/projects");
+  await page.locator("main ul li button").first().click();
+
+  const dialog = page.getByRole("dialog");
+  await expect(dialog).toBeVisible();
+
+  await page.keyboard.press("Escape");
+  await expect(dialog).toHaveCount(0);
 });
 
 test("reduced motion is respected on the homepage", async ({ page }) => {

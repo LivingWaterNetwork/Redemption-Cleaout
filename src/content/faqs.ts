@@ -5,19 +5,19 @@ export const faqs: FAQEntry[] = [
     category: "Getting Started",
     question: "How do I get a quote?",
     answer:
-      "Request a property walkthrough online, or call or text (248) 321-9609. For full-property, commercial, and larger jobs, we quote on-site — pictures alone don't give an accurate scope, so an on-site walkthrough is how we get your quote right the first time.",
+      "Send us photos — text or email — or call (248) 321-9609 and we'll tell you what to send. From the photos we give you a ballpark estimate over the phone, usually the same day. The final quote is given on site, in person, once we've walked the property.",
   },
   {
     category: "Getting Started",
-    question: "Why don't you offer an instant online quote?",
+    question: "Why is the final quote given on site instead of over the phone?",
     answer:
-      "Full-property, estate, foreclosure, and commercial cleanouts vary too much for a photo or a form to price accurately. An on-site walkthrough lets us give you a real number and a real timeline instead of a guess that changes on job day.",
+      "Photos get you a ballpark, and that's genuinely useful for deciding whether to go ahead. But access, volume, and condition are things a photo can't show, and they're what move a price. Walking the property is how we give you a number that holds instead of one that changes on job day.",
   },
   {
     category: "Getting Started",
     question: "What areas do you serve?",
     answer:
-      "Rochester, Rochester Hills, Oakland County, and approved surrounding Southeast Michigan communities. Request a walkthrough with your property's location and we'll confirm.",
+      "All of Metro Detroit — Macomb, Oakland, St. Clair, Wayne, Monroe, Washtenaw, and Livingston counties. Send us the property's address and we'll confirm.",
   },
   {
     category: "Scope & Scheduling",
@@ -41,7 +41,7 @@ export const faqs: FAQEntry[] = [
     category: "What We Handle",
     question: "Do you do demolition?",
     answer:
-      "We handle light demolition and site preparation — interior tear-outs and small-scale work — subject to site conditions and approval. We do not perform regulated structural demolition or asbestos abatement.",
+      "Yes — it's one of our two main services. Interior gut-outs, garages, decks, sheds, pole barns, concrete removal, and full structure teardowns, with the debris hauled off by the same crew. Asbestos and lead abatement must be completed by a licensed abatement contractor first, and utility disconnects have to be confirmed by the provider.",
   },
   {
     category: "What We Handle",
@@ -65,6 +65,6 @@ export const faqs: FAQEntry[] = [
     category: "Professional Partners",
     question: "Do you work with realtors, attorneys, and property managers?",
     answer:
-      "Yes — see Who We Serve for details on how we work with realtors, estate-sale companies, probate attorneys, property managers, investors, and other professional partners.",
+      "Yes. Realtors, estate-sale companies, probate attorneys, property managers, investors, banks, and asset managers are a steady share of our work — one accountable point of contact, and scheduling built around your closing, listing, or lease-end date.",
   },
 ];

@@ -5,50 +5,35 @@ import { Reveal } from "@/components/motion/Reveal";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 
 /**
- * Image-led alternating editorial rows for the four flagship services, then a
- * compact list for the supporting ones. Deliberately not a three-column card
- * grid — the top four services carry the positioning and get the space.
+ * The two things Redemption does, as full-width alternating editorial rows.
+ *
+ * Previously eight services in a flagship/supporting split. The business is two
+ * offerings — cleanouts and demolition — and the page now says so; the cleanout
+ * types (estate, foreclosure, commercial, hoarding, move-out, junk removal) are
+ * listed inside the cleanouts row rather than competing with it.
  */
-const FLAGSHIP_SLUGS = [
-  "full-property-cleanouts",
-  "estate-cleanouts",
-  "commercial-cleanouts",
-  "foreclosure-cleanouts",
-];
-
 export function FlagshipServices() {
-  const flagship = FLAGSHIP_SLUGS.map((slug) => services.find((s) => s.slug === slug)).filter(
-    (s): s is NonNullable<typeof s> => Boolean(s),
-  );
-  const supporting = services.filter((s) => !FLAGSHIP_SLUGS.includes(s.slug));
-
   return (
     <section className="bg-heritage-black py-section text-clean-white on-dark">
       <div className="container-page">
         <SectionHeader
-          label="Flagship Services"
-          title="Built for the properties other companies pass on"
-          intro="Redemption leads with complete-property work — whole homes, estates, commercial spaces, and distressed properties, handled end to end."
+          label="What We Do"
+          title="Two things, done completely"
+          intro="Full property cleanouts and demolition — residential and commercial, anywhere in Metro Detroit. If a property needs to be emptied and then torn down, that's one job with one crew, not two contractors."
           onDark
-          action={
-            <Link href="/services" className="link-editorial">
-              All services
-              <span aria-hidden="true" className="btn-arrow">
-                &rarr;
-              </span>
-            </Link>
-          }
         />
 
         <div className="mt-16 space-y-px">
-          {flagship.map((service, index) => {
+          {services.map((service, index) => {
             const imageFirst = index % 2 === 1;
+            const highlights = service.categories
+              ? service.categories.map((category) => category.name)
+              : service.weHandle.slice(0, 6);
+
             return (
               <Reveal key={service.slug}>
                 <article className="group grid items-center gap-x-12 gap-y-8 border-t border-clean-white/12 py-12 lg:grid-cols-12">
-                  <div
-                    className={`lg:col-span-5 ${imageFirst ? "lg:order-1" : "lg:order-2"}`}
-                  >
+                  <div className={`lg:col-span-5 ${imageFirst ? "lg:order-1" : "lg:order-2"}`}>
                     <Link
                       href={`/services/${service.slug}`}
                       tabIndex={-1}
@@ -75,9 +60,7 @@ export function FlagshipServices() {
                     </Link>
                   </div>
 
-                  <div
-                    className={`lg:col-span-7 ${imageFirst ? "lg:order-2" : "lg:order-1"}`}
-                  >
+                  <div className={`lg:col-span-7 ${imageFirst ? "lg:order-2" : "lg:order-1"}`}>
                     <div className="flex items-baseline gap-5">
                       <span
                         aria-hidden="true"
@@ -100,7 +83,7 @@ export function FlagshipServices() {
                     </p>
 
                     <ul className="mt-6 grid gap-2 sm:grid-cols-2">
-                      {service.weHandle.slice(0, 4).map((item) => (
+                      {highlights.map((item) => (
                         <li key={item} className="flex gap-2.5 text-sm text-clean-white/60">
                           <span aria-hidden="true" className="mt-0.5 text-redemption-red">
                             ✓
@@ -122,25 +105,6 @@ export function FlagshipServices() {
             );
           })}
         </div>
-
-        {/* Supporting services — compact, clearly secondary */}
-        <Reveal>
-          <div className="mt-16 border-t border-clean-white/12 pt-10">
-            <p className="eyebrow-plain">Also handled</p>
-            <ul className="mt-6 flex flex-wrap gap-x-8 gap-y-4">
-              {supporting.map((service) => (
-                <li key={service.slug}>
-                  <Link
-                    href={`/services/${service.slug}`}
-                    className="font-display text-base font-semibold text-clean-white/80 underline decoration-clean-white/20 decoration-1 underline-offset-[6px] transition-colors duration-micro hover:text-redemption-red hover:decoration-redemption-red"
-                  >
-                    {service.shortName}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </Reveal>
       </div>
     </section>
   );

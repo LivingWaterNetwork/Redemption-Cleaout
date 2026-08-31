@@ -11,7 +11,7 @@ import { howItWorksSteps } from "@/content/process";
 export const metadata: Metadata = pageMetadata({
   title: "How It Works",
   description:
-    "How a Redemption Cleanout Services project works, from your first call to a final walkthrough — on-site quoting, clear scope, and a dependable crew.",
+    "How a Redemption Cleanout Services job works — a ballpark estimate from photos over the phone, the final quote given on site, then a clear scope and a dependable crew.",
   path: "/how-it-works",
 });
 
@@ -30,8 +30,8 @@ export default function HowItWorksPage() {
 
       <PageHero
         eyebrow="Process"
-        title="From first call to a cleared property"
-        description="On-site quoting is required for accuracy — photos alone misrepresent scope. Here is exactly what happens at each step."
+        title="Photos first. Final quote on site."
+        description="Send photos and we'll give you a ballpark estimate over the phone, usually the same day. The final quote is given in person, once we've walked the property. Here is exactly what happens at each step."
       />
 
       <section className="py-section">
@@ -48,24 +48,26 @@ export default function HowItWorksPage() {
             </Reveal>
             <Reveal delay={80}>
               <h2 className="mt-5 text-section font-bold text-heritage-black">
-                Why we quote on-site
+                Two numbers, and what each one means
               </h2>
             </Reveal>
           </div>
           <div className="lg:col-span-7">
             <Reveal delay={120}>
               <p className="max-w-measure-lg text-body-lg text-steel-gray">
-                Photos compress depth and hide what&apos;s behind a door or under a staircase.
-                That&apos;s the single biggest reason phone estimates run inaccurate on job day.
-                Full-property and commercial cleanouts are scoped in person so the number we
-                give you is the number that holds.
+                The <strong className="font-semibold text-heritage-black">estimate</strong> comes
+                first: text or email photos, and we&apos;ll give you a ballpark range over the
+                phone, usually the same day. It costs nothing, commits you to nothing, and it&apos;s
+                enough to decide whether to go ahead.
               </p>
             </Reveal>
             <Reveal delay={180}>
               <p className="mt-6 max-w-measure-lg text-body-base text-steel-gray">
-                For very small jobs, a phone or text description is often enough to schedule
-                directly. We&apos;ll tell you which applies to your situation when you reach
-                out — we won&apos;t send someone out if you don&apos;t need it.
+                The <strong className="font-semibold text-heritage-black">quote</strong> comes at
+                the property. Photos compress depth and hide what&apos;s behind a door or under a
+                staircase — and they can&apos;t show a stair width, a blocked driveway, or how far
+                a crew has to carry every load. Those are what move a price, so the final number
+                is given on site, in person, and it&apos;s the number that holds.
               </p>
             </Reveal>
           </div>
@@ -74,8 +76,8 @@ export default function HowItWorksPage() {
 
       <CallToAction
         location="how_it_works_cta"
-        headline="Start with a walkthrough"
-        supportingText="Send the property details and we'll follow up to schedule. You'll have a clear scope and price before anything is booked."
+        headline="Start with photos"
+        supportingText="Send the property details and a few photos, and we'll come back with a ballpark estimate. Nothing is booked until you've seen the final quote."
       />
     </>
   );

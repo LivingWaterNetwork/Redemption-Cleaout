@@ -77,7 +77,7 @@ export default async function ServiceDetailPage({
       >
         <div className="flex flex-col gap-3 sm:flex-row">
           <Link href="/request-walkthrough" className="btn-primary">
-            Request a Property Walkthrough
+            Get a Free Estimate
             <span aria-hidden="true" className="btn-arrow">
               &rarr;
             </span>
@@ -177,7 +177,7 @@ export default async function ServiceDetailPage({
 
                   <div className="mt-8 flex flex-col gap-3 border-t border-heritage-black/12 pt-7">
                     <Link href="/request-walkthrough" className="btn-primary w-full">
-                      Request a Walkthrough
+                      Get a Free Estimate
                       <span aria-hidden="true" className="btn-arrow">
                         &rarr;
                       </span>
@@ -207,6 +207,43 @@ export default async function ServiceDetailPage({
           </div>
         </div>
       </section>
+
+      {/* Categories — the retired standalone service pages, as anchored sections.
+          Each id matches the old slug so the 301s land on the right one. */}
+      {service.categories && service.categories.length > 0 && (
+        <section className="py-section">
+          <div className="container-page">
+            <SectionHeader
+              label="Types of cleanout"
+              title="Same crew, same scope, different situation"
+              intro="Estate, foreclosure, commercial, hoarding-related, move-out, and single-area jobs are all handled under this service. What changes is the timeline, who we coordinate with, and how the property gets handled."
+            />
+
+            <div className="mt-14 grid gap-x-14 gap-y-12 border-t border-heritage-black/12 pt-12 lg:grid-cols-2">
+              {service.categories.map((category, index) => (
+                <Reveal key={category.id} id={category.id} delay={index * 70} className="scroll-mt-32">
+                  <h3 className="font-display text-2xl font-semibold text-heritage-black">
+                    {category.name}
+                  </h3>
+                  <p className="mt-3 max-w-measure text-body-base text-steel-gray">
+                    {category.summary}
+                  </p>
+                  <ul className="mt-5 space-y-2.5">
+                    {category.points.map((point) => (
+                      <li key={point} className="flex gap-2.5 text-sm text-steel-gray">
+                        <span aria-hidden="true" className="mt-0.5 shrink-0 text-redemption-red">
+                          &#8212;
+                        </span>
+                        <span>{point}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Proof image */}
       {service.image && (
@@ -275,7 +312,7 @@ export default async function ServiceDetailPage({
       <CallToAction
         location={`service_${service.slug}_cta`}
         headline={`Ready to scope your ${service.shortName.toLowerCase()}?`}
-        supportingText="Tell us about the property and we'll schedule an on-site walkthrough. You'll get a clear scope and a price that holds before anything is booked."
+        supportingText="Send photos for a ballpark estimate over the phone. We'll come out, walk the property, and give you the final quote in person — before anything is booked."
       />
     </>
   );

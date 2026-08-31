@@ -11,8 +11,8 @@ export function HowItWorksSection() {
       <div className="container-page">
         <SectionHeader
           label="How It Works"
-          title="From first call to a cleared property"
-          intro="On-site quoting is required for accuracy — photos alone misrepresent scope. Here is exactly what happens at each step."
+          title="Photos first. Final quote on site."
+          intro="Send photos and we'll give you a ballpark estimate over the phone, usually the same day. The final quote is given in person, once we've walked the property. Here is exactly what happens at each step."
           action={
             <Link href="/how-it-works" className="link-editorial">
               Full process
@@ -31,12 +31,12 @@ export function HowItWorksSection() {
         <Reveal>
           <div className="mt-16 flex flex-col items-start justify-between gap-6 border-t border-heritage-black/12 pt-10 md:flex-row md:items-center">
             <p className="max-w-measure-lg text-body-base text-steel-gray">
-              Step one takes about two minutes. Send the property details and we&apos;ll follow
-              up to schedule the walkthrough.
+              Step one takes about two minutes. Send the property details and a few photos,
+              and we&apos;ll come back to you with an estimate.
             </p>
             <div className="flex shrink-0 flex-col gap-3 sm:flex-row">
               <Link href="/request-walkthrough" className="btn-primary">
-                Request a Walkthrough
+                Get a Free Estimate
                 <span aria-hidden="true" className="btn-arrow">
                   &rarr;
                 </span>

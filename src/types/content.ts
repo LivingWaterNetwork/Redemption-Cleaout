@@ -44,6 +44,20 @@ export type ServiceImage = {
   caption: string;
 };
 
+/**
+ * A named category inside a pillar service page. `id` doubles as the section
+ * anchor and deliberately matches the slug of the standalone service page it
+ * replaced, so the 301s in next.config.mjs can deep-link straight to it and
+ * the retired URL's ranking signal lands on the equivalent content.
+ */
+export type ServiceCategory = {
+  id: string;
+  name: string;
+  /** One-line plain-language definition. Rendered under the category H3. */
+  summary: string;
+  points: string[];
+};
+
 export type ServiceDefinition = {
   slug: string;
   name: string;
@@ -59,6 +73,8 @@ export type ServiceDefinition = {
   mayRequireSpecialist: string[];
   whoItsFor: string[];
   commonConditions: string[];
+  /** Sub-categories rendered as anchored sections on the pillar page. */
+  categories?: ServiceCategory[];
   process: ProcessStep[];
   relatedServiceSlugs: string[];
   faqs: ServiceFAQ[];
@@ -82,8 +98,11 @@ export type AudienceDefinition = {
 
 export type ServiceAreaDefinition = {
   slug: string;
-  cityName: string;
+  /** County name without the word "County" — e.g. "Oakland". */
+  countyName: string;
   stateAbbr: string;
+  /** Cities and communities covered. Drives the on-page list and local SEO. */
+  cities: string[];
   heroHeadline: string;
   metaDescription: string;
   localIntroduction: string;
@@ -109,6 +128,15 @@ export type ResourceDefinition = {
   summary: string;
   publishedAt: string;
   sections: { heading: string; body: string[] }[];
+};
+
+export type GalleryPhoto = {
+  src: string;
+  /** Required. Describes what the photo actually shows, not keywords. */
+  alt: string;
+  /** Short line shown under the photo in the gallery. */
+  caption: string;
+  category: "cleanout" | "demolition" | "crew";
 };
 
 export type FAQEntry = ServiceFAQ & {
