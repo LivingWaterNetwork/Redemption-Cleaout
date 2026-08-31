@@ -9,41 +9,40 @@ export const brightonMi: CityDefinition = {
     "Downtown Brighton and the Mill Pond",
     "Brighton Lake",
     "Woodland Lake",
-    "Ore Lake",
     "Grand River Avenue corridor",
     "Old US-23 and Hilton Road",
     "Challis Road",
   ],
   housingContext:
-    "Brighton splits three ways. The old village grid around Main Street and the Mill Pond is narrow-lot nineteenth-century frame houses with stone cellars and little in the way of a garage. Around Brighton Lake, Woodland Lake and Ore Lake sit former summer cottages, most winterised and added onto since. Past the city limits it turns to acreage: ranches and colonials with pole barns, detached shops and long gravel drives.",
+    "Brighton splits three ways. The old village grid around Main Street and the Mill Pond is narrow-lot frame houses with stone cellars and little in the way of a garage. Around Brighton Lake and Woodland Lake sit former summer cottages, most winterised and added onto since. Along Old US-23 and Grand River the frontage turns commercial — small shops, service bays and offices — with acreage behind it.",
   workContext:
-    "As much of the work here is outbuildings as houses. A pole barn or detached shop collects for decades — lumber, equipment, boats, sleds, feed, scrap steel — and emptying one has more in common with a small commercial job than with a garage. Lake properties bring the opposite problem: sheds, docks and stacked storage at the bottom of a lot that drops away from the road, so everything is carried up. Estate calls on the older village houses mean tight rooms, steep cellar stairs, and heirs working toward a listing date.",
+    "A cottage that was winterised and then lived in year-round holds two lifetimes of storage: seasonal gear in the crawl space, boats and motors under the deck, canvas and dock sections stacked along the shore. Because those lots fall away from the road, none of it wheels out — it is carried up. The village grid is a different job again: tight rooms, steep cellar stairs and no side yard to stage on. Old US-23 and Grand River carry small shops and offices, so tenant turnovers belong in the mix here alongside houses.",
   localConsiderations: [
-    "Pole barns and detached shops are the routine job here rather than the exception, and they hold several times what a suburban garage does",
+    "A cottage that was winterised and kept year-round stores decades of seasonal gear in crawl spaces and under decks — boats, motors, canvas, patio furniture — none of it visible from the rooms",
     "Lake lots often fall steeply from the road, so material is carried up to the truck instead of wheeled out on a level drive",
-    "Long gravel drives on the acreage properties soften after rain or a spring thaw, and we will stage nearer the road rather than rut a drive",
-    "Downtown houses near Main Street sit on tight lots with no side yard to work from, so loading happens off the street and takes longer to set up",
-    "Demolition requests around Brighton lean toward barns, shops, decks and boathouses more than interior gut-outs",
+    "Docks, hoists, boathouses and shoreline decks are what there is to take down on many of these lots, and they come apart in pieces carried up the same slope rather than dropped straight into a truck",
+    "Frontage along Old US-23 and Grand River is small shops, service bays and offices, so a tenant turnover between leases is as much a job here as a house is",
+    "Cottage additions went on piecemeal — an enclosed porch on piers, a room over a slab — so a partial teardown has to be scoped by which part is holding up what",
   ],
   faqs: [
     {
-      question: "Can you tear down an old pole barn on my property?",
+      question: "Can you take down an old boathouse, dock or lakeside deck?",
       answer:
-        "Yes. Pole barns, machine sheds, detached garages, decks and the concrete underneath them are all standard demolition work for us. We walk the building before quoting to see what is still stored inside and whether it has power or water run to it, because clearing it out comes first.",
+        "Yes. Boathouses, docks, hoists, decks and the concrete or piers under them are standard demolition work. We walk the structure before quoting to see what is still stored in it and whether power or water has been run out to it, because clearing it comes first.",
     },
     {
       question: "My place on the lake has a steep lot and a narrow drive. Can you still do the cleanout?",
       answer:
-        "Usually, yes — it is common around here. The truck stays where it can safely sit, often at the top of the drive or on the road, and the crew carries out from there. Mention the grade and the drive width when you send photos so the estimate reflects the extra handling, and we will confirm it at the on-site walkthrough.",
+        "Usually, yes — a lot of the lake lots here drop away from the road, and that is a handling problem rather than a stopper. The truck stays where it can safely sit, at the top of the drive or on the road, and the crew carries out from there. Mention the grade and the drive width with your photos so the estimate reflects it, and we confirm it at the on-site walkthrough.",
     },
     {
-      question: "I inherited a house outside Brighton and the barn is full. Do I need to sort through it first?",
+      question: "I inherited a cottage on the lake and it is full of somebody else's things. Do I have to sort it first?",
       answer:
-        "No. Pull out anything you want to keep and leave the rest where it sits. Walk us through what stays and what goes at the walkthrough, and we clear the house and the outbuildings together.",
+        "No. Pull out anything you want to keep and leave the rest where it sits. Walk us through what stays and what goes at the walkthrough, and the house, the crawl space and whatever is stacked along the shore get cleared together.",
     },
   ],
   metaDescription:
-    "Property cleanouts and demolition in Brighton, Michigan — lake cottages, estate clearing, pole barn and outbuilding teardowns. Photo estimate, quote on site.",
+    "Property cleanouts and demolition in Brighton, Michigan — lake cottage and estate clearing, boathouse, dock and deck teardowns. Photo estimate, quote on site.",
   primaryKeyword: "property cleanout Brighton MI",
   nearbySlugs: ["howell-mi", "novi-mi", "ann-arbor-mi"],
 };

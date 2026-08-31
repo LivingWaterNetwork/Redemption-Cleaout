@@ -9,40 +9,40 @@ export const howellMi: CityDefinition = {
     "Downtown Howell and the courthouse square",
     "Grand River Avenue",
     "Thompson Lake",
-    "Lake Chemung",
     "Latson Road and the I-96 interchange",
     "Oak Grove Road",
+    "Farmland toward Fowlerville",
   ],
   housingContext:
-    "Howell is the county seat and reads like one. The downtown grid around the courthouse is Victorians, gable-front frame houses and brick storefronts, most with stone-walled cellars and a detached garage reached from the back. Beyond that ring the pattern shifts to subdivisions built through the 1990s and 2000s off Latson and Oak Grove, year-round homes on Thompson Lake and Chemung, and working farmsteads sitting on ten or twenty acres.",
+    "Howell is the county seat and reads like one. The grid around the courthouse square is Victorians and gable-front frame houses with stone-walled cellars and a detached garage reached from behind, wrapped in brick commercial blocks. Beyond that ring come newer subdivisions off Latson and Oak Grove with attached garages and full basements, year-round homes on Thompson Lake, and working farmsteads out toward Fowlerville.",
   workContext:
-    "Estate clearing carries most of the volume. Downtown houses tend to have had one family in them a very long time, so a cleanout there means an attic, a low stone cellar and a detached garage, all worked by hand up narrow stairs and a back walk. Farm properties on the edge of town are a different job entirely — a house plus barns, machine sheds and whatever has been parked behind them for twenty years. Storefront and small-office turnovers along Grand River add steady commercial clearing between tenants.",
+    "Being the county seat shapes the calls. Probate is handled at the courthouse in the middle of town, so a downtown estate cleanout is often working to a court date rather than a listing date, and an heir living elsewhere wants the attic, the stone cellar and the back-lot garage emptied in one pass. The brick blocks facing the square are part of the same fabric: narrow storefronts and upstairs offices that empty out between tenants. Out past the subdivisions, a farmstead is a house plus barns and machine sheds, scoped building by building.",
   localConsiderations: [
+    "The county courthouse sets the clock on downtown estate work — a probate date, not a realtor's listing date, decides when the house has to be empty",
     "Old cellars downtown have low headroom and steep, tight stairs, so everything comes up by hand — slower than a walkout basement of the same size",
-    "Several downtown lots are served from a rear alley or service drive, which means the crew loads from behind the house instead of the street",
-    "Farm cleanouts almost always include buildings the owner has not opened in years, so walking every structure before the quote matters more here than in a subdivision",
-    "Barn and machine-shed demolition is common, and the contents have to be cleared out before the structure can come down",
-    "Lake homes on Thompson Lake and Chemung often have no room to turn a trailer, so truck placement gets planned at the walkthrough",
+    "Some downtown blocks are served from a rear alley, so the crew may load from behind the house rather than the street, and access gets confirmed at the walkthrough",
+    "The storefront blocks on the square have narrow fronts, upstairs offices and no rear dock, so a tenant turnover empties down one stair to the kerb",
+    "Farm cleanouts often involve buildings nobody has opened in years, so every structure gets walked before the quote and none of it is guessed at from the yard",
   ],
   faqs: [
     {
       question: "Do you clear the barns and sheds as well as the house?",
       answer:
-        "Yes, and on a Howell-area farm property the outbuildings are usually the bigger half of the job. Barns, machine sheds, lean-tos and whatever is parked between them all get counted in the same cleanout.",
+        "Yes. On a farm property the outbuildings can easily be the bigger half of the job — barns, machine sheds, lean-tos and whatever is parked between them all get counted in the same cleanout.",
     },
     {
-      question: "How do you price a property with three buildings full of stuff?",
+      question: "The estate is in probate. Can the cleanout wait on the court?",
       answer:
-        "Send photos and we will give you an estimate over the phone so you know roughly where it lands. The final quote is given in person after we walk the house and every outbuilding, because barns rarely look on camera the way they look from the doorway.",
+        "Yes. Tell us at the walkthrough what date you are working toward and who has authority to sign off, and we scope the job now and hold it until the personal representative can go ahead.",
     },
     {
       question: "There is no driveway at my downtown house. Where does the truck go?",
       answer:
-        "On the street, or in the rear alley where the block has one. We will look at access at the walkthrough and work out whether the crew loads from the front porch or the back, so nothing is blocked longer than it has to be.",
+        "On the street, or in the rear alley where the block has one. We look at access at the walkthrough and work out whether the crew loads from the front porch or the back, so nothing is blocked longer than it has to be.",
     },
   ],
   metaDescription:
-    "Property cleanouts and demolition in Howell, Michigan — farmhouse and estate clearing, barn teardowns, downtown cellars. Photo estimate, on-site quote.",
+    "Property cleanouts and demolition in Howell, Michigan — probate and estate clearing, courthouse-square storefronts, farm barns. Photo estimate, on-site quote.",
   primaryKeyword: "property cleanout Howell MI",
   nearbySlugs: ["brighton-mi", "novi-mi", "ann-arbor-mi"],
 };
