@@ -24,7 +24,7 @@ export function Footer() {
           </p>
           <div className="flex shrink-0 flex-col gap-3 sm:flex-row">
             <Link href="/request-walkthrough" className="btn-primary">
-              Request a Walkthrough
+              Get a Free Estimate
               <span aria-hidden="true" className="btn-arrow">
                 &rarr;
               </span>
@@ -155,7 +155,7 @@ export function Footer() {
                   href="/projects"
                   className="text-clean-white/70 transition-colors duration-micro hover:text-redemption-red"
                 >
-                  Projects
+                  Previous Work
                 </Link>
               </li>
               {secondaryNav.map((item) => (

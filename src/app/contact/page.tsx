@@ -77,7 +77,7 @@ export default function ContactPage() {
                       href="/request-walkthrough"
                       className="font-display text-3xl font-semibold text-heritage-black transition-colors duration-micro hover:text-redemption-red"
                     >
-                      Request a walkthrough
+                      Get a free estimate
                     </Link>
                     <p className="mt-2 text-sm text-steel-gray">
                       Send the property details and we&apos;ll follow up to schedule.

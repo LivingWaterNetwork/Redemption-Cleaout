@@ -95,9 +95,23 @@ and update the linked content file when a decision is made.
 - [ ] **Official business email** — no business email is published anywhere
       on this site; only phone/text.
 - [ ] **Authentic testimonials** — `src/content/testimonials.ts` is
-      intentionally empty. No fabricated reviews exist anywhere on this site.
+      intentionally empty and no fabricated reviews exist anywhere on this
+      site. Confirmed 2026-08-31: past clients have agreed to leave Google
+      reviews once the Business Profile is live, so the blocker is the GBP,
+      not the clients. `/reviews` now carries a "Leave a Google Review" button
+      that appears the moment `NEXT_PUBLIC_GOOGLE_REVIEW_URL` is set — use the
+      **write-a-review** short link, not the listing URL. Adding a written
+      testimonial to the site is one entry in `testimonials.ts`; the page
+      switches out of its empty state automatically.
 - [ ] **Social URLs** — only Instagram (`@redemption_cleanoutservices`) is
       published, per the brief. Confirm if others should be added.
+- [x] **Property-owner permission for job photography — GRANTED.** Confirmed
+      2026-08-31: permission is held from every client whose property appears.
+      This clears the last gate on publishing job photos, including captions
+      naming a city or property type if the owner later supplies those facts
+      (they must come from Dante — they cannot be read off a photograph).
+      It does **not** extend to the Grace Centers of Hope frames below: that
+      approval has to come from Grace Centers, not from a property owner.
 - [x] **Project photography** — the client asked for a plain gallery of every
       photo with no per-project pages, and confirmed more photos are coming.
       All 19 job photos are now published on `/projects` from

@@ -12,10 +12,9 @@ export type AnalyticsEvent =
   | { name: "click_request_walkthrough"; params?: { location: string } }
   | { name: "jobber_form_view" }
   | { name: "jobber_form_submit" }
-  | { name: "click_professional_partner"; params?: { audience: string } }
   | { name: "view_service"; params: { service: string } }
-  | { name: "view_project"; params: { project: string } }
   | { name: "click_google_reviews" }
+  | { name: "click_leave_review" }
   | { name: "download_guide"; params: { guide: string } };
 
 declare global {

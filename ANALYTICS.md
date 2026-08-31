@@ -30,20 +30,22 @@ in the codebase.
 |---|---|---|
 | `click_call` | A call link/button is clicked | Header, MobileActionBar, CallToAction, JobberRequestForm fallback |
 | `click_text` | A text link/button is clicked | MobileActionBar, CallToAction |
-| `click_request_walkthrough` | A "Request a Walkthrough" CTA is clicked | Header, MobileActionBar, CallToAction |
+| `click_request_walkthrough` | A "Get a Free Estimate" CTA is clicked | Header, MobileActionBar, CallToAction |
 | `jobber_form_view` | The Jobber embed renders (config present) | JobberRequestForm |
 | `jobber_form_submit` | Not currently fired — see JOBBER_SETUP.md §4 | JobberRequestForm (reserved) |
-| `click_professional_partner` | "Discuss a Referral Partnership" is clicked | ProfessionalPartnerSection |
 | `view_service` | Reserved for a service page view — not yet fired automatically to avoid double-counting with GA4's own pageview | — |
-| `view_project` | Reserved for a project detail view once `/projects` has real entries | — |
-| `click_google_reviews` | Reserved for the "View Google Reviews" link | ReviewSection (not yet wired) |
+| `click_leave_review` | The "Leave a Google Review" button is clicked | ReviewSection (fires once `NEXT_PUBLIC_GOOGLE_REVIEW_URL` is set) |
+| `click_google_reviews` | The "See the Google listing" link is clicked | ReviewSection (fires once `NEXT_PUBLIC_GOOGLE_BUSINESS_URL` is set) |
 | `download_guide` | Reserved for a future downloadable PDF guide | — |
 
-Several events are defined but not yet fired everywhere the brief lists
-them (`view_service`, `view_project`, `click_google_reviews`,
-`download_guide`) because the underlying content (project entries, a
-downloadable guide) doesn't exist yet — wire them up when that content
-ships, using the same `trackEvent()` helper.
+`click_leave_review` is the one to watch once the Google Business Profile is
+live — it measures whether the site actually feeds the review engine, which is
+the stated plan for building review volume.
+
+`view_service` and `download_guide` are defined but not yet fired, because the
+underlying content doesn't exist yet — wire them up when it ships, using the
+same `trackEvent()` helper. (`click_professional_partner` and `view_project`
+were removed when the who-we-serve pages and per-project pages were retired.)
 
 ## Privacy rule
 
