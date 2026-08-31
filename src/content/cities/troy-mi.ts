@@ -41,7 +41,7 @@ export const troyMi: CityDefinition = {
     },
   ],
   metaDescription:
-    "Property cleanouts and demolition in Troy, Michigan — estate, foreclosure and commercial clearing, interior gut-outs, and full basement and garage cleanouts. Estimates from photos, final quote on site.",
+    "Property cleanouts and demolition in Troy, Michigan — estate, foreclosure and commercial clearing, interior gut-outs, and full basement and garage cleanouts.",
   primaryKeyword: "property cleanout Troy MI",
   nearbySlugs: ["rochester-hills-mi", "royal-oak-mi", "warren-mi", "sterling-heights-mi"],
 };

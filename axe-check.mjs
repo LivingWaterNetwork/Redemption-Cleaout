@@ -11,6 +11,7 @@ const routes = [
   "/services/demolition",
   "/service-areas",
   "/service-areas/oakland-county-mi",
+  "/service-areas/wayne-county-mi/detroit-mi",
   "/how-it-works",
   "/request-walkthrough",
   "/about",

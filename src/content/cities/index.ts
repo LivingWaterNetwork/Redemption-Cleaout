@@ -1,5 +1,31 @@
 import type { CityDefinition } from "@/types/content";
+import { annArborMi } from "./ann-arbor-mi";
+import { brightonMi } from "./brighton-mi";
+import { cantonMi } from "./canton-mi";
+import { clintonTownshipMi } from "./clinton-township-mi";
+import { dearbornMi } from "./dearborn-mi";
+import { detroitMi } from "./detroit-mi";
+import { farmingtonHillsMi } from "./farmington-hills-mi";
+import { howellMi } from "./howell-mi";
+import { livoniaMi } from "./livonia-mi";
+import { marysvilleMi } from "./marysville-mi";
+import { monroeMi } from "./monroe-mi";
+import { noviMi } from "./novi-mi";
+import { portHuronMi } from "./port-huron-mi";
+import { redfordMi } from "./redford-mi";
+import { rochesterHillsMi } from "./rochester-hills-mi";
+import { rochesterMi } from "./rochester-mi";
+import { royalOakMi } from "./royal-oak-mi";
+import { salineMi } from "./saline-mi";
+import { shelbyTownshipMi } from "./shelby-township-mi";
+import { southfieldMi } from "./southfield-mi";
+import { stClairShoresMi } from "./st-clair-shores-mi";
+import { sterlingHeightsMi } from "./sterling-heights-mi";
+import { temperanceMi } from "./temperance-mi";
 import { troyMi } from "./troy-mi";
+import { warrenMi } from "./warren-mi";
+import { westlandMi } from "./westland-mi";
+import { ypsilantiMi } from "./ypsilanti-mi";
 
 /**
  * City landing pages, nested under their county.
@@ -9,7 +35,33 @@ import { troyMi } from "./troy-mi";
  * the slug, then re-run the script.
  */
 export const cities: CityDefinition[] = [
+  annArborMi,
+  brightonMi,
+  cantonMi,
+  clintonTownshipMi,
+  dearbornMi,
+  detroitMi,
+  farmingtonHillsMi,
+  howellMi,
+  livoniaMi,
+  marysvilleMi,
+  monroeMi,
+  noviMi,
+  portHuronMi,
+  redfordMi,
+  rochesterHillsMi,
+  rochesterMi,
+  royalOakMi,
+  salineMi,
+  shelbyTownshipMi,
+  southfieldMi,
+  stClairShoresMi,
+  sterlingHeightsMi,
+  temperanceMi,
   troyMi,
+  warrenMi,
+  westlandMi,
+  ypsilantiMi,
 ];
 
 export function getCityBySlug(slug: string): CityDefinition | undefined {
