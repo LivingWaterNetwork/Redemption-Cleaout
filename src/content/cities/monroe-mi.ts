@@ -14,21 +14,21 @@ export const monroeMi: CityDefinition = {
     "North Dixie Highway toward Sterling State Park",
   ],
   housingContext:
-    "Monroe is old for this region. The streets around downtown and the River Raisin hold nineteenth-century frame and brick houses — tall ceilings, walk-up attics, stone and rubble-walled cellars, narrow side drives and detached garages set well back on the lot. Push out toward Telegraph and Custer and the stock turns postwar: bungalows, small ranches and later ranch subdivisions on flatter, wider parcels.",
+    "Monroe is old for this region, and the blocks around Loranger Square were laid out long before anyone planned for a car: houses sit close to the walk, lot lines are narrow, and what garage there is stands at the back of the parcel. Out toward Telegraph and Custer the stock turns postwar — bungalows, small ranches and later subdivisions on flatter, wider ground.",
   workContext:
-    "Much of the residential work here is generational. A house has been in one family since the mill and plant years, and what comes out is an attic, a cellar and a back garage filled across decades. Older homes also bring interior gut-outs — plaster and lath, layered flooring, dated kitchens — usually before a sale or an investor rehab. Detached garages and back sheds that have outlived the house are common demolition calls, as are decks and slab pours on lots that flood-prone ground has been unkind to.",
+    "Much of the residential work here is generational. A house has been in one family for decades, and what comes out is an attic, a cellar and a back garage filled across that time. The river sets the rest of it: on the low streets either side of the Raisin, basements have taken water more than once, so contents come out damp, heavy and dirtier than the photos suggested. Demolition calls run to back garages and sheds that outlived the house, along with decks and concrete slabs that have heaved or cracked on low, wet ground.",
   localConsiderations: [
-    "Cellars under the oldest houses are shallow with steep, narrow stairs, so contents come up by hand rather than on a cart",
-    "Downtown and near-river lots often have a single narrow drive and a garage at the back of the parcel, which sets where the truck can sit",
-    "Homes inside the older historic streets need care around porches, trim and original openings during an interior gut-out",
     "Low-lying ground near the River Raisin means damp or previously flooded basements, and soaked contents are heavier and dirtier than they look in photos",
+    "The old downtown grid predates driveways, so a single narrow side drive or the street itself is the only place a truck can stand",
+    "Homes inside the older historic streets need care around porches, trim and original openings during an interior gut-out",
+    "Back garages and sheds on the near-river lots are reached across grass and soft ground, so how wet the yard is decides whether a machine goes in or the work is done by hand",
     "Rural-edge properties north and west of the city carry pole barns and outbuildings that are separate demolition jobs from the house",
   ],
   faqs: [
     {
       question: "Can you clear a house near downtown Monroe with no driveway to speak of?",
       answer:
-        "Yes. On the older streets we work off the street or the narrow side drive and carry out, and we bring a truck sized to the access rather than the biggest one we own. Point out the tight spots at the walkthrough and we plan around them.",
+        "Yes. On the streets around Loranger Square we work off the road or the narrow side drive and carry out, and we bring a truck sized to the access rather than the biggest one we own. Point out the tight spots at the walkthrough and we plan around them.",
     },
     {
       question: "Our basement took water. Will you still take the contents out?",
