@@ -109,28 +109,38 @@ pip install pillow pillow-heif
 python3 tools/import-photos.py ~/Downloads/"Demolition 1" --prefix demolition-teardown
 ```
 
-It writes progressive JPEGs capped at 2400px on the long edge into
+It writes progressive JPEGs capped at 1600px on the long edge (matching the
+existing library) into
 `public/images/photos` and prints ready-to-paste `gallery.ts` entries with the
 alt text left as TODO — somebody has to look at each photo and describe it.
 
 It also **strips EXIF**, which matters: iPhones embed GPS coordinates in every
 photo, and publishing those would publish the customer's address.
 
-## Waiting in Google Drive
+## The August 2026 commercial gut-out (published)
 
-`Redemption Cleanouts / Photo/Video / Demolition 1` (shared by the client
-2026-08-31) holds the recent larger demolition job as a genuine matched set:
+All 13 frames from `Redemption Cleanouts / Photo/Video / Demolition 1` are on
+the site, named `demolition-teardown-before-01..08` and
+`demolition-teardown-after-01..05`, in that order in `gallery.ts`.
 
-- **Before** — 8 photos, shot 2026-08-21: `IMG_7067`, `7068`, `7071`, `7072`,
-  `7074`, `7077`, `7080`, `7082`
-- **After** — 5 photos, shot 2026-08-27: `IMG_7121`, `7123`, `7124`, `7125`,
-  `7126`
+- **Before** (shot 2026-08-21, from `IMG_7067/7068/7071/7072/7074/7077/7080/7082`)
+  — an intact commercial office suite: corridor, private offices, washroom,
+  suspended tile ceilings, carpet.
+- **After** (shot 2026-08-27, from `IMG_7121/7123/7124/7125/7126`) — the same
+  building stripped to bare block walls, exposed ductwork and concrete slab.
 
-These are the photos the demolition page should lead with. They are also the
-site's first real before/after pair for demolition.
+`demolition-teardown-after-01.jpg` is the demolition page's lead image.
+
+**How they were pulled**, since it is not obvious: the Drive MCP tool returns
+file bytes as base64 in the tool result, which is far too large for a
+multi-megabyte photo. The harness spills any oversized tool result to a file
+under the session's `tool-results/` directory, so the recovery is
+`jq -r '.content' <that file> | base64 -d > out.heic` — the bytes never pass
+through the conversation. Same trick works for any future Drive binary.
 
 The parent `Photo/Video` folder holds roughly 40 unique stills (many are stored
-twice as `IMG_xxxx` and `IMG_xxxx 2`), of which 19 are published. The remainder
+twice as `IMG_xxxx` and `IMG_xxxx 2`), of which 19 are published (plus the 13
+gut-out frames above, which came from the `Demolition 1` subfolder). The remainder
 has not been reviewed frame by frame — some are phone screenshots, and the two
 Grace Centers of Hope frames are held pending approval (`CONTENT_APPROVALS.md`).
 There are also 7 unique `.MOV` clips; no video is used anywhere on the site.

@@ -10,8 +10,9 @@ src/content/gallery.ts.
     python3 tools/import-photos.py ~/Downloads/Demolition\\ 1 --prefix demolition-teardown
 
 Handles HEIC, JPG, and PNG input. Output is progressive JPEG, long edge capped
-at 2400px, stripped of EXIF — which also strips the GPS coordinates iPhones
-embed, so a job photo never publishes the customer's address.
+at 1600px, rotated upright from the EXIF orientation flag, then stripped of all
+EXIF — including the GPS coordinates phones can embed, so a job photo never
+publishes the customer's address.
 
 Writes nothing to gallery.ts: alt text has to describe what is actually in the
 frame, so a person still has to look at each photo and write it.
@@ -22,14 +23,15 @@ import pathlib
 import sys
 
 try:
-    from PIL import Image
+    from PIL import Image, ImageOps
     import pillow_heif
 except ImportError:
     sys.exit("Missing dependencies. Run: pip install pillow pillow-heif")
 
 pillow_heif.register_heif_opener()
 
-MAX_EDGE = 2400
+# Matches the existing library in public/images/photos.
+MAX_EDGE = 1600
 QUALITY = 82
 SUFFIXES = {".heic", ".heif", ".jpg", ".jpeg", ".png"}
 OUT_DIR = pathlib.Path("public/images/photos")
@@ -37,6 +39,9 @@ OUT_DIR = pathlib.Path("public/images/photos")
 
 def convert(source: pathlib.Path, destination: pathlib.Path) -> tuple[int, int]:
     with Image.open(source) as image:
+        # Phones record rotation as an EXIF flag rather than rotating the pixels.
+        # Apply it before the EXIF is dropped, or portrait shots publish sideways.
+        image = ImageOps.exif_transpose(image)
         image = image.convert("RGB")
         image.thumbnail((MAX_EDGE, MAX_EDGE), Image.LANCZOS)
         # No exif= argument, so EXIF (including GPS) is dropped.

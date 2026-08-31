@@ -17,6 +17,89 @@ import type { GalleryPhoto } from "@/types/content";
  * screen-reader user gets instead of the image.
  */
 export const galleryPhotos: GalleryPhoto[] = [
+  // ---- Commercial interior gut-out, August 2026 -------------------------
+  // The largest job documented on the site: a fully partitioned office suite
+  // taken back to bare block and slab. Shot 21 August (before) and 27 August
+  // (after), so the pairing is the same building six days apart.
+  {
+    src: "/images/photos/demolition-teardown-before-02.jpg",
+    alt: "A Redemption crew member walking the main corridor of a carpeted commercial office suite during the walkthrough before demolition.",
+    caption: "Commercial gut-out — walking the suite before work began.",
+    category: "demolition",
+  },
+  {
+    src: "/images/photos/demolition-teardown-before-05.jpg",
+    alt: "The main corridor of a commercial office suite, lined with doorways and a built-in counter, before demolition.",
+    caption: "The corridor and offices as we found them.",
+    category: "demolition",
+  },
+  {
+    src: "/images/photos/demolition-teardown-before-04.jpg",
+    alt: "A wide carpeted office area opening onto a corridor beneath a suspended tile ceiling, with a lit exit sign, before demolition.",
+    caption: "Open office area, suspended ceiling still in place.",
+    category: "demolition",
+  },
+  {
+    src: "/images/photos/demolition-teardown-before-01.jpg",
+    alt: "A carpeted commercial office with painted wall panelling and a suspended tile ceiling, before demolition.",
+    caption: "One of the private offices, before.",
+    category: "demolition",
+  },
+  {
+    src: "/images/photos/demolition-teardown-before-03.jpg",
+    alt: "A carpeted office seen through its doorway, with a window looking out to the parking lot, before demolition.",
+    caption: "Looking into an office off the corridor.",
+    category: "demolition",
+  },
+  {
+    src: "/images/photos/demolition-teardown-before-07.jpg",
+    alt: "A private office with painted panelling, a wall vent and carpet, before the interior was stripped.",
+    caption: "Painted panelling and carpet throughout.",
+    category: "demolition",
+  },
+  {
+    src: "/images/photos/demolition-teardown-before-08.jpg",
+    alt: "A second private office with a ceiling vent and carpeted floor, before the interior was stripped.",
+    caption: "Every room came out, floor to ceiling.",
+    category: "demolition",
+  },
+  {
+    src: "/images/photos/demolition-teardown-before-06.jpg",
+    alt: "A tiled washroom with a vanity, mirror and toilet inside the commercial suite, before demolition.",
+    caption: "Fixtures and fittings included.",
+    category: "demolition",
+  },
+  {
+    src: "/images/photos/demolition-teardown-after-01.jpg",
+    alt: "The same commercial interior stripped to bare block walls, exposed ductwork and a concrete slab after the gut-out.",
+    caption: "The same building, gutted to bare block and slab.",
+    category: "demolition",
+  },
+  {
+    src: "/images/photos/demolition-teardown-after-05.jpg",
+    alt: "The gutted commercial interior looking back toward the entrance, with services and a water heater left standing against bare block.",
+    caption: "Partitions, ceilings and flooring all removed.",
+    category: "demolition",
+  },
+  {
+    src: "/images/photos/demolition-teardown-after-03.jpg",
+    alt: "A long open span of bare block wall and concrete floor where the corridor and offices used to be.",
+    caption: "Where the corridor and offices used to be.",
+    category: "demolition",
+  },
+  {
+    src: "/images/photos/demolition-teardown-after-04.jpg",
+    alt: "The stripped commercial interior showing the full depth of the building, with framing openings left in place.",
+    caption: "Full depth of the building, opened up.",
+    category: "demolition",
+  },
+  {
+    src: "/images/photos/demolition-teardown-after-02.jpg",
+    alt: "The gutted suite looking toward the rear windows, with the concrete slab exposed and the ceiling structure open.",
+    caption: "Left clean and ready for the next build-out.",
+    category: "demolition",
+  },
+  // ---- end of the August 2026 gut-out -----------------------------------
   {
     src: "/images/photos/full-property-cleanout-removal.jpg",
     alt: "Furniture, mattresses, and bagged household contents staged for removal alongside a home during a full property cleanout.",

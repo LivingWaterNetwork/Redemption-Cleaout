@@ -120,16 +120,19 @@ and update the linked content file when a decision is made.
       gallery as built. If a photo is ever labelled with an address, owner, or
       client name, that specific caption needs the owner's written permission
       first.
-- [ ] **The demolition job photos are in Drive but not on the site.** The
-      client uploaded them to `Photo/Video / Demolition 1` on 2026-08-31: 8
-      before frames (2026-08-21) and 5 after frames (2026-08-27). They are
-      HEIC, which browsers cannot display, and they cannot be pulled through
-      the Drive tooling available to this session — the files are 2–5 MB each
-      and the API returns them base64-encoded as text. **Someone with Drive
-      access has to download that folder and run `tools/import-photos.py`**
-      (see `IMAGE_REQUIREMENTS.md`); after that, publishing is a paste into
-      `src/content/gallery.ts`. Until then the demolition page leads with the
-      deck photo, which undersells the work the page now describes.
+- [x] **The demolition job photos — PUBLISHED.** All 13 frames from
+      `Photo/Video / Demolition 1` are on the site: 8 before (shot 2026-08-21)
+      and 5 after (2026-08-27), converted from HEIC and added to
+      `src/content/gallery.ts`. `demolition-teardown-after-01.jpg` is now the
+      demolition page's lead image, replacing the deck photo.
+      What they actually show, which matters for how the page is written: a
+      fully partitioned **commercial office suite** — corridor, private
+      offices, washroom, suspended ceilings, carpet — taken back to bare block
+      walls and concrete slab. It is a large interior gut-out, not a structure
+      teardown. Any copy implying these photos show a teardown would be wrong.
+      Checked for GPS: these particular files carry **no** GPS EXIF, so nothing
+      was exposed. `tools/import-photos.py` strips EXIF regardless, which is
+      the safeguard for future photos that do carry it.
 - [ ] **Donation-partner photography** — two strong frames in Drive show a
       **Grace Centers of Hope** thrift-store truck being loaded with donated
       items. They are genuine and support the donation story, but publishing

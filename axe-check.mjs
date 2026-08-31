@@ -31,7 +31,16 @@ for (const width of [390, 1440]) {
       viewport: { width, height: width < 500 ? 844 : 1000 },
       isMobile: width < 500,
     });
-    await page.goto(`http://127.0.0.1:3000${route}`, { waitUntil: "networkidle" });
+    // "load", not "networkidle": the gallery holds 30+ photos and Next
+    // generates a fresh optimized variant per viewport width on first request,
+    // so the network never goes idle within the default timeout on a cold
+    // cache. Waiting for load plus a short settle gives axe a fully laid-out
+    // DOM without making the check hostage to image optimization.
+    await page.goto(`http://127.0.0.1:3000${route}`, {
+      waitUntil: "load",
+      timeout: 60_000,
+    });
+    await page.waitForTimeout(600);
     await page.addScriptTag({ path: axePath });
     const results = await page.evaluate(async () =>
       // WCAG 2.2 AA rule set.

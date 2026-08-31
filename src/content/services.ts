@@ -200,9 +200,9 @@ export const services: ServiceDefinition[] = [
     shortName: "Demolition",
     priority: 2,
     image: {
-      src: "/images/photos/light-demolition-deck-removal.jpg",
-      alt: "A Redemption crew member cutting apart a rotted deck frame with a reciprocating saw during a demolition job.",
-      caption: "A deck cut down and hauled out — demolition and debris removal handled by the same crew.",
+      src: "/images/photos/demolition-teardown-after-04.jpg",
+      alt: "A commercial interior stripped to bare block walls and concrete slab after a full gut-out, with the framing openings left in place.",
+      caption: "A commercial suite taken back to bare block and slab — partitions, ceilings, flooring and fixtures out, debris hauled by the same crew.",
     },
     primaryKeyword: "demolition contractor metro detroit",
     heroHeadline: "Demolition",
