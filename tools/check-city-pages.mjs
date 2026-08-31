@@ -20,6 +20,12 @@ const files = readdirSync(DIR).filter((f) => f.endsWith(".ts") && f !== "index.t
 const problems = [];
 const fail = (file, kind, msg) => problems.push({ file, kind, msg });
 
+// Quantities written as words evade a digit check. A verification pass found
+// "twenty-eight to forty feet of frontage" sitting in a page that this script
+// had passed, so measurements spelled out are caught here too.
+const SPELLED_NUMBER =
+  /\b(?:one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|twenty|thirty|forty|fifty|sixty|seventy|eighty|ninety|hundred)[a-z-]*\s+(?:to\s+[a-z-]+\s+)?(?:feet|foot|ft|percent|per cent|miles|minutes|acres|dollars)\b/i;
+
 // Marketing filler the house voice does not use.
 const PUFFERY = [
   "nestled", "vibrant", "premier", "trusted partner", "look no further",
@@ -106,6 +112,29 @@ for (const file of files) {
     const m = src.match(re);
     if (m) fail(file, "fabrication", `unverifiable claim: "${m[0]}"`);
   }
+  const spelled = src.match(SPELLED_NUMBER);
+  if (spelled) {
+    fail(file, "fabrication", `measurement stated as fact: "${spelled[0]}"`);
+  }
+
+  // Claims about Redemption's own history or mix of work in this city. Nothing
+  // has been verified about where the company has actually worked.
+  const TRACK_RECORD = [
+    /\b(?:usually|often|typically|commonly|frequently|routinely|regularly|mostly)\b[^.]{0,60}\b(?:we|our crew|our)\b/i,
+    /\bit is common (?:around here|here)\b/i,
+    /\badd(?:s)? steady\b/i,
+    /\bhalf of what we do\b/i,
+    /\b(?:most|much|many) of (?:our|the) (?:work|jobs|calls) (?:here|in)\b/i,
+    /\bsame[- ]day\b/i,
+  ];
+  for (const re of TRACK_RECORD) {
+    const m = src.match(re);
+    if (m) {
+      // "review", not "fabrication": some of these are ordinary prose. A hit
+      // means a person has to judge it, not that it is automatically wrong.
+      fail(file, "review", `claims something about our own work: "${m[0].trim()}"`);
+    }
+  }
 
   // Quoting and coverage facts must not be contradicted.
   if (/\b(?:don'?t|do not|never|won'?t|cannot|can'?t)\s+quote\s+from\s+photos/i.test(src)) {
@@ -149,6 +178,9 @@ for (let i = 0; i < parsed.length; i++) {
     let shared = 0;
     for (const s of a) if (b.has(s)) shared++;
     const overlap = shared / Math.min(a.size, b.size);
+    // A shingle check catches copy-paste, not a page that follows a sibling's
+    // argument beat for beat in different words. Most doorway findings in the
+    // 2026-08-31 review were the latter, so a clean run here proves little.
     if (overlap > 0.18) {
       fail(
         parsed[i].file,
@@ -174,7 +206,12 @@ for (const p of parsed) {
 const byKind = problems.reduce((acc, p) => ((acc[p.kind] = (acc[p.kind] || 0) + 1), acc), {});
 
 if (problems.length === 0) {
-  console.log(`${parsed.length} city pages checked — all clean.`);
+  console.log(`${parsed.length} city pages checked — no mechanical problems.`);
+  console.log(
+    "This is a floor, not sign-off: it cannot judge whether a place name is\n" +
+      "attributed to the right city, or whether a page merely restructures a\n" +
+      "sibling's argument. Those need a reader. See CITY_PAGE_FIXES.md.",
+  );
 } else {
   for (const p of problems) console.log(`  [${p.kind}] ${p.file}: ${p.msg}`);
   console.log(`\n${problems.length} problem(s) across ${parsed.length} pages:`, byKind);
