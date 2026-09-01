@@ -3,15 +3,21 @@
 Written for whoever picks this up next (human or AI). Read this first, then
 `README.md` for setup and `DESIGN_SYSTEM.md` for anything visual.
 
-Last updated: 2026-08-31 · restructured to two services, full Metro Detroit
-coverage, and 27 city landing pages (see §0).
+Last updated: 2026-09-01 · restructured site and all 27 city pages are
+**live in production** (see §0).
 
 ---
 
-## 0. Read this first — state as of 2026-08-31
+## 0. Read this first — state as of 2026-09-01
 
-Branch: `claude/home-page-redesign-oo7i5p`, pushed, working tree clean.
-Nothing is deployed. The public site is still untouched.
+**The site is live.** `main` is at `b1c46d0` and Vercel is serving it at
+`redemptioncleanoutservices.com` over HTTPS. Verified 2026-09-01: `robots.txt`
+returns `Allow: /` with no `X-Robots-Tag`, `sitemap.xml` lists **53 URLs**, the
+two service pages, all seven county pages and all 27 city pages return 200, and
+the retired `/who-we-serve` and `/services/estate-cleanouts` return 308s.
+
+The earlier note here — "nothing is deployed, the public site is still
+untouched" — was written before the launch merge and was stale.
 
 **Everything below §0 that describes eight service pages, a "Who We Serve"
 tree, or two Rochester city pages is superseded.** So are the equivalent parts
@@ -63,17 +69,14 @@ Sandbox notes for whoever picks this up: LibreOffice needs
 bundled Chromium is at a different build than the pinned Playwright expects, so
 scripts need `executablePath: "/opt/pw-browsers/chromium-1194/chrome-linux/chrome"`.
 
-### ⚠ The city pages are NOT publishable yet
+### ✅ The city pages were fixed before launch
 
-They are written and committed, and 26 of the 27 have outstanding problems:
-**21 fabrications and 26 doorway-pattern findings**, listed per county with a
-fix for each in **`CITY_PAGE_FIXES.md`**. That file is the first job for
-whoever picks this up.
-
-Do not launch with them as they stand. Either fix them (one agent per county,
-each given only its own section of that file) or remove the unfixed ones from
-`src/content/cities/` and re-run `node tools/build-city-index.mjs` — a page
-that is absent costs nothing, and a fabricated one costs credibility.
+The independent review found **79 problems across 26 of the 27** — fabricated
+local geography, passages interchangeable between sibling pages, claims about
+work the company has not confirmed doing, and three tone problems. All 79 are
+fixed, one commit per county, and the findings and their fixes are recorded in
+**`CITY_PAGE_FIXES.md`**. A follow-up pass corrected an escaped-separator bug
+and rewrote 46 British spellings across twenty city files.
 
 `tools/check-city-pages.mjs` passed all 27 before that review. It is a floor,
 not sign-off; `CITY_PAGE_FIXES.md` explains exactly what it cannot see.
@@ -95,7 +98,8 @@ any good — that still needs a human read.
 
 ### Still outstanding
 
-1. **Demolition scope specifics.** Licensing is confirmed in general terms. Two
+1. **Demolition scope specifics.** Licensing and insurance are **confirmed**
+   (2026-09-01) in general terms. Two
    open questions in `CONTENT_APPROVALS.md`: whether Michigan requires the
    licence number in advertising (add it to `business.ts` if so), and whether a
    certificate of insurance should be downloadable. The page claims work up to
@@ -104,27 +108,36 @@ any good — that still needs a human read.
    otherwise.
 2. **About page and mission.** Untouched by request; the client is rewriting it
    and sending crew photos.
-3. **Google Business Profile.** The single biggest lever on local ranking and
-   the blocker on reviews. `LOCAL_SEO_PLAYBOOK.md` Priority 1.
+3. **Google Business Profile — created 2026-09-01, awaiting verification.** A
+   new service-area listing exists with both categories, all seven counties,
+   24-hour availability, the phone number, the website and a description, plus
+   two job photos. The postcard carrying the verification code is in transit to
+   429 S Main St; until that code is entered the listing is invisible in Search
+   and Maps. The logo and three more photos are staged and must be added by
+   hand. The old Business Manager account was an orphaned shell with no listing
+   attached — decide whether to delete it. See `GBP_SETUP.md` on
+   `claude/redemption-gbp-optimization-mggx9w` and `LOCAL_SEO_PLAYBOOK.md`
+   Priority 1.
 4. **Jobber has no photo-upload field**, so the request page tells people to
    text photos. That is a Jobber setting, not a code change.
-5. **City page fixes** — see the warning above and `CITY_PAGE_FIXES.md`. This is
-   the largest outstanding item and it blocks launching the city pages.
+5. ~~City page fixes~~ — **done.** All 79 findings are fixed and the pages are
+   live. `CITY_PAGE_FIXES.md` is now a record, not a task list.
 6. **Audit findings from the 2026-08-31 agent run**, produced and not yet
    applied. Full text in the workflow transcript at
    `~/.claude/projects/-home-user-Redemption-Cleaout/<session>/subagents/workflows/wf_f02c49c0-83a/journal.jsonl`
    (read it with `jq`, it is large). Verify each before acting — they are
    claims, not instructions. The ones that looked strongest on a first read:
-   - Every county and city `<title>` overruns the SERP limit, because the root
-     layout appends a 31-character brand suffix. `src/lib/seo.ts` would need to
-     accept `{ absolute }` titles. The `seoTitle` field on `ResourceDefinition`
-     already solves this for resources and was never applied to the geo pages.
-   - The home `<title>` renders a double pipe, since the string already
-     contains one and the template adds another.
-   - County pages emit no `Service` schema, while service and city pages do.
-   - The `LocalBusiness` node has no `@id`, so the copies emitted on every page
-     and inside each `provider` read as separate entities rather than one; it
-     also lacks `image`, which Google lists as required.
+   - ~~Every county and city `<title>` overruns the SERP limit~~ and ~~the home
+     `<title>` renders a double pipe~~ — **both checked against the live site on
+     2026-09-01 and neither reproduces.** Home serves
+     `Fast, Reliable Cleanouts & Demolition | Metro Detroit`; county and city
+     titles run 63–68 characters. Treat these two findings as closed.
+   - **Still true:** county pages emit no `Service` schema, while service and
+     city pages do. Confirmed live 2026-09-01.
+   - **Still true:** the `LocalBusiness` node has no `@id`, so the copies
+     emitted on every page and inside each `provider` read as separate entities
+     rather than one; it also lacks `image`, which Google lists as required.
+     Confirmed live 2026-09-01.
    - The home page `<h1>` is the slogan, which carries no keyword and no
      geography. **The client explicitly asked for that slogan as the headline**,
      so do not simply overwrite it — the compromise is a keyword-bearing `<h2>`

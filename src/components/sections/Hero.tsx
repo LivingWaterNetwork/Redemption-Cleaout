@@ -88,7 +88,7 @@ export function Hero() {
                   <div>
                     <dt className="eyebrow-plain">Experience</dt>
                     <dd className="mt-1.5 font-condensed text-base font-bold">
-                      13 years in real estate
+                      12 years in real estate
                     </dd>
                   </div>
                   <div>

@@ -18,24 +18,28 @@ and update the linked content file when a decision is made.
       `src/content/business.ts` (`publicAddressEnabled: false`). Requires
       confirmation of permanent operation, staffing during posted hours,
       customer visitability, permanent signage, and GBP compliance.
-- [ ] **Operating hours** — not yet defined anywhere on the site.
-- [ ] **"Fully insured" status** — the original brochure claims "Fully
-      Insured"; the brand guide flags this as unverified. Not published
-      anywhere on this site until confirmed. (Re-confirmed during the photo
-      pull: the brochure in Drive does read "Fully insured - Local" under
-      "OUR COMMITMENT TO YOU". Still unverified, still unpublished.)
+- [x] **Operating hours — CONFIRMED 2026-09-01: open 24 hours, every day.**
+      This matches what the Google Business Profile publishes. Not yet rendered
+      anywhere on the site — placing them is the outstanding piece, and they
+      must match the profile exactly or Google sees the two sources disagree.
+- [x] **"Fully insured" status — CONFIRMED 2026-09-01.** The owner confirms
+      Redemption is licensed and insured. The demolition page and the FAQ
+      already say so in general terms; that wording is now approved rather
+      than provisional. Still no licence number, class or carrier is claimed
+      anywhere, and none should be added without the underlying document.
 - [ ] **Any licensing claims.**
 - [ ] **Free estimate / free walkthrough policy** wording.
 - [ ] **Same-day or next-day availability** claims.
-- [ ] **13 vs. 12 years of real-estate experience** — the brochure says 12,
-      the founder transcript says 13. This site uses 13 throughout,
-      per the brand guide's correction — confirm before wider use.
-      **New evidence (photo pull):** two client-supplied assets in the Drive
-      folder both say **12** — the brochure (`IMG_6796`, "12 YEARS IN
-      REALESTATE SALES") and a marketing flyer (`92b605d0-….PNG`, "12 years
-      real estate expertise"). The only source for 13 is the brand guide's
-      correction. Worth re-confirming directly with Dante; the weight of the
-      client's own material currently favours 12.
+- [x] **13 vs. 12 years of real-estate experience — RESOLVED 2026-09-01: it
+      is 12.** The site said 13 throughout, on the strength of the brand
+      guide's correction alone. Both client-supplied assets in Drive say 12 —
+      the brochure (`IMG_6796`, "12 YEARS IN REALESTATE SALES") and the
+      marketing flyer (`92b605d0-….PNG`, "12 years real estate expertise") —
+      and that is now confirmed as correct. Changed to **12** in
+      `src/components/sections/Hero.tsx`, `src/app/about/page.tsx` and
+      `src/content/founderStory.ts` (three occurrences). The figure also
+      appears in the Google Business Profile description, which needs the
+      same correction by hand.
 
 ## Service scope
 
@@ -88,7 +92,7 @@ and update the linked content file when a decision is made.
       guide (Slide 19). Both require Dante's explicit sign-off before wider
       distribution. No addiction/recovery detail is published anywhere on
       this site.
-- [ ] **Real-estate experience wording** (13 years, family brokerage/home-building
+- [ ] **Real-estate experience wording** (12 years, family brokerage/home-building
       background) — confirm exact framing.
 - [ ] **Mission, vision, purpose, and values language** (brand guide slides
       7–8) — not yet used verbatim anywhere on this site; draft only.

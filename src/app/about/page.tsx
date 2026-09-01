@@ -12,7 +12,7 @@ import { business } from "@/content/business";
 export const metadata: Metadata = pageMetadata({
   title: "About Redemption & Our Founder",
   description:
-    "The story behind Redemption Cleanout Services and founder Dante Terracciano — 13 years of real-estate experience, a family background in home building, and a purpose-driven approach to property cleanouts and demolition across Metro Detroit.",
+    "The story behind Redemption Cleanout Services and founder Dante Terracciano — 12 years of real-estate experience, a family background in home building, and a purpose-driven approach to property cleanouts and demolition across Metro Detroit.",
   path: "/about",
 });
 
