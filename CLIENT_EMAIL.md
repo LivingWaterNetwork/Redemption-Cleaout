@@ -36,11 +36,9 @@ Everything you asked for in your review is done and live. I've put the whole pic
 
 8. **Your accepted and excluded materials list.** The FAQ currently says this is still being finalized.
 
-9. **A decision on the old Business Manager account.** It's not connected to anything live, but it still exists and will cause confusion later. Easiest to delete it — just say the word.
-
 ---
 
-**Three things you've confirmed that I'm applying now** — flag anything that's off:
+**Four things you've confirmed that I'm applying now** — flag anything that's off:
 
 - **12 years in real estate**, not 13. Your brochure and flyer both say 12, so the site is being corrected to match.
 - **Licensed and insured** — confirmed, so that stays on the site and on the Google listing.

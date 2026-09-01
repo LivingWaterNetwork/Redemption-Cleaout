@@ -115,7 +115,8 @@ any good — that still needs a human read.
    429 S Main St; until that code is entered the listing is invisible in Search
    and Maps. The logo and three more photos are staged and must be added by
    hand. The old Business Manager account was an orphaned shell with no listing
-   attached — decide whether to delete it. See `GBP_SETUP.md` on
+   attached; it was created on our side, and cleaning it up is ours to do, not
+   the client's. See `GBP_SETUP.md` on
    `claude/redemption-gbp-optimization-mggx9w` and `LOCAL_SEO_PLAYBOOK.md`
    Priority 1.
 4. **Jobber has no photo-upload field**, so the request page tells people to
