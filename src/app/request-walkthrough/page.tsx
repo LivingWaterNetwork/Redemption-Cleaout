@@ -5,7 +5,12 @@ import { JobberRequestForm } from "@/components/JobberRequestForm";
 import { StructuredData } from "@/components/StructuredData";
 import { Reveal } from "@/components/motion/Reveal";
 import { breadcrumbJsonLd, pageMetadata } from "@/lib/seo";
-import { business, formatPhoneSmsHref, formatPhoneTelHref } from "@/content/business";
+import {
+  business,
+  formatEmailHref,
+  formatPhoneSmsHref,
+  formatPhoneTelHref,
+} from "@/content/business";
 
 export const metadata: Metadata = pageMetadata({
   title: "Get a Free Estimate",
@@ -20,8 +25,8 @@ const steps = [
     body: "Address, property type, and roughly what needs to be cleared or taken down. Two minutes is enough — we'll ask the rest.",
   },
   {
-    title: "You text us photos",
-    body: `Send photos to ${business.phoneDisplay} — rooms, the garage, the basement, or the structure coming down. The more we can see, the tighter the estimate.`,
+    title: "You send us photos",
+    body: `Text them to ${business.phoneDisplay} or email ${business.email} — rooms, the garage, the basement, or the structure coming down. The more we can see, the tighter the estimate.`,
   },
   {
     title: "You get a ballpark estimate by phone",
@@ -77,6 +82,13 @@ export default function RequestWalkthroughPage() {
                   className="font-semibold text-heritage-black underline decoration-redemption-red decoration-2 underline-offset-4"
                 >
                   {business.phoneDisplay}
+                </a>{" "}
+                or{" "}
+                <a
+                  href={formatEmailHref()}
+                  className="break-all font-semibold text-heritage-black underline decoration-redemption-red decoration-2 underline-offset-4"
+                >
+                  {business.email}
                 </a>{" "}
                 once you&apos;ve sent the form.
               </p>

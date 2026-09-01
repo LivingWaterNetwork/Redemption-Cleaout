@@ -111,8 +111,14 @@ and update the linked content file when a decision is made.
       are unset. See `JOBBER_SETUP.md`.
 - [ ] **Google review URL** — `NEXT_PUBLIC_GOOGLE_REVIEW_URL` unset.
 - [ ] **Google Business Profile URL** — `NEXT_PUBLIC_GOOGLE_BUSINESS_URL` unset.
-- [ ] **Official business email** — no business email is published anywhere
-      on this site; only phone/text.
+- [x] **Official business email — CONFIRMED 2026-09-01 and PUBLISHED:**
+      `Dante@redemptioncleanoutservices.com`. Lives in `business.email` and
+      renders on the contact page, in the footer, on `/request-walkthrough`
+      and in the FAQ, and is emitted on the `LocalBusiness` schema. Several
+      pages already told visitors to "text or email photos" without giving an
+      address; that gap is now closed. A unit test asserts the address sits on
+      `business.primaryDomain`, since the Google login supplied for this work
+      was on the singular `redemptioncleanoutservice.com`.
 - [ ] **Authentic testimonials** — `src/content/testimonials.ts` is
       intentionally empty and no fabricated reviews exist anywhere on this
       site. Confirmed 2026-08-31: past clients have agreed to leave Google

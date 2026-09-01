@@ -22,7 +22,7 @@ Everything you asked for in your review is done and live. I've put the whole pic
 
 2. **The Google verification postcard.** It's in transit to 429 S Main. The day it lands, sign in and enter the code. Until that happens the listing exists but nobody can see it in Search or Maps — and everything else on the Google side is waiting behind it. This is the single highest-value thing on this list.
 
-3. **The logo and photos for the listing.** Four files are staged and ready to go; Omar has them. It's about thirty seconds of dragging them into the Photos tab — Google won't let it be done any other way.
+3. **The professionally shot team video we talked about.** This is the one item on the list that's a real project rather than an errand — it needs a crew, a site and a date in the calendar, so it's worth starting the conversation now rather than at the end. Everything else here takes minutes.
 
 *Whenever you can*
 
@@ -36,9 +36,7 @@ Everything you asked for in your review is done and live. I've put the whole pic
 
 8. **Your accepted and excluded materials list.** The FAQ currently says this is still being finalized.
 
-9. **A business email to publish.** The site offers phone and text only right now.
-
-10. **A decision on the old Business Manager account.** It's not connected to anything live, but it still exists and will cause confusion later. Easiest to delete it — just say the word.
+9. **A decision on the old Business Manager account.** It's not connected to anything live, but it still exists and will cause confusion later. Easiest to delete it — just say the word.
 
 ---
 
@@ -47,6 +45,7 @@ Everything you asked for in your review is done and live. I've put the whole pic
 - **12 years in real estate**, not 13. Your brochure and flyer both say 12, so the site is being corrected to match.
 - **Licensed and insured** — confirmed, so that stays on the site and on the Google listing.
 - **Open 24 hours, seven days** — confirmed, so the listing is correct and we'll publish matching hours on the site.
+- **Dante@redemptioncleanoutservices.com** is now published on the site — on the contact page, in the footer, on the request page and in the FAQ. Several pages already told people to "text or email photos" without ever giving them an address to email; that gap is closed.
 
 ---
 
