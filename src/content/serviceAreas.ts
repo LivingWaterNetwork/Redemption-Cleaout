@@ -257,7 +257,7 @@ export const serviceAreas: ServiceAreaDefinition[] = [
     localIntroduction:
       "Washtenaw County centers on Ann Arbor and Ypsilanti, with smaller towns — Saline, Chelsea, Dexter, Manchester, Milan — and township acreage filling in around them. Redemption covers the county in full. Ann Arbor's older neighborhoods and dense rental stock create a different set of access problems than the region's subdivisions: narrow streets, tight driveways, upper-floor units, and no easy place to put a trailer.",
     propertyContext:
-      "Rental turnover is a constant in Ann Arbor and Ypsilanti, with student-housing cycles clustering move-out work into short windows. Alongside that runs estate clearing in long-held homes, pre-listing cleanouts, and interior gut-outs for the renovation work that older Washtenaw housing stock generates. In the outlying townships the job looks more rural — barns, outbuildings, and equipment on acreage.",
+      "Rental turnover is a constant in Ann Arbor and Ypsilanti, with student-housing cycles clustering move-out work into short windows. Alongside that runs estate clearing in long-held homes, pre-listing cleanouts, and interior tear-outs for the renovation work that older Washtenaw housing stock generates. In the outlying townships the job looks more rural — barns, outbuildings, and equipment on acreage.",
     relevantServiceSlugs: ["full-property-cleanouts", "demolition"],
     faqs: [
       {

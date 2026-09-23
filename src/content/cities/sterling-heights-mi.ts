@@ -16,7 +16,7 @@ export const sterlingHeightsMi: CityDefinition = {
   housingContext:
     "Where Warren is a grid, Sterling Heights is curves and cul-de-sacs. The housing stock is late-postwar subdivision rather than prewar — brick ranches, quad-levels and two-story colonials on wide lots with attached two-car garages, full basements and a fenced back yard. Condominium developments fill in the newer edges north of Metro Parkway, and Hall Road is solid retail from end to end.",
   workContext:
-    "These are big houses whose first owners are now moving on, so the job is an estate or a downsizing clear where a finished basement, a two-car garage and a back-yard shed all have to come out at once. A house lived in since it was built needs emptying before listing photos, not after. On the demolition side it is the tired pressure-treated deck, the shed, the above-ground pool surround, and gut-outs where a dated kitchen or bath goes back to studs. Hall Road carries retail that turns over between tenants.",
+    "These are big houses whose first owners are now moving on, so the job is an estate or a downsizing clear where a finished basement, a two-car garage and a back-yard shed all have to come out at once. A house lived in since it was built needs emptying before listing photos, not after. On the demolition side it is the tired pressure-treated deck, the shed, the above-ground pool surround, and tear-outs where a dated kitchen or bath goes back to studs. Hall Road carries retail that turns over between tenants.",
   localConsiderations: [
     "Curved streets and cul-de-sac bulbs give a trailer somewhere to turn on site, so there is no long reverse back out to the main road the way there is on a grid block",
     "Finished basements mean paneling, carpet, built-in bars and drop ceilings come out as demolition, not as loose contents",
@@ -42,7 +42,7 @@ export const sterlingHeightsMi: CityDefinition = {
     },
   ],
   metaDescription:
-    "Cleanouts and demolition in Sterling Heights, Michigan. Estate and pre-listing clearing, finished basements, garages, deck teardowns and interior gut-outs.",
+    "Cleanouts and demolition in Sterling Heights, Michigan. Estate and pre-listing clearing, finished basements, garages, deck teardowns and interior tear-outs.",
   primaryKeyword: "property cleanout Sterling Heights MI",
   nearbySlugs: ["warren-mi", "shelby-township-mi", "clinton-township-mi", "troy-mi"],
 };

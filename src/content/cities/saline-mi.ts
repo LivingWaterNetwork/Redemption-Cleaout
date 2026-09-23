@@ -41,7 +41,7 @@ export const salineMi: CityDefinition = {
     },
   ],
   metaDescription:
-    "Property cleanouts and demolition in Saline, Michigan — estate and downsizing clearing, pole barn, outbuilding and garage teardowns, interior gut-outs.",
+    "Property cleanouts and demolition in Saline, Michigan — estate and downsizing clearing, pole barn, outbuilding and garage teardowns, interior tear-outs.",
   primaryKeyword: "property cleanout Saline MI",
   nearbySlugs: ["ann-arbor-mi", "ypsilanti-mi", "canton-mi", "monroe-mi"],
 };

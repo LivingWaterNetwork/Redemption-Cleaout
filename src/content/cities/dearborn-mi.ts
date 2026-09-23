@@ -41,7 +41,7 @@ export const dearbornMi: CityDefinition = {
     },
   ],
   metaDescription:
-    "Property cleanouts and demolition in Dearborn, Michigan — estate and rental clearing, alley-access garage work, interior gut-outs and storefront turnovers.",
+    "Property cleanouts and demolition in Dearborn, Michigan — estate and rental clearing, alley-access garage work, interior tear-outs and storefront turnovers.",
   primaryKeyword: "property cleanout Dearborn MI",
   nearbySlugs: ["detroit-mi", "redford-mi", "westland-mi", "livonia-mi"],
 };

@@ -129,8 +129,8 @@ export default async function ServiceDetailPage({
                     What may require another specialist
                   </h2>
                   <p className="mt-3 max-w-measure text-sm text-steel-gray">
-                    Some conditions fall outside standard cleanout scope and need a separately
-                    licensed specialist. We&apos;ll tell you plainly if we find one.
+                    Some conditions fall outside our scope and need a separately licensed
+                    specialist. We&apos;ll tell you plainly if we find one.
                   </p>
                   <ul className="mt-4 space-y-2">
                     {service.mayRequireSpecialist.map((item) => (
@@ -207,43 +207,6 @@ export default async function ServiceDetailPage({
           </div>
         </div>
       </section>
-
-      {/* Categories — the retired standalone service pages, as anchored sections.
-          Each id matches the old slug so the 301s land on the right one. */}
-      {service.categories && service.categories.length > 0 && (
-        <section className="py-section">
-          <div className="container-page">
-            <SectionHeader
-              label="Types of cleanout"
-              title="Same crew, same scope, different situation"
-              intro="Estate, foreclosure, commercial, hoarding-related, move-out, and single-area jobs are all handled under this service. What changes is the timeline, who we coordinate with, and how the property gets handled."
-            />
-
-            <div className="mt-14 grid gap-x-14 gap-y-12 border-t border-heritage-black/12 pt-12 lg:grid-cols-2">
-              {service.categories.map((category, index) => (
-                <Reveal key={category.id} id={category.id} delay={index * 70} className="scroll-mt-32">
-                  <h3 className="font-display text-2xl font-semibold text-heritage-black">
-                    {category.name}
-                  </h3>
-                  <p className="mt-3 max-w-measure text-body-base text-steel-gray">
-                    {category.summary}
-                  </p>
-                  <ul className="mt-5 space-y-2.5">
-                    {category.points.map((point) => (
-                      <li key={point} className="flex gap-2.5 text-sm text-steel-gray">
-                        <span aria-hidden="true" className="mt-0.5 shrink-0 text-redemption-red">
-                          &#8212;
-                        </span>
-                        <span>{point}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </Reveal>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
 
       {/* Proof image */}
       {service.image && (

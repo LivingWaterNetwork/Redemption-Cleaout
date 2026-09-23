@@ -12,7 +12,7 @@ import { services } from "@/content/services";
 export const metadata: Metadata = pageMetadata({
   title: "Cleanout & Demolition Services",
   description:
-    "Full property cleanouts and demolition throughout Metro Detroit — estate, foreclosure, commercial, hoarding, and move-out clearing, interior gut-outs, and structure teardowns.",
+    "Full property cleanouts and demolition throughout Metro Detroit — estate, foreclosure, commercial, hoarding, and move-out clearing, interior tear-outs, and structure teardowns.",
   path: "/services",
 });
 
@@ -71,12 +71,12 @@ export default function ServicesPage() {
                     {service.situation}
                   </p>
 
-                  <ul className="mt-7 grid gap-2 border-t border-heritage-black/12 pt-6">
-                    {(service.categories
-                      ? service.categories.map((category) => category.name)
-                      : service.weHandle.slice(0, 6)
-                    ).map((item) => (
-                      <li key={item} className="flex gap-2.5 text-body-base text-steel-gray">
+                  <ul className="border-heritage-black/12 mt-7 grid gap-2 border-t pt-6">
+                    {service.weHandle.slice(0, 6).map((item) => (
+                      <li
+                        key={item}
+                        className="flex gap-2.5 text-body-base text-steel-gray"
+                      >
                         <span aria-hidden="true" className="mt-0.5 text-redemption-red">
                           &#8212;
                         </span>

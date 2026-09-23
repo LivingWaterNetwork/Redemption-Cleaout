@@ -13,7 +13,7 @@ export const primaryNav: NavLink[] = [
     children: services.map((s) => ({ label: s.shortName, href: `/services/${s.slug}` })),
   },
   { label: "Service Areas", href: "/service-areas" },
-  { label: "Previous Work", href: "/projects" },
+  { label: "Before & After", href: "/projects" },
   { label: "How It Works", href: "/how-it-works" },
   { label: "About", href: "/about" },
 ];
@@ -35,7 +35,7 @@ export const footerNav: NavLink[] = [
   { label: "Demolition", href: "/services/demolition" },
   { label: "Service Areas", href: "/service-areas" },
   { label: "How It Works", href: "/how-it-works" },
-  { label: "Previous Work", href: "/projects" },
+  { label: "Before & After", href: "/projects" },
   { label: "About", href: "/about" },
   { label: "Reviews", href: "/reviews" },
   { label: "Resources", href: "/resources" },

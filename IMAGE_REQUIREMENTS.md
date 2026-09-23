@@ -68,7 +68,7 @@ Request from Dante/leadership, in order of urgency:
 
 # Phase 3 update — Drive photo pull
 
-## What is now in use (19 authentic photos, 17 placements)
+## What is now in use (19 authentic photos, 17 placements) — historical; see "Before & After page" below for the current gallery
 
 The remaining photos were pulled from the client's shared Drive folder
 ("Redemption Cleanouts" → `Photo/Video`). The folder holds 83 files, but
@@ -117,50 +117,72 @@ alt text left as TODO — somebody has to look at each photo and describe it.
 It also **strips EXIF**, which matters: iPhones embed GPS coordinates in every
 photo, and publishing those would publish the customer's address.
 
-## The August 2026 commercial gut-out (published)
+## The August 2026 commercial interior tear-out (published)
 
-All 13 frames from `Redemption Cleanouts / Photo/Video / Demolition 1` are on
-the site, named `demolition-teardown-before-01..08` and
-`demolition-teardown-after-01..05`, in that order in `gallery.ts`.
+The `Redemption Cleanouts / Photo/Video / Demolition 1` frames are in the
+library as `demolition-teardown-before-01..08` (from
+`IMG_7067/7068/7071/7072/7074/7077/7080/7082`, shot 2026-08-21) and
+`demolition-teardown-after-01..05` (from `IMG_7121/7123/7124/7125/7126`, shot
+2026-08-27), numbered in filename order.
 
-- **Before** (shot 2026-08-21, from `IMG_7067/7068/7071/7072/7074/7077/7080/7082`)
-  — an intact commercial office suite: corridor, private offices, washroom,
-  suspended tile ceilings, carpet.
-- **After** (shot 2026-08-27, from `IMG_7121/7123/7124/7125/7126`) — the same
-  building stripped to bare block walls, exposed ductwork and concrete slab.
+- **Before** — an intact commercial office suite: corridor, private offices,
+  washroom, suspended tile ceilings, carpet.
+- **After** — the same building stripped to bare block walls, exposed
+  ductwork and concrete slab.
 
-`demolition-teardown-after-01.jpg` is the demolition page's lead image.
+Because every partition came out, **no Before frame can be matched view for
+view to an After frame** — the walls that would anchor the match are gone.
+On `/projects` the job is therefore shown as a project-level set (a Before
+group of 4 above an After group of 4), never as one-to-one pairs. If the
+client can say which shots were taken from the same spot, they can be
+promoted to pairs in `src/content/gallery.ts`.
 
-**How they were pulled**, since it is not obvious: the Drive MCP tool returns
-file bytes as base64 in the tool result, which is far too large for a
-multi-megabyte photo. The harness spills any oversized tool result to a file
-under the session's `tool-results/` directory, so the recovery is
-`jq -r '.content' <that file> | base64 -d > out.heic` — the bytes never pass
-through the conversation. Same trick works for any future Drive binary.
+**How Drive files are pulled**: the Drive MCP tool returns file bytes as base64
+in the tool result, which is far too large for a multi-megabyte photo. The
+harness spills any oversized tool result to a file under the session's
+`tool-results/` directory; decode its `content` field with base64 — the bytes
+never pass through the conversation.
 
-The parent `Photo/Video` folder holds roughly 40 unique stills (many are stored
-twice as `IMG_xxxx` and `IMG_xxxx 2`), of which 19 are published (plus the 13
-gut-out frames above, which came from the `Demolition 1` subfolder). The remainder
-has not been reviewed frame by frame — some are phone screenshots, and the two
-Grace Centers of Hope frames are held pending approval (`CONTENT_APPROVALS.md`).
-There are also 7 unique `.MOV` clips; no video is used anywhere on the site.
+## Before & After page (`/projects`) — rebuilt 21 Sept 2026
 
-## Adding new photos
+The mixed 32-photo gallery was replaced, at the client's request, by a
+focused Before & After page with no captions and no lightbox.
+`src/content/gallery.ts` is the single source of truth; the home-page preview
+shows the first three pairs from the same data. Currently published:
 
-`src/content/gallery.ts` is the single source of truth for job photography.
-Every one of the 19 files above appears on `/projects`, and the first six also
-appear in the home-page "Previous Work" strip. To publish a new photo:
+| Set | Before | After | Source |
+| --- | --- | --- | --- |
+| Driveway cleanout (pair) | `driveway-cleanout-before.jpg` | `driveway-cleanout-after.jpg` | Drive `IMG_0629 2.PNG` / `IMG_0630 2.PNG` — phone screenshots, cropped to the photo area. Same beige garage, coach lamps and neighboring porch flag. |
+| Townhouse patio (pair) | `townhouse-contents-staged-before.jpg` | `townhouse-patio-cleared-after.jpg` | Library pair; near-identical angle |
+| Garage (pair) | `garage-cleanout-crew-sorting-before.jpg` | `garage-cleanout-cleared-bay-after.jpg` | Library pair; same red tool chest, opener cord and wall |
+| Commercial interior (project set) | `demolition-teardown-before-04/05/01/07` | `demolition-teardown-after-01/02/03/04` | Drive `Demolition 1` |
 
-1. Drop the file in `public/images/photos` (naming and size rules above).
-2. Add an entry to `src/content/gallery.ts` — `src`, real `alt` text,
-   a short `caption`, and a `category`.
-3. Position it where you want it to appear; newest work reads best near the top.
+Other library photos (commercial forklift, deck demolition, severe-clutter
+rooms, pole barn, yard debris, truck and trailer shots) stay in
+`public/images/photos` — some are still used on service pages, the home hero
+and CTAs — but no longer appear in the gallery, because none has a verified
+matching Before or After.
 
-That is the whole process — no page edits, no route changes. A unit test fails
-if a photo is listed twice or has alt text under 20 characters.
+To add a set: drop the files in `public/images/photos`, then add an entry with
+`kind: "pair"` (one Before, one After of the same view — only when the match is
+visible in the frames) or `kind: "project"` (grouped, not matched). Alt text is
+required; captions are not shown. Team/family photos never go here — a unit
+test enforces that for the `about-*` files.
 
-The two service pages each pull one image from `src/content/services.ts`
-separately; those are the only photos referenced outside the gallery.
+## About page photos
+
+- `about-family-portrait.jpg` — Drive `Team/Family/IMG_2407.JPG`, placed in the
+  founder/family story section. A couple portrait; the man wears a Redemption
+  cap and shirt. Alt text does not name anyone until the client confirms.
+- `about-team-at-trailer.jpg` — Drive `Team/Family/IMG_7200.HEIC`, placed in the
+  crew section. Two men in Redemption shirts and caps in front of the branded
+  dump trailer. No names or roles published.
+
+## Referenced in feedback, not found
+
+- `IMG_5638.HEIC` and four "Pasted Graphic" TIFF files — not in the Drive
+  project folder (searched by name), not in this repository, and not supplied
+  with the 21 Sept request. Nothing was substituted for them.
 
 ## Gaps closed by this pull
 
@@ -171,32 +193,12 @@ separately; those are the only photos referenced outside the gallery.
 3. **Commercial interiors** — `commercial-forklift-pallet-loading.jpg`.
 4. **Matched before/after pairs** — two exist now (see below).
 
-## Before/after pairs — assets exist, entries do not
-
-Two genuine same-property pairs were found:
-
-- **Garage** — `garage-cleanout-crew-sorting-before.jpg` /
-  `garage-cleanout-cleared-bay-after.jpg`. Same garage, packed to the door
-  line, then cleared to bare floor. Framing is close but not identical.
-- **Townhouse patio** — `townhouse-contents-staged-before.jpg` /
-  `townhouse-patio-cleared-after.jpg`. Near-identical angle; the better
-  matched pair of the two.
-
-`BeforeAfterSection` now shows the garage pair **side by side**, replacing the
-"asset needed" panel. It does not use the wipe slider, because the slider only
-reads correctly on identical framing.
-
-`src/content/projects.ts` is still empty **on purpose**. A `Project` entry also
-needs city, property type, challenge and outcome — none of which can be read
-off a photograph without inventing them — plus written per-property owner
-permission. Supply both and the slider turns itself on; no template change.
-
 ## Still missing
 
-1. **Founder portrait of Dante.** Still the top gap. One candidate exists in
-   Drive (`IMG_0421`, a hard-hat/hi-vis profile in a truck cab) but **the
-   subject's identity is unconfirmed**, so it has not been used. Confirm who
-   it is before publishing it as the founder.
+1. **Confirmed identification of the About photos.** `Team/Family/IMG_2407.JPG`
+   is now on `/about` beside the founder story, but the client should confirm
+   it shows Dante and his wife before either is named. (`IMG_0421`, the
+   hard-hat/hi-vis profile, is still unidentified and unused.)
 2. **A properly matched pair shot deliberately** — identical tripod position,
    before and after, with permission captured at the same time.
 3. **Dante speaking with clients or partners** — none in the folder.

@@ -17,7 +17,7 @@ export const clintonTownshipMi: CityDefinition = {
   housingContext:
     "Clinton Township is not one place. The southern end near Gratiot and Harper is postwar ranches and bungalows on small lots; the middle is dense with apartment blocks, townhouse rows and condominium associations off Garfield and Fifteen Mile; and the north and east run to later subdivisions and newer condo courts. Very little of it looks like the block next to it.",
   workContext:
-    "The condominium and apartment stock drives a lot of the calls: a unit emptied after a long-term resident moves to care or passes away, or a landlord clearing between tenants. That work is different from a single-family house — second- and third-floor units with no lift, shared stairwells, and a truck that has to sit in a common lot rather than a drive. Elsewhere the jobs look conventional: full estate clears in the older houses south of Metro Parkway, pre-listing clearing, and interior gut-outs for investors. Retail and office suites along Gratiot and Hall Road turn over on lease cycles.",
+    "The condominium and apartment stock drives a lot of the calls: a unit emptied after a long-term resident moves to care or passes away, or a landlord clearing between tenants. That work is different from a single-family house — second- and third-floor units with no lift, shared stairwells, and a truck that has to sit in a common lot rather than a drive. Elsewhere the jobs look conventional: full estate clears in the older houses south of Metro Parkway, pre-listing clearing, and interior tear-outs for investors. Retail and office suites along Gratiot and Hall Road turn over on lease cycles.",
   localConsiderations: [
     "Upper-floor condo and apartment units mean everything is carried down a shared stairwell, which is the single biggest driver of time here",
     "Association and building rules decide when a shared stairwell can be tied up and where a truck may stand while it is, so hours and placement are settled before the date rather than argued on the morning",
@@ -43,7 +43,7 @@ export const clintonTownshipMi: CityDefinition = {
     },
   ],
   metaDescription:
-    "Property cleanouts and demolition in Clinton Township, Michigan. Condo and apartment clears, estate and rental turnovers, interior gut-outs and hauling.",
+    "Property cleanouts and demolition in Clinton Township, Michigan. Condo and apartment clears, estate and rental turnovers, interior tear-outs and hauling.",
   primaryKeyword: "property cleanout Clinton Township MI",
   nearbySlugs: ["sterling-heights-mi", "shelby-township-mi", "st-clair-shores-mi", "warren-mi"],
 };

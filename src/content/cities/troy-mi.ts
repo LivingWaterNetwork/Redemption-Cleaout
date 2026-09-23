@@ -16,7 +16,7 @@ export const troyMi: CityDefinition = {
   housingContext:
     "Troy is largely a postwar and later-twentieth-century suburb: colonials and ranches on generous subdivision lots, most with attached garages, full basements and a shed or two out back. Newer construction clusters north of Long Lake. Along Big Beaver the character changes completely — office towers, corporate suites and retail that turn over on lease cycles rather than family ones.",
   workContext:
-    "Residential work in Troy skews toward long-held family homes changing hands: an estate or downsizing cleanout where the basement and garage hold thirty or forty years of accumulation, often with heirs coordinating from out of state. Because so much of the housing stock is now at the age where it gets bought and renovated, interior gut-outs before a remodel are common. The Big Beaver office corridor adds a steady run of commercial clearing — furniture, cubicles, fixtures and IT rooms emptied between tenants, usually against a lease-end date.",
+    "Residential work in Troy skews toward long-held family homes changing hands: an estate or downsizing cleanout where the basement and garage hold thirty or forty years of accumulation, often with heirs coordinating from out of state. Because so much of the housing stock is now at the age where it gets bought and renovated, interior tear-outs before a remodel are common. The Big Beaver office corridor adds a steady run of commercial clearing — furniture, cubicles, fixtures and IT rooms emptied between tenants, usually against a lease-end date.",
   localConsiderations: [
     "Full basements are the norm, so a Troy cleanout is usually a whole-floor level more work than the square footage suggests",
     "Subdivision driveways generally take a truck and trailer without difficulty, which keeps crew time down",
@@ -41,7 +41,7 @@ export const troyMi: CityDefinition = {
     },
   ],
   metaDescription:
-    "Property cleanouts and demolition in Troy, Michigan — estate, foreclosure and commercial clearing, interior gut-outs, and full basement and garage cleanouts.",
+    "Property cleanouts and demolition in Troy, Michigan — estate, foreclosure and commercial clearing, interior tear-outs, and full basement and garage cleanouts.",
   primaryKeyword: "property cleanout Troy MI",
   nearbySlugs: ["rochester-hills-mi", "royal-oak-mi", "warren-mi", "sterling-heights-mi"],
 };

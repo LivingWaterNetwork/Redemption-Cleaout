@@ -16,7 +16,7 @@ export const ypsilantiMi: CityDefinition = {
   housingContext:
     "Ypsilanti's core is old and dense: tall frame Victorians and Queen Annes on the Historic East Side, worker cottages and two-story doubles on the streets around Normal Park, brick storefronts with flats above along Michigan Avenue and Cross Street. Detached garages off rear drives are far more common than attached ones, and postwar bungalows and ranches fill the newer blocks toward the city edge.",
   workContext:
-    "Investor purchases that are gutted and re-let generate interior demolition — plaster and lath, old kitchens, layers of flooring, and partition walls put in when a single-family house was split into units. Rental turnover near Eastern Michigan runs on the lease calendar, and several units in one building can change hands at once. Alongside that: estate clearing in houses one family has held for generations, and bank-owned properties needing everything out before they can be listed.",
+    "Investor purchases that are stripped out and re-let generate interior demolition — plaster and lath, old kitchens, layers of flooring, and partition walls put in when a single-family house was split into units. Rental turnover near Eastern Michigan runs on the lease calendar, and several units in one building can change hands at once. Alongside that: estate clearing in houses one family has held for generations, and bank-owned properties needing everything out before they can be listed.",
   localConsiderations: [
     "Many east-side and Depot Town houses were divided into upper and lower flats, so a single address can be two full cleanouts with separate entrances and separate stairs",
     "Detached garages set back off an alley or a shared rear drive mean the crew often works from behind the house rather than the street",
@@ -42,7 +42,7 @@ export const ypsilantiMi: CityDefinition = {
     },
   ],
   metaDescription:
-    "Cleanouts and demolition in Ypsilanti, Michigan — estate, foreclosure and rental turnover clearing, interior gut-outs, garage and shed teardowns.",
+    "Cleanouts and demolition in Ypsilanti, Michigan — estate, foreclosure and rental turnover clearing, interior tear-outs, garage and shed teardowns.",
   primaryKeyword: "property cleanout Ypsilanti MI",
   nearbySlugs: ["ann-arbor-mi", "canton-mi", "saline-mi", "westland-mi"],
 };

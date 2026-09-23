@@ -44,20 +44,6 @@ export type ServiceImage = {
   caption: string;
 };
 
-/**
- * A named category inside a pillar service page. `id` doubles as the section
- * anchor and deliberately matches the slug of the standalone service page it
- * replaced, so the 301s in next.config.mjs can deep-link straight to it and
- * the retired URL's ranking signal lands on the equivalent content.
- */
-export type ServiceCategory = {
-  id: string;
-  name: string;
-  /** One-line plain-language definition. Rendered under the category H3. */
-  summary: string;
-  points: string[];
-};
-
 export type ServiceDefinition = {
   slug: string;
   name: string;
@@ -73,8 +59,6 @@ export type ServiceDefinition = {
   mayRequireSpecialist: string[];
   whoItsFor: string[];
   commonConditions: string[];
-  /** Sub-categories rendered as anchored sections on the pillar page. */
-  categories?: ServiceCategory[];
   process: ProcessStep[];
   relatedServiceSlugs: string[];
   faqs: ServiceFAQ[];
@@ -166,14 +150,28 @@ export type ResourceDefinition = {
   sections: { heading: string; body: string[] }[];
 };
 
-export type GalleryPhoto = {
+export type BeforeAfterPhoto = {
   src: string;
   /** Required. Describes what the photo actually shows, not keywords. */
   alt: string;
-  /** Short line shown under the photo in the gallery. */
-  caption: string;
-  category: "cleanout" | "demolition" | "crew";
+  /** Intrinsic pixel size, so the photo renders at its own aspect ratio. */
+  width: number;
+  height: number;
 };
+
+/**
+ * "pair": one Before and one After of the same view.
+ * "project": Before and After photos from the same job, not matched view for
+ * view — shown as two labeled groups.
+ */
+export type BeforeAfterSet =
+  | { id: string; kind: "pair"; before: BeforeAfterPhoto; after: BeforeAfterPhoto }
+  | {
+      id: string;
+      kind: "project";
+      before: BeforeAfterPhoto[];
+      after: BeforeAfterPhoto[];
+    };
 
 export type FAQEntry = ServiceFAQ & {
   category: string;

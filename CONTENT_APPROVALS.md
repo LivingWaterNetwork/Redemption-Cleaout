@@ -19,12 +19,15 @@ and update the linked content file when a decision is made.
       confirmation of permanent operation, staffing during posted hours,
       customer visitability, permanent signage, and GBP compliance.
 - [ ] **Operating hours** — not yet defined anywhere on the site.
-- [ ] **"Fully insured" status** — the original brochure claims "Fully
-      Insured"; the brand guide flags this as unverified. Not published
-      anywhere on this site until confirmed. (Re-confirmed during the photo
-      pull: the brochure in Drive does read "Fully insured - Local" under
-      "OUR COMMITMENT TO YOU". Still unverified, still unpublished.)
-- [ ] **Any licensing claims.**
+- [x] **Insured status** — CONFIRMED by the client's 21 Sept 2026 feedback:
+      "Get rid of licensed, only mention insured. No demolition/cleanout
+      license in Michigan." The site now says Redemption is insured (demolition
+      page definition, demolition FAQ "Are you insured?", general FAQ) and no
+      longer calls Redemption itself licensed anywhere. No carrier or limits
+      are stated; proof of coverage is offered on request at the walkthrough.
+- [x] **Licensing claims** — removed (see above). The only remaining uses of
+      "licensed" describe *separately* licensed specialists (asbestos/lead
+      abatement, structural engineers, remediation), which stay.
 - [ ] **Free estimate / free walkthrough policy** wording.
 - [ ] **Same-day or next-day availability** claims.
 - [ ] **13 vs. 12 years of real-estate experience** — the brochure says 12,
@@ -45,25 +48,20 @@ and update the linked content file when a decision is made.
       the city lists on each page are illustrative, not exhaustive.
 - [ ] **Accepted materials.**
 - [ ] **Excluded materials / hazardous-material limits.**
-- [~] **Demolition scope and licensing** — PARTIALLY CONFIRMED 2026-08-31: the
-      owner states Redemption holds all licensing and insurance required where
-      it operates. The site now says "licensed and insured" on the demolition
-      page and in the FAQ, phrased generally because that is exactly what was
-      confirmed — no licence number, class, or carrier is claimed anywhere.
-      **Two things still to check before launch:**
-      1. Michigan requires a residential builder or maintenance-and-alteration
-         licence for much of this work, and licence holders are generally
-         expected to show the number in advertising. Confirm with LARA (or the
-         client's own licensing contact) whether the number must appear on the
-         site, and add it to `business.ts` if so.
-      2. Whether a certificate of insurance should be downloadable or simply
-         offered on request. The FAQ currently offers it on request.
+- [~] **Demolition scope and licensing** — UPDATED 2026-09-21: the client
+      says there is no demolition/cleanout license in Michigan and asked for
+      "insured" only, so "licensed and insured" has been removed site-wide.
+      Still open: whether a certificate of insurance should be downloadable or
+      simply offered on request (the FAQs currently offer it on request).
+      Project-specific permits and utility disconnects are still flagged at
+      the walkthrough; the copy does not claim permits are never needed.
       The original scope questions below still stand.
 
       ORIGINAL NOTE — The client asked for
       demolition to be promoted from "light demolition" to a full service
       ("currently taking on larger projects"), so `src/content/services.ts`
-      now advertises interior gut-outs, garages, decks, sheds, pole barns,
+      now advertises interior tear-outs (the client's preferred word, 21 Sept
+      2026, replacing "gut-outs" site-wide), garages, decks, sheds, pole barns,
       concrete removal, and **full structure teardowns**. Written
       conservatively pending confirmation of:
       - Which of those Redemption actually performs, and any size ceiling.
@@ -92,11 +90,24 @@ and update the linked content file when a decision is made.
       background) — confirm exact framing.
 - [ ] **Mission, vision, purpose, and values language** (brand guide slides
       7–8) — not yet used verbatim anywhere on this site; draft only.
-- [x] **Final tagline/headline selections** — the client set the main slogan
-      as "Redeem Your Property. Redeem Your Space." It is the home-page H1 and
-      `business.legalTagline`. (It replaces the brochure's "…Reclaim Your
-      Space.") Other headline options from the brand
-      guide (Slide 16) were not used and remain options only.
+- [x] **Final tagline/headline selections** — updated by the client on 21 Sept
+      2026 to "Redeem your property. Reclaim your space." It is the home-page
+      H1, `business.legalTagline` (footer and Organization structured data).
+      The earlier "Redeem Your Property. Redeem Your Space." is retired. Other
+      headline options from the brand guide (Slide 16) were not used.
+- [ ] **About page and mission statement** — the client has said they will
+      rewrite these. The 21 Sept update added real photos and restructured the
+      page (founder/family story, crew section, "Every property deserves a
+      fresh start." heading, no quotation attributed to Dante, no "pending
+      sign-off" line), using only the brand guide's approved founder-story
+      framework and values. Still needs the client's final wording, plus:
+      - Confirmation that `about-family-portrait.jpg` (Drive
+        `Team/Family/IMG_2407.JPG`) shows Dante and his wife, and whether they
+        want either named in the alt text or on the page. The alt text
+        currently describes the photo without naming anyone.
+      - Names and roles, if any, for the two people in
+        `about-team-at-trailer.jpg` (`Team/Family/IMG_7200.HEIC`). None are
+        published.
 - [ ] **Team size** — not published anywhere on this site.
 - [ ] **Response-time promise** — not published as a specific commitment
       anywhere on this site.
@@ -143,7 +154,7 @@ and update the linked content file when a decision is made.
       What they actually show, which matters for how the page is written: a
       fully partitioned **commercial office suite** — corridor, private
       offices, washroom, suspended ceilings, carpet — taken back to bare block
-      walls and concrete slab. It is a large interior gut-out, not a structure
+      walls and concrete slab. It is a large interior tear-out, not a structure
       teardown. Any copy implying these photos show a teardown would be wrong.
       Checked for GPS: these particular files carry **no** GPS EXIF, so nothing
       was exposed. `tools/import-photos.py` strips EXIF regardless, which is

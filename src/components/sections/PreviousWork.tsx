@@ -1,27 +1,33 @@
 import Link from "next/link";
 import Image from "next/image";
-import { galleryPhotos } from "@/content/gallery";
+import { beforeAfterSets } from "@/content/gallery";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Reveal } from "@/components/motion/Reveal";
+import { BeforeAfterLabel } from "@/components/sections/BeforeAfterGallery";
+import type { BeforeAfterSet } from "@/types/content";
 
 /**
- * Home-page strip pulling the first six photos from the gallery. The full set
- * lives on /projects — this is a preview, not a second library to maintain.
+ * Home-page preview of the Before & After page: the first three matched pairs,
+ * drawn from the same data as /projects so the home page never shows a photo
+ * the gallery doesn't.
  */
 export function PreviousWork() {
-  const photos = galleryPhotos.slice(0, 6);
-  if (photos.length === 0) return null;
+  const pairs = beforeAfterSets
+    .filter(
+      (set): set is Extract<BeforeAfterSet, { kind: "pair" }> => set.kind === "pair",
+    )
+    .slice(0, 3);
+  if (pairs.length === 0) return null;
 
   return (
     <section className="py-section">
       <div className="container-page">
         <SectionHeader
-          label="Previous Work"
+          label="Before & After"
           title="Properties we've cleared and structures we've taken down"
-          intro="Photographs from completed Redemption jobs across Metro Detroit."
           action={
             <Link href="/projects" className="link-editorial">
-              See the full gallery
+              See all before &amp; after photos
               <span aria-hidden="true" className="btn-arrow">
                 &rarr;
               </span>
@@ -29,24 +35,34 @@ export function PreviousWork() {
           }
         />
 
-        <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {photos.map((photo, index) => (
-            <Reveal key={photo.src} variant="mask" delay={index * 70}>
-              <Link href="/projects" className="group block">
-                <div className="img-frame aspect-editorial w-full">
-                  <Image
-                    src={photo.src}
-                    alt={photo.alt}
-                    fill
-                    sizes="(min-width: 1024px) 32vw, (min-width: 640px) 50vw, 100vw"
-                    className="img-zoom object-cover"
-                  />
-                </div>
-                <p className="mt-3 text-sm leading-relaxed text-steel-gray">{photo.caption}</p>
+        <ul className="mt-14 grid grid-cols-1 gap-x-6 gap-y-10 md:grid-cols-3">
+          {pairs.map((set, index) => (
+            <Reveal key={set.id} as="li" variant="mask" delay={index * 70}>
+              <Link href="/projects" className="group grid grid-cols-2 gap-2">
+                {[
+                  { photo: set.before, label: "Before" as const },
+                  { photo: set.after, label: "After" as const },
+                ].map(({ photo, label }) => (
+                  <span
+                    key={photo.src}
+                    className="img-frame relative block aspect-[4/5] w-full"
+                  >
+                    <Image
+                      src={photo.src}
+                      alt={`${label}: ${photo.alt}`}
+                      fill
+                      sizes="(min-width: 768px) 16vw, 50vw"
+                      className="img-zoom object-cover"
+                    />
+                    <span aria-hidden="true" className="absolute left-2 top-2">
+                      <BeforeAfterLabel label={label} />
+                    </span>
+                  </span>
+                ))}
               </Link>
             </Reveal>
           ))}
-        </div>
+        </ul>
       </div>
     </section>
   );

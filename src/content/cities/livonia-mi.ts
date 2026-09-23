@@ -18,7 +18,7 @@ export const livoniaMi: CityDefinition = {
   workContext:
     "A great deal of Livonia work is first-owner turnover: houses bought new decades ago and now being emptied by adult children, where the basement has become the archive for the whole family and the garage is stacked to the rafters. Pre-listing clearing is the usual reason, on a realtor's timetable. Rehabs are common too, since a 1960s ranch bought today almost always loses its kitchen, bathrooms and paneled basement before resale. The Plymouth Road corridor adds shop and warehouse clearing — racking, benches, pallets and leftover stock.",
   localConsiderations: [
-    "The basement is the job in Livonia — finished rec rooms from the 1970s hide as much volume as the rest of the house combined, and paneling, drop ceilings and built-in bars all come out in a gut-out",
+    "The basement is the job in Livonia — finished rec rooms from the 1970s hide as much volume as the rest of the house combined, and paneling, drop ceilings and built-in bars all come out in a tear-out",
     "The mile-road grid means no cul-de-sac to turn a loaded trailer in, but it also means a straight run out to the section road from almost any street — the exception is the older Clarenceville blocks, where the drives are narrower than the rest of the city",
     "Many houses still have the original detached or attached garage with a workshop in it, which is often the heaviest part of the load",
     "Plymouth Road industrial tenants generally need work scheduled around shift hours and a loading dock rather than a driveway",
@@ -32,11 +32,11 @@ export const livoniaMi: CityDefinition = {
     {
       question: "Can you strip a Livonia house before a renovation without touching the parts we are keeping?",
       answer:
-        "That is standard interior gut-out work. We mark out at the walkthrough exactly what comes out — cabinets, flooring, bath fixtures, basement paneling — and what stays, then work to that list so your trades come into a clean shell.",
+        "That is standard interior tear-out work. We mark out at the walkthrough exactly what comes out — cabinets, flooring, bath fixtures, basement paneling — and what stays, then work to that list so your trades come into a clean shell.",
     },
   ],
   metaDescription:
-    "Cleanouts and demolition in Livonia, Michigan — estate and pre-listing clearing, finished-basement cleanouts, interior gut-outs and Plymouth Road corridor work.",
+    "Cleanouts and demolition in Livonia, Michigan — estate and pre-listing clearing, finished-basement cleanouts, interior tear-outs and Plymouth Road corridor work.",
   primaryKeyword: "property cleanout Livonia MI",
   nearbySlugs: ["redford-mi", "westland-mi", "farmington-hills-mi", "canton-mi"],
 };

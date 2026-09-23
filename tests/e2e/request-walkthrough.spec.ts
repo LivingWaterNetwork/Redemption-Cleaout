@@ -29,11 +29,11 @@ test("county service-area pages exist and unknown areas 404", async ({ page }) =
 
 test("retired service URLs redirect to the pillar page they were folded into", async ({ page }) => {
   await page.goto("/services/estate-cleanouts");
-  await expect(page).toHaveURL(/\/services\/full-property-cleanouts#estate-cleanouts$/);
+  await expect(page).toHaveURL(/\/services\/full-property-cleanouts$/);
 
   await page.goto("/services/light-demolition");
   await expect(page).toHaveURL(/\/services\/demolition$/);
 
   await page.goto("/service-areas/rochester-mi");
-  await expect(page).toHaveURL(/\/service-areas\/oakland-county-mi$/);
+  await expect(page).toHaveURL(/\/service-areas\/oakland-county-mi\/rochester-mi$/);
 });

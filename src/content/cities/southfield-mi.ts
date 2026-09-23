@@ -22,7 +22,7 @@ export const southfieldMi: CityDefinition = {
     "A single Town Center tenant may hold several floors that are not stacked, so what is described as one suite clearing is really several separate jobs feeding one dock booking",
     "Stripping a suite back to bare shell — partition walls, dropped ceilings, cabling, built-in reception counters — is demolition rather than clearing, and the debris still leaves through the same dock and lift",
     "Condominium and apartment clearouts often mean a long carry from the unit to the loading area, not a short one to the drive",
-    "Brick ranch basements here hold the furnace and utility room alongside decades of storage, so the crew works around live equipment, and the same houses bring kitchen and bath gut-outs ahead of a resale",
+    "Brick ranch basements here hold the furnace and utility room alongside decades of storage, so the crew works around live equipment, and the same houses bring kitchen and bath tear-outs ahead of a resale",
   ],
   faqs: [
     {
@@ -33,7 +33,7 @@ export const southfieldMi: CityDefinition = {
     {
       question: "The landlord wants the suite back as a bare shell, not just emptied. Can you do that?",
       answer:
-        "Yes — that is demolition rather than a cleanout, and it is the same crew. Partition walls, dropped ceilings, abandoned cabling, carpet and built-in reception counters come out and the space is left as shell for the next fit-out. The same work in a brick ranch is a kitchen or bath gut-out before a sale. Tell us what the landlord or the next trade needs left in place before we start.",
+        "Yes — that is demolition rather than a cleanout, and it is the same crew. Partition walls, dropped ceilings, abandoned cabling, carpet and built-in reception counters come out and the space is left as shell for the next fit-out. The same work in a brick ranch is a kitchen or bath tear-out before a sale. Tell us what the landlord or the next trade needs left in place before we start.",
     },
     {
       question: "I manage rentals in Southfield and units come back in bad shape. Do you handle that?",
@@ -42,7 +42,7 @@ export const southfieldMi: CityDefinition = {
     },
   ],
   metaDescription:
-    "Property cleanouts and demolition in Southfield, Michigan. Office suite and tower clearing, condo and rental turnovers, estate cleanouts and interior gut-outs.",
+    "Property cleanouts and demolition in Southfield, Michigan. Office suite and tower clearing, condo and rental turnovers, estate cleanouts and interior tear-outs.",
   primaryKeyword: "property cleanout Southfield MI",
   nearbySlugs: ["farmington-hills-mi", "royal-oak-mi", "detroit-mi", "redford-mi"],
 };

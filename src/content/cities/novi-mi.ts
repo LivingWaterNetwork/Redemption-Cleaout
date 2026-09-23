@@ -22,7 +22,7 @@ export const noviMi: CityDefinition = {
     "Relocation work is date-driven — the property has to be empty for a closing or a truck, which sets the schedule before anything else",
     "Most attached housing here is newer townhouse and site-condominium product with its own attached garage and driveway apron, so the load goes out at the unit rather than through a shared entry",
     "Three-car garages with overhead storage racks hold far more than the floor area suggests once they are unloaded",
-    "Newer construction means fewer plaster gut-outs and more cabinetry, drywall and finished-basement framing coming out",
+    "Newer construction means fewer plaster tear-outs and more cabinetry, drywall and finished-basement framing coming out",
   ],
   faqs: [
     {
@@ -31,7 +31,7 @@ export const noviMi: CityDefinition = {
         "Yes, and it is worth calling early rather than the week of. Send photos for an estimate, we walk the property and set the final quote in person, then book the clear-out against your date so nothing is left to the last day.",
     },
     {
-      question: "Can you gut a finished basement without wrecking the rest of the house?",
+      question: "Can you tear out a finished basement without wrecking the rest of the house?",
       answer:
         "That is the normal ask here. Carpet, framing, drywall, dropped ceilings, wet bars and built-ins come out, and the route up through the finished part of the house gets protected first. We agree what stays before the crew starts.",
     },
@@ -42,7 +42,7 @@ export const noviMi: CityDefinition = {
     },
   ],
   metaDescription:
-    "Property cleanouts and demolition in Novi, Michigan. Relocation and estate clearing, finished basement gut-outs, condo and townhouse turnovers, deck teardowns.",
+    "Property cleanouts and demolition in Novi, Michigan. Relocation and estate clearing, finished basement tear-outs, condo and townhouse turnovers, deck teardowns.",
   primaryKeyword: "property cleanout Novi MI",
   nearbySlugs: ["farmington-hills-mi", "livonia-mi", "brighton-mi", "canton-mi"],
 };

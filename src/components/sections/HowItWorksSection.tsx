@@ -31,8 +31,8 @@ export function HowItWorksSection() {
         <Reveal>
           <div className="mt-16 flex flex-col items-start justify-between gap-6 border-t border-heritage-black/12 pt-10 md:flex-row md:items-center">
             <p className="max-w-measure-lg text-body-base text-steel-gray">
-              Step one takes about two minutes. Send the property details and a few photos,
-              and we&apos;ll come back to you with an estimate.
+              Text us a few photos of the property and we&apos;ll come back with a
+              ballpark estimate by phone. The final quote comes from the walkthrough.
             </p>
             <div className="flex shrink-0 flex-col gap-3 sm:flex-row">
               <Link href="/request-walkthrough" className="btn-primary">
