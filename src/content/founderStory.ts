@@ -7,10 +7,9 @@
  * personal history as a sales mechanism.
  *
  * The About portrait (about-family-portrait.jpg, Drive Team/Family/IMG_2407)
- * shows Dante and his wife — confirmed by the client. Her name, and any role
- * she has in the business, have not been supplied, so the copy introduces her
- * only as his wife and says nothing about what she does. Add those details
- * only once the client provides and approves them.
+ * shows Dante and his wife, Laura — both confirmed by the client. No role in
+ * the business has been supplied for Laura, so the copy says nothing about
+ * what she does. Add that only once the client provides and approves it.
  *
  * The client has said they will rewrite the About page and mission statement
  * themselves. Everything below is drawn from the brand guide's approved
@@ -20,7 +19,7 @@
 export const founderStory = {
   /** Sits directly beside the portrait, so the photo and the story read together. */
   familyIntro:
-    "Pictured here are Dante Terracciano, Redemption's founder, and his wife. Redemption is built around a family's point of view: the people who call us are usually in the middle of something hard, and they deserve to be treated the way you'd want your own family treated.",
+    "Pictured here are Dante Terracciano, Redemption's founder, and his wife, Laura. Redemption is built around a family's point of view: the people who call us are usually in the middle of something hard, and they deserve to be treated the way you'd want your own family treated.",
   shortVersion:
     "Dante Terracciano built Redemption Cleanout Services on 13 years in real estate and a family background in brokerage and home building — and on a personal season of renewal that gave him a new sense of purpose. He started the company to bring real professionalism to a business that families and property professionals can rely on.",
   ourStoryVersion:

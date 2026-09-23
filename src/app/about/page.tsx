@@ -11,7 +11,7 @@ import { founderStory } from "@/content/founderStory";
 export const metadata: Metadata = pageMetadata({
   title: "About Redemption & Our Founder",
   description:
-    "Meet the people behind Redemption Cleanout Services — founder Dante Terracciano, his family, and the crew — and why every property deserves a fresh start. Estate cleanouts, junk removal, and demolition across Metro Detroit.",
+    "Meet the people behind Redemption Cleanout Services — founder Dante Terracciano, his wife Laura, and the team — and why every property deserves a fresh start. Estate cleanouts, junk removal, and demolition across Metro Detroit.",
   path: "/about",
 });
 
@@ -85,7 +85,7 @@ export default function AboutPage() {
             <div className="img-frame aspect-[3/4] w-full">
               <Image
                 src="/images/photos/about-family-portrait.jpg"
-                alt="Dante Terracciano and his wife smiling together indoors; Dante wears a Redemption Cleanout Services cap and shirt."
+                alt="Dante Terracciano and his wife, Laura, smiling together indoors; Dante wears a Redemption Cleanout Services cap and shirt."
                 fill
                 priority
                 sizes="(min-width: 1024px) 40vw, 100vw"
@@ -100,7 +100,7 @@ export default function AboutPage() {
             </Reveal>
             <Reveal delay={80}>
               <h2 className="mt-5 text-section font-bold text-heritage-black">
-                Meet Dante and his wife
+                Meet Dante and Laura
               </h2>
             </Reveal>
             <Reveal delay={140}>

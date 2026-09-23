@@ -30,15 +30,9 @@ and update the linked content file when a decision is made.
       abatement, structural engineers, remediation), which stay.
 - [ ] **Free estimate / free walkthrough policy** wording.
 - [ ] **Same-day or next-day availability** claims.
-- [ ] **13 vs. 12 years of real-estate experience** — the brochure says 12,
-      the founder transcript says 13. This site uses 13 throughout,
-      per the brand guide's correction — confirm before wider use.
-      **New evidence (photo pull):** two client-supplied assets in the Drive
-      folder both say **12** — the brochure (`IMG_6796`, "12 YEARS IN
-      REALESTATE SALES") and a marketing flyer (`92b605d0-….PNG`, "12 years
-      real estate expertise"). The only source for 13 is the brand guide's
-      correction. Worth re-confirming directly with Dante; the weight of the
-      client's own material currently favours 12.
+- [x] **13 vs. 12 years of real-estate experience** — CONFIRMED 2026-09-23:
+      13 years. The site already uses 13 throughout. The older brochure
+      (`IMG_6796`) and flyer (`92b605d0-….PNG`) that say 12 are out of date.
 
 ## Service scope
 
@@ -105,9 +99,9 @@ and update the linked content file when a decision is made.
         shows Dante and his wife; `about-team-at-trailer.jpg`
         (`Team/Family/IMG_7200.HEIC`) shows Dante with one other team member.
         The page and alt text now say so.
-      - STILL NEEDED: his wife's first name (and whether she wants it
-        published), and whether she has any role in the business. Until then
-        she is introduced only as "his wife", with no title or duties.
+      - CONFIRMED 2026-09-23: his wife's name is Laura; it is published on
+        /about. Still no role or title is stated for her — add one only if the
+        client supplies it.
       - STILL NEEDED: the other person's name and role in the trailer photo,
         and which of the two is Dante if the alt text should say so.
 - [ ] **Team size** — not published anywhere on this site.

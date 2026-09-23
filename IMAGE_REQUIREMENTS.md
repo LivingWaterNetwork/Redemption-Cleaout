@@ -172,7 +172,7 @@ test enforces that for the `about-*` files.
 ## About page photos
 
 - `about-family-portrait.jpg` — Drive `Team/Family/IMG_2407.JPG`, placed in the
-  founder/family story section. Client-confirmed: Dante and his wife.
+  founder/family story section. Client-confirmed: Dante and his wife, Laura.
 - `about-team-at-trailer.jpg` — Drive `Team/Family/IMG_7200.HEIC`, placed in the
   team section. Client-confirmed: Dante with one other team member (unnamed,
   no role published).
