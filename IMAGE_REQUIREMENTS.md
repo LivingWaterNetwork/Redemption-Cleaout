@@ -172,11 +172,10 @@ test enforces that for the `about-*` files.
 ## About page photos
 
 - `about-family-portrait.jpg` — Drive `Team/Family/IMG_2407.JPG`, placed in the
-  founder/family story section. A couple portrait; the man wears a Redemption
-  cap and shirt. Alt text does not name anyone until the client confirms.
+  founder/family story section. Client-confirmed: Dante and his wife.
 - `about-team-at-trailer.jpg` — Drive `Team/Family/IMG_7200.HEIC`, placed in the
-  crew section. Two men in Redemption shirts and caps in front of the branded
-  dump trailer. No names or roles published.
+  team section. Client-confirmed: Dante with one other team member (unnamed,
+  no role published).
 
 ## Referenced in feedback, not found
 

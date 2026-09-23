@@ -31,7 +31,7 @@ export const secondaryNav: NavLink[] = [
 ];
 
 export const footerNav: NavLink[] = [
-  { label: "Full Property Cleanouts", href: "/services/full-property-cleanouts" },
+  { label: "Cleanouts & Junk Removal", href: "/services/full-property-cleanouts" },
   { label: "Demolition", href: "/services/demolition" },
   { label: "Service Areas", href: "/service-areas" },
   { label: "How It Works", href: "/how-it-works" },

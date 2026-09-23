@@ -12,7 +12,7 @@ import { services } from "@/content/services";
 export const metadata: Metadata = pageMetadata({
   title: "Cleanout & Demolition Services",
   description:
-    "Full property cleanouts and demolition throughout Metro Detroit — estate, foreclosure, commercial, hoarding, and move-out clearing, interior tear-outs, and structure teardowns.",
+    "Property cleanouts, junk removal, and demolition throughout Metro Detroit — estate, foreclosure, commercial, hoarding, and move-out clearing, single-area junk removal, interior tear-outs, and structure teardowns.",
   path: "/services",
 });
 
@@ -30,7 +30,7 @@ export default function ServicesPage() {
       <PageHero
         eyebrow="Services"
         title="Cleanouts and demolition"
-        description="Two services, both handled end to end, anywhere in Metro Detroit. If a property needs to be emptied and then torn down, that's one job with one crew — not two contractors scheduling around each other."
+        description="Cleanouts and junk removal — from one garage to an entire property — and demolition, both handled end to end anywhere in Metro Detroit. If a property needs to be emptied and then torn down, that's one job with one crew, not two contractors."
       />
 
       <section className="py-section">

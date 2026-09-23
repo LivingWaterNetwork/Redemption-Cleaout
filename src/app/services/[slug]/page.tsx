@@ -274,7 +274,7 @@ export default async function ServiceDetailPage({
 
       <CallToAction
         location={`service_${service.slug}_cta`}
-        headline={`Ready to scope your ${service.shortName.toLowerCase()}?`}
+        headline={service.ctaHeadline}
         supportingText="Send photos for a ballpark estimate over the phone. We'll come out, walk the property, and give you the final quote in person — before anything is booked."
       />
     </>

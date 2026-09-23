@@ -13,7 +13,7 @@ const homeServices = [
   {
     name: "Estate Cleanouts",
     href: "/services/full-property-cleanouts",
-    linkLabel: "Full Property Cleanouts",
+    linkLabel: "Cleanouts & Junk Removal",
     image: "/images/photos/estate-cleanout-driveway-staging.jpg",
     description:
       "Clearing an inherited or long-held home at the pace and with the privacy the situation calls for. Anything you flag is set aside, never thrown out by default, and we can work with executors and estate-sale companies.",
@@ -21,10 +21,10 @@ const homeServices = [
   {
     name: "Junk Removal",
     href: "/services/full-property-cleanouts",
-    linkLabel: "Full Property Cleanouts",
+    linkLabel: "Cleanouts & Junk Removal",
     image: "/images/photos/garage-cleanout-in-progress.jpg",
     description:
-      "One garage, basement, or attic, a load of furniture and appliances, or every room of the property. Usable items are sorted for donation and recycling where practical.",
+      "A single garage, basement, or attic, or a load of furniture and appliances — no need to clear the whole property. Usable items are sorted for donation and recycling where practical.",
   },
   {
     name: "Demolition",

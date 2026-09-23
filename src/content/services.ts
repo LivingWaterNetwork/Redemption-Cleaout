@@ -16,8 +16,8 @@ import type { ServiceDefinition } from "@/types/content";
 export const services: ServiceDefinition[] = [
   {
     slug: "full-property-cleanouts",
-    name: "Full Property Cleanouts",
-    shortName: "Full Property Cleanouts",
+    name: "Property Cleanouts & Junk Removal",
+    shortName: "Cleanouts & Junk Removal",
     priority: 1,
     image: {
       src: "/images/photos/full-property-cleanout-removal.jpg",
@@ -25,15 +25,17 @@ export const services: ServiceDefinition[] = [
       caption: "A full property cleanout staged for removal — every room, top to bottom.",
     },
     primaryKeyword: "full property cleanout",
-    heroHeadline: "Full Property Cleanouts",
+    heroHeadline: "Property Cleanouts & Junk Removal",
+    ctaHeadline: "Ready to plan your property cleanout?",
     metaDescription:
-      "Full property cleanouts across Metro Detroit — estate, foreclosure, commercial, hoarding, and move-out clearing in Macomb, Oakland, Wayne, Washtenaw, Livingston, Monroe, and St. Clair counties.",
+      "Full property cleanouts and junk removal across Metro Detroit — estate, foreclosure, commercial, hoarding, and move-out clearing, plus single garages, basements, attics, and item pickups, in Macomb, Oakland, Wayne, Washtenaw, Livingston, Monroe, and St. Clair counties.",
     situation:
-      "You need an entire property emptied — every room, closet, garage, basement, attic, and outbuilding — not just a single room or a curbside pickup.",
+      "Whether it's a whole property — every room, closet, garage, basement, and outbuilding — or one garage, basement, attic, or a load of furniture and appliances, we clear it and haul it away.",
     definition:
-      "A full property cleanout is a complete, top-to-bottom removal of a property's contents. Estate, foreclosure, commercial, hoarding-related, and move-out cleanouts, and single-area junk removal, are all the same core work — one crew, one scope, the property cleared and left ready for what comes next. Anything you want kept is set aside, and usable items are sorted for donation where practical.",
+      "A full property cleanout is a complete, top-to-bottom removal of a property's contents — estate, foreclosure, commercial, hoarding-related, and move-out jobs. Junk removal is the same work on a defined scope: one area, or a specific list of items. Either way it is one crew and one agreed scope, and the space is left ready for what comes next. Anything you want kept is set aside, and usable items are sorted for donation where practical.",
     weHandle: [
       "Full interior clearing — every room, closet, and storage area",
+      "Junk removal from a single garage, basement, attic, or room",
       "Garages, basements, attics, pole barns, and outbuildings",
       "Furniture, appliances, and bulk household goods",
       "Commercial furniture, fixtures, equipment, and leftover inventory",
@@ -48,6 +50,7 @@ export const services: ServiceDefinition[] = [
     ],
     whoItsFor: [
       "Homeowners and families clearing a property before listing, renovation, or a move",
+      "Anyone with one space or a set of items that needs to go",
       "Executors, heirs, and out-of-state family managing an estate",
       "Realtors and investors preparing a property for market",
       "Landlords and property managers after a tenant move-out",
@@ -94,6 +97,11 @@ export const services: ServiceDefinition[] = [
           "You can get an estimate. Send us photos and we'll give you a ballpark range over the phone. The final quote is given on site, in person, once we've seen the property — that's how the number you're given is the number that holds.",
       },
       {
+        question: "Do you take smaller junk-removal jobs?",
+        answer:
+          "Yes. A single garage, basement, attic, or a batch of furniture and appliances is handled the same way as a full cleanout: send photos for a ballpark estimate by phone, and the final price is confirmed on site before anything is hauled.",
+      },
+      {
         question: "How long does a full property cleanout take?",
         answer:
           "It depends on the property's size and condition. Most single-family homes are cleared in one to three days. You'll get a real timeline at the walkthrough, not a guess.",
@@ -133,6 +141,7 @@ export const services: ServiceDefinition[] = [
     },
     primaryKeyword: "demolition contractor metro detroit",
     heroHeadline: "Demolition",
+    ctaHeadline: "Ready to plan your demolition project?",
     metaDescription:
       "Demolition across Metro Detroit — interior tear-outs, garages, decks, sheds, pole barns, and full structure teardowns in Macomb, Oakland, Wayne, Washtenaw, Livingston, Monroe, and St. Clair counties.",
     situation:

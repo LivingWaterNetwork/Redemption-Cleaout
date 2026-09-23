@@ -101,13 +101,15 @@ and update the linked content file when a decision is made.
       fresh start." heading, no quotation attributed to Dante, no "pending
       sign-off" line), using only the brand guide's approved founder-story
       framework and values. Still needs the client's final wording, plus:
-      - Confirmation that `about-family-portrait.jpg` (Drive
-        `Team/Family/IMG_2407.JPG`) shows Dante and his wife, and whether they
-        want either named in the alt text or on the page. The alt text
-        currently describes the photo without naming anyone.
-      - Names and roles, if any, for the two people in
-        `about-team-at-trailer.jpg` (`Team/Family/IMG_7200.HEIC`). None are
-        published.
+      - CONFIRMED: `about-family-portrait.jpg` (Drive `Team/Family/IMG_2407.JPG`)
+        shows Dante and his wife; `about-team-at-trailer.jpg`
+        (`Team/Family/IMG_7200.HEIC`) shows Dante with one other team member.
+        The page and alt text now say so.
+      - STILL NEEDED: his wife's first name (and whether she wants it
+        published), and whether she has any role in the business. Until then
+        she is introduced only as "his wife", with no title or duties.
+      - STILL NEEDED: the other person's name and role in the trailer photo,
+        and which of the two is Dante if the alt text should say so.
 - [ ] **Team size** — not published anywhere on this site.
 - [ ] **Response-time promise** — not published as a specific commitment
       anywhere on this site.

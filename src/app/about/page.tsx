@@ -7,7 +7,6 @@ import { StructuredData } from "@/components/StructuredData";
 import { Reveal } from "@/components/motion/Reveal";
 import { breadcrumbJsonLd, pageMetadata } from "@/lib/seo";
 import { founderStory } from "@/content/founderStory";
-import { business } from "@/content/business";
 
 export const metadata: Metadata = pageMetadata({
   title: "About Redemption & Our Founder",
@@ -86,7 +85,7 @@ export default function AboutPage() {
             <div className="img-frame aspect-[3/4] w-full">
               <Image
                 src="/images/photos/about-family-portrait.jpg"
-                alt="A smiling couple standing together indoors, the man in a Redemption Cleanout Services cap and shirt."
+                alt="Dante Terracciano and his wife smiling together indoors; Dante wears a Redemption Cleanout Services cap and shirt."
                 fill
                 priority
                 sizes="(min-width: 1024px) 40vw, 100vw"
@@ -101,11 +100,16 @@ export default function AboutPage() {
             </Reveal>
             <Reveal delay={80}>
               <h2 className="mt-5 text-section font-bold text-heritage-black">
-                {business.founderName}
+                Meet Dante and his wife
               </h2>
             </Reveal>
             <Reveal delay={140}>
               <p className="mt-8 max-w-measure-lg text-body-lg text-heritage-black">
+                {founderStory.familyIntro}
+              </p>
+            </Reveal>
+            <Reveal delay={170}>
+              <p className="mt-6 max-w-measure-lg text-body-lg text-steel-gray">
                 {founderStory.ourStoryVersion}
               </p>
             </Reveal>
@@ -137,16 +141,18 @@ export default function AboutPage() {
         <div className="container-page grid items-center gap-x-14 gap-y-12 lg:grid-cols-12">
           <div className="lg:col-span-5">
             <Reveal>
-              <p className="eyebrow">The crew</p>
+              <p className="eyebrow">The team</p>
             </Reveal>
             <Reveal delay={80}>
               <h2 className="mt-5 text-section font-bold">The people who do the work</h2>
             </Reveal>
             <Reveal delay={140}>
               <p className="mt-7 max-w-measure text-body-lg text-clean-white/80">
-                The people in Redemption shirts at your property are the crew that clears
-                it and hauls it away. Giving that crew real opportunity and room to grow
-                is part of why Dante started the company.
+                Pictured: Dante with a member of the Redemption team, beside one of the
+                company&apos;s dump trailers. The people in Redemption shirts at your
+                property are the crew that clears it and hauls it away, and giving that
+                crew real opportunity and room to grow is part of why Dante started the
+                company.
               </p>
             </Reveal>
             <Reveal delay={200}>
@@ -169,7 +175,7 @@ export default function AboutPage() {
             <div className="img-frame aspect-[4/3] w-full">
               <Image
                 src="/images/photos/about-team-at-trailer.jpg"
-                alt="Two men in Redemption Cleanout Services shirts and caps standing in front of a branded Redemption dump trailer."
+                alt="Dante Terracciano and a member of the Redemption team, both in company shirts and caps, standing in front of a branded Redemption dump trailer."
                 fill
                 sizes="(min-width: 1024px) 55vw, 100vw"
                 className="object-cover"

@@ -52,6 +52,8 @@ export type ServiceDefinition = {
   /** Authentic job photography. Omit when no approved photo exists yet. */
   image?: ServiceImage;
   heroHeadline: string;
+  /** Closing call-to-action heading on the service page. */
+  ctaHeadline: string;
   metaDescription: string;
   situation: string;
   definition: string;
