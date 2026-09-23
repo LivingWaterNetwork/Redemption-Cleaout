@@ -16,7 +16,7 @@ export const stClairShoresMi: CityDefinition = {
   housingContext:
     "The lake sets the pattern. West of Jefferson it is dense 1940s and 1950s bungalows and small brick ranches on narrow lots with single drives and detached garages. East of Jefferson the streets run down to the canals, where the houses back onto boat wells and seawalls, and along Jefferson itself there are mid-rise condominium and apartment buildings looking at the water.",
   workContext:
-    "Estate work dominates: original-owner bungalows west of Jefferson where the basement, the attic crawl and the detached garage all need emptying at once for a sale. The canal side has its own version of the job — a garage, boathouse or basement holding decades of marine gear, outboard parts, trailers, tackle and dock hardware, plus the deck or patio on the water side that the family wants gone. Condo clears along Jefferson run like apartment work: carried out through a shared corridor and lift rather than a drive. Interior gut-outs before a renovation are steady in the older housing.",
+    "Estate work dominates: original-owner bungalows west of Jefferson where the basement, the attic crawl and the detached garage all need emptying at once for a sale. The canal side has its own version of the job — a garage, boathouse or basement holding decades of marine gear, outboard parts, trailers, tackle and dock hardware, plus the deck or patio on the water side that the family wants gone. Condo clears along Jefferson run like apartment work: carried out through a shared corridor and lift rather than a drive. Interior tear-outs before a renovation are steady in the older housing.",
   localConsiderations: [
     "On canal lots the truck stays on the street side, so anything behind the house is carried the full depth of the property to reach it",
     "Detached garages on narrow west-of-Jefferson lots leave no room to swing a trailer — the crew works off the drive and carries",
@@ -42,7 +42,7 @@ export const stClairShoresMi: CityDefinition = {
     },
   ],
   metaDescription:
-    "Cleanouts and demolition in St. Clair Shores, Michigan. Estate and pre-sale clears for bungalows, canal-front homes and Jefferson condos, plus gut-outs.",
+    "Cleanouts and demolition in St. Clair Shores, Michigan. Estate and pre-sale clears for bungalows, canal-front homes and Jefferson condos, plus tear-outs.",
   primaryKeyword: "property cleanout St. Clair Shores MI",
   nearbySlugs: ["clinton-township-mi", "warren-mi", "detroit-mi", "sterling-heights-mi"],
 };

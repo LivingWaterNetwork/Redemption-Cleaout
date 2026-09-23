@@ -44,23 +44,26 @@ export function Hero() {
           {/* Asymmetric: copy occupies 8 of 12 columns, offset from the right edge */}
           <div className="lg:col-span-9 xl:col-span-8">
             <Reveal>
-              <p className="eyebrow">
-                {business.address.publicAreaDescription} &middot; Full Property Cleanouts &amp;
-                Demolition
-              </p>
+              <p className="eyebrow">{business.address.publicAreaDescription}</p>
             </Reveal>
 
-            <Reveal variant="lines" delay={140} as="h1" className="mt-7 text-hero font-bold">
-              <span className="block">Redeem Your Property.</span>
-              <span className="block text-clean-white/95">Redeem Your Space.</span>
+            <Reveal
+              variant="lines"
+              delay={140}
+              as="h1"
+              className="mt-7 text-hero font-bold"
+            >
+              <span className="block">Redeem your property.</span>
+              <span className="block text-clean-white/95">Reclaim your space.</span>
             </Reveal>
 
             <Reveal delay={420}>
-              <p className="mt-8 max-w-measure-lg text-body-lg text-clean-white/80">
-                Full property cleanouts and demolition across all of Metro Detroit — estates,
-                foreclosures, commercial spaces, severe clutter, interior gut-outs, and full
-                structure teardowns. Estimates start from photos over the phone; the final
-                quote is given on site, in person.
+              <p className="mt-8 font-condensed text-xl font-bold uppercase tracking-wide text-clean-white sm:text-2xl">
+                Estate cleanouts, junk removal &amp; demolition
+              </p>
+              <p className="mt-4 max-w-measure-lg text-body-lg text-clean-white/80">
+                Estimates start from photos over the phone; the final quote is given on
+                site, in person.
               </p>
             </Reveal>
 

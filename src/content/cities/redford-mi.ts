@@ -15,7 +15,7 @@ export const redfordMi: CityDefinition = {
   housingContext:
     "Redford Township is small houses on narrow lots, built mostly in the 1940s and 1950s: one-and-a-half-story bungalows and compact brick ranches, full basements underneath, a single-width drive down the side to a detached one-car garage. Side yards are tight and back yards short. Telegraph and Grand River carry older commercial buildings, garages and small service premises.",
   workContext:
-    "Redford Township sees a lot of investor and landlord work — houses cleared, rehabbed and then rented or resold — so cleanouts here often run straight into a gut-out of the kitchen, bath and basement paneling. Alongside that are long-tenure estates: an owner of forty or fifty years, a basement used as workshop and storage the whole time, and heirs wanting the house emptied before it goes on the market. Failing detached garages are a steady source of demolition, as are the old concrete drives that come out with them.",
+    "Redford Township sees a lot of investor and landlord work — houses cleared, rehabbed and then rented or resold — so cleanouts here often run straight into a tear-out of the kitchen, bath and basement paneling. Alongside that are long-tenure estates: an owner of forty or fifty years, a basement used as workshop and storage the whole time, and heirs wanting the house emptied before it goes on the market. Failing detached garages are a steady source of demolition, as are the old concrete drives that come out with them.",
   localConsiderations: [
     "The drive is a single-width strip running the length of the house to a garage at the back, so a truck rarely gets close to the door and much of the load is a long carry",
     "Basements are full but low, with a narrow stair and often a bulkhead door that has not opened in years — worth checking before the day, because a usable bulkhead takes the whole load out at grade instead of up the stair",
@@ -35,7 +35,7 @@ export const redfordMi: CityDefinition = {
     },
   ],
   metaDescription:
-    "Cleanouts and demolition in Redford, Michigan — estate and investor clearing, basement cleanouts, interior gut-outs and detached garage teardowns.",
+    "Cleanouts and demolition in Redford, Michigan — estate and investor clearing, basement cleanouts, interior tear-outs and detached garage teardowns.",
   primaryKeyword: "property cleanout Redford MI",
   nearbySlugs: ["detroit-mi", "livonia-mi", "westland-mi", "southfield-mi", "farmington-hills-mi"],
 };

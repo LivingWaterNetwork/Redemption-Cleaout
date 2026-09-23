@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     template: "%s | Redemption Cleanout Services",
   },
   description:
-    "Full property cleanouts and demolition across Metro Detroit — Macomb, Oakland, St. Clair, Wayne, Monroe, Washtenaw, and Livingston counties. Estimates from photos, final quote on site.",
+    "Estate cleanouts, junk removal, and demolition across Metro Detroit — Macomb, Oakland, St. Clair, Wayne, Monroe, Washtenaw, and Livingston counties. Estimates from photos, final quote on site.",
   icons: {
     icon: "/favicon.ico",
   },

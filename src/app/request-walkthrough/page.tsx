@@ -5,7 +5,12 @@ import { JobberRequestForm } from "@/components/JobberRequestForm";
 import { StructuredData } from "@/components/StructuredData";
 import { Reveal } from "@/components/motion/Reveal";
 import { breadcrumbJsonLd, pageMetadata } from "@/lib/seo";
-import { business, formatPhoneSmsHref, formatPhoneTelHref } from "@/content/business";
+import {
+  business,
+  formatPhoneSmsHref,
+  formatPhoneTelHref,
+  jobberEmbedUrl,
+} from "@/content/business";
 
 export const metadata: Metadata = pageMetadata({
   title: "Get a Free Estimate",
@@ -14,10 +19,16 @@ export const metadata: Metadata = pageMetadata({
   path: "/request-walkthrough",
 });
 
+// The online form only counts as a step once Jobber is connected; until then
+// the details come in by phone or text, and the page must not imply otherwise.
+const formConnected = Boolean(jobberEmbedUrl);
+
 const steps = [
   {
-    title: "You send the property details",
-    body: "Address, property type, and roughly what needs to be cleared or taken down. Two minutes is enough — we'll ask the rest.",
+    title: formConnected
+      ? "You send the property details"
+      : "You call or text us the details",
+    body: "The address, the property type, and roughly what needs to be cleared or taken down.",
   },
   {
     title: "You text us photos",
@@ -29,14 +40,13 @@ const steps = [
   },
   {
     title: "We walk the property and give the final quote",
-    body: "On site, in person, in writing — before anything is booked. If part of the job needs a licensed specialist, we say so up front.",
+    body: "On site, in person, in writing — before anything is booked. If part of the job needs a separately licensed specialist, we say so up front.",
   },
 ];
 
 const reassurances = [
   "No obligation, and no pressure to book on the spot.",
   "Sensitive situations handled privately and without judgment.",
-  "Out-of-state? We can coordinate entirely by phone, text, and photos.",
 ];
 
 export default function RequestWalkthroughPage() {
@@ -58,7 +68,11 @@ export default function RequestWalkthroughPage() {
       <PageHero
         eyebrow="Get Started"
         title="Get a free estimate"
-        description="Send the property details below, then text us photos — we'll come back with a ballpark estimate over the phone. The final quote is given on site. Calls and texts reach the same person."
+        description={
+          formConnected
+            ? "Send the property details below, then text us photos — we'll come back with a ballpark estimate over the phone. The final quote is given on site, after a walkthrough."
+            : "Call or text us the property details and a few photos — we'll come back with a ballpark estimate over the phone. The final quote is given on site, after a walkthrough."
+        }
       />
 
       <section className="py-section">
@@ -70,15 +84,17 @@ export default function RequestWalkthroughPage() {
             </Reveal>
             <Reveal delay={80}>
               <p className="mt-5 max-w-measure-lg text-body-base text-steel-gray">
-                Your information goes directly to our scheduling system. We don&apos;t store
-                it on this website. Photos are easiest by text or email — send them to{" "}
+                {formConnected
+                  ? "Your information goes directly to our scheduling system. We don't store it on this website. "
+                  : null}
+                Photos are easiest by text — send them to{" "}
                 <a
                   href={formatPhoneSmsHref()}
                   className="font-semibold text-heritage-black underline decoration-redemption-red decoration-2 underline-offset-4"
                 >
                   {business.phoneDisplay}
-                </a>{" "}
-                once you&apos;ve sent the form.
+                </a>
+                {formConnected ? " once you've sent the form." : "."}
               </p>
             </Reveal>
             <Reveal delay={140} className="mt-9">

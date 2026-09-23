@@ -12,7 +12,7 @@ import { services } from "@/content/services";
 export const metadata: Metadata = pageMetadata({
   title: "Cleanout & Demolition Services",
   description:
-    "Full property cleanouts and demolition throughout Metro Detroit — estate, foreclosure, commercial, hoarding, and move-out clearing, interior gut-outs, and structure teardowns.",
+    "Property cleanouts, junk removal, and demolition throughout Metro Detroit — estate, foreclosure, commercial, hoarding, and move-out clearing, single-area junk removal, interior tear-outs, and structure teardowns.",
   path: "/services",
 });
 
@@ -30,7 +30,7 @@ export default function ServicesPage() {
       <PageHero
         eyebrow="Services"
         title="Cleanouts and demolition"
-        description="Two services, both handled end to end, anywhere in Metro Detroit. If a property needs to be emptied and then torn down, that's one job with one crew — not two contractors scheduling around each other."
+        description="Cleanouts and junk removal — from one garage to an entire property — and demolition, both handled end to end anywhere in Metro Detroit. If a property needs to be emptied and then torn down, that's one job with one crew, not two contractors."
       />
 
       <section className="py-section">
@@ -71,12 +71,12 @@ export default function ServicesPage() {
                     {service.situation}
                   </p>
 
-                  <ul className="mt-7 grid gap-2 border-t border-heritage-black/12 pt-6">
-                    {(service.categories
-                      ? service.categories.map((category) => category.name)
-                      : service.weHandle.slice(0, 6)
-                    ).map((item) => (
-                      <li key={item} className="flex gap-2.5 text-body-base text-steel-gray">
+                  <ul className="border-heritage-black/12 mt-7 grid gap-2 border-t pt-6">
+                    {service.weHandle.slice(0, 6).map((item) => (
+                      <li
+                        key={item}
+                        className="flex gap-2.5 text-body-base text-steel-gray"
+                      >
                         <span aria-hidden="true" className="mt-0.5 text-redemption-red">
                           &#8212;
                         </span>

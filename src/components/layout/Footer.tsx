@@ -15,27 +15,7 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t-4 border-redemption-red bg-heritage-black text-clean-white on-dark">
-      {/* Conversion band */}
-      <div className="border-b border-clean-white/12">
-        <div className="container-page flex flex-col items-start justify-between gap-6 py-10 lg:flex-row lg:items-center">
-          <p className="max-w-measure-lg font-display text-2xl font-semibold">
-            Ready to clear a property and move forward?
-          </p>
-          <div className="flex shrink-0 flex-col gap-3 sm:flex-row">
-            <Link href="/request-walkthrough" className="btn-primary">
-              Get a Free Estimate
-              <span aria-hidden="true" className="btn-arrow">
-                &rarr;
-              </span>
-            </Link>
-            <a href={formatPhoneTelHref()} className="btn-on-dark">
-              Call {business.phoneDisplay}
-            </a>
-          </div>
-        </div>
-      </div>
-
+    <footer className="on-dark border-t-4 border-redemption-red bg-heritage-black text-clean-white">
       <div className="container-page grid gap-x-10 gap-y-12 py-16 lg:grid-cols-12">
         {/* Brand */}
         <div className="lg:col-span-4">
@@ -52,8 +32,8 @@ export function Footer() {
             {business.legalTagline}
           </p>
           <p className="mt-5 max-w-measure text-sm leading-relaxed text-clean-white/65">
-            Full property cleanouts and demolition throughout Metro Detroit — real-estate
-            informed, and built for the properties other companies pass on.
+            Estate cleanouts, junk removal, and demolition throughout Metro Detroit —
+            real-estate informed, and built for the properties other companies pass on.
           </p>
 
           <dl className="mt-8 space-y-3 text-sm">
@@ -155,7 +135,7 @@ export function Footer() {
                   href="/projects"
                   className="text-clean-white/70 transition-colors duration-micro hover:text-redemption-red"
                 >
-                  Previous Work
+                  Before &amp; After
                 </Link>
               </li>
               {secondaryNav.map((item) => (

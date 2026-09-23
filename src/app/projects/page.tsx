@@ -1,16 +1,15 @@
 import type { Metadata } from "next";
 import { PageHero } from "@/components/sections/PageHero";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
-import { PhotoGallery } from "@/components/sections/PhotoGallery";
+import { BeforeAfterGallery } from "@/components/sections/BeforeAfterGallery";
 import { CallToAction } from "@/components/ui/CallToAction";
 import { StructuredData } from "@/components/StructuredData";
 import { breadcrumbJsonLd, pageMetadata } from "@/lib/seo";
-import { galleryPhotos } from "@/content/gallery";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Previous Work",
+  title: "Before & After",
   description:
-    "Photographs from completed Redemption Cleanout Services jobs across Metro Detroit — full property cleanouts, estate and commercial clearing, and demolition.",
+    "Before and after photos from Redemption Cleanout Services jobs across Metro Detroit — property cleanouts and demolition.",
   path: "/projects",
 });
 
@@ -20,27 +19,25 @@ export default function ProjectsPage() {
       <StructuredData
         data={breadcrumbJsonLd([
           { name: "Home", path: "/" },
-          { name: "Previous Work", path: "/projects" },
+          { name: "Before & After", path: "/projects" },
         ])}
       />
       <Breadcrumbs
-        items={[{ name: "Home", href: "/" }, { name: "Previous Work", href: "/projects" }]}
+        items={[
+          { name: "Home", href: "/" },
+          { name: "Before & After", href: "/projects" },
+        ]}
       />
 
       <PageHero
-        eyebrow="Gallery"
-        title="Previous Work"
-        description={`${galleryPhotos.length} photographs from completed Redemption jobs across Metro Detroit — full property cleanouts, estate and commercial clearing, severe clutter, and demolition. Select any photo to view it full size.`}
-        variant="image"
-        image={{
-          src: "/images/photos/metal-recycling-load-dropoff.jpg",
-          alt: "A loaded Redemption trailer at a scrap-metal recycling facility during disposal of cleanout material.",
-        }}
+        eyebrow="Our work"
+        title="Before & After"
+        description="Cleanouts and demolition from completed Redemption jobs across Metro Detroit."
       />
 
       <section className="py-section">
         <div className="container-page">
-          <PhotoGallery />
+          <BeforeAfterGallery />
         </div>
       </section>
 

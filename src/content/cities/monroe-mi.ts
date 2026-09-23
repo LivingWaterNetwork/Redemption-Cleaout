@@ -20,7 +20,7 @@ export const monroeMi: CityDefinition = {
   localConsiderations: [
     "Low-lying ground near the River Raisin means damp or previously flooded basements, and soaked contents are heavier and dirtier than they look in photos",
     "The old downtown grid predates driveways, so a single narrow side drive or the street itself is the only place a truck can stand",
-    "Homes inside the older historic streets need care around porches, trim and original openings during an interior gut-out",
+    "Homes inside the older historic streets need care around porches, trim and original openings during an interior tear-out",
     "Back garages and sheds on the near-river lots are reached across grass and soft ground, so how wet the yard is decides whether a machine goes in or the work is done by hand",
     "Rural-edge properties north and west of the city carry pole barns and outbuildings that are separate demolition jobs from the house",
   ],
@@ -42,7 +42,7 @@ export const monroeMi: CityDefinition = {
     },
   ],
   metaDescription:
-    "Property cleanouts and demolition in Monroe, Michigan. Estate and pre-sale clearing in older River Raisin homes, wet basements, garages and interior gut-outs.",
+    "Property cleanouts and demolition in Monroe, Michigan. Estate and pre-sale clearing in older River Raisin homes, wet basements, garages and interior tear-outs.",
   primaryKeyword: "property cleanout Monroe MI",
   nearbySlugs: ["temperance-mi", "ypsilanti-mi", "saline-mi", "ann-arbor-mi"],
 };

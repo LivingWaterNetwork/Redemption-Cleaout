@@ -41,16 +41,13 @@ if (isPreview) {
  * the new ones, and external links to them still exist.
  */
 const legacyRedirects = [
-  // Retired service pages → the matching section of the cleanouts pillar.
-  ["/services/estate-cleanouts", "/services/full-property-cleanouts#estate-cleanouts"],
-  ["/services/commercial-cleanouts", "/services/full-property-cleanouts#commercial-cleanouts"],
-  ["/services/foreclosure-cleanouts", "/services/full-property-cleanouts#foreclosure-cleanouts"],
-  ["/services/hoarding-cleanouts", "/services/full-property-cleanouts#hoarding-cleanouts"],
-  ["/services/move-out-cleanouts", "/services/full-property-cleanouts#move-out-cleanouts"],
-  [
-    "/services/residential-junk-removal",
-    "/services/full-property-cleanouts#residential-junk-removal",
-  ],
+  // Retired service pages → the cleanouts pillar.
+  ["/services/estate-cleanouts", "/services/full-property-cleanouts"],
+  ["/services/commercial-cleanouts", "/services/full-property-cleanouts"],
+  ["/services/foreclosure-cleanouts", "/services/full-property-cleanouts"],
+  ["/services/hoarding-cleanouts", "/services/full-property-cleanouts"],
+  ["/services/move-out-cleanouts", "/services/full-property-cleanouts"],
+  ["/services/residential-junk-removal", "/services/full-property-cleanouts"],
   // Light demolition became the demolition pillar.
   ["/services/light-demolition", "/services/demolition"],
   // City pages replaced by county coverage.
@@ -63,10 +60,10 @@ const legacyRedirects = [
   ["/who-we-serve", "/services/full-property-cleanouts"],
   ["/who-we-serve/homeowners-and-families", "/services/full-property-cleanouts"],
   ["/who-we-serve/realtors", "/services/full-property-cleanouts"],
-  ["/who-we-serve/estate-professionals", "/services/full-property-cleanouts#estate-cleanouts"],
-  ["/who-we-serve/property-managers", "/services/full-property-cleanouts#move-out-cleanouts"],
-  ["/who-we-serve/investors", "/services/full-property-cleanouts#foreclosure-cleanouts"],
-  ["/who-we-serve/commercial", "/services/full-property-cleanouts#commercial-cleanouts"],
+  ["/who-we-serve/estate-professionals", "/services/full-property-cleanouts"],
+  ["/who-we-serve/property-managers", "/services/full-property-cleanouts"],
+  ["/who-we-serve/investors", "/services/full-property-cleanouts"],
+  ["/who-we-serve/commercial", "/services/full-property-cleanouts"],
 ];
 
 const nextConfig = {

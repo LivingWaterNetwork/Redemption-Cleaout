@@ -18,7 +18,7 @@ import { resolveSiteUrl } from "@/lib/validation";
  */
 export const business: BusinessInfo = {
   name: "Redemption Cleanout Services",
-  legalTagline: "Redeem Your Property. Redeem Your Space.",
+  legalTagline: "Redeem your property. Reclaim your space.",
   founderName: "Dante Terracciano",
   phoneDisplay: "(248) 321-9609",
   phoneHref: "+12483219609",

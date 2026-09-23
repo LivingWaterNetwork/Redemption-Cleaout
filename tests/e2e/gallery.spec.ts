@@ -1,23 +1,17 @@
 import { test, expect } from "@playwright/test";
 
-test("projects page renders the full photo gallery", async ({ page }) => {
+test("projects page renders the Before & After gallery", async ({ page }) => {
   await page.goto("/projects");
-  await expect(page.getByRole("heading", { level: 1, name: /previous work/i })).toBeVisible();
+  await expect(
+    page.getByRole("heading", { level: 1, name: /before & after/i }),
+  ).toBeVisible();
 
-  const tiles = page.getByRole("button").filter({ hasNot: page.locator("nav") });
-  expect(await page.locator("main img").count()).toBeGreaterThan(10);
-  expect(await tiles.count()).toBeGreaterThan(0);
-});
-
-test("gallery lightbox opens and closes with the keyboard", async ({ page }) => {
-  await page.goto("/projects");
-  await page.locator("main ul li button").first().click();
-
-  const dialog = page.getByRole("dialog");
-  await expect(dialog).toBeVisible();
-
-  await page.keyboard.press("Escape");
-  await expect(dialog).toHaveCount(0);
+  const main = page.locator("main");
+  expect(await main.locator("img").count()).toBeGreaterThan(10);
+  expect(await main.getByText("Before", { exact: true }).count()).toBeGreaterThan(0);
+  expect(await main.getByText("After", { exact: true }).count()).toBeGreaterThan(0);
+  await expect(main.getByText(/photographs from/i)).toHaveCount(0);
+  await expect(main.getByText(/select any photo/i)).toHaveCount(0);
 });
 
 test("reduced motion is respected on the homepage", async ({ page }) => {

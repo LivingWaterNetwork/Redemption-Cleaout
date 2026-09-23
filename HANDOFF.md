@@ -21,17 +21,20 @@ of `PROJECT_SUMMARY.md`.
 
 - **Two services**, not eight: `/services/full-property-cleanouts` and
   `/services/demolition`. Estate, foreclosure, commercial, hoarding-related,
-  move-out and junk removal are anchored `<h3>` sections inside the cleanouts
-  page (`categories` in `src/content/services.ts`).
-- **Demolition is a full service**, no longer "light demolition", and the page
-  says licensed and insured — phrased generally, because that is exactly what
-  the owner confirmed. No licence number, class or insurer appears anywhere.
+  move-out and junk removal are named in the cleanouts page's definition and
+  audience list. (The "Types of cleanout" section was removed at the client's
+  request on 21 Sept 2026; retired URLs now 301 to the page itself.)
+- **Demolition is a full service**, no longer "light demolition". The site
+  says Redemption is **insured** — never "licensed" — per the client's 21 Sept
+  2026 note that Michigan has no demolition/cleanout license. "Licensed" only
+  describes separate specialists (abatement, structural engineers).
 - **Coverage is all of Metro Detroit**: seven county pages, plus **27 city
   pages** at `/service-areas/<county>/<city>`.
 - **`/who-we-serve` and its six children are deleted.** Audience content folded
   into the cleanouts page.
-- **`/projects` is "Previous Work"** — a flat gallery of all 32 photos with a
-  lightbox, no per-project pages.
+- **`/projects` is "Before & After"** — matched before/after pairs plus one
+  project-level Before/After set, labeled, no captions, no lightbox. Data in
+  `src/content/gallery.ts`; see `IMAGE_REQUIREMENTS.md`.
 - **Home page cut from 13 sections to 8.**
 - **Quoting changed**: a ballpark estimate from photos over the phone, the
   final quote given on site in person. `src/content/process.ts` is the
@@ -95,15 +98,15 @@ any good — that still needs a human read.
 
 ### Still outstanding
 
-1. **Demolition scope specifics.** Licensing is confirmed in general terms. Two
-   open questions in `CONTENT_APPROVALS.md`: whether Michigan requires the
-   licence number in advertising (add it to `business.ts` if so), and whether a
-   certificate of insurance should be downloadable. The page claims work up to
-   full structure teardowns on the owner's word — the published photos show a
-   commercial interior gut-out, not a teardown, so do not let copy imply
-   otherwise.
-2. **About page and mission.** Untouched by request; the client is rewriting it
-   and sending crew photos.
+1. **Demolition scope specifics.** The site says "insured" only. Open question
+   in `CONTENT_APPROVALS.md`: whether a certificate of insurance should be
+   downloadable. The page claims work up to full structure teardowns on the
+   owner's word — the published photos show a commercial interior tear-out,
+   not a teardown, so do not let copy imply otherwise.
+2. **About page and mission.** Real founder/family and crew photos went in on
+   21 Sept 2026, with copy drawn from the brand guide's approved framework.
+   The client still intends to rewrite the story and mission in their own
+   words — see `CONTENT_APPROVALS.md`.
 3. **Google Business Profile.** The single biggest lever on local ranking and
    the blocker on reviews. `LOCAL_SEO_PLAYBOOK.md` Priority 1.
 4. **Jobber has no photo-upload field**, so the request page tells people to

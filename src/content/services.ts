@@ -5,10 +5,10 @@ import type { ServiceDefinition } from "@/types/content";
  *
  * The site previously ran eight standalone service pages (estate, commercial,
  * foreclosure, hoarding, junk removal, move-out, light demolition). Those are
- * consolidated here into two pillars — cleanouts and demolition — with the
- * retired types kept as anchored `categories` sections rather than deleted, so
- * their keywords stay on the site and the 301s in next.config.mjs can point
- * each old URL at the equivalent section.
+ * consolidated here into two pillars — cleanouts and demolition — and the 301s
+ * in next.config.mjs point each old URL at the matching pillar page. The
+ * cleanout types are named in the cleanouts definition and audience list
+ * rather than broken out into their own sections.
  *
  * Do not re-split these into separate pages without also updating
  * next.config.mjs redirects, navigation.ts, and the sitemap.
@@ -16,8 +16,8 @@ import type { ServiceDefinition } from "@/types/content";
 export const services: ServiceDefinition[] = [
   {
     slug: "full-property-cleanouts",
-    name: "Full Property Cleanouts",
-    shortName: "Full Property Cleanouts",
+    name: "Property Cleanouts & Junk Removal",
+    shortName: "Cleanouts & Junk Removal",
     priority: 1,
     image: {
       src: "/images/photos/full-property-cleanout-removal.jpg",
@@ -25,15 +25,17 @@ export const services: ServiceDefinition[] = [
       caption: "A full property cleanout staged for removal — every room, top to bottom.",
     },
     primaryKeyword: "full property cleanout",
-    heroHeadline: "Full Property Cleanouts",
+    heroHeadline: "Property Cleanouts & Junk Removal",
+    ctaHeadline: "Ready to plan your property cleanout?",
     metaDescription:
-      "Full property cleanouts across Metro Detroit — estate, foreclosure, commercial, hoarding, and move-out clearing in Macomb, Oakland, Wayne, Washtenaw, Livingston, Monroe, and St. Clair counties.",
+      "Full property cleanouts and junk removal across Metro Detroit — estate, foreclosure, commercial, hoarding, and move-out clearing, plus single garages, basements, attics, and item pickups, in Macomb, Oakland, Wayne, Washtenaw, Livingston, Monroe, and St. Clair counties.",
     situation:
-      "You need an entire property emptied — every room, closet, garage, basement, attic, and outbuilding — not just a single room or a curbside pickup.",
+      "Whether it's a whole property — every room, closet, garage, basement, and outbuilding — or one garage, basement, attic, or a load of furniture and appliances, we clear it and haul it away.",
     definition:
-      "A full property cleanout is a complete, top-to-bottom removal of a property's contents. Estate, foreclosure, commercial, hoarding-related, and move-out jobs are all the same core work handled for different situations — one crew, one scope, the whole property cleared and left ready for what comes next.",
+      "A full property cleanout is a complete, top-to-bottom removal of a property's contents — estate, foreclosure, commercial, hoarding-related, and move-out jobs. Junk removal is the same work on a defined scope: one area, or a specific list of items. Either way it is one crew and one agreed scope, and the space is left ready for what comes next. Anything you want kept is set aside, and usable items are sorted for donation where practical.",
     weHandle: [
       "Full interior clearing — every room, closet, and storage area",
+      "Junk removal from a single garage, basement, attic, or room",
       "Garages, basements, attics, pole barns, and outbuildings",
       "Furniture, appliances, and bulk household goods",
       "Commercial furniture, fixtures, equipment, and leftover inventory",
@@ -48,6 +50,7 @@ export const services: ServiceDefinition[] = [
     ],
     whoItsFor: [
       "Homeowners and families clearing a property before listing, renovation, or a move",
+      "Anyone with one space or a set of items that needs to go",
       "Executors, heirs, and out-of-state family managing an estate",
       "Realtors and investors preparing a property for market",
       "Landlords and property managers after a tenant move-out",
@@ -59,80 +62,6 @@ export const services: ServiceDefinition[] = [
       "A mix of items to keep, donate, and discard",
       "Limited access — narrow staircases, tight hallways and doorways, upper floors with no working elevator, or a driveway that won't fit a trailer",
       "A closing date, listing date, lease-end, or renovation start driving the timeline",
-    ],
-    categories: [
-      {
-        id: "estate-cleanouts",
-        name: "Estate and Inherited Property Cleanouts",
-        summary:
-          "Clearing a property after a loss, an inheritance, or a move into senior care — at the pace and with the privacy the situation calls for.",
-        points: [
-          "Coordination with executors, attorneys, and estate-sale companies",
-          "Sentimental or valuable items you flag are set aside, never discarded by default",
-          "Flexible scheduling around probate and closing timelines",
-          "Out-of-state coordination by phone, text, and photo updates",
-        ],
-      },
-      {
-        id: "foreclosure-cleanouts",
-        name: "Foreclosure and Distressed Property Cleanouts",
-        summary:
-          "Clearing an abandoned, vacated, or repossessed property and getting it ready for inspection, listing, or renovation on a lender's timeline.",
-        points: [
-          "Full clearing of contents left behind by a prior owner or tenant",
-          "Debris and damaged-material removal",
-          "Before-and-after photo documentation on request",
-          "Repeat-volume capacity for ongoing REO and asset-management work",
-        ],
-      },
-      {
-        id: "commercial-cleanouts",
-        name: "Commercial Property Cleanouts",
-        summary:
-          "Offices, retail, warehouse, and industrial space cleared of furniture, fixtures, equipment, and inventory — scheduled around your operating hours.",
-        points: [
-          "Office furniture, cubicles, and fixtures",
-          "Retail fixtures, shelving, and leftover inventory",
-          "Warehouse racking and miscellaneous equipment",
-          "After-hours and weekend scheduling around lease-end and turnover dates",
-        ],
-      },
-      {
-        id: "hoarding-cleanouts",
-        name: "Hoarding-Related and Severe-Clutter Cleanouts",
-        summary:
-          "Severe clutter cleared in a way that respects the person connected to it — private, judgment-free, focused on getting the space safe and usable again.",
-        points: [
-          "Full clearing of severely cluttered interiors and exteriors",
-          "Careful sorting when specific items need to be reviewed first",
-          "Discreet scheduling and crew conduct",
-          "Coordination with family members, caseworkers, or property managers when appropriate",
-        ],
-      },
-      {
-        id: "move-out-cleanouts",
-        name: "Move-Out and Downsizing Cleanouts",
-        summary:
-          "Everything that isn't coming with you, cleared ahead of a move, a downsize, or a senior-living transition.",
-        points: [
-          "Furniture and belongings not moving to the new location",
-          "Timelines built around your move date or lease-end date",
-          "Coordination with movers and senior-move professionals",
-          "Donation sorting for items in good condition",
-        ],
-      },
-      {
-        id: "residential-junk-removal",
-        name: "Junk Removal and Single-Area Cleanouts",
-        summary:
-          "A defined space or a specific list of items rather than a whole property — a garage, a basement, an attic, or a batch of furniture and appliances.",
-        points: [
-          "Garage, basement, and attic clearing",
-          "Furniture and appliance removal",
-          "Yard and construction debris",
-          "Single-room and partial-property jobs",
-        ],
-      },
     ],
     process: [
       {
@@ -168,6 +97,11 @@ export const services: ServiceDefinition[] = [
           "You can get an estimate. Send us photos and we'll give you a ballpark range over the phone. The final quote is given on site, in person, once we've seen the property — that's how the number you're given is the number that holds.",
       },
       {
+        question: "Do you take smaller junk-removal jobs?",
+        answer:
+          "Yes. A single garage, basement, attic, or a batch of furniture and appliances is handled the same way as a full cleanout: send photos for a ballpark estimate by phone, and the final price is confirmed on site before anything is hauled.",
+      },
+      {
         question: "How long does a full property cleanout take?",
         answer:
           "It depends on the property's size and condition. Most single-family homes are cleared in one to three days. You'll get a real timeline at the walkthrough, not a guess.",
@@ -201,19 +135,21 @@ export const services: ServiceDefinition[] = [
     priority: 2,
     image: {
       src: "/images/photos/demolition-teardown-after-04.jpg",
-      alt: "A commercial interior stripped to bare block walls and concrete slab after a full gut-out, with the framing openings left in place.",
-      caption: "A commercial suite taken back to bare block and slab — partitions, ceilings, flooring and fixtures out, debris hauled by the same crew.",
+      alt: "A commercial interior stripped to bare block walls and concrete slab after a full interior tear-out, with the framing openings left in place.",
+      caption:
+        "A commercial suite taken back to bare block and slab — partitions, ceilings, flooring and fixtures out, debris hauled by the same crew.",
     },
     primaryKeyword: "demolition contractor metro detroit",
     heroHeadline: "Demolition",
+    ctaHeadline: "Ready to plan your demolition project?",
     metaDescription:
-      "Demolition across Metro Detroit — interior gut-outs, garages, decks, sheds, pole barns, and full structure teardowns in Macomb, Oakland, Wayne, Washtenaw, Livingston, Monroe, and St. Clair counties.",
+      "Demolition across Metro Detroit — interior tear-outs, garages, decks, sheds, pole barns, and full structure teardowns in Macomb, Oakland, Wayne, Washtenaw, Livingston, Monroe, and St. Clair counties.",
     situation:
-      "Something on the property has to come down — an interior that needs gutting before renovation, a failing garage or deck, an outbuilding, or a structure at the end of its life.",
+      "Something on the property has to come down — an interior that has to be torn out before a renovation, a failing garage or deck, an outbuilding, or a structure at the end of its life.",
     definition:
-      "Redemption takes demolition work from interior gut-outs through full structure teardowns, licensed and insured, and hauls the debris out with the same crew. Because we run cleanouts too, a property that needs to be emptied and then torn down is one job with one point of contact — not two contractors scheduling around each other.",
+      "Redemption handles demolition from interior tear-outs through full structure teardowns, and hauls the debris out with the same crew. We're insured for the work we take on, and because we run cleanouts too, a property that needs to be emptied and then torn down is one job with one point of contact — not two contractors scheduling around each other.",
     weHandle: [
-      "Interior gut-outs and tear-outs — walls, fixtures, cabinetry, flooring, ceilings",
+      "Interior tear-outs — walls, fixtures, cabinetry, flooring, ceilings",
       "Garages, carports, and detached outbuildings",
       "Decks, porches, fencing, and above-ground pools",
       "Sheds and pole barns",
@@ -228,7 +164,7 @@ export const services: ServiceDefinition[] = [
       "Engineered shoring or load-bearing structural work requiring a licensed structural engineer",
     ],
     whoItsFor: [
-      "Homeowners and investors gutting a property before renovation",
+      "Homeowners and investors tearing out an interior before renovation",
       "Builders and contractors who need a site cleared before their crew starts",
       "Realtors and asset managers dealing with an unsalvageable structure",
       "Commercial owners removing fixtures, build-outs, or outbuildings",
@@ -238,7 +174,7 @@ export const services: ServiceDefinition[] = [
       "An interior that has to be taken back to studs before a renovation starts",
       "A structure that's unsafe, storm-damaged, or past repair",
       "Debris volume that a dumpster rental won't cover",
-      "A site that has to be both emptied and torn down, in the right order",
+      "A site that has to be both emptied and torn down",
     ],
     process: [
       {
@@ -270,7 +206,7 @@ export const services: ServiceDefinition[] = [
       {
         question: "How big a demolition project will you take on?",
         answer:
-          "We handle everything from an interior gut-out to a full structure teardown, and we're actively taking on larger projects. Send photos and we'll tell you straight away whether it's in our scope.",
+          "We handle everything from an interior tear-out to a full structure teardown, and we're actively taking on larger projects. Send photos and we'll tell you straight away whether it's in our scope.",
       },
       {
         question: "Do you haul the debris away too?",
@@ -283,9 +219,9 @@ export const services: ServiceDefinition[] = [
           "Yes, and it's one of the most common reasons people call. Running the cleanout and the demolition through one company means one scope, one schedule, and no gap between the two.",
       },
       {
-        question: "Are you licensed and insured?",
+        question: "Are you insured?",
         answer:
-          "Yes. Redemption carries the licensing and insurance required for the demolition and cleanout work it takes on in Michigan. Ask at the walkthrough and we'll confirm the details for your specific project.",
+          "Yes. Redemption is insured for the demolition and cleanout work it takes on. If your project needs proof of coverage before work starts, ask at the walkthrough. Any part of a job that has to be done by a separately licensed specialist, such as asbestos or lead abatement, is flagged up front.",
       },
       {
         question: "What about permits, utilities, and asbestos?",

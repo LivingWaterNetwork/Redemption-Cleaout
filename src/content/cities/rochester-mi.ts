@@ -16,7 +16,7 @@ export const rochesterMi: CityDefinition = {
   housingContext:
     "Rochester is an old town center rather than a subdivision suburb. The streets around downtown hold early-1900s frame houses, four-squares and small brick homes on narrow lots, many with a detached garage reached by a side drive. Midcentury infill fills the gaps, and newer townhouses and condominiums sit within a few blocks of Main Street.",
   workContext:
-    "Most residential calls here involve houses that have been in one family a long time — an attic, a cellar and a back garage that have not been emptied since the 1970s. Because the older stock sells quickly, pre-listing clearing is common, and buyers who renovate afterwards bring interior gut-outs behind them. Plaster and lath comes out heavier than drywall and fills a trailer faster. Downtown adds storefront and small-office turnover along Main Street, where fixtures, shelving and back-of-house clutter come out between tenants.",
+    "Most residential calls here involve houses that have been in one family a long time — an attic, a cellar and a back garage that have not been emptied since the 1970s. Because the older stock sells quickly, pre-listing clearing is common, and buyers who renovate afterwards bring interior tear-outs behind them. Plaster and lath comes out heavier than drywall and fills a trailer faster. Downtown adds storefront and small-office turnover along Main Street, where fixtures, shelving and back-of-house clutter come out between tenants.",
   localConsiderations: [
     "Older homes near downtown often have steep, narrow cellar stairs and a hatch-style attic, so bulky items come out in pieces rather than whole",
     "Side drives on the older blocks are single-width and end at a detached garage, which usually means carrying the length of the lot",
@@ -41,7 +41,7 @@ export const rochesterMi: CityDefinition = {
     },
   ],
   metaDescription:
-    "Property cleanouts and demolition in Rochester, Michigan. Estate and pre-listing clearing, attic and cellar cleanouts, garage teardowns and interior gut-outs.",
+    "Property cleanouts and demolition in Rochester, Michigan. Estate and pre-listing clearing, attic and cellar cleanouts, garage teardowns and interior tear-outs.",
   primaryKeyword: "property cleanout Rochester MI",
   nearbySlugs: ["rochester-hills-mi", "troy-mi", "shelby-township-mi", "sterling-heights-mi"],
 };

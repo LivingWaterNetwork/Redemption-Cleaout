@@ -5,7 +5,6 @@ import { HowItWorksSection } from "@/components/sections/HowItWorksSection";
 import { WhyRedemption } from "@/components/sections/WhyRedemption";
 import { PreviousWork } from "@/components/sections/PreviousWork";
 import { ReviewSection } from "@/components/sections/ReviewSection";
-import { ServiceAreaSection } from "@/components/sections/ServiceAreaSection";
 import { CallToAction } from "@/components/ui/CallToAction";
 import { StructuredData } from "@/components/StructuredData";
 import { webPageJsonLd } from "@/lib/structuredData";
@@ -14,16 +13,17 @@ import { pageMetadata } from "@/lib/seo";
 export const metadata: Metadata = pageMetadata({
   title: "Fast, Reliable Cleanouts & Demolition | Metro Detroit",
   description:
-    "Fast, reliable full property cleanouts and demolition across Metro Detroit — Macomb, Oakland, St. Clair, Wayne, Monroe, Washtenaw, and Livingston counties. Cleared in one visit by one crew. Estimates from photos, final quote on site.",
+    "Estate cleanouts, junk removal, and demolition across Metro Detroit — Macomb, Oakland, St. Clair, Wayne, Monroe, Washtenaw, and Livingston counties. Estimates from photos, final quote on site.",
   path: "/",
 });
 
 /**
- * Deliberately short. The page runs hero, the two services, how quoting works,
- * why us, work, reviews, coverage, CTA — and nothing else. Sections were cut
- * (a trust strip, a situation picker, a partner block, a founder blurb, an FAQ
- * preview) because each one added a decision to make before reaching a phone
- * number. Add a section here only if it earns that cost.
+ * Deliberately short. The page runs hero, services, how quoting works, why us,
+ * before & after, reviews, CTA — and nothing else. Sections were cut (a trust
+ * strip, a situation picker, a partner block, a founder blurb, an FAQ preview,
+ * the county grid) because each one added a decision to make before reaching a
+ * phone number. Coverage lives in the footer and on /service-areas. Add a
+ * section here only if it earns that cost.
  */
 export default function HomePage() {
   return (
@@ -32,7 +32,7 @@ export default function HomePage() {
         data={webPageJsonLd(
           "Redemption Cleanout Services",
           "/",
-          "Fast, reliable full property cleanouts and demolition throughout Metro Detroit.",
+          "Estate cleanouts, junk removal, and demolition throughout Metro Detroit.",
         )}
       />
       <Hero />
@@ -41,7 +41,6 @@ export default function HomePage() {
       <WhyRedemption />
       <PreviousWork />
       <ReviewSection />
-      <ServiceAreaSection />
       <CallToAction
         location="homepage_final_cta"
         headline="Redeem your property."

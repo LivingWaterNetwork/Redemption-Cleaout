@@ -39,15 +39,15 @@ export const faqs: FAQEntry[] = [
   },
   {
     category: "Getting Started",
-    question: "Are you licensed and insured?",
+    question: "Are you insured?",
     answer:
-      "Yes. Redemption carries the licensing and insurance required for the cleanout and demolition work it takes on in Michigan. If your project needs proof of coverage before work starts, ask at the walkthrough.",
+      "Yes. Redemption is insured for the cleanout and demolition work it takes on. If your project needs proof of coverage before work starts, ask at the walkthrough.",
   },
   {
     category: "What We Handle",
     question: "Do you do demolition?",
     answer:
-      "Yes — it's one of our two main services. Interior gut-outs, garages, decks, sheds, pole barns, concrete removal, and full structure teardowns, with the debris hauled off by the same crew. Asbestos and lead abatement must be completed by a licensed abatement contractor first, and utility disconnects have to be confirmed by the provider.",
+      "Yes — it's one of our two main services. Interior tear-outs, garages, decks, sheds, pole barns, concrete removal, and full structure teardowns, with the debris hauled off by the same crew. Asbestos and lead abatement must be completed by a licensed abatement contractor first, and utility disconnects have to be confirmed by the provider.",
   },
   {
     category: "What We Handle",
