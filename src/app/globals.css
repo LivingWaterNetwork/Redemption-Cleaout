@@ -178,6 +178,11 @@
     @apply relative inline-flex items-center gap-2 font-display text-sm font-semibold uppercase tracking-[0.08em] text-restoration-red-dark;
   }
 
+  /* Red type fails contrast on dark panels (and the brand guide forbids it). */
+  .on-dark .link-editorial {
+    @apply text-clean-white;
+  }
+
   .link-editorial::after {
     content: "";
     @apply absolute -bottom-1 left-0 h-px w-full origin-left scale-x-0 bg-redemption-red transition-transform duration-micro ease-editorial;
