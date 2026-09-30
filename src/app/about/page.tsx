@@ -148,11 +148,11 @@ export default function AboutPage() {
             </Reveal>
             <Reveal delay={140}>
               <p className="mt-7 max-w-measure text-body-lg text-clean-white/80">
-                Pictured: Dante with a member of the Redemption team, beside one of the
-                company&apos;s dump trailers. The people in Redemption shirts at your
-                property are the crew that clears it and hauls it away, and giving that
-                crew real opportunity and room to grow is part of why Dante started the
-                company.
+                Pictured: two of our crew clearing an overgrown backyard arbor, one
+                cutting back vines from the ladder while the other steadies the work from
+                the ground. The people in Redemption shirts at your property are the crew
+                that does the work, and giving that crew real opportunity and room to grow
+                is part of why Dante started the company.
               </p>
             </Reveal>
             <Reveal delay={200}>
@@ -174,8 +174,8 @@ export default function AboutPage() {
           <Reveal variant="mask" delay={100} className="lg:col-span-7">
             <div className="img-frame aspect-[4/3] w-full">
               <Image
-                src="/images/photos/about-team-at-trailer.jpg"
-                alt="Dante Terracciano and a member of the Redemption team, both in company shirts and caps, standing in front of a branded Redemption dump trailer."
+                src="/images/photos/crew-branded-shirts-yard-clearing.jpg"
+                alt="Two Redemption crew members in company shirts clearing an overgrown backyard arbor, one on a ladder cutting back vines while the other, in work gloves and a Redemption cap, watches from below."
                 fill
                 sizes="(min-width: 1024px) 55vw, 100vw"
                 className="object-cover"
