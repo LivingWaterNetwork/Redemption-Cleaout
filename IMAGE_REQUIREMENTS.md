@@ -84,7 +84,7 @@ JPEG q84, with EXIF stripped.
 | `branded-truck-and-dump-trailer-residential-drive.jpg` | Homepage hero |
 | `branded-dump-trailer-curbside.jpg` | Final CTA background |
 | `branded-truck-dump-trailer-driveway.jpg` | `/about` hero |
-| `crew-branded-shirts-yard-clearing.jpg` | Why Redemption |
+| `crew-branded-shirts-yard-clearing.jpg` | `/about` team section |
 | `cleared-garage-bay-after.jpg` | Founder section |
 | `garage-cleanout-crew-sorting-before.jpg` | Before/after — before |
 | `garage-cleanout-cleared-bay-after.jpg` | Before/after — after |
@@ -173,9 +173,11 @@ test enforces that for the `about-*` files.
 
 - `about-family-portrait.jpg` — Drive `Team/Family/IMG_2407.JPG`, placed in the
   founder/family story section. Client-confirmed: Dante and his wife, Laura.
-- `about-team-at-trailer.jpg` — Drive `Team/Family/IMG_7200.HEIC`, placed in the
-  team section. Client-confirmed: Dante with one other team member (unnamed,
-  no role published).
+- `about-team-at-trailer.jpg` — Drive `Team/Family/IMG_7200.HEIC`. Client-confirmed:
+  Dante with one other team member (unnamed, no role published). No longer
+  placed: the team section now shows `crew-branded-shirts-yard-clearing.jpg`
+  (crew at work) at the client's request, with the caption rewritten to
+  describe that photo.
 
 ## Referenced in feedback, not found
 
